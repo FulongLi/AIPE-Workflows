@@ -1,0 +1,2956 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-21T15:26:10",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.6",
+    "schematic_parity": [],
+    "source": "dab-primary.kicad_pcb",
+    "unconnected_items": [
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 C45 的焊盘 1 [VDD_AL]",
+                    "pos": {
+                        "x": 123.25,
+                        "y": 56.05
+                    },
+                    "uuid": "8a1991e5-98e3-4021-a0bb-01d8b6c395ad"
+                },
+                {
+                    "description": "走线 [VDD_AL] (B.Cu), 长度: 1.4142 mm",
+                    "pos": {
+                        "x": 123.25,
+                        "y": 58.75
+                    },
+                    "uuid": "e3946dfd-8130-4212-8157-35060df6d7ee"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U5 的焊盘 31 [VEE_AL]",
+                    "pos": {
+                        "x": 131.725,
+                        "y": 69.025
+                    },
+                    "uuid": "88867892-e8c7-4996-b204-c8e17fccfef7"
+                },
+                {
+                    "description": "F.Cu 上 U5 的焊盘 30 [VEE_AL]",
+                    "pos": {
+                        "x": 132.375,
+                        "y": 69.025
+                    },
+                    "uuid": "d5a1510e-de6b-4e29-9f08-7127867d4754"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U5 的焊盘 27 [VEE_AL]",
+                    "pos": {
+                        "x": 134.325,
+                        "y": 69.025
+                    },
+                    "uuid": "1bc0e422-323e-4d32-888a-f52a208381c8"
+                },
+                {
+                    "description": "F.Cu 上 U5 的焊盘 30 [VEE_AL]",
+                    "pos": {
+                        "x": 132.375,
+                        "y": 69.025
+                    },
+                    "uuid": "d5a1510e-de6b-4e29-9f08-7127867d4754"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_AL] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 132.375,
+                        "y": 79.39125
+                    },
+                    "uuid": "c0119a51-2d6e-42db-92ba-a5aba5fc5ddc"
+                },
+                {
+                    "description": "走线 [12V_BIAS_AL] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 131.725,
+                        "y": 80.25
+                    },
+                    "uuid": "3eb17fda-247b-4e93-9dd5-514486dab210"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_AL] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 132.375,
+                        "y": 79.39125
+                    },
+                    "uuid": "c0119a51-2d6e-42db-92ba-a5aba5fc5ddc"
+                },
+                {
+                    "description": "走线 [12V_BIAS_AL] (F.Cu), 长度: 1.0000 mm",
+                    "pos": {
+                        "x": 132.375,
+                        "y": 81.25
+                    },
+                    "uuid": "12755303-ddcf-49d2-bccb-7afaf378d251"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U5 的焊盘 2 [GNDP_AL]",
+                    "pos": {
+                        "x": 129.125,
+                        "y": 78.975
+                    },
+                    "uuid": "efb943d3-d0f8-4636-a836-8ead67359af8"
+                },
+                {
+                    "description": "F.Cu 上 U5 的焊盘 1 [GNDP_AL]",
+                    "pos": {
+                        "x": 128.475,
+                        "y": 78.975
+                    },
+                    "uuid": "40f1e076-ee48-473b-870b-7dea9672952a"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U5 的焊盘 5 [GNDP_AL]",
+                    "pos": {
+                        "x": 131.075,
+                        "y": 78.975
+                    },
+                    "uuid": "d0bd474f-20a3-412e-bbd3-591250ef20d4"
+                },
+                {
+                    "description": "F.Cu 上 U5 的焊盘 2 [GNDP_AL]",
+                    "pos": {
+                        "x": 129.125,
+                        "y": 78.975
+                    },
+                    "uuid": "efb943d3-d0f8-4636-a836-8ead67359af8"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 RT1 的焊盘 1 [NTCR_AH]",
+                    "pos": {
+                        "x": 91.1625,
+                        "y": 56.25
+                    },
+                    "uuid": "c77bd8e5-5d25-4b17-ba1d-cf07b358e8fe"
+                },
+                {
+                    "description": "F.Cu 上 R13 的焊盘 2 [NTCR_AH]",
+                    "pos": {
+                        "x": 92.925,
+                        "y": 54.5
+                    },
+                    "uuid": "21a091a6-ecc0-4155-9023-2572d9cf009a"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U5 的焊盘 4 [BIAS_ENF]",
+                    "pos": {
+                        "x": 130.425,
+                        "y": 78.975
+                    },
+                    "uuid": "68237eeb-af85-462d-916d-66b8432acd07"
+                },
+                {
+                    "description": "F.Cu 上 U3 的焊盘 4 [BIAS_ENF]",
+                    "pos": {
+                        "x": 94.425,
+                        "y": 78.975
+                    },
+                    "uuid": "2c48fae2-b429-401f-9486-7654bea96172"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U5 的焊盘 4 [BIAS_ENF]",
+                    "pos": {
+                        "x": 130.425,
+                        "y": 78.975
+                    },
+                    "uuid": "68237eeb-af85-462d-916d-66b8432acd07"
+                },
+                {
+                    "description": "F.Cu 上 C140 的焊盘 1 [BIAS_ENF]",
+                    "pos": {
+                        "x": 117.475,
+                        "y": 115.0
+                    },
+                    "uuid": "0c04888e-e572-4f8d-b8e7-0359b6009af1"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U7 的焊盘 4 [BIAS_ENF]",
+                    "pos": {
+                        "x": 166.425,
+                        "y": 78.975
+                    },
+                    "uuid": "49cd73e6-6afc-4da8-ad62-4524624141b6"
+                },
+                {
+                    "description": "F.Cu 上 U5 的焊盘 4 [BIAS_ENF]",
+                    "pos": {
+                        "x": 130.425,
+                        "y": 78.975
+                    },
+                    "uuid": "68237eeb-af85-462d-916d-66b8432acd07"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U9 的焊盘 4 [BIAS_ENF]",
+                    "pos": {
+                        "x": 202.425,
+                        "y": 78.975
+                    },
+                    "uuid": "84a5a1ce-59d8-43cc-98b9-918e44ad0998"
+                },
+                {
+                    "description": "F.Cu 上 U7 的焊盘 4 [BIAS_ENF]",
+                    "pos": {
+                        "x": 166.425,
+                        "y": 78.975
+                    },
+                    "uuid": "49cd73e6-6afc-4da8-ad62-4524624141b6"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U10 的焊盘 4 [BIAS_ENF]",
+                    "pos": {
+                        "x": 237.925,
+                        "y": 78.975
+                    },
+                    "uuid": "d859af4a-6522-46c6-a64b-46d52ecc7ed7"
+                },
+                {
+                    "description": "F.Cu 上 U9 的焊盘 4 [BIAS_ENF]",
+                    "pos": {
+                        "x": 202.425,
+                        "y": 78.975
+                    },
+                    "uuid": "84a5a1ce-59d8-43cc-98b9-918e44ad0998"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [GND_CTRL] (F.Cu), 长度: 1.3750 mm",
+                    "pos": {
+                        "x": 80.5,
+                        "y": 78.875
+                    },
+                    "uuid": "42e9620f-73b5-47f0-abe7-0747bdeb768d"
+                },
+                {
+                    "description": "F.Cu 上 C27 的焊盘 2 [GND_CTRL]",
+                    "pos": {
+                        "x": 83.475,
+                        "y": 81.25
+                    },
+                    "uuid": "d13b179b-b4c1-4fc4-82ce-f957cccd7971"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [GND_CTRL] (F.Cu), 长度: 1.3750 mm",
+                    "pos": {
+                        "x": 116.5,
+                        "y": 78.875
+                    },
+                    "uuid": "98a44465-d7ea-485d-adc9-74bb75fd0b86"
+                },
+                {
+                    "description": "F.Cu 上 C51 的焊盘 2 [GND_CTRL]",
+                    "pos": {
+                        "x": 119.475,
+                        "y": 81.25
+                    },
+                    "uuid": "61508006-7f9b-4c15-857e-ba8a01506978"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [GND_CTRL] (F.Cu), 长度: 0.5000 mm",
+                    "pos": {
+                        "x": 152.5,
+                        "y": 80.25
+                    },
+                    "uuid": "68f31ff2-9991-4a66-a0ef-9962e95a5c68"
+                },
+                {
+                    "description": "F.Cu 上 C75 的焊盘 2 [GND_CTRL]",
+                    "pos": {
+                        "x": 155.475,
+                        "y": 81.25
+                    },
+                    "uuid": "3da7aee8-4970-4892-aabd-2398bec14557"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [GND_CTRL] (F.Cu), 长度: 1.3750 mm",
+                    "pos": {
+                        "x": 188.5,
+                        "y": 78.875
+                    },
+                    "uuid": "256368b8-26d5-4aac-a5c0-43761f47a6eb"
+                },
+                {
+                    "description": "F.Cu 上 C99 的焊盘 2 [GND_CTRL]",
+                    "pos": {
+                        "x": 191.475,
+                        "y": 81.25
+                    },
+                    "uuid": "e9428d76-bbdb-43c6-8d26-a1d5ec982a20"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 C16 的焊盘 2 [GND_CTRL]",
+                    "pos": {
+                        "x": 260.975,
+                        "y": 82.0
+                    },
+                    "uuid": "99168431-74b0-4bed-a8c8-4d0532621ee8"
+                },
+                {
+                    "description": "走线 [GND_CTRL] (F.Cu), 长度: 0.0500 mm",
+                    "pos": {
+                        "x": 258.55,
+                        "y": 84.25
+                    },
+                    "uuid": "e8b50c64-cbed-4ba5-ace9-e2a85f949aa0"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U3 的焊盘 33 [FBVEE_AH]",
+                    "pos": {
+                        "x": 94.425,
+                        "y": 69.025
+                    },
+                    "uuid": "29236585-3094-4434-8e0c-daeadc80ce9f"
+                },
+                {
+                    "description": "F.Cu 上 C36 的焊盘 1 [FBVEE_AH]",
+                    "pos": {
+                        "x": 103.275,
+                        "y": 59.0
+                    },
+                    "uuid": "9494b37b-723a-4385-83b9-24aebb670e4e"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 C36 的焊盘 1 [FBVEE_AH]",
+                    "pos": {
+                        "x": 103.275,
+                        "y": 59.0
+                    },
+                    "uuid": "9494b37b-723a-4385-83b9-24aebb670e4e"
+                },
+                {
+                    "description": "F.Cu 上 R22 的焊盘 2 [FBVEE_AH]",
+                    "pos": {
+                        "x": 91.0,
+                        "y": 54.075
+                    },
+                    "uuid": "360f6a7d-60b5-479a-bb66-f0072a0dbef8"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [VEEA_AH] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 93.125,
+                        "y": 68.60875
+                    },
+                    "uuid": "b9bd91fa-970a-41dc-bb78-2e046c97aa4b"
+                },
+                {
+                    "description": "走线 [VEEA_AH] (F.Cu), 长度: 0.1250 mm",
+                    "pos": {
+                        "x": 95.875,
+                        "y": 67.25
+                    },
+                    "uuid": "76d64788-5c6d-4b8d-a415-7e69b7b3d039"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [3V3] (F.Cu), 长度: 1.8750 mm",
+                    "pos": {
+                        "x": 66.625,
+                        "y": 120.875
+                    },
+                    "uuid": "0ee49126-90e3-41e3-82f9-0c66d30aadb7"
+                },
+                {
+                    "description": "走线 [3V3] (B.Cu), 长度: 11.6673 mm",
+                    "pos": {
+                        "x": 76.125,
+                        "y": 94.0
+                    },
+                    "uuid": "fcf2eba7-5124-4571-95a3-474e766f461c"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [3V3] (In2.Cu), 长度: 3.0000 mm",
+                    "pos": {
+                        "x": 88.75,
+                        "y": 82.625
+                    },
+                    "uuid": "9ceb12cf-5b12-4abb-9033-9e11f16f6170"
+                },
+                {
+                    "description": "走线 [3V3] (F.Cu), 长度: 0.8037 mm",
+                    "pos": {
+                        "x": 88.175,
+                        "y": 79.24625
+                    },
+                    "uuid": "127304df-d9e4-4eaf-a649-b1f6373046cb"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [3V3] (F.Cu), 长度: 0.8037 mm",
+                    "pos": {
+                        "x": 160.175,
+                        "y": 79.24625
+                    },
+                    "uuid": "00582bc7-6ce6-4540-a394-717144e27c99"
+                },
+                {
+                    "description": "走线 [3V3] (F.Cu), 长度: 2.7500 mm",
+                    "pos": {
+                        "x": 158.0,
+                        "y": 82.625
+                    },
+                    "uuid": "538c3352-2c07-4c06-b157-cb6101434c0f"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [3V3] (F.Cu), 长度: 2.2981 mm",
+                    "pos": {
+                        "x": 184.875,
+                        "y": 99.5
+                    },
+                    "uuid": "d3894dae-4a3c-437c-8cd4-476f5f32476c"
+                },
+                {
+                    "description": "J5 的PTH 焊盘 40 [3V3]",
+                    "pos": {
+                        "x": 174.13,
+                        "y": 138.73
+                    },
+                    "uuid": "679db07d-678e-4015-8efc-d45ccbb71679"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 R14 的焊盘 1 [NTC_AH]",
+                    "pos": {
+                        "x": 89.075,
+                        "y": 54.0
+                    },
+                    "uuid": "eece26d3-6974-4a75-a80a-7fb9a349780e"
+                },
+                {
+                    "description": "F.Cu 上 R13 的焊盘 1 [NTC_AH]",
+                    "pos": {
+                        "x": 94.575,
+                        "y": 54.5
+                    },
+                    "uuid": "8779541a-ce7e-4bc6-9353-4e6f0615ae12"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [BUS_P] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 127.95,
+                        "y": 27.5
+                    },
+                    "uuid": "aa64d601-dab6-46bb-836f-0dcd275d5073"
+                },
+                {
+                    "description": "D1 的PTH 焊盘 1 [BUS_P]",
+                    "pos": {
+                        "x": 86.0,
+                        "y": 24.0
+                    },
+                    "uuid": "b887b3be-2052-43d3-94c8-f4ee97938ba8"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "过孔 [BUS_P] (F.Cu - B.Cu)",
+                    "pos": {
+                        "x": 220.375,
+                        "y": 56.0
+                    },
+                    "uuid": "b9967ed0-f0cc-4e50-a034-3ef7689f2a80"
+                },
+                {
+                    "description": "过孔 [BUS_P] (F.Cu - B.Cu)",
+                    "pos": {
+                        "x": 199.35,
+                        "y": 31.7
+                    },
+                    "uuid": "ab9f0356-b947-4c58-86bb-1ef6b3d628ee"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [PGND] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 122.85,
+                        "y": 27.5
+                    },
+                    "uuid": "30e94478-e59a-4b9e-bf89-f824b693ccfa"
+                },
+                {
+                    "description": "走线 [PGND] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 79.55,
+                        "y": 27.5
+                    },
+                    "uuid": "708a8114-979f-4e63-9e67-f00c26471e30"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "填充区[PGND]在 In2.Cu 上, 优先级 2",
+                    "pos": {
+                        "x": 91.0,
+                        "y": 3.0
+                    },
+                    "uuid": "462f57a0-87a6-464f-ae36-4b510aa7cdfb"
+                },
+                {
+                    "description": "填充区[PGND]在 F.Cu 上, 优先级 2",
+                    "pos": {
+                        "x": 215.0,
+                        "y": 64.0
+                    },
+                    "uuid": "8c67de3b-c991-4bcc-9fbd-ae8203faf72a"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [S_FBVDD] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 237.275,
+                        "y": 67.75
+                    },
+                    "uuid": "46800b4d-da2b-4010-b59d-a02018a4886a"
+                },
+                {
+                    "description": "走线 [S_FBVDD] (B.Cu), 长度: 6.0000 mm",
+                    "pos": {
+                        "x": 232.625,
+                        "y": 62.5
+                    },
+                    "uuid": "ec5fc88d-52e1-4013-ae26-fde1bb592efd"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_S] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 239.225,
+                        "y": 80.25
+                    },
+                    "uuid": "700c9d14-6d72-4db4-8173-cc71debefa4a"
+                },
+                {
+                    "description": "走线 [12V_BIAS_S] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 239.875,
+                        "y": 79.39125
+                    },
+                    "uuid": "dd20dda9-b397-47e0-bea9-0df800c79900"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_S] (F.Cu), 长度: 1.0000 mm",
+                    "pos": {
+                        "x": 239.875,
+                        "y": 81.25
+                    },
+                    "uuid": "c0020ff0-f6cf-4456-bea4-c7e0b503d1b3"
+                },
+                {
+                    "description": "走线 [12V_BIAS_S] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 239.875,
+                        "y": 79.39125
+                    },
+                    "uuid": "dd20dda9-b397-47e0-bea9-0df800c79900"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [GNDP_S] (F.Cu), 长度: 0.8839 mm",
+                    "pos": {
+                        "x": 236.375,
+                        "y": 80.625
+                    },
+                    "uuid": "f8e65106-b46b-4783-adf6-3b9d59daeef3"
+                },
+                {
+                    "description": "走线 [GNDP_S] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 236.625,
+                        "y": 79.39125
+                    },
+                    "uuid": "d675caee-004d-400f-9c23-df61a79385d3"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U10 的焊盘 5 [GNDP_S]",
+                    "pos": {
+                        "x": 238.575,
+                        "y": 78.975
+                    },
+                    "uuid": "db9ffd87-1afc-4a8e-a87e-c6e7e5e21e55"
+                },
+                {
+                    "description": "F.Cu 上 U10 的焊盘 8 [GNDP_S]",
+                    "pos": {
+                        "x": 240.525,
+                        "y": 78.975
+                    },
+                    "uuid": "7a809f1a-e52b-40b4-ac56-0025bb76fb31"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [GNDP_S] (F.Cu), 长度: 0.8839 mm",
+                    "pos": {
+                        "x": 241.125,
+                        "y": 80.25
+                    },
+                    "uuid": "0c83e2f5-4929-4217-b377-efc4c8bea144"
+                },
+                {
+                    "description": "走线 [GNDP_S] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 240.525,
+                        "y": 79.39125
+                    },
+                    "uuid": "bd02ec7a-9b80-4f75-a3c0-44ff7c9ca083"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "过孔 [PG_BIAS_N] (F.Cu - B.Cu)",
+                    "pos": {
+                        "x": 119.0,
+                        "y": 129.375
+                    },
+                    "uuid": "044613fe-004a-4337-8772-26b46514be26"
+                },
+                {
+                    "description": "走线 [PG_BIAS_N] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 129.775,
+                        "y": 80.25
+                    },
+                    "uuid": "e4393321-a66d-4490-86f0-dac7649c788f"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [PG_BIAS_N] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 129.775,
+                        "y": 80.25
+                    },
+                    "uuid": "e4393321-a66d-4490-86f0-dac7649c788f"
+                },
+                {
+                    "description": "走线 [PG_BIAS_N] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 93.775,
+                        "y": 80.25
+                    },
+                    "uuid": "2749c76e-15a7-4b3e-98b4-1be0905b5b71"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [PG_BIAS_N] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 129.775,
+                        "y": 80.25
+                    },
+                    "uuid": "e4393321-a66d-4490-86f0-dac7649c788f"
+                },
+                {
+                    "description": "走线 [PG_BIAS_N] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 165.775,
+                        "y": 80.25
+                    },
+                    "uuid": "269562ac-13cf-4c3c-813b-801fad620a57"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [PG_BIAS_N] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 201.775,
+                        "y": 80.25
+                    },
+                    "uuid": "a4a887d3-18d8-4e4f-b393-3019bc3cf6c7"
+                },
+                {
+                    "description": "走线 [PG_BIAS_N] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 165.775,
+                        "y": 80.25
+                    },
+                    "uuid": "269562ac-13cf-4c3c-813b-801fad620a57"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [PG_BIAS_N] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 201.775,
+                        "y": 80.25
+                    },
+                    "uuid": "a4a887d3-18d8-4e4f-b393-3019bc3cf6c7"
+                },
+                {
+                    "description": "走线 [PG_BIAS_N] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 237.275,
+                        "y": 80.25
+                    },
+                    "uuid": "7f3c8c97-c5b0-4910-9f72-a96c6467b0f3"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U5 的焊盘 32 [RLIM_AL]",
+                    "pos": {
+                        "x": 131.075,
+                        "y": 69.025
+                    },
+                    "uuid": "f46ab1a1-3054-4927-aeb2-3162e7ab3bf4"
+                },
+                {
+                    "description": "走线 [RLIM_AL] (F.Cu), 长度: 2.7500 mm",
+                    "pos": {
+                        "x": 129.75,
+                        "y": 61.625
+                    },
+                    "uuid": "a76cbe91-598b-4650-b1b4-59a05e66a045"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U5 的焊盘 33 [FBVEE_AL]",
+                    "pos": {
+                        "x": 130.425,
+                        "y": 69.025
+                    },
+                    "uuid": "bf8142b8-8297-48ce-a81b-f831b4295526"
+                },
+                {
+                    "description": "F.Cu 上 C60 的焊盘 1 [FBVEE_AL]",
+                    "pos": {
+                        "x": 139.275,
+                        "y": 59.0
+                    },
+                    "uuid": "8bda32a6-a7ef-49df-a87a-897192a64c6c"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 C60 的焊盘 1 [FBVEE_AL]",
+                    "pos": {
+                        "x": 139.275,
+                        "y": 59.0
+                    },
+                    "uuid": "8bda32a6-a7ef-49df-a87a-897192a64c6c"
+                },
+                {
+                    "description": "F.Cu 上 R38 的焊盘 2 [FBVEE_AL]",
+                    "pos": {
+                        "x": 127.0,
+                        "y": 54.075
+                    },
+                    "uuid": "542ef24a-79e8-403b-92e7-0e3c37347717"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 NT2 的焊盘 1 [VEEA_AL]",
+                    "pos": {
+                        "x": 131.75,
+                        "y": 67.25
+                    },
+                    "uuid": "594baf2f-97f3-41e0-8b5e-98956f17f0ee"
+                },
+                {
+                    "description": "走线 [VEEA_AL] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 129.125,
+                        "y": 68.60875
+                    },
+                    "uuid": "a9164963-d174-4a20-aa05-0b9eb7532321"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 C59 的焊盘 2 [VEEA_AL]",
+                    "pos": {
+                        "x": 140.75,
+                        "y": 65.225
+                    },
+                    "uuid": "70d7b3e6-0d74-4555-930e-12fcb6eccc65"
+                },
+                {
+                    "description": "走线 [VEEA_AL] (F.Cu), 长度: 2.4749 mm",
+                    "pos": {
+                        "x": 142.0,
+                        "y": 58.25
+                    },
+                    "uuid": "4b0e770d-099d-45b4-9ddf-bd96c63e41bc"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 C59 的焊盘 2 [VEEA_AL]",
+                    "pos": {
+                        "x": 140.75,
+                        "y": 65.225
+                    },
+                    "uuid": "70d7b3e6-0d74-4555-930e-12fcb6eccc65"
+                },
+                {
+                    "description": "F.Cu 上 NT2 的焊盘 1 [VEEA_AL]",
+                    "pos": {
+                        "x": 131.75,
+                        "y": 67.25
+                    },
+                    "uuid": "594baf2f-97f3-41e0-8b5e-98956f17f0ee"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 R78 的焊盘 1 [S_RLIM]",
+                    "pos": {
+                        "x": 233.5,
+                        "y": 66.4625
+                    },
+                    "uuid": "d48a6fa3-b992-4273-8a0c-b057573fdad6"
+                },
+                {
+                    "description": "F.Cu 上 U10 的焊盘 32 [S_RLIM]",
+                    "pos": {
+                        "x": 238.575,
+                        "y": 69.025
+                    },
+                    "uuid": "2572ce9c-287c-43f5-a877-c56a46272014"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_BH] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 204.375,
+                        "y": 79.39125
+                    },
+                    "uuid": "72a1fb9a-885c-41f3-9e6b-e561159c4443"
+                },
+                {
+                    "description": "走线 [12V_BIAS_BH] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 203.725,
+                        "y": 80.25
+                    },
+                    "uuid": "dde25b78-c5a5-4f72-a517-988d853429cb"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_BH] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 204.375,
+                        "y": 79.39125
+                    },
+                    "uuid": "72a1fb9a-885c-41f3-9e6b-e561159c4443"
+                },
+                {
+                    "description": "走线 [12V_BIAS_BH] (F.Cu), 长度: 1.0000 mm",
+                    "pos": {
+                        "x": 204.375,
+                        "y": 81.25
+                    },
+                    "uuid": "8257a9bd-5b20-49af-a4da-b1656118544d"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U9 的焊盘 2 [GNDP_BH]",
+                    "pos": {
+                        "x": 201.125,
+                        "y": 78.975
+                    },
+                    "uuid": "3f57d24e-bccb-48c5-a52f-c65499951ad9"
+                },
+                {
+                    "description": "F.Cu 上 U9 的焊盘 1 [GNDP_BH]",
+                    "pos": {
+                        "x": 200.475,
+                        "y": 78.975
+                    },
+                    "uuid": "77f9121a-4184-46a0-846d-f2b414653f13"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U9 的焊盘 5 [GNDP_BH]",
+                    "pos": {
+                        "x": 203.075,
+                        "y": 78.975
+                    },
+                    "uuid": "3eacdcb5-2ee4-4a6e-bb2f-77463ad98b0d"
+                },
+                {
+                    "description": "走线 [GNDP_BH] (B.Cu), 长度: 1.8750 mm",
+                    "pos": {
+                        "x": 205.625,
+                        "y": 80.125
+                    },
+                    "uuid": "66f89df6-6371-4ff7-83bf-64b94dc6d501"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [GNDP_BH] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 205.025,
+                        "y": 79.39125
+                    },
+                    "uuid": "3e5eae93-c983-4e32-8f35-872709042aa9"
+                },
+                {
+                    "description": "走线 [GNDP_BH] (F.Cu), 长度: 0.1250 mm",
+                    "pos": {
+                        "x": 205.625,
+                        "y": 80.25
+                    },
+                    "uuid": "041d13e6-8bb7-4e9a-80ce-9dd9436206bb"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 R30 的焊盘 1 [NTC_AL]",
+                    "pos": {
+                        "x": 125.075,
+                        "y": 54.0
+                    },
+                    "uuid": "f8e9311d-ceb0-4b83-94c1-368a39155050"
+                },
+                {
+                    "description": "F.Cu 上 R29 的焊盘 1 [NTC_AL]",
+                    "pos": {
+                        "x": 130.575,
+                        "y": 54.5
+                    },
+                    "uuid": "02b00f00-4f4c-4cb8-b0b4-fe0f8176b330"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [DRV_RSTF] (F.Cu), 长度: 0.8037 mm",
+                    "pos": {
+                        "x": 86.905,
+                        "y": 79.24625
+                    },
+                    "uuid": "dd7de808-0ff5-43a3-8291-f39a697bbac4"
+                },
+                {
+                    "description": "走线 [DRV_RSTF] (In2.Cu), 长度: 12.3750 mm",
+                    "pos": {
+                        "x": 116.125,
+                        "y": 98.625
+                    },
+                    "uuid": "0c7420bd-18b1-40c3-9747-c31eaebb2555"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 C21 的焊盘 1 [VDD_AH]",
+                    "pos": {
+                        "x": 87.25,
+                        "y": 56.05
+                    },
+                    "uuid": "de9e387d-d3eb-4517-a590-32d672a92da1"
+                },
+                {
+                    "description": "走线 [VDD_AH] (F.Cu), 长度: 1.4142 mm",
+                    "pos": {
+                        "x": 82.875,
+                        "y": 56.0
+                    },
+                    "uuid": "d9171331-de97-4e73-96e2-000ce54af46b"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U3 的焊盘 30 [VEE_AH]",
+                    "pos": {
+                        "x": 96.375,
+                        "y": 69.025
+                    },
+                    "uuid": "8e6889ef-7e8b-4161-89c1-9796112d4880"
+                },
+                {
+                    "description": "F.Cu 上 U3 的焊盘 31 [VEE_AH]",
+                    "pos": {
+                        "x": 95.725,
+                        "y": 69.025
+                    },
+                    "uuid": "c9680331-dbc8-401e-9898-a13ab54f73f4"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U3 的焊盘 30 [VEE_AH]",
+                    "pos": {
+                        "x": 96.375,
+                        "y": 69.025
+                    },
+                    "uuid": "8e6889ef-7e8b-4161-89c1-9796112d4880"
+                },
+                {
+                    "description": "F.Cu 上 U3 的焊盘 27 [VEE_AH]",
+                    "pos": {
+                        "x": 98.325,
+                        "y": 69.025
+                    },
+                    "uuid": "d5ab77fa-6df8-48fb-880d-6fe03d298bc0"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U3 的焊盘 32 [RLIM_AH]",
+                    "pos": {
+                        "x": 95.075,
+                        "y": 69.025
+                    },
+                    "uuid": "2084d2ea-e756-4571-a16b-8c0ca2f2f9b6"
+                },
+                {
+                    "description": "走线 [RLIM_AH] (F.Cu), 长度: 2.7500 mm",
+                    "pos": {
+                        "x": 93.75,
+                        "y": 61.625
+                    },
+                    "uuid": "2c3b602a-d97a-44fc-a78c-078255951e78"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_AH] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 95.725,
+                        "y": 80.25
+                    },
+                    "uuid": "daf987d9-5c27-4e21-b63e-02c1dc521ac6"
+                },
+                {
+                    "description": "走线 [12V_BIAS_AH] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 96.375,
+                        "y": 79.39125
+                    },
+                    "uuid": "ee3872c6-9e4e-4dec-ab6a-a661abb2a723"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_AH] (F.Cu), 长度: 0.1768 mm",
+                    "pos": {
+                        "x": 96.375,
+                        "y": 81.25
+                    },
+                    "uuid": "2081e8f0-bcd5-4f9f-b796-dc3f805926cb"
+                },
+                {
+                    "description": "走线 [12V_BIAS_AH] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 96.375,
+                        "y": 79.39125
+                    },
+                    "uuid": "ee3872c6-9e4e-4dec-ab6a-a661abb2a723"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U3 的焊盘 2 [GNDP_AH]",
+                    "pos": {
+                        "x": 93.125,
+                        "y": 78.975
+                    },
+                    "uuid": "b6507e06-74a8-4a87-aad5-20d40a36253d"
+                },
+                {
+                    "description": "F.Cu 上 U3 的焊盘 1 [GNDP_AH]",
+                    "pos": {
+                        "x": 92.475,
+                        "y": 78.975
+                    },
+                    "uuid": "513bc904-7780-4c97-9161-686edea64fe8"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U3 的焊盘 5 [GNDP_AH]",
+                    "pos": {
+                        "x": 95.075,
+                        "y": 78.975
+                    },
+                    "uuid": "f6a95ef0-1c30-41fd-97ef-b72a7d1780de"
+                },
+                {
+                    "description": "走线 [GNDP_AH] (B.Cu), 长度: 1.8750 mm",
+                    "pos": {
+                        "x": 97.625,
+                        "y": 80.125
+                    },
+                    "uuid": "787c4596-0b57-4ca5-b95c-737e09e609e3"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [GNDP_AH] (F.Cu), 长度: 0.1250 mm",
+                    "pos": {
+                        "x": 97.625,
+                        "y": 80.25
+                    },
+                    "uuid": "8e8eabbc-a1fa-456f-85cb-cf5d43ff88d6"
+                },
+                {
+                    "description": "走线 [GNDP_AH] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 97.025,
+                        "y": 79.39125
+                    },
+                    "uuid": "a7943def-0c12-4a1c-81f6-0de9c79021b5"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U7 的焊盘 2 [GNDP_BL]",
+                    "pos": {
+                        "x": 165.125,
+                        "y": 78.975
+                    },
+                    "uuid": "dd014be5-c2e1-438e-83b2-05ec0966cd95"
+                },
+                {
+                    "description": "F.Cu 上 U7 的焊盘 1 [GNDP_BL]",
+                    "pos": {
+                        "x": 164.475,
+                        "y": 78.975
+                    },
+                    "uuid": "ae6a2693-694f-4fca-bac8-90a9054b0d7d"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U7 的焊盘 5 [GNDP_BL]",
+                    "pos": {
+                        "x": 167.075,
+                        "y": 78.975
+                    },
+                    "uuid": "84b48788-8a99-439d-a3db-beeda096362f"
+                },
+                {
+                    "description": "走线 [GNDP_BL] (B.Cu), 长度: 9.1250 mm",
+                    "pos": {
+                        "x": 176.125,
+                        "y": 80.875
+                    },
+                    "uuid": "5d88d244-2e06-4855-9788-8acf2bb45962"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [GNDP_BL] (F.Cu), 长度: 0.1250 mm",
+                    "pos": {
+                        "x": 169.625,
+                        "y": 80.25
+                    },
+                    "uuid": "3b43ea55-5c50-4e56-a808-72a70e194bed"
+                },
+                {
+                    "description": "走线 [GNDP_BL] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 169.025,
+                        "y": 80.25
+                    },
+                    "uuid": "1128f5ed-4457-4dbb-a958-1d99e2f6e16e"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_BL] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 168.375,
+                        "y": 79.39125
+                    },
+                    "uuid": "6dd30abc-ad4c-4eed-b8e2-792d2a49145d"
+                },
+                {
+                    "description": "走线 [12V_BIAS_BL] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 167.725,
+                        "y": 80.25
+                    },
+                    "uuid": "13aeecf1-5425-411a-b570-56c1d97b6d25"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_BL] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 168.375,
+                        "y": 79.39125
+                    },
+                    "uuid": "6dd30abc-ad4c-4eed-b8e2-792d2a49145d"
+                },
+                {
+                    "description": "走线 [12V_BIAS_BL] (F.Cu), 长度: 1.0000 mm",
+                    "pos": {
+                        "x": 168.375,
+                        "y": 81.25
+                    },
+                    "uuid": "ba685f06-bee6-42a8-8719-84548e8164d3"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [RLIM_BL] (F.Cu), 长度: 0.6250 mm",
+                    "pos": {
+                        "x": 165.75,
+                        "y": 66.625
+                    },
+                    "uuid": "84559892-950a-4cf6-9847-ffb8c7c3089a"
+                },
+                {
+                    "description": "F.Cu 上 U7 的焊盘 32 [RLIM_BL]",
+                    "pos": {
+                        "x": 167.075,
+                        "y": 69.025
+                    },
+                    "uuid": "adf0c3e0-e31e-4383-9928-b36b1c57c091"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U7 的焊盘 33 [FBVEE_BL]",
+                    "pos": {
+                        "x": 166.425,
+                        "y": 69.025
+                    },
+                    "uuid": "17d103dd-d4fe-4b22-82fe-207e0c57ae6e"
+                },
+                {
+                    "description": "F.Cu 上 C84 的焊盘 1 [FBVEE_BL]",
+                    "pos": {
+                        "x": 175.275,
+                        "y": 59.0
+                    },
+                    "uuid": "de7dee81-8091-4519-969f-23542d7839c7"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [VEEA_BL] (B.Cu), 长度: 3.7500 mm",
+                    "pos": {
+                        "x": 173.75,
+                        "y": 62.875
+                    },
+                    "uuid": "a6920b1a-751d-4b74-80bb-ba691b588e25"
+                },
+                {
+                    "description": "走线 [VEEA_BL] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 165.125,
+                        "y": 68.60875
+                    },
+                    "uuid": "422b140c-ceef-4e2e-a392-a228e3f9e9b3"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 NT3 的焊盘 1 [VEEA_BL]",
+                    "pos": {
+                        "x": 176.5,
+                        "y": 62.75
+                    },
+                    "uuid": "72f9e724-8a70-44e9-bb81-e67377c3537e"
+                },
+                {
+                    "description": "走线 [VEEA_BL] (F.Cu), 长度: 0.7500 mm",
+                    "pos": {
+                        "x": 176.5,
+                        "y": 64.875
+                    },
+                    "uuid": "e952fe16-fa08-4633-92ca-d247b7cd0af5"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "J5 的PTH 焊盘 25 [VSNS_P]",
+                    "pos": {
+                        "x": 156.35,
+                        "y": 141.27
+                    },
+                    "uuid": "07f087db-6d00-45f6-ad78-aefec42fabbf"
+                },
+                {
+                    "description": "走线 [VSNS_P] (F.Cu), 长度: 0.0510 mm",
+                    "pos": {
+                        "x": 222.135,
+                        "y": 80.7
+                    },
+                    "uuid": "040aada0-ff2c-41a4-9a94-1f10346b0ba4"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 TP6 的焊盘 1 [SDFM_D]",
+                    "pos": {
+                        "x": 118.75,
+                        "y": 124.75
+                    },
+                    "uuid": "3cb2c8ea-7341-472b-8106-9b823abedb1f"
+                },
+                {
+                    "description": "J5 的PTH 焊盘 34 [SDFM_D]",
+                    "pos": {
+                        "x": 166.51,
+                        "y": 138.73
+                    },
+                    "uuid": "c9939ce3-e50a-4a23-acbd-d531e47223f0"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "J4 的PTH 焊盘 1 [AC_B]",
+                    "pos": {
+                        "x": 249.565,
+                        "y": 43.565
+                    },
+                    "uuid": "da5b010f-0ef1-4acc-aefc-660bc446d5ff"
+                },
+                {
+                    "description": "J4 的PTH 焊盘 1 [AC_B]",
+                    "pos": {
+                        "x": 249.565,
+                        "y": 48.0
+                    },
+                    "uuid": "4ddc2f6a-95be-46f3-a430-acee47e12fd4"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "J4 的PTH 焊盘 1 [AC_B]",
+                    "pos": {
+                        "x": 254.0,
+                        "y": 43.565
+                    },
+                    "uuid": "e6e0789a-9a76-4e63-a543-ed8bb6504b2b"
+                },
+                {
+                    "description": "J4 的PTH 焊盘 1 [AC_B]",
+                    "pos": {
+                        "x": 249.565,
+                        "y": 43.565
+                    },
+                    "uuid": "da5b010f-0ef1-4acc-aefc-660bc446d5ff"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "J4 的PTH 焊盘 1 [AC_B]",
+                    "pos": {
+                        "x": 258.435,
+                        "y": 43.565
+                    },
+                    "uuid": "f20f98df-d5db-408e-afbb-bf1fbea73ab1"
+                },
+                {
+                    "description": "J4 的PTH 焊盘 1 [AC_B]",
+                    "pos": {
+                        "x": 254.0,
+                        "y": 43.565
+                    },
+                    "uuid": "e6e0789a-9a76-4e63-a543-ed8bb6504b2b"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [RLIM_BH] (F.Cu), 长度: 0.6250 mm",
+                    "pos": {
+                        "x": 201.75,
+                        "y": 66.625
+                    },
+                    "uuid": "5db25b44-97e0-4c5a-ae8a-fc7a519f92b2"
+                },
+                {
+                    "description": "F.Cu 上 U9 的焊盘 32 [RLIM_BH]",
+                    "pos": {
+                        "x": 203.075,
+                        "y": 69.025
+                    },
+                    "uuid": "00c2580a-55fb-445a-8f49-8593b67d8ae9"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U10 的焊盘 33 [S_FBVEE]",
+                    "pos": {
+                        "x": 237.925,
+                        "y": 69.025
+                    },
+                    "uuid": "b6739013-9eab-463a-ab6f-79b82c13c651"
+                },
+                {
+                    "description": "走线 [S_FBVEE] (F.Cu), 长度: 1.7500 mm",
+                    "pos": {
+                        "x": 237.875,
+                        "y": 56.25
+                    },
+                    "uuid": "d3351f64-7b62-45fb-8e37-ec57d1eb643e"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "F.Cu 上 U9 的焊盘 33 [FBVEE_BH]",
+                    "pos": {
+                        "x": 202.425,
+                        "y": 69.025
+                    },
+                    "uuid": "4ad4cb16-10c6-466d-b795-ecd5ce53b005"
+                },
+                {
+                    "description": "F.Cu 上 C108 的焊盘 1 [FBVEE_BH]",
+                    "pos": {
+                        "x": 211.275,
+                        "y": 59.0
+                    },
+                    "uuid": "766d0791-9679-4484-9204-3e70077c77eb"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "走线 [VEEA_BH] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 201.125,
+                        "y": 68.60875
+                    },
+                    "uuid": "de1e724d-973b-4d5f-83c3-2f96ebdfd399"
+                },
+                {
+                    "description": "F.Cu 上 C107 的焊盘 2 [VEEA_BH]",
+                    "pos": {
+                        "x": 212.75,
+                        "y": 65.225
+                    },
+                    "uuid": "ca89e9c7-269b-4732-8004-4d0865ed5fb2"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        }
+    ],
+    "violations": [
+        {
+            "description": "孔间距违规 (<电路板配置> 中的 \"孔\" 约束 间距 0.3000 mm; 实际 0.0000 mm)",
+            "items": [
+                {
+                    "description": "NT5 的 多边形 [<no net>], 位于 F.Cu",
+                    "pos": {
+                        "x": 238.75,
+                        "y": 67.25
+                    },
+                    "uuid": "a1ec9913-1c48-4061-a8ca-30ca416c8363"
+                },
+                {
+                    "description": "过孔 [PGND] (F.Cu - B.Cu)",
+                    "pos": {
+                        "x": 239.375,
+                        "y": 66.25
+                    },
+                    "uuid": "33da284b-1c98-469f-bbfc-276e122a7d84"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "F.Cu 上 C5 的焊盘 1 [BUS_P]",
+                    "pos": {
+                        "x": 130.45,
+                        "y": 27.5
+                    },
+                    "uuid": "93764c09-228a-4b66-a29c-76024ee96f3d"
+                },
+                {
+                    "description": "走线 [PGND] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 135.55,
+                        "y": 27.5
+                    },
+                    "uuid": "eabdb39c-7596-4557-a640-64b641c08137"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "F.Cu 上 C12 的焊盘 1 [BUS_P]",
+                    "pos": {
+                        "x": 199.35,
+                        "y": 27.5
+                    },
+                    "uuid": "53accc89-1d0c-41fb-ac66-11805bf05a8c"
+                },
+                {
+                    "description": "走线 [PGND] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 194.25,
+                        "y": 27.5
+                    },
+                    "uuid": "e2769b11-8cb4-419d-8d6d-2d98068f26fb"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "F.Cu 上 C9 的焊盘 1 [BUS_P]",
+                    "pos": {
+                        "x": 160.85,
+                        "y": 27.5
+                    },
+                    "uuid": "4fcce28b-48bf-497d-971b-e85ef06b3861"
+                },
+                {
+                    "description": "走线 [PGND] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 165.95,
+                        "y": 27.5
+                    },
+                    "uuid": "a2583806-2900-4695-b298-990f6c33e40f"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "F.Cu 上 C11 的焊盘 1 [BUS_P]",
+                    "pos": {
+                        "x": 186.65,
+                        "y": 27.5
+                    },
+                    "uuid": "0bf16e62-1b5a-4e39-a0ef-2df909d4ed8f"
+                },
+                {
+                    "description": "走线 [PGND] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 191.75,
+                        "y": 27.5
+                    },
+                    "uuid": "82d23800-647a-4dca-a6d1-2755a6006ffe"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "走线 [PGND] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 79.55,
+                        "y": 27.5
+                    },
+                    "uuid": "708a8114-979f-4e63-9e67-f00c26471e30"
+                },
+                {
+                    "description": "F.Cu 上 C3 的焊盘 1 [BUS_P]",
+                    "pos": {
+                        "x": 74.45,
+                        "y": 27.5
+                    },
+                    "uuid": "8b7e3e8d-d10c-4edf-9e6e-72ddec873f8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "走线 [PGND] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 179.05,
+                        "y": 27.5
+                    },
+                    "uuid": "58fbcd16-49eb-4b71-827f-ed6225acb312"
+                },
+                {
+                    "description": "F.Cu 上 C10 的焊盘 1 [BUS_P]",
+                    "pos": {
+                        "x": 184.15,
+                        "y": 27.5
+                    },
+                    "uuid": "f87328dc-a959-42cf-acd3-29ba4b6b0c81"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "走线 [PGND] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 153.25,
+                        "y": 27.5
+                    },
+                    "uuid": "41062768-f8b1-45bf-9885-2d1d1dfb4544"
+                },
+                {
+                    "description": "F.Cu 上 C8 的焊盘 1 [BUS_P]",
+                    "pos": {
+                        "x": 158.35,
+                        "y": 27.5
+                    },
+                    "uuid": "d94aac17-148e-432f-9a18-85a28a528720"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "走线 [PGND] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 122.85,
+                        "y": 27.5
+                    },
+                    "uuid": "30e94478-e59a-4b9e-bf89-f824b693ccfa"
+                },
+                {
+                    "description": "F.Cu 上 C4 的焊盘 1 [BUS_P]",
+                    "pos": {
+                        "x": 127.95,
+                        "y": 27.5
+                    },
+                    "uuid": "5618c830-92e8-41d7-90a0-686334cec1e8"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "走线 [PGND] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 138.05,
+                        "y": 27.5
+                    },
+                    "uuid": "1ad1d410-f7fd-4646-abe2-df76f9e2f80e"
+                },
+                {
+                    "description": "F.Cu 上 C6 的焊盘 1 [BUS_P]",
+                    "pos": {
+                        "x": 143.15,
+                        "y": 27.5
+                    },
+                    "uuid": "9617014b-c782-44a2-8863-e9b82cc81ea2"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "走线 [PGND] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 150.75,
+                        "y": 27.5
+                    },
+                    "uuid": "0dd177cc-b053-42e2-b927-14ae167bd81c"
+                },
+                {
+                    "description": "F.Cu 上 C7 的焊盘 1 [BUS_P]",
+                    "pos": {
+                        "x": 145.65,
+                        "y": 27.5
+                    },
+                    "uuid": "c879f8e1-b3ed-436c-b5eb-7e085d16957f"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "走线 [BUS_P] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 160.85,
+                        "y": 27.5
+                    },
+                    "uuid": "c57be57e-d8ba-4453-b309-51c3489edf3c"
+                },
+                {
+                    "description": "F.Cu 上 C9 的焊盘 2 [PGND]",
+                    "pos": {
+                        "x": 165.95,
+                        "y": 27.5
+                    },
+                    "uuid": "c8dd202f-36ba-46c6-ac72-db62c47b0a22"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "F.Cu 上 C10 的焊盘 2 [PGND]",
+                    "pos": {
+                        "x": 179.05,
+                        "y": 27.5
+                    },
+                    "uuid": "848ac12e-4988-40f5-8fb0-36736cf34e1a"
+                },
+                {
+                    "description": "走线 [BUS_P] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 184.15,
+                        "y": 27.5
+                    },
+                    "uuid": "f2037028-940c-47ca-9265-0eef438acac7"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "F.Cu 上 C7 的焊盘 2 [PGND]",
+                    "pos": {
+                        "x": 150.75,
+                        "y": 27.5
+                    },
+                    "uuid": "c548e0fe-faed-4627-b9e4-d404b4d48f66"
+                },
+                {
+                    "description": "走线 [BUS_P] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 145.65,
+                        "y": 27.5
+                    },
+                    "uuid": "f6ff1606-f264-4920-8e57-531401d3ce1d"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "走线 [BUS_P] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 186.65,
+                        "y": 27.5
+                    },
+                    "uuid": "b2ae0993-a30c-453e-bc32-901929d1b015"
+                },
+                {
+                    "description": "F.Cu 上 C11 的焊盘 2 [PGND]",
+                    "pos": {
+                        "x": 191.75,
+                        "y": 27.5
+                    },
+                    "uuid": "f9b70d7b-3dc7-4a1d-aec0-682758dfe173"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "F.Cu 上 C12 的焊盘 2 [PGND]",
+                    "pos": {
+                        "x": 194.25,
+                        "y": 27.5
+                    },
+                    "uuid": "3ccc5d30-8444-41ab-b572-e642a0f95c30"
+                },
+                {
+                    "description": "走线 [BUS_P] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 199.35,
+                        "y": 27.5
+                    },
+                    "uuid": "6a29b1f4-3ea5-4690-b96a-cddbd2ddf4e5"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "F.Cu 上 C6 的焊盘 2 [PGND]",
+                    "pos": {
+                        "x": 138.05,
+                        "y": 27.5
+                    },
+                    "uuid": "643fc95d-ad30-4f4b-8bfc-4b195a3bf5a3"
+                },
+                {
+                    "description": "走线 [BUS_P] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 143.15,
+                        "y": 27.5
+                    },
+                    "uuid": "b0f2bc6a-0892-4255-aaad-22aa4667789b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "走线 [BUS_P] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 74.45,
+                        "y": 27.5
+                    },
+                    "uuid": "5a9ce687-8aa0-4cbe-8e46-10b86d86dfb2"
+                },
+                {
+                    "description": "F.Cu 上 C3 的焊盘 2 [PGND]",
+                    "pos": {
+                        "x": 79.55,
+                        "y": 27.5
+                    },
+                    "uuid": "e374ea1b-6d0e-4452-822e-64ff05f32efe"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "F.Cu 上 C5 的焊盘 2 [PGND]",
+                    "pos": {
+                        "x": 135.55,
+                        "y": 27.5
+                    },
+                    "uuid": "4a225168-1930-41f8-a739-4e48f7befcbc"
+                },
+                {
+                    "description": "走线 [BUS_P] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 130.449999,
+                        "y": 27.5
+                    },
+                    "uuid": "8bdcb687-07ef-47d1-8e21-7259a371cf09"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "走线 [BUS_P] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 127.95,
+                        "y": 27.5
+                    },
+                    "uuid": "aa64d601-dab6-46bb-836f-0dcd275d5073"
+                },
+                {
+                    "description": "F.Cu 上 C4 的焊盘 2 [PGND]",
+                    "pos": {
+                        "x": 122.85,
+                        "y": 27.5
+                    },
+                    "uuid": "d50691a6-e094-4f12-9cf0-672873dcad46"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "间距违规 (规则 'Functional HV_01-HV_02 800 V working envelope' 间距 4.0000 mm; 实际 3.9500 mm)",
+            "items": [
+                {
+                    "description": "走线 [BUS_P] (F.Cu), 长度: 4.2000 mm",
+                    "pos": {
+                        "x": 158.35,
+                        "y": 27.5
+                    },
+                    "uuid": "511a2dde-841b-4cbf-8cd7-553c7c34a1d9"
+                },
+                {
+                    "description": "F.Cu 上 C8 的焊盘 2 [PGND]",
+                    "pos": {
+                        "x": 153.25,
+                        "y": 27.5
+                    },
+                    "uuid": "e0eaccd1-7fc1-4721-83af-940b0807b25d"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "孔间距违规 (<电路板配置> 中的 \"孔\" 约束 间距 0.3000 mm; 实际 0.0000 mm)",
+            "items": [
+                {
+                    "description": "NT1 的 多边形 [<no net>], 位于 F.Cu",
+                    "pos": {
+                        "x": 95.5,
+                        "y": 67.25
+                    },
+                    "uuid": "7c181ef4-4745-4851-915f-f33926dfc403"
+                },
+                {
+                    "description": "过孔 [VEEA_AH] (F.Cu - B.Cu)",
+                    "pos": {
+                        "x": 96.0,
+                        "y": 67.375
+                    },
+                    "uuid": "eb90bcf8-c006-4619-8706-9a335c418f09"
+                }
+            ],
+            "severity": "error",
+            "type": "hole_clearance"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_AL] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 131.725,
+                        "y": 80.25
+                    },
+                    "uuid": "3eb17fda-247b-4e93-9dd5-514486dab210"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_AL] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 132.375,
+                        "y": 79.39125
+                    },
+                    "uuid": "c0119a51-2d6e-42db-92ba-a5aba5fc5ddc"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [GNDP_AL] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 129.125,
+                        "y": 79.39125
+                    },
+                    "uuid": "b9815501-a8a6-47f5-a18c-aa8af3c9c9d2"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [GNDP_AL] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 133.025,
+                        "y": 80.25
+                    },
+                    "uuid": "f79920cb-91e9-493d-8e77-50be4481325f"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [VEEA_AH] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 93.125,
+                        "y": 68.60875
+                    },
+                    "uuid": "b9bd91fa-970a-41dc-bb78-2e046c97aa4b"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [3V3] (F.Cu), 长度: 0.0707 mm",
+                    "pos": {
+                        "x": 160.175,
+                        "y": 80.05
+                    },
+                    "uuid": "52538a85-2d5f-4602-b084-321867213b18"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [3V3] (F.Cu), 长度: 0.0707 mm",
+                    "pos": {
+                        "x": 88.175,
+                        "y": 80.05
+                    },
+                    "uuid": "ecc9d13e-9b1c-4bf4-beb9-14517e6098b8"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Via is not connected or connected on only one layer",
+            "items": [
+                {
+                    "description": "过孔 [BUS_P] (F.Cu - B.Cu)",
+                    "pos": {
+                        "x": 220.375,
+                        "y": 56.0
+                    },
+                    "uuid": "b9967ed0-f0cc-4e50-a034-3ef7689f2a80"
+                }
+            ],
+            "severity": "warning",
+            "type": "via_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [S_FBVDD] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 237.275,
+                        "y": 67.75
+                    },
+                    "uuid": "46800b4d-da2b-4010-b59d-a02018a4886a"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_S] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 239.225,
+                        "y": 80.25
+                    },
+                    "uuid": "700c9d14-6d72-4db4-8173-cc71debefa4a"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_S] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 239.875,
+                        "y": 79.39125
+                    },
+                    "uuid": "dd20dda9-b397-47e0-bea9-0df800c79900"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [GNDP_S] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 236.625,
+                        "y": 79.39125
+                    },
+                    "uuid": "d675caee-004d-400f-9c23-df61a79385d3"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [GNDP_S] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 240.525,
+                        "y": 80.25
+                    },
+                    "uuid": "e4f7ed31-78ff-4a3d-bf55-67334006b785"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [PG_BIAS_N] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 165.775,
+                        "y": 80.25
+                    },
+                    "uuid": "269562ac-13cf-4c3c-813b-801fad620a57"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [PG_BIAS_N] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 93.775,
+                        "y": 80.25
+                    },
+                    "uuid": "2749c76e-15a7-4b3e-98b4-1be0905b5b71"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [PG_BIAS_N] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 237.275,
+                        "y": 80.25
+                    },
+                    "uuid": "7f3c8c97-c5b0-4910-9f72-a96c6467b0f3"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [PG_BIAS_N] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 201.775,
+                        "y": 80.25
+                    },
+                    "uuid": "a4a887d3-18d8-4e4f-b393-3019bc3cf6c7"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [PG_BIAS_N] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 129.775,
+                        "y": 80.25
+                    },
+                    "uuid": "e4393321-a66d-4490-86f0-dac7649c788f"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [VEEA_AL] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 129.125,
+                        "y": 68.60875
+                    },
+                    "uuid": "a9164963-d174-4a20-aa05-0b9eb7532321"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_BH] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 204.375,
+                        "y": 79.39125
+                    },
+                    "uuid": "72a1fb9a-885c-41f3-9e6b-e561159c4443"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_BH] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 203.725,
+                        "y": 80.25
+                    },
+                    "uuid": "dde25b78-c5a5-4f72-a517-988d853429cb"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [GNDP_BH] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 201.125,
+                        "y": 79.39125
+                    },
+                    "uuid": "542e06cb-c6c3-40d1-a81b-d02522561b98"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [GNDP_BH] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 205.025,
+                        "y": 80.25
+                    },
+                    "uuid": "b9f53a75-61ea-4a41-a236-0372a23f6244"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [DRV_RSTF] (F.Cu), 长度: 0.0583 mm",
+                    "pos": {
+                        "x": 86.905,
+                        "y": 80.05
+                    },
+                    "uuid": "a1b5f4a0-e1d1-46b7-b6e6-ea60a506f9f6"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_AH] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 95.725,
+                        "y": 80.25
+                    },
+                    "uuid": "daf987d9-5c27-4e21-b63e-02c1dc521ac6"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_AH] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 96.375,
+                        "y": 79.39125
+                    },
+                    "uuid": "ee3872c6-9e4e-4dec-ab6a-a661abb2a723"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [GNDP_AH] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 93.125,
+                        "y": 79.39125
+                    },
+                    "uuid": "1c39b9da-ea00-47d0-93e1-3e872e72c74b"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [GNDP_AH] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 97.025,
+                        "y": 80.25
+                    },
+                    "uuid": "c43f3031-179a-42de-8ceb-0209cfb86b47"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [GNDP_BL] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 169.025,
+                        "y": 80.25
+                    },
+                    "uuid": "1128f5ed-4457-4dbb-a958-1d99e2f6e16e"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [GNDP_BL] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 165.125,
+                        "y": 79.39125
+                    },
+                    "uuid": "1992e722-666a-4e9b-8636-dd9e892653a9"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_BL] (F.Cu), 长度: 0.0250 mm",
+                    "pos": {
+                        "x": 167.725,
+                        "y": 80.25
+                    },
+                    "uuid": "13aeecf1-5425-411a-b570-56c1d97b6d25"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [12V_BIAS_BL] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 168.375,
+                        "y": 79.39125
+                    },
+                    "uuid": "6dd30abc-ad4c-4eed-b8e2-792d2a49145d"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [VEEA_BL] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 165.125,
+                        "y": 68.60875
+                    },
+                    "uuid": "422b140c-ceef-4e2e-a392-a228e3f9e9b3"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [VSNS_P] (F.Cu), 长度: 0.0510 mm",
+                    "pos": {
+                        "x": 222.135,
+                        "y": 80.7
+                    },
+                    "uuid": "040aada0-ff2c-41a4-9a94-1f10346b0ba4"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "走线 [VEEA_BH] (F.Cu), 长度: 0.8588 mm",
+                    "pos": {
+                        "x": 201.125,
+                        "y": 68.60875
+                    },
+                    "uuid": "de1e724d-973b-4d5f-83c3-2f96ebdfd399"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        }
+    ]
+}

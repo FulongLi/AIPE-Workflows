@@ -1,0 +1,82 @@
+{
+  "status": "ok",
+  "kind": "heatsink",
+  "name": "dab_heatsink",
+  "files": {
+    "fcstd": "dab_heatsink.FCStd",
+    "step": "dab_heatsink.step",
+    "step_keepouts": "dab_heatsink.keepouts.step",
+    "checks": "dab_heatsink.checks.json",
+    "render_png": "renders/dab_heatsink.png",
+    "metadata": "dab_heatsink.metadata.json"
+  },
+  "timings_s": {
+    "resolve_s": 0.0,
+    "build_s": 0.09170341491699219,
+    "export_s": 0.2548360824584961,
+    "checks_s": 0.6328771114349365,
+    "render_s": 1.5724775791168213
+  },
+  "freecad_version": [
+    "1",
+    "1",
+    "4"
+  ],
+  "python_version": "3.11.14",
+  "body_count": 20,
+  "invalid_shapes": [],
+  "check_summary": {
+    "status": "review",
+    "interference_count": 0,
+    "allowed_overlap_count": 0,
+    "contact_count": 26,
+    "keepout_violation_count": 0,
+    "envelope_intrusion_count": 0,
+    "fit_failures": 0,
+    "clearance_pairs": {
+      "pass": 0,
+      "fail": 0,
+      "review": 1,
+      "no_bodies": 0
+    },
+    "unassigned_conductor_count": 0,
+    "bodies_checked": 19,
+    "note": "required clearance/creepage values are caller inputs; no standard compliance is asserted"
+  },
+  "totals": {
+    "bbox_m": [
+      -0.04049598766080241,
+      -0.03231195691331418,
+      -0.04517684721720107,
+      0.04049598766080241,
+      0.03231195691331418,
+      0.020572578190442573
+    ],
+    "size_m": [
+      0.08099197532160482,
+      0.06462391382662835,
+      0.06574942540764364
+    ],
+    "volume_m3": 0.0001060850576818605,
+    "mass_kg": 0.2903079720239472,
+    "surface_area_m2": 0.10099575118310476,
+    "body_count": 19,
+    "mass_by_material_kg": {
+      "aluminium_6063": 0.274753254115767,
+      "epoxy_mold_compound": 0.0056879501881621965,
+      "copper": 0.006772201577665653,
+      "alumina": 0.0007764978448083343,
+      "nylon_pa66": 0.00010764379445071989,
+      "steel": 0.0022104245030931556
+    }
+  },
+  "warnings": [
+    "device Q1 screw hole intersects fin_4 (hole cut through the fin)",
+    "device Q2 screw hole intersects fin_8 (hole cut through the fin)",
+    "mounting hole at (-0.0355, -0.02731) m passes through fin_2",
+    "mounting hole at (-0.0355, 0.02731) m passes through fin_10",
+    "mounting hole at (0.0355, -0.02731) m passes through fin_2",
+    "mounting hole at (0.0355, 0.02731) m passes through fin_10"
+  ],
+  "duration_s": 2.6712422370910645
+}

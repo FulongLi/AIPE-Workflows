@@ -1,0 +1,3822 @@
+{
+  "schema": "aipe.magnetics.measurement-request/0.3",
+  "conditions": {
+    "frequency_Hz": 100000.0,
+    "temperature_degC": 100.0,
+    "flux_density_peak_T": 0.14642751010658026,
+    "excitation": "piecewise_linear",
+    "winding_context": {
+      "conductor": {
+        "primary": "litz 436 x 0.1 mm",
+        "secondary": "litz 889 x 0.1 mm"
+      },
+      "turns": {
+        "primary": 20,
+        "secondary": 10
+      },
+      "core": "core.tdk-e70-33-32",
+      "arrangement": "P-S-P",
+      "winding_temperature_degC": 100.0,
+      "current_harmonics_primary_A": [
+        {
+          "n": 1,
+          "amplitude": 18.071888944096358
+        },
+        {
+          "n": 2,
+          "amplitude": 3.893101773700381e-06
+        },
+        {
+          "n": 3,
+          "amplitude": 5.718435284620058
+        },
+        {
+          "n": 4,
+          "amplitude": 1.946384404774985e-06
+        },
+        {
+          "n": 5,
+          "amplitude": 3.080971225703213
+        },
+        {
+          "n": 6,
+          "amplitude": 1.297404499755758e-06
+        },
+        {
+          "n": 7,
+          "amplitude": 1.8542126498693845
+        },
+        {
+          "n": 8,
+          "amplitude": 9.728591453536438e-07
+        },
+        {
+          "n": 9,
+          "amplitude": 1.1216819195079446
+        },
+        {
+          "n": 10,
+          "amplitude": 7.780872911893254e-07
+        },
+        {
+          "n": 11,
+          "amplitude": 0.6365639903151253
+        }
+      ]
+    }
+  },
+  "requests": [
+    {
+      "material": "material.fair-rite-77",
+      "grade": "77",
+      "manufacturer_ref": "manufacturer.fair-rite",
+      "synthetic": false,
+      "coverage": {
+        "bh_curve": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ]
+        },
+        "core_loss_vs_f_b_t": {
+          "status": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-77-25c",
+              "set.magnet-fit-77-50c",
+              "set.magnet-fit-77-70c",
+              "set.magnet-fit-77-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 0,
+            "covering_frequency": [
+              "set.magnet-fit-77-25c",
+              "set.magnet-fit-77-50c",
+              "set.magnet-fit-77-70c",
+              "set.magnet-fit-77-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "blocking": true
+        },
+        "dc_bias": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ]
+        },
+        "saturation_vs_temperature": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no saturation flux density data"
+          ],
+          "blocking": true
+        },
+        "complex_permeability": {
+          "status": "partial",
+          "available": {
+            "initial_permeability": 2000.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ]
+        },
+        "winding_ac_resistance": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ]
+        },
+        "thermal_conductivity": {
+          "status": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ]
+        }
+      },
+      "requests": [
+        {
+          "id": "request.fair-rite-77.saturation_vs_temperature",
+          "material": "material.fair-rite-77",
+          "category": "saturation_vs_temperature",
+          "priority": "high",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no saturation flux density data"
+          ],
+          "rationale": "Bsat(T) sets the flux limit and the minimum primary turns; without it saturation cannot be screened at the design temperature.",
+          "test_conditions": {
+            "quantity": "B at H = 1200 A/m (datasheet convention) and B-H knee",
+            "field_strength_A_per_m": [
+              250,
+              500,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "frequency_Hz": 10000.0,
+            "waveform": "sinusoidal H, major loop"
+          },
+          "deliverable": "table B(H, T) at the stated fields and temperatures with uncertainty; one ConditionedValue per (T, H)",
+          "record_kind": "magnetic_material.saturation_flux_density"
+        },
+        {
+          "id": "request.fair-rite-77.core_loss_vs_f_b_t",
+          "material": "material.fair-rite-77",
+          "category": "core_loss_vs_f_b_t",
+          "priority": "high",
+          "status_before": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-77-25c",
+              "set.magnet-fit-77-50c",
+              "set.magnet-fit-77-70c",
+              "set.magnet-fit-77-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 0,
+            "covering_frequency": [
+              "set.magnet-fit-77-25c",
+              "set.magnet-fit-77-50c",
+              "set.magnet-fit-77-70c",
+              "set.magnet-fit-77-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "rationale": "Core loss is the dominant model uncertainty: the design evaluates iGSE on sinusoidal-fit parameters; the catalogue sets do not cover the design temperature / flux density (extrapolation).",
+          "test_conditions": {
+            "frequencies_Hz": [
+              50000.0,
+              100000.0,
+              200000.0
+            ],
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464,
+              0.183,
+              0.2196
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "waveforms": [
+              "piecewise_linear",
+              "sinusoidal"
+            ],
+            "dc_bias_field_A_per_m": 0.0,
+            "duty": null,
+            "method": "calorimetric or two-winding wattmetric loss measurement on a toroid (IEC 62044-3), >= 3 samples"
+          },
+          "deliverable": "loss density table Pv(f, B_pk, T, waveform) with uncertainty -> core_loss_measurement record; refitted Steinmetz / iGSE sets per temperature",
+          "record_kind": "core_loss_measurement"
+        },
+        {
+          "id": "request.fair-rite-77.dc_bias",
+          "material": "material.fair-rite-77",
+          "category": "dc_bias",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ],
+          "rationale": "Steinmetz / iGSE ignore premagnetisation; volt-second imbalance or asymmetric modulation produces a DC flux whose effect on loss and permeability is unknown without data.",
+          "test_conditions": {
+            "dc_bias_fields_A_per_m": [
+              0.0,
+              25.0,
+              50.0,
+              100.0,
+              200.0
+            ],
+            "frequency_Hz": 100000.0,
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "piecewise_linear",
+            "quantities": [
+              "loss density",
+              "amplitude permeability"
+            ]
+          },
+          "deliverable": "Pv and mu_a versus H_dc at the stated conditions -> loss reference points with dc_bias_field and dc_bias_points",
+          "record_kind": "magnetic_material.dc_bias_points"
+        },
+        {
+          "id": "request.fair-rite-77.complex_permeability",
+          "material": "material.fair-rite-77",
+          "category": "complex_permeability",
+          "priority": "medium",
+          "status_before": "partial",
+          "available": {
+            "initial_permeability": 2000.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ],
+          "rationale": "The magnetising inductance uses the 25 degC initial permeability with an assumed residual gap; mu'(f, T) and mu''(f) are needed for the magnetising current and the small-signal model at the switching frequency.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0,
+              300000.0,
+              1000000.0
+            ],
+            "flux_density_T": 0.00025,
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "quantities": [
+              "mu_prime",
+              "mu_double_prime"
+            ]
+          },
+          "deliverable": "complex permeability spectra per temperature -> amplitude_permeability / permeability_vs_temperature points",
+          "record_kind": "magnetic_material.permeability"
+        },
+        {
+          "id": "request.fair-rite-77.winding_ac_resistance",
+          "material": "material.fair-rite-77",
+          "category": "winding_ac_resistance",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ],
+          "rationale": "Copper loss comes from Dowell's 1-D layer model (litz as strand sub-layers); a measured R_ac(f) of the actual winding bounds the model error.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              100000.0,
+              300000.0,
+              500000.0,
+              700000.0,
+              900000.0,
+              1100000.0
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "excitation": "small-signal sinusoidal, secondary short-circuited (leakage path) and open (magnetising path)",
+            "winding": {
+              "primary": "litz 436 x 0.1 mm",
+              "secondary": "litz 889 x 0.1 mm"
+            },
+            "turns": {
+              "primary": 20,
+              "secondary": 10
+            },
+            "core": "core.tdk-e70-33-32",
+            "arrangement": "P-S-P",
+            "quantities": [
+              "R_ac / R_dc",
+              "leakage inductance",
+              "magnetising inductance"
+            ]
+          },
+          "deliverable": "R_ac(f) table and inductances of the prototype winding -> measurement record referencing the winding / transformer record",
+          "record_kind": "measurement"
+        },
+        {
+          "id": "request.fair-rite-77.thermal_conductivity",
+          "material": "material.fair-rite-77",
+          "category": "thermal_conductivity",
+          "priority": "medium",
+          "status_before": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ],
+          "rationale": "The thermal estimate uses a class value (1-5 W/m/K range) for the ferrite; the hot-spot estimate scales with it.",
+          "test_conditions": {
+            "temperatures_degC": [
+              25.0,
+              60.0,
+              100.0,
+              120.0
+            ],
+            "method": "laser flash or guarded hot plate on a sintered sample of the grade",
+            "quantities": [
+              "thermal conductivity",
+              "specific heat"
+            ]
+          },
+          "deliverable": "grade-specific k(T) and c_p(T) with uncertainty -> property library entry",
+          "record_kind": "physical_property"
+        },
+        {
+          "id": "request.fair-rite-77.bh_curve",
+          "material": "material.fair-rite-77",
+          "category": "bh_curve",
+          "priority": "low",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ],
+          "rationale": "The design models (Steinmetz / iGSE, reluctance) do not consume B-H loops; a hysteresis model (Jiles-Atherton) fit would.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0
+            ],
+            "field_peaks_A_per_m": [
+              100,
+              300,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "sinusoidal H",
+            "sampling": ">= 1024 samples per period"
+          },
+          "deliverable": "measured major and minor B-H loops -> bh_loop records with HDF5 waveform artifacts",
+          "record_kind": "bh_loop"
+        }
+      ]
+    },
+    {
+      "material": "material.fair-rite-78",
+      "grade": "78",
+      "manufacturer_ref": "manufacturer.fair-rite",
+      "synthetic": false,
+      "coverage": {
+        "bh_curve": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ]
+        },
+        "core_loss_vs_f_b_t": {
+          "status": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-78-25c",
+              "set.magnet-fit-78-50c",
+              "set.magnet-fit-78-70c",
+              "set.magnet-fit-78-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 0,
+            "covering_frequency": [
+              "set.magnet-fit-78-25c",
+              "set.magnet-fit-78-50c",
+              "set.magnet-fit-78-70c",
+              "set.magnet-fit-78-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "blocking": true
+        },
+        "dc_bias": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ]
+        },
+        "saturation_vs_temperature": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no saturation flux density data"
+          ],
+          "blocking": true
+        },
+        "complex_permeability": {
+          "status": "partial",
+          "available": {
+            "initial_permeability": 2300.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ]
+        },
+        "winding_ac_resistance": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ]
+        },
+        "thermal_conductivity": {
+          "status": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ]
+        }
+      },
+      "requests": [
+        {
+          "id": "request.fair-rite-78.saturation_vs_temperature",
+          "material": "material.fair-rite-78",
+          "category": "saturation_vs_temperature",
+          "priority": "high",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no saturation flux density data"
+          ],
+          "rationale": "Bsat(T) sets the flux limit and the minimum primary turns; without it saturation cannot be screened at the design temperature.",
+          "test_conditions": {
+            "quantity": "B at H = 1200 A/m (datasheet convention) and B-H knee",
+            "field_strength_A_per_m": [
+              250,
+              500,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "frequency_Hz": 10000.0,
+            "waveform": "sinusoidal H, major loop"
+          },
+          "deliverable": "table B(H, T) at the stated fields and temperatures with uncertainty; one ConditionedValue per (T, H)",
+          "record_kind": "magnetic_material.saturation_flux_density"
+        },
+        {
+          "id": "request.fair-rite-78.core_loss_vs_f_b_t",
+          "material": "material.fair-rite-78",
+          "category": "core_loss_vs_f_b_t",
+          "priority": "high",
+          "status_before": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-78-25c",
+              "set.magnet-fit-78-50c",
+              "set.magnet-fit-78-70c",
+              "set.magnet-fit-78-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 0,
+            "covering_frequency": [
+              "set.magnet-fit-78-25c",
+              "set.magnet-fit-78-50c",
+              "set.magnet-fit-78-70c",
+              "set.magnet-fit-78-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "rationale": "Core loss is the dominant model uncertainty: the design evaluates iGSE on sinusoidal-fit parameters; the catalogue sets do not cover the design temperature / flux density (extrapolation).",
+          "test_conditions": {
+            "frequencies_Hz": [
+              50000.0,
+              100000.0,
+              200000.0
+            ],
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464,
+              0.183,
+              0.2196
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "waveforms": [
+              "piecewise_linear",
+              "sinusoidal"
+            ],
+            "dc_bias_field_A_per_m": 0.0,
+            "duty": null,
+            "method": "calorimetric or two-winding wattmetric loss measurement on a toroid (IEC 62044-3), >= 3 samples"
+          },
+          "deliverable": "loss density table Pv(f, B_pk, T, waveform) with uncertainty -> core_loss_measurement record; refitted Steinmetz / iGSE sets per temperature",
+          "record_kind": "core_loss_measurement"
+        },
+        {
+          "id": "request.fair-rite-78.dc_bias",
+          "material": "material.fair-rite-78",
+          "category": "dc_bias",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ],
+          "rationale": "Steinmetz / iGSE ignore premagnetisation; volt-second imbalance or asymmetric modulation produces a DC flux whose effect on loss and permeability is unknown without data.",
+          "test_conditions": {
+            "dc_bias_fields_A_per_m": [
+              0.0,
+              25.0,
+              50.0,
+              100.0,
+              200.0
+            ],
+            "frequency_Hz": 100000.0,
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "piecewise_linear",
+            "quantities": [
+              "loss density",
+              "amplitude permeability"
+            ]
+          },
+          "deliverable": "Pv and mu_a versus H_dc at the stated conditions -> loss reference points with dc_bias_field and dc_bias_points",
+          "record_kind": "magnetic_material.dc_bias_points"
+        },
+        {
+          "id": "request.fair-rite-78.complex_permeability",
+          "material": "material.fair-rite-78",
+          "category": "complex_permeability",
+          "priority": "medium",
+          "status_before": "partial",
+          "available": {
+            "initial_permeability": 2300.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ],
+          "rationale": "The magnetising inductance uses the 25 degC initial permeability with an assumed residual gap; mu'(f, T) and mu''(f) are needed for the magnetising current and the small-signal model at the switching frequency.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0,
+              300000.0,
+              1000000.0
+            ],
+            "flux_density_T": 0.00025,
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "quantities": [
+              "mu_prime",
+              "mu_double_prime"
+            ]
+          },
+          "deliverable": "complex permeability spectra per temperature -> amplitude_permeability / permeability_vs_temperature points",
+          "record_kind": "magnetic_material.permeability"
+        },
+        {
+          "id": "request.fair-rite-78.winding_ac_resistance",
+          "material": "material.fair-rite-78",
+          "category": "winding_ac_resistance",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ],
+          "rationale": "Copper loss comes from Dowell's 1-D layer model (litz as strand sub-layers); a measured R_ac(f) of the actual winding bounds the model error.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              100000.0,
+              300000.0,
+              500000.0,
+              700000.0,
+              900000.0,
+              1100000.0
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "excitation": "small-signal sinusoidal, secondary short-circuited (leakage path) and open (magnetising path)",
+            "winding": {
+              "primary": "litz 436 x 0.1 mm",
+              "secondary": "litz 889 x 0.1 mm"
+            },
+            "turns": {
+              "primary": 20,
+              "secondary": 10
+            },
+            "core": "core.tdk-e70-33-32",
+            "arrangement": "P-S-P",
+            "quantities": [
+              "R_ac / R_dc",
+              "leakage inductance",
+              "magnetising inductance"
+            ]
+          },
+          "deliverable": "R_ac(f) table and inductances of the prototype winding -> measurement record referencing the winding / transformer record",
+          "record_kind": "measurement"
+        },
+        {
+          "id": "request.fair-rite-78.thermal_conductivity",
+          "material": "material.fair-rite-78",
+          "category": "thermal_conductivity",
+          "priority": "medium",
+          "status_before": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ],
+          "rationale": "The thermal estimate uses a class value (1-5 W/m/K range) for the ferrite; the hot-spot estimate scales with it.",
+          "test_conditions": {
+            "temperatures_degC": [
+              25.0,
+              60.0,
+              100.0,
+              120.0
+            ],
+            "method": "laser flash or guarded hot plate on a sintered sample of the grade",
+            "quantities": [
+              "thermal conductivity",
+              "specific heat"
+            ]
+          },
+          "deliverable": "grade-specific k(T) and c_p(T) with uncertainty -> property library entry",
+          "record_kind": "physical_property"
+        },
+        {
+          "id": "request.fair-rite-78.bh_curve",
+          "material": "material.fair-rite-78",
+          "category": "bh_curve",
+          "priority": "low",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ],
+          "rationale": "The design models (Steinmetz / iGSE, reluctance) do not consume B-H loops; a hysteresis model (Jiles-Atherton) fit would.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0
+            ],
+            "field_peaks_A_per_m": [
+              100,
+              300,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "sinusoidal H",
+            "sampling": ">= 1024 samples per period"
+          },
+          "deliverable": "measured major and minor B-H loops -> bh_loop records with HDF5 waveform artifacts",
+          "record_kind": "bh_loop"
+        }
+      ]
+    },
+    {
+      "material": "material.ferroxcube-3c90",
+      "grade": "3C90",
+      "manufacturer_ref": "manufacturer.ferroxcube",
+      "synthetic": false,
+      "coverage": {
+        "bh_curve": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ]
+        },
+        "core_loss_vs_f_b_t": {
+          "status": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-3c90-25c",
+              "set.magnet-fit-3c90-50c",
+              "set.magnet-fit-3c90-70c",
+              "set.magnet-fit-3c90-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 1,
+            "covering_frequency": [
+              "set.magnet-fit-3c90-25c",
+              "set.magnet-fit-3c90-50c",
+              "set.magnet-fit-3c90-70c",
+              "set.magnet-fit-3c90-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "blocking": true
+        },
+        "dc_bias": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ]
+        },
+        "saturation_vs_temperature": {
+          "status": "available",
+          "available": {
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "bsat_at_design_T": 0.38
+          },
+          "gaps": [],
+          "blocking": false
+        },
+        "complex_permeability": {
+          "status": "partial",
+          "available": {
+            "initial_permeability": 2300.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ]
+        },
+        "winding_ac_resistance": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ]
+        },
+        "thermal_conductivity": {
+          "status": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ]
+        }
+      },
+      "requests": [
+        {
+          "id": "request.ferroxcube-3c90.core_loss_vs_f_b_t",
+          "material": "material.ferroxcube-3c90",
+          "category": "core_loss_vs_f_b_t",
+          "priority": "high",
+          "status_before": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-3c90-25c",
+              "set.magnet-fit-3c90-50c",
+              "set.magnet-fit-3c90-70c",
+              "set.magnet-fit-3c90-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 1,
+            "covering_frequency": [
+              "set.magnet-fit-3c90-25c",
+              "set.magnet-fit-3c90-50c",
+              "set.magnet-fit-3c90-70c",
+              "set.magnet-fit-3c90-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "rationale": "Core loss is the dominant model uncertainty: the design evaluates iGSE on sinusoidal-fit parameters; the catalogue sets do not cover the design temperature / flux density (extrapolation).",
+          "test_conditions": {
+            "frequencies_Hz": [
+              50000.0,
+              100000.0,
+              200000.0
+            ],
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464,
+              0.183,
+              0.2196
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "waveforms": [
+              "piecewise_linear",
+              "sinusoidal"
+            ],
+            "dc_bias_field_A_per_m": 0.0,
+            "duty": null,
+            "method": "calorimetric or two-winding wattmetric loss measurement on a toroid (IEC 62044-3), >= 3 samples"
+          },
+          "deliverable": "loss density table Pv(f, B_pk, T, waveform) with uncertainty -> core_loss_measurement record; refitted Steinmetz / iGSE sets per temperature",
+          "record_kind": "core_loss_measurement"
+        },
+        {
+          "id": "request.ferroxcube-3c90.dc_bias",
+          "material": "material.ferroxcube-3c90",
+          "category": "dc_bias",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ],
+          "rationale": "Steinmetz / iGSE ignore premagnetisation; volt-second imbalance or asymmetric modulation produces a DC flux whose effect on loss and permeability is unknown without data.",
+          "test_conditions": {
+            "dc_bias_fields_A_per_m": [
+              0.0,
+              25.0,
+              50.0,
+              100.0,
+              200.0
+            ],
+            "frequency_Hz": 100000.0,
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "piecewise_linear",
+            "quantities": [
+              "loss density",
+              "amplitude permeability"
+            ]
+          },
+          "deliverable": "Pv and mu_a versus H_dc at the stated conditions -> loss reference points with dc_bias_field and dc_bias_points",
+          "record_kind": "magnetic_material.dc_bias_points"
+        },
+        {
+          "id": "request.ferroxcube-3c90.complex_permeability",
+          "material": "material.ferroxcube-3c90",
+          "category": "complex_permeability",
+          "priority": "medium",
+          "status_before": "partial",
+          "available": {
+            "initial_permeability": 2300.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ],
+          "rationale": "The magnetising inductance uses the 25 degC initial permeability with an assumed residual gap; mu'(f, T) and mu''(f) are needed for the magnetising current and the small-signal model at the switching frequency.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0,
+              300000.0,
+              1000000.0
+            ],
+            "flux_density_T": 0.00025,
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "quantities": [
+              "mu_prime",
+              "mu_double_prime"
+            ]
+          },
+          "deliverable": "complex permeability spectra per temperature -> amplitude_permeability / permeability_vs_temperature points",
+          "record_kind": "magnetic_material.permeability"
+        },
+        {
+          "id": "request.ferroxcube-3c90.winding_ac_resistance",
+          "material": "material.ferroxcube-3c90",
+          "category": "winding_ac_resistance",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ],
+          "rationale": "Copper loss comes from Dowell's 1-D layer model (litz as strand sub-layers); a measured R_ac(f) of the actual winding bounds the model error.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              100000.0,
+              300000.0,
+              500000.0,
+              700000.0,
+              900000.0,
+              1100000.0
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "excitation": "small-signal sinusoidal, secondary short-circuited (leakage path) and open (magnetising path)",
+            "winding": {
+              "primary": "litz 436 x 0.1 mm",
+              "secondary": "litz 889 x 0.1 mm"
+            },
+            "turns": {
+              "primary": 20,
+              "secondary": 10
+            },
+            "core": "core.tdk-e70-33-32",
+            "arrangement": "P-S-P",
+            "quantities": [
+              "R_ac / R_dc",
+              "leakage inductance",
+              "magnetising inductance"
+            ]
+          },
+          "deliverable": "R_ac(f) table and inductances of the prototype winding -> measurement record referencing the winding / transformer record",
+          "record_kind": "measurement"
+        },
+        {
+          "id": "request.ferroxcube-3c90.thermal_conductivity",
+          "material": "material.ferroxcube-3c90",
+          "category": "thermal_conductivity",
+          "priority": "medium",
+          "status_before": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ],
+          "rationale": "The thermal estimate uses a class value (1-5 W/m/K range) for the ferrite; the hot-spot estimate scales with it.",
+          "test_conditions": {
+            "temperatures_degC": [
+              25.0,
+              60.0,
+              100.0,
+              120.0
+            ],
+            "method": "laser flash or guarded hot plate on a sintered sample of the grade",
+            "quantities": [
+              "thermal conductivity",
+              "specific heat"
+            ]
+          },
+          "deliverable": "grade-specific k(T) and c_p(T) with uncertainty -> property library entry",
+          "record_kind": "physical_property"
+        },
+        {
+          "id": "request.ferroxcube-3c90.bh_curve",
+          "material": "material.ferroxcube-3c90",
+          "category": "bh_curve",
+          "priority": "low",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ],
+          "rationale": "The design models (Steinmetz / iGSE, reluctance) do not consume B-H loops; a hysteresis model (Jiles-Atherton) fit would.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0
+            ],
+            "field_peaks_A_per_m": [
+              100,
+              300,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "sinusoidal H",
+            "sampling": ">= 1024 samples per period"
+          },
+          "deliverable": "measured major and minor B-H loops -> bh_loop records with HDF5 waveform artifacts",
+          "record_kind": "bh_loop"
+        }
+      ]
+    },
+    {
+      "material": "material.ferroxcube-3c94",
+      "grade": "3C94",
+      "manufacturer_ref": "manufacturer.ferroxcube",
+      "synthetic": false,
+      "coverage": {
+        "bh_curve": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ]
+        },
+        "core_loss_vs_f_b_t": {
+          "status": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-3c94-25c",
+              "set.magnet-fit-3c94-50c",
+              "set.magnet-fit-3c94-70c",
+              "set.magnet-fit-3c94-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 2,
+            "covering_frequency": [
+              "set.magnet-fit-3c94-25c",
+              "set.magnet-fit-3c94-50c",
+              "set.magnet-fit-3c94-70c",
+              "set.magnet-fit-3c94-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "blocking": true
+        },
+        "dc_bias": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ]
+        },
+        "saturation_vs_temperature": {
+          "status": "available",
+          "available": {
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "bsat_at_design_T": 0.38
+          },
+          "gaps": [],
+          "blocking": false
+        },
+        "complex_permeability": {
+          "status": "partial",
+          "available": {
+            "initial_permeability": 2300.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ]
+        },
+        "winding_ac_resistance": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ]
+        },
+        "thermal_conductivity": {
+          "status": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ]
+        }
+      },
+      "requests": [
+        {
+          "id": "request.ferroxcube-3c94.core_loss_vs_f_b_t",
+          "material": "material.ferroxcube-3c94",
+          "category": "core_loss_vs_f_b_t",
+          "priority": "high",
+          "status_before": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-3c94-25c",
+              "set.magnet-fit-3c94-50c",
+              "set.magnet-fit-3c94-70c",
+              "set.magnet-fit-3c94-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 2,
+            "covering_frequency": [
+              "set.magnet-fit-3c94-25c",
+              "set.magnet-fit-3c94-50c",
+              "set.magnet-fit-3c94-70c",
+              "set.magnet-fit-3c94-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "rationale": "Core loss is the dominant model uncertainty: the design evaluates iGSE on sinusoidal-fit parameters; the catalogue sets do not cover the design temperature / flux density (extrapolation).",
+          "test_conditions": {
+            "frequencies_Hz": [
+              50000.0,
+              100000.0,
+              200000.0
+            ],
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464,
+              0.183,
+              0.2196
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "waveforms": [
+              "piecewise_linear",
+              "sinusoidal"
+            ],
+            "dc_bias_field_A_per_m": 0.0,
+            "duty": null,
+            "method": "calorimetric or two-winding wattmetric loss measurement on a toroid (IEC 62044-3), >= 3 samples"
+          },
+          "deliverable": "loss density table Pv(f, B_pk, T, waveform) with uncertainty -> core_loss_measurement record; refitted Steinmetz / iGSE sets per temperature",
+          "record_kind": "core_loss_measurement"
+        },
+        {
+          "id": "request.ferroxcube-3c94.dc_bias",
+          "material": "material.ferroxcube-3c94",
+          "category": "dc_bias",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ],
+          "rationale": "Steinmetz / iGSE ignore premagnetisation; volt-second imbalance or asymmetric modulation produces a DC flux whose effect on loss and permeability is unknown without data.",
+          "test_conditions": {
+            "dc_bias_fields_A_per_m": [
+              0.0,
+              25.0,
+              50.0,
+              100.0,
+              200.0
+            ],
+            "frequency_Hz": 100000.0,
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "piecewise_linear",
+            "quantities": [
+              "loss density",
+              "amplitude permeability"
+            ]
+          },
+          "deliverable": "Pv and mu_a versus H_dc at the stated conditions -> loss reference points with dc_bias_field and dc_bias_points",
+          "record_kind": "magnetic_material.dc_bias_points"
+        },
+        {
+          "id": "request.ferroxcube-3c94.complex_permeability",
+          "material": "material.ferroxcube-3c94",
+          "category": "complex_permeability",
+          "priority": "medium",
+          "status_before": "partial",
+          "available": {
+            "initial_permeability": 2300.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ],
+          "rationale": "The magnetising inductance uses the 25 degC initial permeability with an assumed residual gap; mu'(f, T) and mu''(f) are needed for the magnetising current and the small-signal model at the switching frequency.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0,
+              300000.0,
+              1000000.0
+            ],
+            "flux_density_T": 0.00025,
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "quantities": [
+              "mu_prime",
+              "mu_double_prime"
+            ]
+          },
+          "deliverable": "complex permeability spectra per temperature -> amplitude_permeability / permeability_vs_temperature points",
+          "record_kind": "magnetic_material.permeability"
+        },
+        {
+          "id": "request.ferroxcube-3c94.winding_ac_resistance",
+          "material": "material.ferroxcube-3c94",
+          "category": "winding_ac_resistance",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ],
+          "rationale": "Copper loss comes from Dowell's 1-D layer model (litz as strand sub-layers); a measured R_ac(f) of the actual winding bounds the model error.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              100000.0,
+              300000.0,
+              500000.0,
+              700000.0,
+              900000.0,
+              1100000.0
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "excitation": "small-signal sinusoidal, secondary short-circuited (leakage path) and open (magnetising path)",
+            "winding": {
+              "primary": "litz 436 x 0.1 mm",
+              "secondary": "litz 889 x 0.1 mm"
+            },
+            "turns": {
+              "primary": 20,
+              "secondary": 10
+            },
+            "core": "core.tdk-e70-33-32",
+            "arrangement": "P-S-P",
+            "quantities": [
+              "R_ac / R_dc",
+              "leakage inductance",
+              "magnetising inductance"
+            ]
+          },
+          "deliverable": "R_ac(f) table and inductances of the prototype winding -> measurement record referencing the winding / transformer record",
+          "record_kind": "measurement"
+        },
+        {
+          "id": "request.ferroxcube-3c94.thermal_conductivity",
+          "material": "material.ferroxcube-3c94",
+          "category": "thermal_conductivity",
+          "priority": "medium",
+          "status_before": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ],
+          "rationale": "The thermal estimate uses a class value (1-5 W/m/K range) for the ferrite; the hot-spot estimate scales with it.",
+          "test_conditions": {
+            "temperatures_degC": [
+              25.0,
+              60.0,
+              100.0,
+              120.0
+            ],
+            "method": "laser flash or guarded hot plate on a sintered sample of the grade",
+            "quantities": [
+              "thermal conductivity",
+              "specific heat"
+            ]
+          },
+          "deliverable": "grade-specific k(T) and c_p(T) with uncertainty -> property library entry",
+          "record_kind": "physical_property"
+        },
+        {
+          "id": "request.ferroxcube-3c94.bh_curve",
+          "material": "material.ferroxcube-3c94",
+          "category": "bh_curve",
+          "priority": "low",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ],
+          "rationale": "The design models (Steinmetz / iGSE, reluctance) do not consume B-H loops; a hysteresis model (Jiles-Atherton) fit would.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0
+            ],
+            "field_peaks_A_per_m": [
+              100,
+              300,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "sinusoidal H",
+            "sampling": ">= 1024 samples per period"
+          },
+          "deliverable": "measured major and minor B-H loops -> bh_loop records with HDF5 waveform artifacts",
+          "record_kind": "bh_loop"
+        }
+      ]
+    },
+    {
+      "material": "material.ferroxcube-3e6",
+      "grade": "3E6",
+      "manufacturer_ref": "manufacturer.ferroxcube",
+      "synthetic": false,
+      "coverage": {
+        "bh_curve": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ]
+        },
+        "core_loss_vs_f_b_t": {
+          "status": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-3e6-25c",
+              "set.magnet-fit-3e6-50c",
+              "set.magnet-fit-3e6-70c",
+              "set.magnet-fit-3e6-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 0,
+            "covering_frequency": [
+              "set.magnet-fit-3e6-25c",
+              "set.magnet-fit-3e6-50c",
+              "set.magnet-fit-3e6-70c",
+              "set.magnet-fit-3e6-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "blocking": true
+        },
+        "dc_bias": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ]
+        },
+        "saturation_vs_temperature": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no saturation flux density data"
+          ],
+          "blocking": true
+        },
+        "complex_permeability": {
+          "status": "partial",
+          "available": {
+            "initial_permeability": 10000.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ]
+        },
+        "winding_ac_resistance": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ]
+        },
+        "thermal_conductivity": {
+          "status": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ]
+        }
+      },
+      "requests": [
+        {
+          "id": "request.ferroxcube-3e6.saturation_vs_temperature",
+          "material": "material.ferroxcube-3e6",
+          "category": "saturation_vs_temperature",
+          "priority": "high",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no saturation flux density data"
+          ],
+          "rationale": "Bsat(T) sets the flux limit and the minimum primary turns; without it saturation cannot be screened at the design temperature.",
+          "test_conditions": {
+            "quantity": "B at H = 1200 A/m (datasheet convention) and B-H knee",
+            "field_strength_A_per_m": [
+              250,
+              500,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "frequency_Hz": 10000.0,
+            "waveform": "sinusoidal H, major loop"
+          },
+          "deliverable": "table B(H, T) at the stated fields and temperatures with uncertainty; one ConditionedValue per (T, H)",
+          "record_kind": "magnetic_material.saturation_flux_density"
+        },
+        {
+          "id": "request.ferroxcube-3e6.core_loss_vs_f_b_t",
+          "material": "material.ferroxcube-3e6",
+          "category": "core_loss_vs_f_b_t",
+          "priority": "high",
+          "status_before": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-3e6-25c",
+              "set.magnet-fit-3e6-50c",
+              "set.magnet-fit-3e6-70c",
+              "set.magnet-fit-3e6-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 0,
+            "covering_frequency": [
+              "set.magnet-fit-3e6-25c",
+              "set.magnet-fit-3e6-50c",
+              "set.magnet-fit-3e6-70c",
+              "set.magnet-fit-3e6-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "rationale": "Core loss is the dominant model uncertainty: the design evaluates iGSE on sinusoidal-fit parameters; the catalogue sets do not cover the design temperature / flux density (extrapolation).",
+          "test_conditions": {
+            "frequencies_Hz": [
+              50000.0,
+              100000.0,
+              200000.0
+            ],
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464,
+              0.183,
+              0.2196
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "waveforms": [
+              "piecewise_linear",
+              "sinusoidal"
+            ],
+            "dc_bias_field_A_per_m": 0.0,
+            "duty": null,
+            "method": "calorimetric or two-winding wattmetric loss measurement on a toroid (IEC 62044-3), >= 3 samples"
+          },
+          "deliverable": "loss density table Pv(f, B_pk, T, waveform) with uncertainty -> core_loss_measurement record; refitted Steinmetz / iGSE sets per temperature",
+          "record_kind": "core_loss_measurement"
+        },
+        {
+          "id": "request.ferroxcube-3e6.dc_bias",
+          "material": "material.ferroxcube-3e6",
+          "category": "dc_bias",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ],
+          "rationale": "Steinmetz / iGSE ignore premagnetisation; volt-second imbalance or asymmetric modulation produces a DC flux whose effect on loss and permeability is unknown without data.",
+          "test_conditions": {
+            "dc_bias_fields_A_per_m": [
+              0.0,
+              25.0,
+              50.0,
+              100.0,
+              200.0
+            ],
+            "frequency_Hz": 100000.0,
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "piecewise_linear",
+            "quantities": [
+              "loss density",
+              "amplitude permeability"
+            ]
+          },
+          "deliverable": "Pv and mu_a versus H_dc at the stated conditions -> loss reference points with dc_bias_field and dc_bias_points",
+          "record_kind": "magnetic_material.dc_bias_points"
+        },
+        {
+          "id": "request.ferroxcube-3e6.complex_permeability",
+          "material": "material.ferroxcube-3e6",
+          "category": "complex_permeability",
+          "priority": "medium",
+          "status_before": "partial",
+          "available": {
+            "initial_permeability": 10000.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ],
+          "rationale": "The magnetising inductance uses the 25 degC initial permeability with an assumed residual gap; mu'(f, T) and mu''(f) are needed for the magnetising current and the small-signal model at the switching frequency.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0,
+              300000.0,
+              1000000.0
+            ],
+            "flux_density_T": 0.00025,
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "quantities": [
+              "mu_prime",
+              "mu_double_prime"
+            ]
+          },
+          "deliverable": "complex permeability spectra per temperature -> amplitude_permeability / permeability_vs_temperature points",
+          "record_kind": "magnetic_material.permeability"
+        },
+        {
+          "id": "request.ferroxcube-3e6.winding_ac_resistance",
+          "material": "material.ferroxcube-3e6",
+          "category": "winding_ac_resistance",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ],
+          "rationale": "Copper loss comes from Dowell's 1-D layer model (litz as strand sub-layers); a measured R_ac(f) of the actual winding bounds the model error.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              100000.0,
+              300000.0,
+              500000.0,
+              700000.0,
+              900000.0,
+              1100000.0
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "excitation": "small-signal sinusoidal, secondary short-circuited (leakage path) and open (magnetising path)",
+            "winding": {
+              "primary": "litz 436 x 0.1 mm",
+              "secondary": "litz 889 x 0.1 mm"
+            },
+            "turns": {
+              "primary": 20,
+              "secondary": 10
+            },
+            "core": "core.tdk-e70-33-32",
+            "arrangement": "P-S-P",
+            "quantities": [
+              "R_ac / R_dc",
+              "leakage inductance",
+              "magnetising inductance"
+            ]
+          },
+          "deliverable": "R_ac(f) table and inductances of the prototype winding -> measurement record referencing the winding / transformer record",
+          "record_kind": "measurement"
+        },
+        {
+          "id": "request.ferroxcube-3e6.thermal_conductivity",
+          "material": "material.ferroxcube-3e6",
+          "category": "thermal_conductivity",
+          "priority": "medium",
+          "status_before": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ],
+          "rationale": "The thermal estimate uses a class value (1-5 W/m/K range) for the ferrite; the hot-spot estimate scales with it.",
+          "test_conditions": {
+            "temperatures_degC": [
+              25.0,
+              60.0,
+              100.0,
+              120.0
+            ],
+            "method": "laser flash or guarded hot plate on a sintered sample of the grade",
+            "quantities": [
+              "thermal conductivity",
+              "specific heat"
+            ]
+          },
+          "deliverable": "grade-specific k(T) and c_p(T) with uncertainty -> property library entry",
+          "record_kind": "physical_property"
+        },
+        {
+          "id": "request.ferroxcube-3e6.bh_curve",
+          "material": "material.ferroxcube-3e6",
+          "category": "bh_curve",
+          "priority": "low",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ],
+          "rationale": "The design models (Steinmetz / iGSE, reluctance) do not consume B-H loops; a hysteresis model (Jiles-Atherton) fit would.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0
+            ],
+            "field_peaks_A_per_m": [
+              100,
+              300,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "sinusoidal H",
+            "sampling": ">= 1024 samples per period"
+          },
+          "deliverable": "measured major and minor B-H loops -> bh_loop records with HDF5 waveform artifacts",
+          "record_kind": "bh_loop"
+        }
+      ]
+    },
+    {
+      "material": "material.ferroxcube-3f4",
+      "grade": "3F4",
+      "manufacturer_ref": "manufacturer.ferroxcube",
+      "synthetic": false,
+      "coverage": {
+        "bh_curve": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ]
+        },
+        "core_loss_vs_f_b_t": {
+          "status": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-3f4-25c",
+              "set.magnet-fit-3f4-50c",
+              "set.magnet-fit-3f4-70c",
+              "set.magnet-fit-3f4-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 0,
+            "covering_frequency": [
+              "set.magnet-fit-3f4-25c",
+              "set.magnet-fit-3f4-50c",
+              "set.magnet-fit-3f4-70c",
+              "set.magnet-fit-3f4-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "peak flux density 146 mT lies outside the fitted flux-density range of the usable set(s)",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "blocking": true
+        },
+        "dc_bias": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ]
+        },
+        "saturation_vs_temperature": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no saturation flux density data"
+          ],
+          "blocking": true
+        },
+        "complex_permeability": {
+          "status": "partial",
+          "available": {
+            "initial_permeability": 900.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ]
+        },
+        "winding_ac_resistance": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ]
+        },
+        "thermal_conductivity": {
+          "status": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ]
+        }
+      },
+      "requests": [
+        {
+          "id": "request.ferroxcube-3f4.saturation_vs_temperature",
+          "material": "material.ferroxcube-3f4",
+          "category": "saturation_vs_temperature",
+          "priority": "high",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no saturation flux density data"
+          ],
+          "rationale": "Bsat(T) sets the flux limit and the minimum primary turns; without it saturation cannot be screened at the design temperature.",
+          "test_conditions": {
+            "quantity": "B at H = 1200 A/m (datasheet convention) and B-H knee",
+            "field_strength_A_per_m": [
+              250,
+              500,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "frequency_Hz": 10000.0,
+            "waveform": "sinusoidal H, major loop"
+          },
+          "deliverable": "table B(H, T) at the stated fields and temperatures with uncertainty; one ConditionedValue per (T, H)",
+          "record_kind": "magnetic_material.saturation_flux_density"
+        },
+        {
+          "id": "request.ferroxcube-3f4.core_loss_vs_f_b_t",
+          "material": "material.ferroxcube-3f4",
+          "category": "core_loss_vs_f_b_t",
+          "priority": "high",
+          "status_before": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-3f4-25c",
+              "set.magnet-fit-3f4-50c",
+              "set.magnet-fit-3f4-70c",
+              "set.magnet-fit-3f4-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 0,
+            "covering_frequency": [
+              "set.magnet-fit-3f4-25c",
+              "set.magnet-fit-3f4-50c",
+              "set.magnet-fit-3f4-70c",
+              "set.magnet-fit-3f4-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "peak flux density 146 mT lies outside the fitted flux-density range of the usable set(s)",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "rationale": "Core loss is the dominant model uncertainty: the design evaluates iGSE on sinusoidal-fit parameters; the catalogue sets do not cover the design temperature / flux density (extrapolation).",
+          "test_conditions": {
+            "frequencies_Hz": [
+              50000.0,
+              100000.0,
+              200000.0
+            ],
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464,
+              0.183,
+              0.2196
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "waveforms": [
+              "piecewise_linear",
+              "sinusoidal"
+            ],
+            "dc_bias_field_A_per_m": 0.0,
+            "duty": null,
+            "method": "calorimetric or two-winding wattmetric loss measurement on a toroid (IEC 62044-3), >= 3 samples"
+          },
+          "deliverable": "loss density table Pv(f, B_pk, T, waveform) with uncertainty -> core_loss_measurement record; refitted Steinmetz / iGSE sets per temperature",
+          "record_kind": "core_loss_measurement"
+        },
+        {
+          "id": "request.ferroxcube-3f4.dc_bias",
+          "material": "material.ferroxcube-3f4",
+          "category": "dc_bias",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ],
+          "rationale": "Steinmetz / iGSE ignore premagnetisation; volt-second imbalance or asymmetric modulation produces a DC flux whose effect on loss and permeability is unknown without data.",
+          "test_conditions": {
+            "dc_bias_fields_A_per_m": [
+              0.0,
+              25.0,
+              50.0,
+              100.0,
+              200.0
+            ],
+            "frequency_Hz": 100000.0,
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "piecewise_linear",
+            "quantities": [
+              "loss density",
+              "amplitude permeability"
+            ]
+          },
+          "deliverable": "Pv and mu_a versus H_dc at the stated conditions -> loss reference points with dc_bias_field and dc_bias_points",
+          "record_kind": "magnetic_material.dc_bias_points"
+        },
+        {
+          "id": "request.ferroxcube-3f4.complex_permeability",
+          "material": "material.ferroxcube-3f4",
+          "category": "complex_permeability",
+          "priority": "medium",
+          "status_before": "partial",
+          "available": {
+            "initial_permeability": 900.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ],
+          "rationale": "The magnetising inductance uses the 25 degC initial permeability with an assumed residual gap; mu'(f, T) and mu''(f) are needed for the magnetising current and the small-signal model at the switching frequency.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0,
+              300000.0,
+              1000000.0
+            ],
+            "flux_density_T": 0.00025,
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "quantities": [
+              "mu_prime",
+              "mu_double_prime"
+            ]
+          },
+          "deliverable": "complex permeability spectra per temperature -> amplitude_permeability / permeability_vs_temperature points",
+          "record_kind": "magnetic_material.permeability"
+        },
+        {
+          "id": "request.ferroxcube-3f4.winding_ac_resistance",
+          "material": "material.ferroxcube-3f4",
+          "category": "winding_ac_resistance",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ],
+          "rationale": "Copper loss comes from Dowell's 1-D layer model (litz as strand sub-layers); a measured R_ac(f) of the actual winding bounds the model error.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              100000.0,
+              300000.0,
+              500000.0,
+              700000.0,
+              900000.0,
+              1100000.0
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "excitation": "small-signal sinusoidal, secondary short-circuited (leakage path) and open (magnetising path)",
+            "winding": {
+              "primary": "litz 436 x 0.1 mm",
+              "secondary": "litz 889 x 0.1 mm"
+            },
+            "turns": {
+              "primary": 20,
+              "secondary": 10
+            },
+            "core": "core.tdk-e70-33-32",
+            "arrangement": "P-S-P",
+            "quantities": [
+              "R_ac / R_dc",
+              "leakage inductance",
+              "magnetising inductance"
+            ]
+          },
+          "deliverable": "R_ac(f) table and inductances of the prototype winding -> measurement record referencing the winding / transformer record",
+          "record_kind": "measurement"
+        },
+        {
+          "id": "request.ferroxcube-3f4.thermal_conductivity",
+          "material": "material.ferroxcube-3f4",
+          "category": "thermal_conductivity",
+          "priority": "medium",
+          "status_before": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ],
+          "rationale": "The thermal estimate uses a class value (1-5 W/m/K range) for the ferrite; the hot-spot estimate scales with it.",
+          "test_conditions": {
+            "temperatures_degC": [
+              25.0,
+              60.0,
+              100.0,
+              120.0
+            ],
+            "method": "laser flash or guarded hot plate on a sintered sample of the grade",
+            "quantities": [
+              "thermal conductivity",
+              "specific heat"
+            ]
+          },
+          "deliverable": "grade-specific k(T) and c_p(T) with uncertainty -> property library entry",
+          "record_kind": "physical_property"
+        },
+        {
+          "id": "request.ferroxcube-3f4.bh_curve",
+          "material": "material.ferroxcube-3f4",
+          "category": "bh_curve",
+          "priority": "low",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ],
+          "rationale": "The design models (Steinmetz / iGSE, reluctance) do not consume B-H loops; a hysteresis model (Jiles-Atherton) fit would.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0
+            ],
+            "field_peaks_A_per_m": [
+              100,
+              300,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "sinusoidal H",
+            "sampling": ">= 1024 samples per period"
+          },
+          "deliverable": "measured major and minor B-H loops -> bh_loop records with HDF5 waveform artifacts",
+          "record_kind": "bh_loop"
+        }
+      ]
+    },
+    {
+      "material": "material.tdk-n27",
+      "grade": "N27",
+      "manufacturer_ref": "manufacturer.tdk",
+      "synthetic": false,
+      "coverage": {
+        "bh_curve": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ]
+        },
+        "core_loss_vs_f_b_t": {
+          "status": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-n27-25c",
+              "set.magnet-fit-n27-50c",
+              "set.magnet-fit-n27-70c",
+              "set.magnet-fit-n27-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 0,
+            "covering_frequency": [
+              "set.magnet-fit-n27-25c",
+              "set.magnet-fit-n27-50c",
+              "set.magnet-fit-n27-70c",
+              "set.magnet-fit-n27-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "blocking": true
+        },
+        "dc_bias": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ]
+        },
+        "saturation_vs_temperature": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no saturation flux density data"
+          ],
+          "blocking": true
+        },
+        "complex_permeability": {
+          "status": "partial",
+          "available": {
+            "initial_permeability": 2000.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ]
+        },
+        "winding_ac_resistance": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ]
+        },
+        "thermal_conductivity": {
+          "status": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ]
+        }
+      },
+      "requests": [
+        {
+          "id": "request.tdk-n27.saturation_vs_temperature",
+          "material": "material.tdk-n27",
+          "category": "saturation_vs_temperature",
+          "priority": "high",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no saturation flux density data"
+          ],
+          "rationale": "Bsat(T) sets the flux limit and the minimum primary turns; without it saturation cannot be screened at the design temperature.",
+          "test_conditions": {
+            "quantity": "B at H = 1200 A/m (datasheet convention) and B-H knee",
+            "field_strength_A_per_m": [
+              250,
+              500,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "frequency_Hz": 10000.0,
+            "waveform": "sinusoidal H, major loop"
+          },
+          "deliverable": "table B(H, T) at the stated fields and temperatures with uncertainty; one ConditionedValue per (T, H)",
+          "record_kind": "magnetic_material.saturation_flux_density"
+        },
+        {
+          "id": "request.tdk-n27.core_loss_vs_f_b_t",
+          "material": "material.tdk-n27",
+          "category": "core_loss_vs_f_b_t",
+          "priority": "high",
+          "status_before": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-n27-25c",
+              "set.magnet-fit-n27-50c",
+              "set.magnet-fit-n27-70c",
+              "set.magnet-fit-n27-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 0,
+            "covering_frequency": [
+              "set.magnet-fit-n27-25c",
+              "set.magnet-fit-n27-50c",
+              "set.magnet-fit-n27-70c",
+              "set.magnet-fit-n27-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "rationale": "Core loss is the dominant model uncertainty: the design evaluates iGSE on sinusoidal-fit parameters; the catalogue sets do not cover the design temperature / flux density (extrapolation).",
+          "test_conditions": {
+            "frequencies_Hz": [
+              50000.0,
+              100000.0,
+              200000.0
+            ],
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464,
+              0.183,
+              0.2196
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "waveforms": [
+              "piecewise_linear",
+              "sinusoidal"
+            ],
+            "dc_bias_field_A_per_m": 0.0,
+            "duty": null,
+            "method": "calorimetric or two-winding wattmetric loss measurement on a toroid (IEC 62044-3), >= 3 samples"
+          },
+          "deliverable": "loss density table Pv(f, B_pk, T, waveform) with uncertainty -> core_loss_measurement record; refitted Steinmetz / iGSE sets per temperature",
+          "record_kind": "core_loss_measurement"
+        },
+        {
+          "id": "request.tdk-n27.dc_bias",
+          "material": "material.tdk-n27",
+          "category": "dc_bias",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ],
+          "rationale": "Steinmetz / iGSE ignore premagnetisation; volt-second imbalance or asymmetric modulation produces a DC flux whose effect on loss and permeability is unknown without data.",
+          "test_conditions": {
+            "dc_bias_fields_A_per_m": [
+              0.0,
+              25.0,
+              50.0,
+              100.0,
+              200.0
+            ],
+            "frequency_Hz": 100000.0,
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "piecewise_linear",
+            "quantities": [
+              "loss density",
+              "amplitude permeability"
+            ]
+          },
+          "deliverable": "Pv and mu_a versus H_dc at the stated conditions -> loss reference points with dc_bias_field and dc_bias_points",
+          "record_kind": "magnetic_material.dc_bias_points"
+        },
+        {
+          "id": "request.tdk-n27.complex_permeability",
+          "material": "material.tdk-n27",
+          "category": "complex_permeability",
+          "priority": "medium",
+          "status_before": "partial",
+          "available": {
+            "initial_permeability": 2000.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ],
+          "rationale": "The magnetising inductance uses the 25 degC initial permeability with an assumed residual gap; mu'(f, T) and mu''(f) are needed for the magnetising current and the small-signal model at the switching frequency.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0,
+              300000.0,
+              1000000.0
+            ],
+            "flux_density_T": 0.00025,
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "quantities": [
+              "mu_prime",
+              "mu_double_prime"
+            ]
+          },
+          "deliverable": "complex permeability spectra per temperature -> amplitude_permeability / permeability_vs_temperature points",
+          "record_kind": "magnetic_material.permeability"
+        },
+        {
+          "id": "request.tdk-n27.winding_ac_resistance",
+          "material": "material.tdk-n27",
+          "category": "winding_ac_resistance",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ],
+          "rationale": "Copper loss comes from Dowell's 1-D layer model (litz as strand sub-layers); a measured R_ac(f) of the actual winding bounds the model error.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              100000.0,
+              300000.0,
+              500000.0,
+              700000.0,
+              900000.0,
+              1100000.0
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "excitation": "small-signal sinusoidal, secondary short-circuited (leakage path) and open (magnetising path)",
+            "winding": {
+              "primary": "litz 436 x 0.1 mm",
+              "secondary": "litz 889 x 0.1 mm"
+            },
+            "turns": {
+              "primary": 20,
+              "secondary": 10
+            },
+            "core": "core.tdk-e70-33-32",
+            "arrangement": "P-S-P",
+            "quantities": [
+              "R_ac / R_dc",
+              "leakage inductance",
+              "magnetising inductance"
+            ]
+          },
+          "deliverable": "R_ac(f) table and inductances of the prototype winding -> measurement record referencing the winding / transformer record",
+          "record_kind": "measurement"
+        },
+        {
+          "id": "request.tdk-n27.thermal_conductivity",
+          "material": "material.tdk-n27",
+          "category": "thermal_conductivity",
+          "priority": "medium",
+          "status_before": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ],
+          "rationale": "The thermal estimate uses a class value (1-5 W/m/K range) for the ferrite; the hot-spot estimate scales with it.",
+          "test_conditions": {
+            "temperatures_degC": [
+              25.0,
+              60.0,
+              100.0,
+              120.0
+            ],
+            "method": "laser flash or guarded hot plate on a sintered sample of the grade",
+            "quantities": [
+              "thermal conductivity",
+              "specific heat"
+            ]
+          },
+          "deliverable": "grade-specific k(T) and c_p(T) with uncertainty -> property library entry",
+          "record_kind": "physical_property"
+        },
+        {
+          "id": "request.tdk-n27.bh_curve",
+          "material": "material.tdk-n27",
+          "category": "bh_curve",
+          "priority": "low",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ],
+          "rationale": "The design models (Steinmetz / iGSE, reluctance) do not consume B-H loops; a hysteresis model (Jiles-Atherton) fit would.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0
+            ],
+            "field_peaks_A_per_m": [
+              100,
+              300,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "sinusoidal H",
+            "sampling": ">= 1024 samples per period"
+          },
+          "deliverable": "measured major and minor B-H loops -> bh_loop records with HDF5 waveform artifacts",
+          "record_kind": "bh_loop"
+        }
+      ]
+    },
+    {
+      "material": "material.tdk-n30",
+      "grade": "N30",
+      "manufacturer_ref": "manufacturer.tdk",
+      "synthetic": false,
+      "coverage": {
+        "bh_curve": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ]
+        },
+        "core_loss_vs_f_b_t": {
+          "status": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-n30-25c",
+              "set.magnet-fit-n30-50c",
+              "set.magnet-fit-n30-70c",
+              "set.magnet-fit-n30-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 0,
+            "covering_frequency": [
+              "set.magnet-fit-n30-25c",
+              "set.magnet-fit-n30-50c",
+              "set.magnet-fit-n30-70c",
+              "set.magnet-fit-n30-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "blocking": true
+        },
+        "dc_bias": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ]
+        },
+        "saturation_vs_temperature": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no saturation flux density data"
+          ],
+          "blocking": true
+        },
+        "complex_permeability": {
+          "status": "partial",
+          "available": {
+            "initial_permeability": 4300.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ]
+        },
+        "winding_ac_resistance": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ]
+        },
+        "thermal_conductivity": {
+          "status": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ]
+        }
+      },
+      "requests": [
+        {
+          "id": "request.tdk-n30.saturation_vs_temperature",
+          "material": "material.tdk-n30",
+          "category": "saturation_vs_temperature",
+          "priority": "high",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no saturation flux density data"
+          ],
+          "rationale": "Bsat(T) sets the flux limit and the minimum primary turns; without it saturation cannot be screened at the design temperature.",
+          "test_conditions": {
+            "quantity": "B at H = 1200 A/m (datasheet convention) and B-H knee",
+            "field_strength_A_per_m": [
+              250,
+              500,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "frequency_Hz": 10000.0,
+            "waveform": "sinusoidal H, major loop"
+          },
+          "deliverable": "table B(H, T) at the stated fields and temperatures with uncertainty; one ConditionedValue per (T, H)",
+          "record_kind": "magnetic_material.saturation_flux_density"
+        },
+        {
+          "id": "request.tdk-n30.core_loss_vs_f_b_t",
+          "material": "material.tdk-n30",
+          "category": "core_loss_vs_f_b_t",
+          "priority": "high",
+          "status_before": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-n30-25c",
+              "set.magnet-fit-n30-50c",
+              "set.magnet-fit-n30-70c",
+              "set.magnet-fit-n30-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 0,
+            "covering_frequency": [
+              "set.magnet-fit-n30-25c",
+              "set.magnet-fit-n30-50c",
+              "set.magnet-fit-n30-70c",
+              "set.magnet-fit-n30-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "rationale": "Core loss is the dominant model uncertainty: the design evaluates iGSE on sinusoidal-fit parameters; the catalogue sets do not cover the design temperature / flux density (extrapolation).",
+          "test_conditions": {
+            "frequencies_Hz": [
+              50000.0,
+              100000.0,
+              200000.0
+            ],
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464,
+              0.183,
+              0.2196
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "waveforms": [
+              "piecewise_linear",
+              "sinusoidal"
+            ],
+            "dc_bias_field_A_per_m": 0.0,
+            "duty": null,
+            "method": "calorimetric or two-winding wattmetric loss measurement on a toroid (IEC 62044-3), >= 3 samples"
+          },
+          "deliverable": "loss density table Pv(f, B_pk, T, waveform) with uncertainty -> core_loss_measurement record; refitted Steinmetz / iGSE sets per temperature",
+          "record_kind": "core_loss_measurement"
+        },
+        {
+          "id": "request.tdk-n30.dc_bias",
+          "material": "material.tdk-n30",
+          "category": "dc_bias",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ],
+          "rationale": "Steinmetz / iGSE ignore premagnetisation; volt-second imbalance or asymmetric modulation produces a DC flux whose effect on loss and permeability is unknown without data.",
+          "test_conditions": {
+            "dc_bias_fields_A_per_m": [
+              0.0,
+              25.0,
+              50.0,
+              100.0,
+              200.0
+            ],
+            "frequency_Hz": 100000.0,
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "piecewise_linear",
+            "quantities": [
+              "loss density",
+              "amplitude permeability"
+            ]
+          },
+          "deliverable": "Pv and mu_a versus H_dc at the stated conditions -> loss reference points with dc_bias_field and dc_bias_points",
+          "record_kind": "magnetic_material.dc_bias_points"
+        },
+        {
+          "id": "request.tdk-n30.complex_permeability",
+          "material": "material.tdk-n30",
+          "category": "complex_permeability",
+          "priority": "medium",
+          "status_before": "partial",
+          "available": {
+            "initial_permeability": 4300.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ],
+          "rationale": "The magnetising inductance uses the 25 degC initial permeability with an assumed residual gap; mu'(f, T) and mu''(f) are needed for the magnetising current and the small-signal model at the switching frequency.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0,
+              300000.0,
+              1000000.0
+            ],
+            "flux_density_T": 0.00025,
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "quantities": [
+              "mu_prime",
+              "mu_double_prime"
+            ]
+          },
+          "deliverable": "complex permeability spectra per temperature -> amplitude_permeability / permeability_vs_temperature points",
+          "record_kind": "magnetic_material.permeability"
+        },
+        {
+          "id": "request.tdk-n30.winding_ac_resistance",
+          "material": "material.tdk-n30",
+          "category": "winding_ac_resistance",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ],
+          "rationale": "Copper loss comes from Dowell's 1-D layer model (litz as strand sub-layers); a measured R_ac(f) of the actual winding bounds the model error.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              100000.0,
+              300000.0,
+              500000.0,
+              700000.0,
+              900000.0,
+              1100000.0
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "excitation": "small-signal sinusoidal, secondary short-circuited (leakage path) and open (magnetising path)",
+            "winding": {
+              "primary": "litz 436 x 0.1 mm",
+              "secondary": "litz 889 x 0.1 mm"
+            },
+            "turns": {
+              "primary": 20,
+              "secondary": 10
+            },
+            "core": "core.tdk-e70-33-32",
+            "arrangement": "P-S-P",
+            "quantities": [
+              "R_ac / R_dc",
+              "leakage inductance",
+              "magnetising inductance"
+            ]
+          },
+          "deliverable": "R_ac(f) table and inductances of the prototype winding -> measurement record referencing the winding / transformer record",
+          "record_kind": "measurement"
+        },
+        {
+          "id": "request.tdk-n30.thermal_conductivity",
+          "material": "material.tdk-n30",
+          "category": "thermal_conductivity",
+          "priority": "medium",
+          "status_before": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ],
+          "rationale": "The thermal estimate uses a class value (1-5 W/m/K range) for the ferrite; the hot-spot estimate scales with it.",
+          "test_conditions": {
+            "temperatures_degC": [
+              25.0,
+              60.0,
+              100.0,
+              120.0
+            ],
+            "method": "laser flash or guarded hot plate on a sintered sample of the grade",
+            "quantities": [
+              "thermal conductivity",
+              "specific heat"
+            ]
+          },
+          "deliverable": "grade-specific k(T) and c_p(T) with uncertainty -> property library entry",
+          "record_kind": "physical_property"
+        },
+        {
+          "id": "request.tdk-n30.bh_curve",
+          "material": "material.tdk-n30",
+          "category": "bh_curve",
+          "priority": "low",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ],
+          "rationale": "The design models (Steinmetz / iGSE, reluctance) do not consume B-H loops; a hysteresis model (Jiles-Atherton) fit would.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0
+            ],
+            "field_peaks_A_per_m": [
+              100,
+              300,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "sinusoidal H",
+            "sampling": ">= 1024 samples per period"
+          },
+          "deliverable": "measured major and minor B-H loops -> bh_loop records with HDF5 waveform artifacts",
+          "record_kind": "bh_loop"
+        }
+      ]
+    },
+    {
+      "material": "material.tdk-n49",
+      "grade": "N49",
+      "manufacturer_ref": "manufacturer.tdk",
+      "synthetic": false,
+      "coverage": {
+        "bh_curve": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ]
+        },
+        "core_loss_vs_f_b_t": {
+          "status": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-n49-25c",
+              "set.magnet-fit-n49-50c",
+              "set.magnet-fit-n49-70c",
+              "set.magnet-fit-n49-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 0,
+            "covering_frequency": [
+              "set.magnet-fit-n49-25c",
+              "set.magnet-fit-n49-50c",
+              "set.magnet-fit-n49-70c",
+              "set.magnet-fit-n49-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "blocking": true
+        },
+        "dc_bias": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ]
+        },
+        "saturation_vs_temperature": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no saturation flux density data"
+          ],
+          "blocking": true
+        },
+        "complex_permeability": {
+          "status": "partial",
+          "available": {
+            "initial_permeability": 1500.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ]
+        },
+        "winding_ac_resistance": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ]
+        },
+        "thermal_conductivity": {
+          "status": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ]
+        }
+      },
+      "requests": [
+        {
+          "id": "request.tdk-n49.saturation_vs_temperature",
+          "material": "material.tdk-n49",
+          "category": "saturation_vs_temperature",
+          "priority": "high",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no saturation flux density data"
+          ],
+          "rationale": "Bsat(T) sets the flux limit and the minimum primary turns; without it saturation cannot be screened at the design temperature.",
+          "test_conditions": {
+            "quantity": "B at H = 1200 A/m (datasheet convention) and B-H knee",
+            "field_strength_A_per_m": [
+              250,
+              500,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "frequency_Hz": 10000.0,
+            "waveform": "sinusoidal H, major loop"
+          },
+          "deliverable": "table B(H, T) at the stated fields and temperatures with uncertainty; one ConditionedValue per (T, H)",
+          "record_kind": "magnetic_material.saturation_flux_density"
+        },
+        {
+          "id": "request.tdk-n49.core_loss_vs_f_b_t",
+          "material": "material.tdk-n49",
+          "category": "core_loss_vs_f_b_t",
+          "priority": "high",
+          "status_before": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.magnet-fit-n49-25c",
+              "set.magnet-fit-n49-50c",
+              "set.magnet-fit-n49-70c",
+              "set.magnet-fit-n49-90c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 0,
+            "covering_frequency": [
+              "set.magnet-fit-n49-25c",
+              "set.magnet-fit-n49-50c",
+              "set.magnet-fit-n49-70c",
+              "set.magnet-fit-n49-90c"
+            ],
+            "covering_temperature": []
+          },
+          "gaps": [
+            "no parameter set fitted at 100 degC (fits span 25.0..90.0 degC); the design extrapolates",
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "rationale": "Core loss is the dominant model uncertainty: the design evaluates iGSE on sinusoidal-fit parameters; the catalogue sets do not cover the design temperature / flux density (extrapolation).",
+          "test_conditions": {
+            "frequencies_Hz": [
+              50000.0,
+              100000.0,
+              200000.0
+            ],
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464,
+              0.183,
+              0.2196
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "waveforms": [
+              "piecewise_linear",
+              "sinusoidal"
+            ],
+            "dc_bias_field_A_per_m": 0.0,
+            "duty": null,
+            "method": "calorimetric or two-winding wattmetric loss measurement on a toroid (IEC 62044-3), >= 3 samples"
+          },
+          "deliverable": "loss density table Pv(f, B_pk, T, waveform) with uncertainty -> core_loss_measurement record; refitted Steinmetz / iGSE sets per temperature",
+          "record_kind": "core_loss_measurement"
+        },
+        {
+          "id": "request.tdk-n49.dc_bias",
+          "material": "material.tdk-n49",
+          "category": "dc_bias",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ],
+          "rationale": "Steinmetz / iGSE ignore premagnetisation; volt-second imbalance or asymmetric modulation produces a DC flux whose effect on loss and permeability is unknown without data.",
+          "test_conditions": {
+            "dc_bias_fields_A_per_m": [
+              0.0,
+              25.0,
+              50.0,
+              100.0,
+              200.0
+            ],
+            "frequency_Hz": 100000.0,
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "piecewise_linear",
+            "quantities": [
+              "loss density",
+              "amplitude permeability"
+            ]
+          },
+          "deliverable": "Pv and mu_a versus H_dc at the stated conditions -> loss reference points with dc_bias_field and dc_bias_points",
+          "record_kind": "magnetic_material.dc_bias_points"
+        },
+        {
+          "id": "request.tdk-n49.complex_permeability",
+          "material": "material.tdk-n49",
+          "category": "complex_permeability",
+          "priority": "medium",
+          "status_before": "partial",
+          "available": {
+            "initial_permeability": 1500.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ],
+          "rationale": "The magnetising inductance uses the 25 degC initial permeability with an assumed residual gap; mu'(f, T) and mu''(f) are needed for the magnetising current and the small-signal model at the switching frequency.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0,
+              300000.0,
+              1000000.0
+            ],
+            "flux_density_T": 0.00025,
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "quantities": [
+              "mu_prime",
+              "mu_double_prime"
+            ]
+          },
+          "deliverable": "complex permeability spectra per temperature -> amplitude_permeability / permeability_vs_temperature points",
+          "record_kind": "magnetic_material.permeability"
+        },
+        {
+          "id": "request.tdk-n49.winding_ac_resistance",
+          "material": "material.tdk-n49",
+          "category": "winding_ac_resistance",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ],
+          "rationale": "Copper loss comes from Dowell's 1-D layer model (litz as strand sub-layers); a measured R_ac(f) of the actual winding bounds the model error.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              100000.0,
+              300000.0,
+              500000.0,
+              700000.0,
+              900000.0,
+              1100000.0
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "excitation": "small-signal sinusoidal, secondary short-circuited (leakage path) and open (magnetising path)",
+            "winding": {
+              "primary": "litz 436 x 0.1 mm",
+              "secondary": "litz 889 x 0.1 mm"
+            },
+            "turns": {
+              "primary": 20,
+              "secondary": 10
+            },
+            "core": "core.tdk-e70-33-32",
+            "arrangement": "P-S-P",
+            "quantities": [
+              "R_ac / R_dc",
+              "leakage inductance",
+              "magnetising inductance"
+            ]
+          },
+          "deliverable": "R_ac(f) table and inductances of the prototype winding -> measurement record referencing the winding / transformer record",
+          "record_kind": "measurement"
+        },
+        {
+          "id": "request.tdk-n49.thermal_conductivity",
+          "material": "material.tdk-n49",
+          "category": "thermal_conductivity",
+          "priority": "medium",
+          "status_before": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ],
+          "rationale": "The thermal estimate uses a class value (1-5 W/m/K range) for the ferrite; the hot-spot estimate scales with it.",
+          "test_conditions": {
+            "temperatures_degC": [
+              25.0,
+              60.0,
+              100.0,
+              120.0
+            ],
+            "method": "laser flash or guarded hot plate on a sintered sample of the grade",
+            "quantities": [
+              "thermal conductivity",
+              "specific heat"
+            ]
+          },
+          "deliverable": "grade-specific k(T) and c_p(T) with uncertainty -> property library entry",
+          "record_kind": "physical_property"
+        },
+        {
+          "id": "request.tdk-n49.bh_curve",
+          "material": "material.tdk-n49",
+          "category": "bh_curve",
+          "priority": "low",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no B-H loop, coercivity or remanence data"
+          ],
+          "rationale": "The design models (Steinmetz / iGSE, reluctance) do not consume B-H loops; a hysteresis model (Jiles-Atherton) fit would.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0
+            ],
+            "field_peaks_A_per_m": [
+              100,
+              300,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "sinusoidal H",
+            "sampling": ">= 1024 samples per period"
+          },
+          "deliverable": "measured major and minor B-H loops -> bh_loop records with HDF5 waveform artifacts",
+          "record_kind": "bh_loop"
+        }
+      ]
+    },
+    {
+      "material": "material.tdk-n87",
+      "grade": "N87",
+      "manufacturer_ref": "manufacturer.tdk",
+      "synthetic": false,
+      "coverage": {
+        "bh_curve": {
+          "status": "partial",
+          "available": {
+            "coercivity_points": 2,
+            "remanence_points": 0
+          },
+          "gaps": [
+            "datasheet coercivity / remanence points only; no measured B-H loop"
+          ]
+        },
+        "core_loss_vs_f_b_t": {
+          "status": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.tdk-datasheet-fit-n87-100c",
+              "set.magnet-fit-n87-25c",
+              "set.magnet-fit-n87-50c",
+              "set.magnet-fit-n87-70c",
+              "set.magnet-fit-n87-90c",
+              "set.muhlethaler-2012-n87-25c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 4,
+            "covering_frequency": [
+              "set.tdk-datasheet-fit-n87-100c",
+              "set.magnet-fit-n87-25c",
+              "set.magnet-fit-n87-50c",
+              "set.magnet-fit-n87-70c",
+              "set.magnet-fit-n87-90c"
+            ],
+            "covering_temperature": [
+              "set.tdk-datasheet-fit-n87-100c"
+            ]
+          },
+          "gaps": [
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "blocking": false
+        },
+        "dc_bias": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ]
+        },
+        "saturation_vs_temperature": {
+          "status": "available",
+          "available": {
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "bsat_at_design_T": 0.39
+          },
+          "gaps": [],
+          "blocking": false
+        },
+        "complex_permeability": {
+          "status": "partial",
+          "available": {
+            "initial_permeability": 2200.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ]
+        },
+        "winding_ac_resistance": {
+          "status": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ]
+        },
+        "thermal_conductivity": {
+          "status": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ]
+        }
+      },
+      "requests": [
+        {
+          "id": "request.tdk-n87.core_loss_vs_f_b_t",
+          "material": "material.tdk-n87",
+          "category": "core_loss_vs_f_b_t",
+          "priority": "medium",
+          "status_before": "partial",
+          "available": {
+            "parameter_sets": [
+              "set.tdk-datasheet-fit-n87-100c",
+              "set.magnet-fit-n87-25c",
+              "set.magnet-fit-n87-50c",
+              "set.magnet-fit-n87-70c",
+              "set.magnet-fit-n87-90c",
+              "set.muhlethaler-2012-n87-25c"
+            ],
+            "fit_temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0
+            ],
+            "excitations": [
+              "sinusoidal"
+            ],
+            "loss_reference_points": 4,
+            "covering_frequency": [
+              "set.tdk-datasheet-fit-n87-100c",
+              "set.magnet-fit-n87-25c",
+              "set.magnet-fit-n87-50c",
+              "set.magnet-fit-n87-70c",
+              "set.magnet-fit-n87-90c"
+            ],
+            "covering_temperature": [
+              "set.tdk-datasheet-fit-n87-100c"
+            ]
+          },
+          "gaps": [
+            "all loss data are sinusoidal fits / points; no measurement under the actual (non-sinusoidal) waveform"
+          ],
+          "rationale": "Core loss is the dominant model uncertainty: the design evaluates iGSE on sinusoidal-fit parameters; measurements under the actual waveform at the design temperature validate the iGSE hypothesis for this excitation.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              50000.0,
+              100000.0,
+              200000.0
+            ],
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464,
+              0.183,
+              0.2196
+            ],
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "waveforms": [
+              "piecewise_linear",
+              "sinusoidal"
+            ],
+            "dc_bias_field_A_per_m": 0.0,
+            "duty": null,
+            "method": "calorimetric or two-winding wattmetric loss measurement on a toroid (IEC 62044-3), >= 3 samples"
+          },
+          "deliverable": "loss density table Pv(f, B_pk, T, waveform) with uncertainty -> core_loss_measurement record; refitted Steinmetz / iGSE sets per temperature",
+          "record_kind": "core_loss_measurement"
+        },
+        {
+          "id": "request.tdk-n87.dc_bias",
+          "material": "material.tdk-n87",
+          "category": "dc_bias",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no DC-bias (premagnetisation) data"
+          ],
+          "rationale": "Steinmetz / iGSE ignore premagnetisation; volt-second imbalance or asymmetric modulation produces a DC flux whose effect on loss and permeability is unknown without data.",
+          "test_conditions": {
+            "dc_bias_fields_A_per_m": [
+              0.0,
+              25.0,
+              50.0,
+              100.0,
+              200.0
+            ],
+            "frequency_Hz": 100000.0,
+            "flux_density_peaks_T": [
+              0.0732,
+              0.1098,
+              0.1464
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "piecewise_linear",
+            "quantities": [
+              "loss density",
+              "amplitude permeability"
+            ]
+          },
+          "deliverable": "Pv and mu_a versus H_dc at the stated conditions -> loss reference points with dc_bias_field and dc_bias_points",
+          "record_kind": "magnetic_material.dc_bias_points"
+        },
+        {
+          "id": "request.tdk-n87.complex_permeability",
+          "material": "material.tdk-n87",
+          "category": "complex_permeability",
+          "priority": "medium",
+          "status_before": "partial",
+          "available": {
+            "initial_permeability": 2200.0
+          },
+          "gaps": [
+            "initial permeability only (single small-signal value); no mu'(f), mu''(f), no temperature dependence"
+          ],
+          "rationale": "The magnetising inductance uses the 25 degC initial permeability with an assumed residual gap; mu'(f, T) and mu''(f) are needed for the magnetising current and the small-signal model at the switching frequency.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0,
+              300000.0,
+              1000000.0
+            ],
+            "flux_density_T": 0.00025,
+            "temperatures_degC": [
+              25.0,
+              50.0,
+              70.0,
+              90.0,
+              100.0,
+              120.0
+            ],
+            "quantities": [
+              "mu_prime",
+              "mu_double_prime"
+            ]
+          },
+          "deliverable": "complex permeability spectra per temperature -> amplitude_permeability / permeability_vs_temperature points",
+          "record_kind": "magnetic_material.permeability"
+        },
+        {
+          "id": "request.tdk-n87.winding_ac_resistance",
+          "material": "material.tdk-n87",
+          "category": "winding_ac_resistance",
+          "priority": "medium",
+          "status_before": "missing",
+          "available": {},
+          "gaps": [
+            "no measured winding AC resistance; Dowell / strand models only"
+          ],
+          "rationale": "Copper loss comes from Dowell's 1-D layer model (litz as strand sub-layers); a measured R_ac(f) of the actual winding bounds the model error.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              100000.0,
+              300000.0,
+              500000.0,
+              700000.0,
+              900000.0,
+              1100000.0
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "excitation": "small-signal sinusoidal, secondary short-circuited (leakage path) and open (magnetising path)",
+            "winding": {
+              "primary": "litz 436 x 0.1 mm",
+              "secondary": "litz 889 x 0.1 mm"
+            },
+            "turns": {
+              "primary": 20,
+              "secondary": 10
+            },
+            "core": "core.tdk-e70-33-32",
+            "arrangement": "P-S-P",
+            "quantities": [
+              "R_ac / R_dc",
+              "leakage inductance",
+              "magnetising inductance"
+            ]
+          },
+          "deliverable": "R_ac(f) table and inductances of the prototype winding -> measurement record referencing the winding / transformer record",
+          "record_kind": "measurement"
+        },
+        {
+          "id": "request.tdk-n87.thermal_conductivity",
+          "material": "material.tdk-n87",
+          "category": "thermal_conductivity",
+          "priority": "medium",
+          "status_before": "generic_class_value",
+          "available": {
+            "class": "ferrite_mnzn",
+            "value_W_per_mK": 4.0,
+            "bounds_W_per_mK": [
+              1.0,
+              5.0
+            ],
+            "basis": "datasheet_range_midpoint"
+          },
+          "gaps": [
+            "generic class value with a wide range; no grade-specific measurement"
+          ],
+          "rationale": "The thermal estimate uses a class value (1-5 W/m/K range) for the ferrite; the hot-spot estimate scales with it.",
+          "test_conditions": {
+            "temperatures_degC": [
+              25.0,
+              60.0,
+              100.0,
+              120.0
+            ],
+            "method": "laser flash or guarded hot plate on a sintered sample of the grade",
+            "quantities": [
+              "thermal conductivity",
+              "specific heat"
+            ]
+          },
+          "deliverable": "grade-specific k(T) and c_p(T) with uncertainty -> property library entry",
+          "record_kind": "physical_property"
+        },
+        {
+          "id": "request.tdk-n87.bh_curve",
+          "material": "material.tdk-n87",
+          "category": "bh_curve",
+          "priority": "low",
+          "status_before": "partial",
+          "available": {
+            "coercivity_points": 2,
+            "remanence_points": 0
+          },
+          "gaps": [
+            "datasheet coercivity / remanence points only; no measured B-H loop"
+          ],
+          "rationale": "The design models (Steinmetz / iGSE, reluctance) do not consume B-H loops; a hysteresis model (Jiles-Atherton) fit would.",
+          "test_conditions": {
+            "frequencies_Hz": [
+              10000.0,
+              100000.0
+            ],
+            "field_peaks_A_per_m": [
+              100,
+              300,
+              1200
+            ],
+            "temperatures_degC": [
+              25.0,
+              100.0
+            ],
+            "waveform": "sinusoidal H",
+            "sampling": ">= 1024 samples per period"
+          },
+          "deliverable": "measured major and minor B-H loops -> bh_loop records with HDF5 waveform artifacts",
+          "record_kind": "bh_loop"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "materials": 10,
+    "requests_by_priority": {
+      "high": 16,
+      "medium": 41,
+      "low": 10
+    }
+  }
+}

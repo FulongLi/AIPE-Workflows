@@ -1,0 +1,73 @@
+# Level 2 (non-ideal behavioural) DAB circuit specification for aipe-sim.
+# Every non-ideal parameter below is either a manufacturer-specified datasheet value (source noted) or
+# an explicitly labelled AIPE assumption. Linear Coss and a one-point body-diode fit are documented
+# approximations of the datasheet data; Level 3 replaces them with qualified manufacturer models.
+name: dab-10kw-level2-nominal-behavioural
+level: 2
+v1: 800.0
+v2: 400.0
+f_sw: 100000.0
+phi_deg: 22.5
+n_ratio: 2.0
+l_ext: 33.0e-6          # external inductor: 35 uH total minus the assumed 2 uH transformer leakage
+l_lk_p: 2.0e-6          # ASSUMPTION until the magnetics design fixes it (TI's integrated transformer has 34 uH leakage)
+l_lk_s: 0.0
+l_m: 1.0e-3             # ASSUMPTION (TI: 720 uH)
+r_series_p: 0.02        # ASSUMPTION: inductor + primary winding resistance
+r_series_s: 0.005       # ASSUMPTION: secondary winding resistance
+dead_time: 200.0e-9     # source: TIDUES0 Eq. 22
+switch:
+  # Primary 1200 V class: Wolfspeed C3M0040120K datasheet Rev. 03 (Sep 2024): RDS(on) 40 mOhm typ at 25 C, 68 mOhm typ at 175 C;
+  # linear interpolation to Tj = 125 C gives 58.7 mOhm (AIPE interpolation of datasheet typ values, not a datasheet row).
+  # Secondary 650 V class: C3M0025065K: 25 mOhm (25 C), 33 mOhm (175 C) -> 30.3 mOhm at 125 C.
+  # One SwitchModel is shared by all eight switches in this generator, so the primary value is used; the
+  # secondary bridge therefore carries a pessimistic on-resistance (flagged in the run notes).
+  r_on: 0.0587
+  r_off: 1.0e+7
+  # Energy-equivalent linear Coss from datasheet Eoss: C3M0040120K Eoss 60 uJ (0-800 V) -> 2E/V^2 = 187 pF.
+  c_oss: 187.0e-12
+  c_oss_esr: 1.0        # ASSUMPTION: series damping standing in for the finite channel di/dt during turn-on (see spec.py)
+  # Body diode: C3M0040120K VSD 5.5 V at 20 A, VGS = -4 V (25 C); fitted with N = 4, Rs = 0.117 Ohm (single-point fit).
+  d_is: 1.0e-12
+  d_n: 4.0
+  d_rs: 0.117
+  d_cjo: 0.0
+  gate_voltage: 15.0
+  gate_rise_fall: 20.0e-9   # ASSUMPTION: SiC gate transition with ~2 Ohm gate resistance; also needed for robust Newton convergence of the behavioural model
+port1:
+  type: voltage_source
+port2:
+  type: rc_load
+  capacitance: 60.0e-6   # source: TIDUES0 section 2.3.4.5 output DC-link 60 uF film
+  esr: 0.005             # ASSUMPTION for film capacitors
+  esl: 20.0e-9           # ASSUMPTION
+  load_resistance: 16.0  # 10 kW at 400 V
+  initial_voltage: 399.0  # expected open-loop equilibrium with the modelled losses (saves start-up cycles)
+  local_decoupling_capacitance: 6.6e-6   # source: TIDUES0 BOM 14 x 0.47 uF 630 V 2220 ceramics at the secondary bridge
+  local_decoupling_esr: 0.002
+  local_decoupling_esl: 0.5e-9    # ASSUMPTION: paralleled ceramic ESL
+dc_link1:
+  capacitance: 30.0e-6   # source: TIDUES0 input DC-link 30 uF film
+  esr: 0.005
+  esl: 20.0e-9
+  source_resistance: 0.05   # ASSUMPTION: cable/source impedance
+  source_inductance: 1.0e-6
+  local_decoupling_capacitance: 6.6e-6   # source: TIDUES0 BOM 14 x 0.47 uF 1 kV 2220 ceramics at the primary bridge
+  local_decoupling_esr: 0.002
+  local_decoupling_esl: 0.5e-9
+sim:
+  cycles: 160
+  output_from_cycle: 0
+  max_step_fraction: 400
+  method: gear
+  maxord: 2
+  reltol: 1.0e-4
+  abstol: 1.0e-8   # 10 nA current tolerance: adequate for a 10 kW converter and robust for the behavioural model
+  vntol: 1.0e-5
+  chgtol: 1.0e-14
+  use_initial_conditions: true
+  initial_series_current: 14.285714285714288
+  timeout_s: 1800
+notes:
+  - "Level 2 behavioural model: dead time, resistive on-state at Tj = 125 C, linear energy-equivalent Coss, one-point body-diode fit, DC-link ESR/ESL, RC output port."
+  - "Secondary switches use the primary device on-resistance because the generator shares one switch model; this overstates secondary conduction loss."

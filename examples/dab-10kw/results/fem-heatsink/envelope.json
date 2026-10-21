@@ -1,0 +1,519 @@
+{
+  "approval_required": [],
+  "artifacts": [
+    {
+      "description": "heat sink FEM summary (levels, results, checks, limitations)",
+      "media_type": "application/json",
+      "role": "fem_summary",
+      "sha256": "507872e69a34ce5ffa10e5ff0e45382c58317c5bd0d9429c4ec1766306a1284d",
+      "uri": "tasks/fem-heatsink/fem/summary.json"
+    },
+    {
+      "description": "h31.1347_level0/case.sif",
+      "media_type": "text/plain",
+      "role": "fem_case_file",
+      "sha256": "7b8920a206cf8423698fe77efd7e88b01730e6b80dd0d51a740a055a58e7bebf",
+      "uri": "tasks/fem-heatsink/fem/h31.1347_level0/case.sif"
+    },
+    {
+      "description": "h31.1347_level1/case.sif",
+      "media_type": "text/plain",
+      "role": "fem_case_file",
+      "sha256": "7b8920a206cf8423698fe77efd7e88b01730e6b80dd0d51a740a055a58e7bebf",
+      "uri": "tasks/fem-heatsink/fem/h31.1347_level1/case.sif"
+    },
+    {
+      "description": "h31.1347_level0/elmersolver.log",
+      "media_type": "text/plain",
+      "role": "fem_case_file",
+      "sha256": "6dcc634d70a6773d309261f3475c8d4f3fb7fdcc4ce51d154af4bff4767e19f4",
+      "uri": "tasks/fem-heatsink/fem/h31.1347_level0/elmersolver.log"
+    },
+    {
+      "description": "h31.1347_level1/elmersolver.log",
+      "media_type": "text/plain",
+      "role": "fem_case_file",
+      "sha256": "18e5c92e310cbd7a88e5d95f5d338e2980ca28aa8efbdbf073cc8e92e2eea38b",
+      "uri": "tasks/fem-heatsink/fem/h31.1347_level1/elmersolver.log"
+    },
+    {
+      "description": "h31.1347_level0/results.json",
+      "media_type": "application/json",
+      "role": "fem_case_file",
+      "sha256": "d6552f62f6e83f5347f2fe2ff634d5d5e20f91884e559b358ed41de89d61708c",
+      "uri": "tasks/fem-heatsink/fem/h31.1347_level0/results.json"
+    },
+    {
+      "description": "h31.1347_level1/results.json",
+      "media_type": "application/json",
+      "role": "fem_case_file",
+      "sha256": "4d1428e42ebf86f8c1af30416c91ac137d9197df616a6723356ed8294c11cab9",
+      "uri": "tasks/fem-heatsink/fem/h31.1347_level1/results.json"
+    },
+    {
+      "description": "h31.1347_level0/case.json",
+      "media_type": "application/json",
+      "role": "fem_case_file",
+      "sha256": "2b34dee1d1bfc6fa7074d9397e7daba215cd52f624ae9368186394ce56034dbb",
+      "uri": "tasks/fem-heatsink/fem/h31.1347_level0/case.json"
+    },
+    {
+      "description": "h31.1347_level1/case.json",
+      "media_type": "application/json",
+      "role": "fem_case_file",
+      "sha256": "f3830a0147f8cb641c8f9da856f7faa10e2ecd0e793bbc7b63e802e04583712c",
+      "uri": "tasks/fem-heatsink/fem/h31.1347_level1/case.json"
+    },
+    {
+      "description": "FEM plot base_bottom_temperature",
+      "media_type": "image/png",
+      "role": "figure",
+      "sha256": "2be8ed8a8cf645dc42b2d75542c3f34b2e88c20aeb095beae9f51192cb5866d5",
+      "uri": "tasks/fem-heatsink/fem/h31.1347_level0/base_bottom_temperature.png"
+    },
+    {
+      "description": "FEM plot base_bottom_temperature",
+      "media_type": "image/png",
+      "role": "figure",
+      "sha256": "f1bcab4734fcdb44fce96f4f1b06f924a70d04cd7291b6d2918bd8552ddde41c",
+      "uri": "tasks/fem-heatsink/fem/h31.1347_level1/base_bottom_temperature.png"
+    }
+  ],
+  "capability_id": "aipe.field-simulation",
+  "diagnostics": [],
+  "environment": {
+    "elmer": "9.0",
+    "gmsh": "4.15.2"
+  },
+  "evidence_kind": "simulation",
+  "finished_at": "2026-10-21T06:36:52Z",
+  "gate": "field_simulation",
+  "input_hash": "14abe728c3c31e036ec485d38eba9d1c79d0e5f5334a49404ca92e3167d05072",
+  "inputs": {
+    "geometry_source": "Stage A knee candidate A-001 (Al-6063-T5, forced cooling)",
+    "params": {
+      "T_ambient_K": 313.15,
+      "base_length_m": 0.08099197532160482,
+      "base_thickness_m": 0.004112578190442571,
+      "base_width_m": 0.06462391382662835,
+      "bottom_convective": false,
+      "density_kg_per_m3": 2700.0,
+      "device_power_W": 17.446227058701883,
+      "fin_count": 11,
+      "fin_height_m": 0.04517684721720107,
+      "fin_thickness_m": 0.002025704984332154,
+      "footprint_length_m": 0.016,
+      "footprint_offset_m": 0.02,
+      "footprint_width_m": 0.021,
+      "h_W_per_m2_K": 31.134716692341737,
+      "h_levels_m": [
+        0.003,
+        0.002,
+        0.0014
+      ],
+      "heat_capacity_J_per_kg_K": 900.0,
+      "k_W_per_m_K": 209.0
+    }
+  },
+  "model": {
+    "id": "fieldsim-heatsink-3d-conduction",
+    "validity_range": "3-D steady conduction in a plate-fin sink with a uniform convective film coefficient supplied as input (from the Stage A correlation); no CFD, no TIM, no package spreading; two footprints only",
+    "version": "0.1.0"
+  },
+  "outputs": {
+    "Q_convective_W": 34.8924541179111,
+    "R_th_analytical_candidate_K_per_W": 0.5181303883021721,
+    "R_th_fem_vs_analytical_relative": 0.08550277483924326,
+    "R_th_footprint_mean_K_per_W": 0.5435926854313667,
+    "R_th_hotspot_K_per_W": 0.5624319742305424,
+    "T_ambient_K": 313.15,
+    "T_max_K": 332.774631855,
+    "T_rise_hotspot_K": 19.62463185500002,
+    "candidate_id": "A-001",
+    "checks": [
+      {
+        "description": "|h*(int T dA - T_amb A) - 40 W| / 40 W on the finest mesh (Robin integral from SaveScalars)",
+        "name": "energy_conservation",
+        "passed": true,
+        "tolerance": 1e-06,
+        "value": 1.4539952307539732e-11
+      },
+      {
+        "description": "independent numpy boundary integral from the VTU vs SaveScalars",
+        "name": "vtu_vs_savescalars_convective_heat",
+        "passed": true,
+        "tolerance": 1e-06,
+        "value": 6.479759140897007e-12
+      },
+      {
+        "description": "imprinted footprint area vs 16 mm x 21 mm",
+        "name": "footprint_area",
+        "passed": true,
+        "tolerance": 1e-09,
+        "value": 1.6133960900081909e-16
+      },
+      {
+        "description": "relative change of the hotspot temperature rise between the two finest meshes",
+        "name": "T_max_mesh_sensitivity",
+        "passed": true,
+        "tolerance": 0.02,
+        "value": 0.0033320136287453314
+      }
+    ],
+    "convective_area_m2": 0.07267416410788,
+    "convergence": [
+      {
+        "elements": 37805,
+        "h_m": 0.003,
+        "level": 0,
+        "nodes": 12454,
+        "value": 332.7092423142
+      },
+      {
+        "elements": 84666,
+        "h_m": 0.002,
+        "level": 1,
+        "nodes": 26820,
+        "value": 332.774631855
+      }
+    ],
+    "device_power_W": 17.446227058701883,
+    "geometry": {
+      "base_length_m": 0.08099197532160482,
+      "base_thickness_m": 0.004112578190442571,
+      "base_width_m": 0.06462391382662835,
+      "fin_count": 11,
+      "fin_height_m": 0.04517684721720107,
+      "fin_thickness_m": 0.002025704984332154,
+      "k_W_per_m_K": 209.0
+    },
+    "geometry_note": "Stage A knee candidate A-001 (Al-6063-T5, forced cooling); two TO-247 footprints at the model's fixed positions; film coefficient is the Stage A correlation value, not a CFD result",
+    "geometry_source": "Stage A knee candidate A-001 (Al-6063-T5, forced cooling)",
+    "h_W_per_m2_K": 31.134716692341737,
+    "limitations": [
+      "The film coefficient h is a supplied uniform value (25 natural / 80 forced as typical inputs); no CFD or radiation is modelled.",
+      "Heat enters as a uniform flux over the TO-247 footprint (no package, TIM or spreading inside the device).",
+      "Uncovered base bottom treated as adiabatic unless bottom_convective is true.",
+      "Linear, temperature-independent aluminium conductivity; no contact resistances."
+    ],
+    "mesh_levels": [
+      {
+        "T_max_K": 332.7092423142,
+        "elements": 37805,
+        "h": 0.003,
+        "level": 0,
+        "nodes": 12454
+      },
+      {
+        "T_max_K": 332.774631855,
+        "elements": 84666,
+        "h": 0.002,
+        "level": 1,
+        "nodes": 26820
+      }
+    ],
+    "summary_path": "runs\\wf-dab-10kw-first\\tasks\\fem-heatsink\\fem\\summary.json"
+  },
+  "source_state_id": "aipe.workflow.dab-10kw-benchmark",
+  "source_state_sha256": "4c315bce686334019a2fdd0494b141860d2694bbc2c8d7a6c0b9d505122dafa7",
+  "started_at": "2026-10-21T06:36:43Z",
+  "state_proposal": {
+    "append": [
+      {
+        "path": "simulation.runs",
+        "value": {
+          "completed_at": "2026-10-21T06:36:52Z",
+          "evidence_refs": [
+            "evidence.fem-heatsink-a25b59"
+          ],
+          "id": "run.fem-heatsink-a25b59",
+          "model": {
+            "description": "heat sink FEM summary (levels, results, checks, limitations)",
+            "media_type": "application/json",
+            "sha256": "507872e69a34ce5ffa10e5ff0e45382c58317c5bd0d9429c4ec1766306a1284d",
+            "uri": "tasks/fem-heatsink/fem/summary.json"
+          },
+          "outputs": [
+            {
+              "description": "heat sink FEM summary (levels, results, checks, limitations)",
+              "media_type": "application/json",
+              "sha256": "507872e69a34ce5ffa10e5ff0e45382c58317c5bd0d9429c4ec1766306a1284d",
+              "uri": "tasks/fem-heatsink/fem/summary.json"
+            },
+            {
+              "description": "h31.1347_level0/case.sif",
+              "media_type": "text/plain",
+              "sha256": "7b8920a206cf8423698fe77efd7e88b01730e6b80dd0d51a740a055a58e7bebf",
+              "uri": "tasks/fem-heatsink/fem/h31.1347_level0/case.sif"
+            },
+            {
+              "description": "h31.1347_level1/case.sif",
+              "media_type": "text/plain",
+              "sha256": "7b8920a206cf8423698fe77efd7e88b01730e6b80dd0d51a740a055a58e7bebf",
+              "uri": "tasks/fem-heatsink/fem/h31.1347_level1/case.sif"
+            },
+            {
+              "description": "h31.1347_level0/elmersolver.log",
+              "media_type": "text/plain",
+              "sha256": "6dcc634d70a6773d309261f3475c8d4f3fb7fdcc4ce51d154af4bff4767e19f4",
+              "uri": "tasks/fem-heatsink/fem/h31.1347_level0/elmersolver.log"
+            },
+            {
+              "description": "h31.1347_level1/elmersolver.log",
+              "media_type": "text/plain",
+              "sha256": "18e5c92e310cbd7a88e5d95f5d338e2980ca28aa8efbdbf073cc8e92e2eea38b",
+              "uri": "tasks/fem-heatsink/fem/h31.1347_level1/elmersolver.log"
+            },
+            {
+              "description": "h31.1347_level0/results.json",
+              "media_type": "application/json",
+              "sha256": "d6552f62f6e83f5347f2fe2ff634d5d5e20f91884e559b358ed41de89d61708c",
+              "uri": "tasks/fem-heatsink/fem/h31.1347_level0/results.json"
+            },
+            {
+              "description": "h31.1347_level1/results.json",
+              "media_type": "application/json",
+              "sha256": "4d1428e42ebf86f8c1af30416c91ac137d9197df616a6723356ed8294c11cab9",
+              "uri": "tasks/fem-heatsink/fem/h31.1347_level1/results.json"
+            },
+            {
+              "description": "h31.1347_level0/case.json",
+              "media_type": "application/json",
+              "sha256": "2b34dee1d1bfc6fa7074d9397e7daba215cd52f624ae9368186394ce56034dbb",
+              "uri": "tasks/fem-heatsink/fem/h31.1347_level0/case.json"
+            },
+            {
+              "description": "h31.1347_level1/case.json",
+              "media_type": "application/json",
+              "sha256": "f3830a0147f8cb641c8f9da856f7faa10e2ecd0e793bbc7b63e802e04583712c",
+              "uri": "tasks/fem-heatsink/fem/h31.1347_level1/case.json"
+            }
+          ],
+          "started_at": "2026-10-21T06:36:43Z",
+          "status": "completed",
+          "tool": {
+            "id": "tool.elmer",
+            "name": "Elmer FEM (ElmerGrid/ElmerSolver) with Gmsh meshing",
+            "version": "9.0"
+          }
+        }
+      },
+      {
+        "path": "validation.checks",
+        "value": {
+          "description": "3-D heat-sink conduction executed at two mesh levels; convective heat equals the injected device losses; hotspot resistance compared with the Stage A correlation.",
+          "evidence_refs": [
+            "evidence.fem-heatsink-a25b59"
+          ],
+          "id": "check.fem-heatsink-a25b59",
+          "kind": "simulation",
+          "status": "pass"
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "artifacts": [
+          {
+            "description": "heat sink FEM summary (levels, results, checks, limitations)",
+            "media_type": "application/json",
+            "sha256": "507872e69a34ce5ffa10e5ff0e45382c58317c5bd0d9429c4ec1766306a1284d",
+            "uri": "tasks/fem-heatsink/fem/summary.json"
+          },
+          {
+            "description": "h31.1347_level0/case.sif",
+            "media_type": "text/plain",
+            "sha256": "7b8920a206cf8423698fe77efd7e88b01730e6b80dd0d51a740a055a58e7bebf",
+            "uri": "tasks/fem-heatsink/fem/h31.1347_level0/case.sif"
+          },
+          {
+            "description": "h31.1347_level1/case.sif",
+            "media_type": "text/plain",
+            "sha256": "7b8920a206cf8423698fe77efd7e88b01730e6b80dd0d51a740a055a58e7bebf",
+            "uri": "tasks/fem-heatsink/fem/h31.1347_level1/case.sif"
+          },
+          {
+            "description": "h31.1347_level0/elmersolver.log",
+            "media_type": "text/plain",
+            "sha256": "6dcc634d70a6773d309261f3475c8d4f3fb7fdcc4ce51d154af4bff4767e19f4",
+            "uri": "tasks/fem-heatsink/fem/h31.1347_level0/elmersolver.log"
+          },
+          {
+            "description": "h31.1347_level1/elmersolver.log",
+            "media_type": "text/plain",
+            "sha256": "18e5c92e310cbd7a88e5d95f5d338e2980ca28aa8efbdbf073cc8e92e2eea38b",
+            "uri": "tasks/fem-heatsink/fem/h31.1347_level1/elmersolver.log"
+          },
+          {
+            "description": "h31.1347_level0/results.json",
+            "media_type": "application/json",
+            "sha256": "d6552f62f6e83f5347f2fe2ff634d5d5e20f91884e559b358ed41de89d61708c",
+            "uri": "tasks/fem-heatsink/fem/h31.1347_level0/results.json"
+          },
+          {
+            "description": "h31.1347_level1/results.json",
+            "media_type": "application/json",
+            "sha256": "4d1428e42ebf86f8c1af30416c91ac137d9197df616a6723356ed8294c11cab9",
+            "uri": "tasks/fem-heatsink/fem/h31.1347_level1/results.json"
+          },
+          {
+            "description": "h31.1347_level0/case.json",
+            "media_type": "application/json",
+            "sha256": "2b34dee1d1bfc6fa7074d9397e7daba215cd52f624ae9368186394ce56034dbb",
+            "uri": "tasks/fem-heatsink/fem/h31.1347_level0/case.json"
+          },
+          {
+            "description": "h31.1347_level1/case.json",
+            "media_type": "application/json",
+            "sha256": "f3830a0147f8cb641c8f9da856f7faa10e2ecd0e793bbc7b63e802e04583712c",
+            "uri": "tasks/fem-heatsink/fem/h31.1347_level1/case.json"
+          },
+          {
+            "description": "FEM plot base_bottom_temperature",
+            "media_type": "image/png",
+            "sha256": "2be8ed8a8cf645dc42b2d75542c3f34b2e88c20aeb095beae9f51192cb5866d5",
+            "uri": "tasks/fem-heatsink/fem/h31.1347_level0/base_bottom_temperature.png"
+          },
+          {
+            "description": "FEM plot base_bottom_temperature",
+            "media_type": "image/png",
+            "sha256": "f1bcab4734fcdb44fce96f4f1b06f924a70d04cd7291b6d2918bd8552ddde41c",
+            "uri": "tasks/fem-heatsink/fem/h31.1347_level1/base_bottom_temperature.png"
+          }
+        ],
+        "description": "Executed Elmer 3-D heat-sink conduction of Stage A knee candidate A-001 (Al-6063-T5, forced cooling) with two 17.45 W TO-247 sources, h = 31.134716692341737 W/m^2/K, ambient 313.1 K: T_max = 332.774631855 K, R_th(hotspot) = 0.5624319742305424 K/W versus analytical candidate 0.5181303883021721 K/W; film coefficient is an input from the correlation, not a CFD result.",
+        "id": "evidence.fem-heatsink-a25b59",
+        "kind": "simulation",
+        "provenance": {
+          "activity": "Mesh the finned sink with Gmsh, solve steady conduction with convective boundaries in Elmer at two refinement levels, check the energy balance, compare with the Stage A correlation.",
+          "agent": {
+            "id": "aipe.workflows",
+            "version": "0.1.0"
+          },
+          "created_at": "2026-10-21T06:36:43Z",
+          "inputs": [
+            "evidence.specification"
+          ],
+          "tool": {
+            "id": "tool.elmer",
+            "name": "Elmer FEM (ElmerGrid/ElmerSolver) with Gmsh meshing",
+            "version": "9.0"
+          }
+        },
+        "review_status": "unreviewed",
+        "source": {
+          "locator": "src/aipe_fieldsim/models/heatsink.py",
+          "reference": "https://github.com/FulongLi/AIPE-Field-Simulation",
+          "type": "repository"
+        }
+      }
+    ],
+    "extensions": {
+      "aipe.workflows.dab": {
+        "fem_heatsink": {
+          "Q_convective_W": 34.8924541179111,
+          "R_th_analytical_candidate_K_per_W": 0.5181303883021721,
+          "R_th_fem_vs_analytical_relative": 0.08550277483924326,
+          "R_th_footprint_mean_K_per_W": 0.5435926854313667,
+          "R_th_hotspot_K_per_W": 0.5624319742305424,
+          "T_ambient_K": 313.15,
+          "T_max_K": 332.774631855,
+          "T_rise_hotspot_K": 19.62463185500002,
+          "candidate_id": "A-001",
+          "convective_area_m2": 0.07267416410788,
+          "convergence": [
+            {
+              "elements": 37805,
+              "h_m": 0.003,
+              "level": 0,
+              "nodes": 12454,
+              "value": 332.7092423142
+            },
+            {
+              "elements": 84666,
+              "h_m": 0.002,
+              "level": 1,
+              "nodes": 26820,
+              "value": 332.774631855
+            }
+          ],
+          "device_power_W": 17.446227058701883,
+          "geometry": {
+            "base_length_m": 0.08099197532160482,
+            "base_thickness_m": 0.004112578190442571,
+            "base_width_m": 0.06462391382662835,
+            "fin_count": 11,
+            "fin_height_m": 0.04517684721720107,
+            "fin_thickness_m": 0.002025704984332154,
+            "k_W_per_m_K": 209.0
+          },
+          "geometry_note": "Stage A knee candidate A-001 (Al-6063-T5, forced cooling); two TO-247 footprints at the model's fixed positions; film coefficient is the Stage A correlation value, not a CFD result",
+          "geometry_source": "Stage A knee candidate A-001 (Al-6063-T5, forced cooling)",
+          "h_W_per_m2_K": 31.134716692341737,
+          "summary_path": "runs\\wf-dab-10kw-first\\tasks\\fem-heatsink\\fem\\summary.json"
+        }
+      }
+    },
+    "set": [
+      {
+        "path": "thermal",
+        "value": {
+          "ambient_temperature": {
+            "unit": "K",
+            "value": 313.15
+          },
+          "description": "Analytical shared-sink estimate: hottest junction of the secondary bridge on 'liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm' with 4 devices per sink; total_loss = all semiconductor losses at the evaluation Tj; thermal_resistance = hottest device junction-to-fluid path. Not a CFD/FEM/measured value.",
+          "evidence_refs": [
+            "evidence.fem-heatsink-a25b59",
+            "evidence.reference-designs",
+            "evidence.specification",
+            "evidence.thermal-cooling-a25b59"
+          ],
+          "junction_temperature": {
+            "unit": "K",
+            "value": 336.19029261266627
+          },
+          "thermal_resistance": {
+            "unit": "K/W",
+            "value": 0.11911780841361214
+          },
+          "total_loss": {
+            "unit": "W",
+            "value": 105.95231973887462
+          }
+        }
+      }
+    ],
+    "updated_at": "2026-10-21T06:36:52Z"
+  },
+  "status": "completed",
+  "task_id": "fem-heatsink",
+  "task_version": "0.1.0",
+  "tool": {
+    "id": "tool.elmer",
+    "name": "Elmer FEM (ElmerGrid/ElmerSolver) with Gmsh meshing",
+    "version": "9.0"
+  },
+  "verification": {
+    "R_th_fem_vs_analytical_relative": 0.08550277483924326,
+    "checks_passed": true,
+    "convergence": [
+      {
+        "elements": 37805,
+        "h_m": 0.003,
+        "level": 0,
+        "nodes": 12454,
+        "value": 332.7092423142
+      },
+      {
+        "elements": 84666,
+        "h_m": 0.002,
+        "level": 1,
+        "nodes": 26820,
+        "value": 332.774631855
+      }
+    ],
+    "energy_balance_ok": true,
+    "status": "executed"
+  }
+}

@@ -1,0 +1,270 @@
+{
+  "schema": "aipe.field-simulation/case-record/0.1",
+  "name": "magnetising",
+  "description": "magnetising solve",
+  "status": "completed",
+  "created_at": "2026-10-21T14:36:19+08:00",
+  "finished_at": "2026-10-21T14:36:20+08:00",
+  "case_dir": "runs\\wf-dab-10kw-first\\tasks\\fem-transformer-window\\fem\\magnetising",
+  "tools": {
+    "elmersolver": {
+      "id": "elmersolver",
+      "name": "Elmer FEM ElmerSolver",
+      "found": true,
+      "path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64\\bin\\ElmerSolver.exe",
+      "version": "9.0",
+      "revision": "Release",
+      "compiled": "2026-01-20",
+      "source": "workspace-tools",
+      "licence": "GPL-2.0-or-later (ElmerSolver), LGPL-2.1 (elmersolver library parts)",
+      "home": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64",
+      "notes": []
+    },
+    "elmergrid": {
+      "id": "elmergrid",
+      "name": "Elmer FEM ElmerGrid",
+      "found": true,
+      "path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64\\bin\\ElmerGrid.exe",
+      "version": "9.0",
+      "revision": "Release",
+      "compiled": "2026-01-20",
+      "source": "workspace-tools",
+      "licence": "GPL-2.0-or-later",
+      "home": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64",
+      "notes": []
+    },
+    "gmsh": {
+      "id": "gmsh",
+      "name": "Gmsh (python SDK)",
+      "found": true,
+      "path": "C:\\Users\\Zhongnan Qian\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\gmsh.py",
+      "version": "4.15.2",
+      "revision": null,
+      "compiled": null,
+      "source": "python-module",
+      "licence": "GPL-2.0-or-later",
+      "home": null,
+      "notes": []
+    },
+    "python": {
+      "executable": "C:\\Users\\Zhongnan Qian\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+      "version": "3.10.11",
+      "packages": {
+        "numpy": "2.2.6",
+        "scipy": "1.15.3",
+        "matplotlib": "3.10.9",
+        "gmsh": "4.15.2"
+      },
+      "platform": {
+        "system": "Windows",
+        "release": "10",
+        "machine": "AMD64"
+      }
+    }
+  },
+  "environment": {
+    "ELMER_HOME": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64"
+  },
+  "commands": [
+    {
+      "argv": [
+        "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64\\bin\\ElmerGrid.exe",
+        "14",
+        "2",
+        "mesh.msh",
+        "-out",
+        "mesh"
+      ],
+      "cwd": "runs\\wf-dab-10kw-first\\tasks\\fem-transformer-window\\fem\\magnetising",
+      "returncode": 0,
+      "duration_s": 0.069,
+      "log": "elmergrid.log",
+      "started_at": "2026-10-21T14:36:19+08:00"
+    },
+    {
+      "argv": [
+        "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64\\bin\\ElmerSolver.exe",
+        "case.sif"
+      ],
+      "cwd": "runs\\wf-dab-10kw-first\\tasks\\fem-transformer-window\\fem\\magnetising",
+      "returncode": 0,
+      "duration_s": 0.474,
+      "log": "elmersolver.log",
+      "started_at": "2026-10-21T14:36:20+08:00"
+    }
+  ],
+  "mesh": {
+    "nodes": 13623,
+    "bulk_elements": 26920,
+    "boundary_elements": 324,
+    "element_types": {
+      "202": 324,
+      "303": 26920
+    },
+    "dimension": 2,
+    "bodies": {
+      "1": 10724,
+      "2": 9336,
+      "3": 982,
+      "4": 982,
+      "5": 1466,
+      "6": 1466,
+      "7": 982,
+      "8": 982
+    },
+    "boundaries": {
+      "1": {
+        "elements": 324,
+        "nodes": 324,
+        "bbox_min": [
+          -0.04125,
+          -0.0392,
+          0.0
+        ],
+        "bbox_max": [
+          0.04125,
+          0.0392,
+          0.0
+        ]
+      }
+    },
+    "names": {
+      "bodies": {
+        "core": 1,
+        "air": 2,
+        "pri0_r": 3,
+        "pri0_l": 4,
+        "sec0_r": 5,
+        "sec0_l": 6,
+        "pri1_r": 7,
+        "pri1_l": 8
+      },
+      "boundaries": {
+        "outer": 1
+      }
+    },
+    "bbox_min": [
+      -0.04125,
+      -0.0392,
+      0.0
+    ],
+    "bbox_max": [
+      0.04125,
+      0.0392,
+      0.0
+    ],
+    "source": "mesh.msh"
+  },
+  "sif": "case.sif",
+  "inputs": {
+    "N1": 20,
+    "N2": 10,
+    "I1_A": 14.31515752256699,
+    "frequency_Hz": 100000.0,
+    "centre_leg_width_m": 0.022,
+    "outer_leg_width_m": 0.011250000000000003,
+    "yoke_thickness_m": 0.011300000000000001,
+    "window_width_m": 0.013000000000000001,
+    "window_height_m": 0.0438,
+    "core_depth_m": 0.032,
+    "air_margin_m": 0.006,
+    "winding_margin_m": 0.0016949999999999986,
+    "clearance_centre_m": 0.0015999999999999999,
+    "insulation_gap_m": 0.00019999999999999966,
+    "primary_width_m": 0.005220153254455275,
+    "secondary_width_m": 0.0037270128789688934,
+    "interleaved": true,
+    "mu_r_core": 2000.0,
+    "fill_factor": 0.3825382663900647,
+    "sigma_cu_S_per_m": 58000000.0,
+    "strand_diameter_m": 0.0001,
+    "h0_core_m": 0.002,
+    "h0_window_m": 0.001,
+    "I2_A": 0.0
+  },
+  "solver_time": {
+    "cpu_s": 0.47,
+    "real_s": 0.47
+  },
+  "log_scalars": {
+    "electromagnetic_field_energy_J_per_m": 16.58707,
+    "eddy_current_power_W_per_m": 0.0
+  },
+  "boundary_geometry_id_offset": 100,
+  "warnings": [
+    "WARNING:: GetPermittivity: Permittivity not defined in material, defaulting to that of vacuum"
+  ],
+  "results_file": "results.json",
+  "artifacts": [
+    {
+      "path": "case.sif",
+      "sha256": "5ff055849e987ad8c4231e08f0a42ee4b877479fd510b6a0f6d5abb690b82710",
+      "bytes": 3344
+    },
+    {
+      "path": "elmergrid.log",
+      "sha256": "582dcd61cf0ab8895eb0c19d8a4ba253526b23bfbcd400316f28b7cd62fb19cd",
+      "bytes": 1845
+    },
+    {
+      "path": "elmersolver.log",
+      "sha256": "f2c5f88ff758aba2d25bb0ad3e9a84379c04ae7aab94974c9743c581f625249d",
+      "bytes": 4161
+    },
+    {
+      "path": "mesh/entities.sif",
+      "sha256": "5876d7fd3e8900332d137139a497fc0fdc0739586e0a8a8c3a9ed5448e512c34",
+      "bytes": 382
+    },
+    {
+      "path": "mesh/mesh.boundary",
+      "sha256": "29912df2177c414f73a715f8ea9550d77b4c624700c0c01bd4a3ddccfdf30347",
+      "bytes": 8319
+    },
+    {
+      "path": "mesh/mesh.elements",
+      "sha256": "fee3dba0cb9d0028b25b4d4e59a89e1c18511e0e7eae3e8b390d5a1a20ccca03",
+      "bytes": 757835
+    },
+    {
+      "path": "mesh/mesh.header",
+      "sha256": "f9844ba0b6cbb8d8da1eb48e123b2d09f232e7c57b5fcaee60ad9ef77eee3573",
+      "bytes": 60
+    },
+    {
+      "path": "mesh/mesh.names",
+      "sha256": "376d9cf4df8e4bb7f2f3f197da6d89a8824f3703f918b827874cd7790e0d8e78",
+      "bytes": 188
+    },
+    {
+      "path": "mesh/mesh.nodes",
+      "sha256": "2989be39c7e977897094fbf85544707d9396cf75058856556cfae23f33e04120",
+      "bytes": 591109
+    },
+    {
+      "path": "mesh/window_t0001.vtu",
+      "sha256": "d11d700ff53e45ba5903ce055690e3e5d895f9b5dab41278f8458b2ff83ad253",
+      "bytes": 4032831
+    },
+    {
+      "path": "mesh.msh",
+      "sha256": "d36b0abd089ab31464116a4658462c1b1545ac2e9b46a6b72756500e626aa194",
+      "bytes": 1496782
+    },
+    {
+      "path": "results.json",
+      "sha256": "1de2e14a6c8e3caf89d8a23be8339e7d873a62fc90a89c097f18426ca18ca007",
+      "bytes": 162
+    },
+    {
+      "path": "scalars.dat",
+      "sha256": "3f74f0acd79c1ee5a210769506ad3e96fa15f45f23306ebf88827586f87fed17",
+      "bytes": 68
+    },
+    {
+      "path": "scalars.dat.names",
+      "sha256": "e122a13acca10b7cc87cfa95fdd26276391958e68fb2a77daf464dc5c273479b",
+      "bytes": 329
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "status": "ok",
+  "kind": "transformer",
+  "name": "dab_transformer",
+  "files": {
+    "fcstd": "dab_transformer.FCStd",
+    "step": "dab_transformer.step",
+    "step_keepouts": "dab_transformer.keepouts.step",
+    "checks": "dab_transformer.checks.json",
+    "render_png": "renders/dab_transformer.png",
+    "metadata": "dab_transformer.metadata.json"
+  },
+  "timings_s": {
+    "resolve_s": 0.0,
+    "build_s": 0.11544227600097656,
+    "export_s": 0.2928893566131592,
+    "checks_s": 17.498189687728882,
+    "render_s": 1.485382318496704
+  },
+  "freecad_version": [
+    "1",
+    "1",
+    "4"
+  ],
+  "python_version": "3.11.14",
+  "body_count": 17,
+  "invalid_shapes": [],
+  "check_summary": {
+    "status": "review",
+    "interference_count": 0,
+    "allowed_overlap_count": 0,
+    "contact_count": 22,
+    "keepout_violation_count": 0,
+    "envelope_intrusion_count": 0,
+    "fit_failures": 0,
+    "clearance_pairs": {
+      "pass": 2,
+      "fail": 0,
+      "review": 1,
+      "no_bodies": 0
+    },
+    "unassigned_conductor_count": 0,
+    "bodies_checked": 16,
+    "note": "required clearance/creepage values are caller inputs; no standard compliance is asserted"
+  },
+  "totals": {
+    "bbox_m": [
+      -0.04725,
+      -0.0345,
+      -0.036,
+      0.04725,
+      0.0345,
+      0.034
+    ],
+    "size_m": [
+      0.0945,
+      0.069,
+      0.07
+    ],
+    "volume_m3": 0.00019459435548931496,
+    "mass_kg": 0.8636961486694265,
+    "surface_area_m2": 0.1408207278421053,
+    "body_count": 16,
+    "mass_by_material_kg": {
+      "ferrite_n87": 0.5497804799999999,
+      "bobbin_pet_gf": 0.02150455824297392,
+      "copper": 0.2338614031483964,
+      "kapton": 0.006386644920727292,
+      "brass": 0.0007209955139988577,
+      "stainless_steel": 0.035456000000000015,
+      "aluminium_6063": 0.015986066843329955
+    }
+  },
+  "warnings": [],
+  "duration_s": 19.481958150863647
+}

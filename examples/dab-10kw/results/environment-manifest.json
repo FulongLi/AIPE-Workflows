@@ -1,0 +1,198 @@
+{
+  "created_at": "2026-10-21T05:15:09Z",
+  "platform": {
+    "machine": "AMD64",
+    "node": "DESKTOP-BISO8AK",
+    "release": "10",
+    "system": "Windows",
+    "version": "10.0.26300"
+  },
+  "python": {
+    "executable": "C:\\Users\\Zhongnan Qian\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "implementation": "CPython",
+    "version": "3.10.11"
+  },
+  "python_packages": {
+    "aipe_simulation": "0.2.0",
+    "cadquery": "2.7.0",
+    "gmsh": "4.15.2",
+    "h5py": "3.16.0",
+    "jsonschema": "4.26.0",
+    "matplotlib": "3.10.9",
+    "numpy": "2.2.6",
+    "pea": null,
+    "pydantic": "2.12.5",
+    "scipy": "1.15.3",
+    "yaml": "6.0.2"
+  },
+  "recommendations": [
+    "OpenFOAM missing: Windows: WSL2 + openfoam.com packages or docker; not provided by winget",
+    "Xyce missing: https://xyce.sandia.gov/downloads/",
+    "LTspice (optional free proprietary) missing: winget install AnalogDevices.LTspice (optional validation route only)"
+  ],
+  "tools": {
+    "elmer": {
+      "found": true,
+      "id": "elmer",
+      "install_hint": "Portable Windows zip from https://www.nic.funet.fi/pub/sci/physics/elmer/bin/windows/ (no admin) or Windows installer",
+      "licence": "GPL-2.0-or-later / LGPL-2.1 (library parts)",
+      "name": "Elmer FEM (ElmerSolver)",
+      "path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64\\bin\\ElmerSolver.exe",
+      "qualification": null,
+      "qualified": null,
+      "required_for": [
+        "field_simulation"
+      ],
+      "source": "workspace-tools",
+      "version": "9.0",
+      "version_output": "ELMER SOLVER (v 9.0) STARTED AT: 2026/10/21 13:15:08\nParCommInit: Initialize #PEs: 1\nMAIN: \nMAIN: =============================================================\nMAIN: ElmerSolver finite element software, Welcome!\nMAIN: This program is free software licensed under (L)GPL\nMAIN: Copyright 1st April 1995"
+    },
+    "freecad": {
+      "found": true,
+      "id": "freecad",
+      "install_hint": "winget install FreeCAD.FreeCAD --scope user or portable release from https://github.com/FreeCAD/FreeCAD/releases",
+      "licence": "LGPL-2.1-or-later",
+      "name": "FreeCAD (headless)",
+      "path": "C:\\Users\\Zhongnan Qian\\AppData\\Local\\Programs\\FreeCAD 1.1\\bin\\freecadcmd.exe",
+      "qualification": null,
+      "qualified": null,
+      "required_for": [
+        "cad_pcb"
+      ],
+      "source": "per-user-or-program-files",
+      "version": "1.1.4",
+      "version_output": "FreeCAD 1.1.4 Revision: 20260928 (Git shallow)"
+    },
+    "git": {
+      "found": true,
+      "id": "git",
+      "install_hint": "winget install Git.Git",
+      "licence": "GPL-2.0",
+      "name": "Git",
+      "path": "C:\\Program Files\\Git\\mingw64\\bin\\git.EXE",
+      "qualification": null,
+      "qualified": null,
+      "required_for": [],
+      "source": "PATH",
+      "version": "2.53.0.windows.2",
+      "version_output": "git version 2.53.0.windows.2"
+    },
+    "gmsh": {
+      "found": true,
+      "id": "gmsh",
+      "install_hint": "python -m pip install gmsh (bundles the Gmsh library; GPL applies to redistribution)",
+      "licence": "GPL-2.0-or-later",
+      "name": "Gmsh (python SDK)",
+      "path": "C:\\Users\\Zhongnan Qian\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\gmsh.py",
+      "qualification": null,
+      "qualified": null,
+      "required_for": [
+        "field_simulation"
+      ],
+      "source": "python-module",
+      "version": "4.15.2"
+    },
+    "kicad-cli": {
+      "found": true,
+      "id": "kicad-cli",
+      "install_hint": "winget install KiCad.KiCad --scope user (per-user, no admin) or https://www.kicad.org/download/",
+      "licence": "GPL-3.0-or-later",
+      "name": "KiCad command line",
+      "path": "C:\\Users\\Zhongnan Qian\\AppData\\Local\\Programs\\KiCad\\10.0\\bin\\kicad-cli.exe",
+      "qualification": null,
+      "qualified": null,
+      "required_for": [
+        "cad_pcb"
+      ],
+      "source": "per-user-or-program-files",
+      "version": "10.0.6",
+      "version_output": "10.0.6"
+    },
+    "ltspice": {
+      "found": false,
+      "id": "ltspice",
+      "install_hint": "winget install AnalogDevices.LTspice (optional validation route only)",
+      "licence": "Analog Devices EULA (free, proprietary)",
+      "name": "LTspice (optional free proprietary)",
+      "path": null,
+      "qualification": null,
+      "qualified": null,
+      "required_for": [],
+      "source": null,
+      "version": null
+    },
+    "ngspice": {
+      "found": true,
+      "id": "ngspice",
+      "install_hint": "Official release archives: https://sourceforge.net/projects/ngspice/files/ng-spice-rework/ (portable 7z, no admin); not in winget",
+      "licence": "BSD-3-Clause (with some GPL/LGPL components; see COPYING)",
+      "name": "ngspice",
+      "path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\Spice64\\bin\\ngspice_con.exe",
+      "qualification": null,
+      "qualified": null,
+      "required_for": [
+        "circuit_simulation"
+      ],
+      "source": "workspace-tools",
+      "version": "47",
+      "version_output": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourcefo"
+    },
+    "node": {
+      "found": true,
+      "id": "node",
+      "install_hint": "https://nodejs.org/",
+      "licence": "MIT",
+      "name": "Node.js",
+      "path": "C:\\Program Files\\nodejs\\node.EXE",
+      "qualification": null,
+      "qualified": null,
+      "required_for": [],
+      "source": "PATH",
+      "version": "24.14.0",
+      "version_output": "v24.14.0"
+    },
+    "openfoam": {
+      "found": false,
+      "id": "openfoam",
+      "install_hint": "Windows: WSL2 + openfoam.com packages or docker; not provided by winget",
+      "licence": "GPL-3.0-or-later",
+      "name": "OpenFOAM",
+      "path": null,
+      "qualification": null,
+      "qualified": null,
+      "required_for": [
+        "field_simulation"
+      ],
+      "source": null,
+      "version": null
+    },
+    "python": {
+      "found": true,
+      "id": "python",
+      "install_hint": "https://www.python.org/downloads/",
+      "licence": "PSF",
+      "name": "Python",
+      "path": "C:\\Users\\Zhongnan Qian\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+      "qualification": null,
+      "qualified": null,
+      "required_for": [],
+      "source": "interpreter",
+      "version": "3.10.11",
+      "version_output": "Python 3.10.11"
+    },
+    "xyce": {
+      "found": false,
+      "id": "xyce",
+      "install_hint": "https://xyce.sandia.gov/downloads/",
+      "licence": "GPL-3.0-or-later",
+      "name": "Xyce",
+      "path": null,
+      "qualification": null,
+      "qualified": null,
+      "required_for": [],
+      "source": null,
+      "version": null
+    }
+  },
+  "workspace_root": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration"
+}

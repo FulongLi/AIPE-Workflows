@@ -1,0 +1,72 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-21T15:26:11",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.6",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/6cccbf87-946e-5422-af47-3d199ea44b8b",
+            "violations": []
+        },
+        {
+            "path": "/Full bridge, DC link, switch-node terminals, DC-blocking capacitors and transformer current sensor/",
+            "uuid_path": "/6cccbf87-946e-5422-af47-3d199ea44b8b/17acc7f3-1ce2-5d6b-83fd-e2a47cb24cbb",
+            "violations": []
+        },
+        {
+            "path": "/Leg A high side: isolated gate driver, DESAT, gate loop and isolated bias/",
+            "uuid_path": "/6cccbf87-946e-5422-af47-3d199ea44b8b/fd89fef9-3cc6-57a4-a4ba-c25ca3406664",
+            "violations": []
+        },
+        {
+            "path": "/Leg A low side: isolated gate driver, DESAT, gate loop and isolated bias/",
+            "uuid_path": "/6cccbf87-946e-5422-af47-3d199ea44b8b/4862e6f1-f3fd-50b2-9873-75f21a6dc0f9",
+            "violations": []
+        },
+        {
+            "path": "/Leg B low side: isolated gate driver, DESAT, gate loop and isolated bias/",
+            "uuid_path": "/6cccbf87-946e-5422-af47-3d199ea44b8b/c94bfe61-9712-509e-8eba-24ec0de6b988",
+            "violations": []
+        },
+        {
+            "path": "/Leg B high side: isolated gate driver, DESAT, gate loop and isolated bias/",
+            "uuid_path": "/6cccbf87-946e-5422-af47-3d199ea44b8b/3fece38f-1f9b-5e7d-963e-e38964274913",
+            "violations": []
+        },
+        {
+            "path": "/Isolated bus-voltage sensing, isolated sensing supply, Hall-sensor conditioning and temperature/",
+            "uuid_path": "/6cccbf87-946e-5422-af47-3d199ea44b8b/e2625c8f-c607-56fd-b44b-7ca5172d5604",
+            "violations": []
+        },
+        {
+            "path": "/Keyed control harness, filtered inputs, auxiliary rails and mounting/",
+            "uuid_path": "/6cccbf87-946e-5422-af47-3d199ea44b8b/04030c3e-eb91-56d6-b9aa-f4ff55e3f95e",
+            "violations": []
+        }
+    ],
+    "source": "dab-secondary.kicad_sch"
+}

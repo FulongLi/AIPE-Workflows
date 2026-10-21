@@ -1,0 +1,2269 @@
+{
+  "dataset_path": "runs\\wf-dab-10kw-first\\tasks\\circuit-sim-level2\\ngspice\\waveforms.h5",
+  "dataset_sha256": "322284cb3d6b7de79238ac02182e9c7540f1bf01c4eea2f4ddedc0cdf3c072cc",
+  "messages": [],
+  "netlist_path": "runs\\wf-dab-10kw-first\\tasks\\circuit-sim-level2\\ngspice\\circuit.cir",
+  "run": {
+    "command": [
+      "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\Spice64\\bin\\ngspice_con.exe",
+      "-b",
+      "-r",
+      "circuit.raw",
+      "-o",
+      "circuit.log",
+      "circuit.cir"
+    ],
+    "dataset_file_sha256": "172ca356e9034b0e734f4e6469ef2c6923e111237b4437ad83649d921149b013",
+    "dataset_sha256": "322284cb3d6b7de79238ac02182e9c7540f1bf01c4eea2f4ddedc0cdf3c072cc",
+    "duration_s": 5.260149199999432,
+    "errors": [],
+    "finished_at": "2026-10-21T05:58:27Z",
+    "log_path": "runs\\wf-dab-10kw-first\\tasks\\circuit-sim-level2\\ngspice\\circuit.log",
+    "n_points": 139224,
+    "netlist_path": "runs\\wf-dab-10kw-first\\tasks\\circuit-sim-level2\\ngspice\\circuit.cir",
+    "netlist_sha256": "e04c677d3c6b185b56dd45d4be526cf68f9fd266b12b201bb8731c5ff33939bb",
+    "ngspice_path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\Spice64\\bin\\ngspice_con.exe",
+    "ngspice_version": "47",
+    "platform": "Windows 10 AMD64",
+    "producer": {
+      "id": "aipe.simulation-skills.dab",
+      "version": "0.2.0"
+    },
+    "raw_path": "runs\\wf-dab-10kw-first\\tasks\\circuit-sim-level2\\ngspice\\circuit.raw",
+    "raw_sha256": "c632a310d0554812b60a4e8b3eb2a43e3d1a9b871a50ab51aa99eee05e089621",
+    "returncode": 0,
+    "started_at": "2026-10-21T05:58:20Z",
+    "stdout_tail": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at https://ngspice.sourceforge.io/bugrep.html\n** Creation Date: Aug 11 2026   13:55:25\n******\n\nBatch mode\n\nSimulation output goes to rawfile: circuit.raw\nComments and warnings go to log-file: circuit.log\n\n",
+    "succeeded": true,
+    "timed_out": false,
+    "warnings": [
+      "Comments and warnings go to log-file: circuit.log"
+    ],
+    "workdir": "runs\\wf-dab-10kw-first\\tasks\\circuit-sim-level2\\ngspice"
+  },
+  "run_dir": "runs\\wf-dab-10kw-first\\tasks\\circuit-sim-level2\\ngspice",
+  "spec_sha256": "57052e6938b4a5d09ee66e9a3645903914e0fd9da458edde3cee7c8b874fc49e",
+  "status": "steady_state",
+  "succeeded": true,
+  "summary": {
+    "bridges": {
+      "ideal_switching_instants_in_window": {
+        "primary": [
+          {
+            "direction": -1,
+            "t": 0.0015625
+          },
+          {
+            "direction": 1,
+            "t": 0.0015675
+          },
+          {
+            "direction": -1,
+            "t": 0.0015725000000000001
+          },
+          {
+            "direction": 1,
+            "t": 0.0015775000000000001
+          },
+          {
+            "direction": -1,
+            "t": 0.0015825
+          },
+          {
+            "direction": 1,
+            "t": 0.0015875
+          },
+          {
+            "direction": -1,
+            "t": 0.0015925
+          },
+          {
+            "direction": 1,
+            "t": 0.0015975
+          }
+        ],
+        "secondary": [
+          {
+            "direction": -1,
+            "t": 0.0015631250000000003
+          },
+          {
+            "direction": 1,
+            "t": 0.0015681250000000003
+          },
+          {
+            "direction": -1,
+            "t": 0.0015731250000000003
+          },
+          {
+            "direction": 1,
+            "t": 0.0015781250000000003
+          },
+          {
+            "direction": -1,
+            "t": 0.0015831250000000001
+          },
+          {
+            "direction": 1,
+            "t": 0.0015881250000000001
+          },
+          {
+            "direction": -1,
+            "t": 0.0015931250000000001
+          },
+          {
+            "direction": 1,
+            "t": 0.0015981250000000002
+          }
+        ]
+      },
+      "measured_phase_shift": {
+        "available": true,
+        "events": 4,
+        "phi_deg_mean": {
+          "unit": "deg",
+          "value": 22.208392607108188
+        },
+        "t_phi_mean": {
+          "unit": "s",
+          "value": 6.168997946418941e-07
+        },
+        "t_phi_spread": {
+          "unit": "s",
+          "value": 4.721423989620388e-12
+        }
+      },
+      "v_ab": {
+        "avg": {
+          "unit": "V",
+          "value": -0.11710830730895756
+        },
+        "max": {
+          "unit": "V",
+          "value": 814.6393184183851
+        },
+        "min": {
+          "unit": "V",
+          "value": -813.872356213372
+        },
+        "rms": {
+          "unit": "V",
+          "value": 797.1289846095698
+        }
+      },
+      "v_cd": {
+        "avg": {
+          "unit": "V",
+          "value": -0.05669503243303871
+        },
+        "max": {
+          "unit": "V",
+          "value": 418.79962171019844
+        },
+        "min": {
+          "unit": "V",
+          "value": -418.75958578302175
+        },
+        "rms": {
+          "unit": "V",
+          "value": 395.21129928604586
+        }
+      },
+      "v_cd_primary_referred": {
+        "max": {
+          "unit": "V",
+          "value": 837.5992434203969
+        },
+        "rms": {
+          "unit": "V",
+          "value": 790.4225985720917
+        }
+      }
+    },
+    "conventions": {
+      "i_L": "series inductor current from node a towards the transformer",
+      "i_dc1": "-i(V1): current delivered by port 1 into the converter",
+      "i_dc2": "i(V2): current delivered by the converter into port 2",
+      "i_s": "secondary current out of the transformer into node c",
+      "p_1": "v_dc1 * i_dc1 (positive = power entering from port 1)",
+      "p_2": "v_dc2 * i_dc2 (positive = power leaving into port 2)",
+      "switch_current": "positive = drain-to-source conduction",
+      "time_origin": "centre of primary positive half-cycle (S1, S4 on)"
+    },
+    "dataset_sha256": "322284cb3d6b7de79238ac02182e9c7540f1bf01c4eea2f4ddedc0cdf3c072cc",
+    "energy_balance": {
+      "note": "p_switches_from_waveforms is the measured average of v_ds*i per switch pair (channel, diode and Coss branch); p_switch_on_resistance_estimate is i_rms^2*Ron for comparison; remaining unaccounted power is ESR/damping/source resistance",
+      "p_capacitor_energy_change": {
+        "dc_link1_capacitor": {
+          "unit": "W",
+          "value": 0.4755750146100763
+        },
+        "port2_capacitor": {
+          "unit": "W",
+          "value": -45.7663680548931
+        }
+      },
+      "p_in": {
+        "unit": "W",
+        "value": 9694.201837231883
+      },
+      "p_in_effective": {
+        "unit": "W",
+        "value": 9693.726262217273
+      },
+      "p_loss_total": {
+        "unit": "W",
+        "value": 131.657989873343
+      },
+      "p_out": {
+        "unit": "W",
+        "value": 9607.834640398823
+      },
+      "p_out_effective": {
+        "unit": "W",
+        "value": 9562.06827234393
+      },
+      "p_series_resistance_primary": {
+        "unit": "W",
+        "value": 3.537638947079804
+      },
+      "p_series_resistance_secondary": {
+        "unit": "W",
+        "value": 0.0
+      },
+      "p_switch_on_resistance_estimate": {
+        "unit": "W",
+        "value": 106.93587658717176
+      },
+      "p_switches_from_waveforms": {
+        "unit": "W",
+        "value": 123.57483312862553
+      },
+      "p_unaccounted": {
+        "unit": "W",
+        "value": 4.545517797637672
+      },
+      "relative_unaccounted": {
+        "unit": "1",
+        "value": 0.00046889036085260785
+      }
+    },
+    "numerical": {
+      "solver_options": {
+        "abstol": 1e-08,
+        "chgtol": 1e-14,
+        "cycles": 160,
+        "initial_magnetising_current": null,
+        "initial_series_current": 14.285714285714288,
+        "max_step_fraction": 400,
+        "maxord": 2,
+        "method": "gear",
+        "output_from_cycle": 0,
+        "reltol": 0.0001,
+        "timeout_s": 1800.0,
+        "use_initial_conditions": true,
+        "vntol": 1e-05
+      },
+      "t_max_requested": 2.5000000000000002e-08,
+      "timestep": {
+        "dt_max": 2.5000000000935732e-08,
+        "dt_mean": 1.1492352197553566e-08,
+        "dt_median": 2.0000000000043854e-09,
+        "dt_min": 1.0124814088604963e-12,
+        "n_points": 139224,
+        "t_end": 0.0016,
+        "t_start": 2.5e-10
+      }
+    },
+    "ports": {
+      "efficiency": {
+        "unit": "1",
+        "value": 0.9910908398356887
+      },
+      "efficiency_drift_corrected": {
+        "unit": "1",
+        "value": 0.9864182269736149
+      },
+      "loss_total": {
+        "unit": "W",
+        "value": 131.657989873343
+      },
+      "port1": {
+        "current_avg": {
+          "unit": "A",
+          "value": 12.126946494871445
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 12.12735539141314
+        },
+        "energy_per_cycle": {
+          "unit": "J",
+          "value": 0.09694201837231885
+        },
+        "power_avg": {
+          "unit": "W",
+          "value": 9694.201837231883
+        },
+        "voltage_avg": {
+          "unit": "V",
+          "value": 799.3936254115018
+        },
+        "voltage_ripple_pp": {
+          "unit": "V",
+          "value": 8.156628882519271
+        }
+      },
+      "port2": {
+        "current_avg": {
+          "unit": "A",
+          "value": 24.50482573454938
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 24.50489063482893
+        },
+        "energy_per_cycle": {
+          "unit": "J",
+          "value": 0.09607834640398824
+        },
+        "power_avg": {
+          "unit": "W",
+          "value": 9607.834640398823
+        },
+        "voltage_avg": {
+          "unit": "V",
+          "value": 392.0772117527901
+        },
+        "voltage_ripple_pp": {
+          "unit": "V",
+          "value": 17.04944995591859
+        }
+      },
+      "power_flow_direction": "port1_to_port2"
+    },
+    "run": {
+      "dataset": "runs\\wf-dab-10kw-first\\tasks\\circuit-sim-level2\\ngspice\\waveforms.h5",
+      "dataset_sha256": "322284cb3d6b7de79238ac02182e9c7540f1bf01c4eea2f4ddedc0cdf3c072cc",
+      "n_warnings": 1,
+      "netlist_sha256": "e04c677d3c6b185b56dd45d4be526cf68f9fd266b12b201bb8731c5ff33939bb",
+      "run_dir": "runs\\wf-dab-10kw-first\\tasks\\circuit-sim-level2\\ngspice",
+      "solver": "47",
+      "warnings": [
+        "Comments and warnings go to log-file: circuit.log"
+      ]
+    },
+    "schema": "aipe-dab-waveform-summary/0.1",
+    "series_path": {
+      "i_L_avg": {
+        "unit": "A",
+        "value": -0.03183010292298275
+      },
+      "i_L_max": {
+        "unit": "A",
+        "value": 14.28369026910567
+      },
+      "i_L_min": {
+        "unit": "A",
+        "value": -14.34384480589018
+      },
+      "i_L_peak_abs": {
+        "unit": "A",
+        "value": 14.34384480589018
+      },
+      "i_L_rms": {
+        "unit": "A",
+        "value": 13.29969726550158
+      },
+      "i_m_avg": {
+        "unit": "A",
+        "value": -0.050732104320654385
+      },
+      "i_m_peak_abs": {
+        "unit": "A",
+        "value": 2.026750746713388
+      },
+      "i_m_rms": {
+        "unit": "A",
+        "value": 1.1423758278223697
+      },
+      "i_p_ideal_peak_abs": {
+        "unit": "A",
+        "value": 15.606964070703455
+      },
+      "i_p_ideal_rms": {
+        "unit": "A",
+        "value": 13.554280831564181
+      },
+      "i_s_avg": {
+        "unit": "A",
+        "value": 0.03780400279067256
+      },
+      "i_s_peak_abs": {
+        "unit": "A",
+        "value": 31.21392814140691
+      },
+      "i_s_rms": {
+        "unit": "A",
+        "value": 27.108561663128363
+      },
+      "l_ext": {
+        "unit": "H",
+        "value": 3.5e-05
+      },
+      "l_leakage_primary_referred": {
+        "unit": "H",
+        "value": 0.0
+      },
+      "l_total_primary": {
+        "unit": "H",
+        "value": 3.5e-05
+      },
+      "v_L_peak_abs": {
+        "unit": "V",
+        "value": 1604.0532988842297
+      },
+      "v_L_rms": {
+        "unit": "V",
+        "value": 554.6043317882527
+      }
+    },
+    "spec_sha256": "57052e6938b4a5d09ee66e9a3645903914e0fd9da458edde3cee7c8b874fc49e",
+    "status": "steady_state",
+    "steady_state": {
+      "converged_from_cycle": 2,
+      "cycles_available": 159,
+      "cycles_in_window": 4,
+      "max_relative_change_in_window": 1.3697072985101811e-05,
+      "ok": true,
+      "per_cycle_metric": [
+        {
+          "cycle": 1,
+          "t_end": 2e-05,
+          "t_start": 1e-05,
+          "value": 13.378980850077102
+        },
+        {
+          "cycle": 2,
+          "t_end": 3.0000000000000004e-05,
+          "t_start": 2e-05,
+          "value": 13.39255892842968
+        },
+        {
+          "cycle": 3,
+          "t_end": 4e-05,
+          "t_start": 3.0000000000000004e-05,
+          "value": 13.385720085560184
+        },
+        {
+          "cycle": 4,
+          "t_end": 5e-05,
+          "t_start": 4e-05,
+          "value": 13.37486813498462
+        },
+        {
+          "cycle": 5,
+          "t_end": 6.000000000000001e-05,
+          "t_start": 5e-05,
+          "value": 13.377340164471319
+        },
+        {
+          "cycle": 6,
+          "t_end": 7.000000000000001e-05,
+          "t_start": 6.000000000000001e-05,
+          "value": 13.38107742197011
+        },
+        {
+          "cycle": 7,
+          "t_end": 8e-05,
+          "t_start": 7.000000000000001e-05,
+          "value": 13.377232356633195
+        },
+        {
+          "cycle": 8,
+          "t_end": 9e-05,
+          "t_start": 8e-05,
+          "value": 13.373211176861574
+        },
+        {
+          "cycle": 9,
+          "t_end": 0.0001,
+          "t_start": 9e-05,
+          "value": 13.373776434823888
+        },
+        {
+          "cycle": 10,
+          "t_end": 0.00011,
+          "t_start": 0.0001,
+          "value": 13.37416086795331
+        },
+        {
+          "cycle": 11,
+          "t_end": 0.00012000000000000002,
+          "t_start": 0.00011,
+          "value": 13.371917568128092
+        },
+        {
+          "cycle": 12,
+          "t_end": 0.00013000000000000002,
+          "t_start": 0.00012000000000000002,
+          "value": 13.370007328678124
+        },
+        {
+          "cycle": 13,
+          "t_end": 0.00014000000000000001,
+          "t_start": 0.00013000000000000002,
+          "value": 13.369674053716523
+        },
+        {
+          "cycle": 14,
+          "t_end": 0.00015000000000000001,
+          "t_start": 0.00014000000000000001,
+          "value": 13.369044579470552
+        },
+        {
+          "cycle": 15,
+          "t_end": 0.00016,
+          "t_start": 0.00015000000000000001,
+          "value": 13.367421061340616
+        },
+        {
+          "cycle": 16,
+          "t_end": 0.00017,
+          "t_start": 0.00016,
+          "value": 13.366206269645598
+        },
+        {
+          "cycle": 17,
+          "t_end": 0.00018,
+          "t_start": 0.00017,
+          "value": 13.365579310363847
+        },
+        {
+          "cycle": 18,
+          "t_end": 0.00019,
+          "t_start": 0.00018,
+          "value": 13.364695564595802
+        },
+        {
+          "cycle": 19,
+          "t_end": 0.0002,
+          "t_start": 0.00019,
+          "value": 13.363416699008413
+        },
+        {
+          "cycle": 20,
+          "t_end": 0.00021,
+          "t_start": 0.0002,
+          "value": 13.362412385307367
+        },
+        {
+          "cycle": 21,
+          "t_end": 0.00022,
+          "t_start": 0.00021,
+          "value": 13.361680940175539
+        },
+        {
+          "cycle": 22,
+          "t_end": 0.00023,
+          "t_start": 0.00022,
+          "value": 13.360649120929
+        },
+        {
+          "cycle": 23,
+          "t_end": 0.00024000000000000003,
+          "t_start": 0.00023,
+          "value": 13.359634321802488
+        },
+        {
+          "cycle": 24,
+          "t_end": 0.00025,
+          "t_start": 0.00024000000000000003,
+          "value": 13.358710320520641
+        },
+        {
+          "cycle": 25,
+          "t_end": 0.00026000000000000003,
+          "t_start": 0.00025,
+          "value": 13.357836893880306
+        },
+        {
+          "cycle": 26,
+          "t_end": 0.00027,
+          "t_start": 0.00026000000000000003,
+          "value": 13.356929930417042
+        },
+        {
+          "cycle": 27,
+          "t_end": 0.00028000000000000003,
+          "t_start": 0.00027,
+          "value": 13.356019163927787
+        },
+        {
+          "cycle": 28,
+          "t_end": 0.00029,
+          "t_start": 0.00028000000000000003,
+          "value": 13.355158139244702
+        },
+        {
+          "cycle": 29,
+          "t_end": 0.00030000000000000003,
+          "t_start": 0.00029,
+          "value": 13.354360347385207
+        },
+        {
+          "cycle": 30,
+          "t_end": 0.00031,
+          "t_start": 0.00030000000000000003,
+          "value": 13.353518684877466
+        },
+        {
+          "cycle": 31,
+          "t_end": 0.00032,
+          "t_start": 0.00031,
+          "value": 13.352685691654047
+        },
+        {
+          "cycle": 32,
+          "t_end": 0.00033000000000000005,
+          "t_start": 0.00032,
+          "value": 13.351938772136197
+        },
+        {
+          "cycle": 33,
+          "t_end": 0.00034,
+          "t_start": 0.00033000000000000005,
+          "value": 13.351135560899152
+        },
+        {
+          "cycle": 34,
+          "t_end": 0.00035000000000000005,
+          "t_start": 0.00034,
+          "value": 13.350322193738313
+        },
+        {
+          "cycle": 35,
+          "t_end": 0.00036,
+          "t_start": 0.00035000000000000005,
+          "value": 13.349527482906769
+        },
+        {
+          "cycle": 36,
+          "t_end": 0.00037000000000000005,
+          "t_start": 0.00036,
+          "value": 13.348751297908144
+        },
+        {
+          "cycle": 37,
+          "t_end": 0.00038,
+          "t_start": 0.00037000000000000005,
+          "value": 13.347980730003469
+        },
+        {
+          "cycle": 38,
+          "t_end": 0.00039000000000000005,
+          "t_start": 0.00038,
+          "value": 13.34720876664952
+        },
+        {
+          "cycle": 39,
+          "t_end": 0.0004,
+          "t_start": 0.00039000000000000005,
+          "value": 13.346472008923495
+        },
+        {
+          "cycle": 40,
+          "t_end": 0.00041000000000000005,
+          "t_start": 0.0004,
+          "value": 13.345729962090632
+        },
+        {
+          "cycle": 41,
+          "t_end": 0.00042,
+          "t_start": 0.00041000000000000005,
+          "value": 13.344988129782498
+        },
+        {
+          "cycle": 42,
+          "t_end": 0.00043000000000000004,
+          "t_start": 0.00042,
+          "value": 13.34426783937079
+        },
+        {
+          "cycle": 43,
+          "t_end": 0.00044,
+          "t_start": 0.00043000000000000004,
+          "value": 13.343549158508042
+        },
+        {
+          "cycle": 44,
+          "t_end": 0.00045000000000000004,
+          "t_start": 0.00044,
+          "value": 13.342840550552298
+        },
+        {
+          "cycle": 45,
+          "t_end": 0.00046,
+          "t_start": 0.00045000000000000004,
+          "value": 13.342143137120345
+        },
+        {
+          "cycle": 46,
+          "t_end": 0.00047000000000000004,
+          "t_start": 0.00046,
+          "value": 13.341373919807982
+        },
+        {
+          "cycle": 47,
+          "t_end": 0.00048000000000000007,
+          "t_start": 0.00047000000000000004,
+          "value": 13.340693000081876
+        },
+        {
+          "cycle": 48,
+          "t_end": 0.0004900000000000001,
+          "t_start": 0.00048000000000000007,
+          "value": 13.340012018759637
+        },
+        {
+          "cycle": 49,
+          "t_end": 0.0005,
+          "t_start": 0.0004900000000000001,
+          "value": 13.339349304108026
+        },
+        {
+          "cycle": 50,
+          "t_end": 0.00051,
+          "t_start": 0.0005,
+          "value": 13.338694001478116
+        },
+        {
+          "cycle": 51,
+          "t_end": 0.0005200000000000001,
+          "t_start": 0.00051,
+          "value": 13.33806258516711
+        },
+        {
+          "cycle": 52,
+          "t_end": 0.0005300000000000001,
+          "t_start": 0.0005200000000000001,
+          "value": 13.337414100584517
+        },
+        {
+          "cycle": 53,
+          "t_end": 0.00054,
+          "t_start": 0.0005300000000000001,
+          "value": 13.33678141209042
+        },
+        {
+          "cycle": 54,
+          "t_end": 0.00055,
+          "t_start": 0.00054,
+          "value": 13.336152821631906
+        },
+        {
+          "cycle": 55,
+          "t_end": 0.0005600000000000001,
+          "t_start": 0.00055,
+          "value": 13.335537704573872
+        },
+        {
+          "cycle": 56,
+          "t_end": 0.0005700000000000001,
+          "t_start": 0.0005600000000000001,
+          "value": 13.334931183964896
+        },
+        {
+          "cycle": 57,
+          "t_end": 0.00058,
+          "t_start": 0.0005700000000000001,
+          "value": 13.334331806609425
+        },
+        {
+          "cycle": 58,
+          "t_end": 0.00059,
+          "t_start": 0.00058,
+          "value": 13.333739994203244
+        },
+        {
+          "cycle": 59,
+          "t_end": 0.0006000000000000001,
+          "t_start": 0.00059,
+          "value": 13.333155894761678
+        },
+        {
+          "cycle": 60,
+          "t_end": 0.0006100000000000001,
+          "t_start": 0.0006000000000000001,
+          "value": 13.332594449449843
+        },
+        {
+          "cycle": 61,
+          "t_end": 0.00062,
+          "t_start": 0.0006100000000000001,
+          "value": 13.33202023642193
+        },
+        {
+          "cycle": 62,
+          "t_end": 0.00063,
+          "t_start": 0.00062,
+          "value": 13.331465946199312
+        },
+        {
+          "cycle": 63,
+          "t_end": 0.00064,
+          "t_start": 0.00063,
+          "value": 13.33091171610961
+        },
+        {
+          "cycle": 64,
+          "t_end": 0.0006500000000000001,
+          "t_start": 0.00064,
+          "value": 13.330362678755625
+        },
+        {
+          "cycle": 65,
+          "t_end": 0.0006600000000000001,
+          "t_start": 0.0006500000000000001,
+          "value": 13.329820127742424
+        },
+        {
+          "cycle": 66,
+          "t_end": 0.00067,
+          "t_start": 0.0006600000000000001,
+          "value": 13.329285233132149
+        },
+        {
+          "cycle": 67,
+          "t_end": 0.00068,
+          "t_start": 0.00067,
+          "value": 13.328757297488798
+        },
+        {
+          "cycle": 68,
+          "t_end": 0.0006900000000000001,
+          "t_start": 0.00068,
+          "value": 13.328235919762319
+        },
+        {
+          "cycle": 69,
+          "t_end": 0.0007000000000000001,
+          "t_start": 0.0006900000000000001,
+          "value": 13.327722395780686
+        },
+        {
+          "cycle": 70,
+          "t_end": 0.00071,
+          "t_start": 0.0007000000000000001,
+          "value": 13.327212942557432
+        },
+        {
+          "cycle": 71,
+          "t_end": 0.00072,
+          "t_start": 0.00071,
+          "value": 13.326709945433384
+        },
+        {
+          "cycle": 72,
+          "t_end": 0.0007300000000000001,
+          "t_start": 0.00072,
+          "value": 13.326213443863994
+        },
+        {
+          "cycle": 73,
+          "t_end": 0.0007400000000000001,
+          "t_start": 0.0007300000000000001,
+          "value": 13.325727533957672
+        },
+        {
+          "cycle": 74,
+          "t_end": 0.00075,
+          "t_start": 0.0007400000000000001,
+          "value": 13.325248812892982
+        },
+        {
+          "cycle": 75,
+          "t_end": 0.00076,
+          "t_start": 0.00075,
+          "value": 13.324764895418372
+        },
+        {
+          "cycle": 76,
+          "t_end": 0.0007700000000000001,
+          "t_start": 0.00076,
+          "value": 13.324290560730578
+        },
+        {
+          "cycle": 77,
+          "t_end": 0.0007800000000000001,
+          "t_start": 0.0007700000000000001,
+          "value": 13.323823950315148
+        },
+        {
+          "cycle": 78,
+          "t_end": 0.00079,
+          "t_start": 0.0007800000000000001,
+          "value": 13.32336423952804
+        },
+        {
+          "cycle": 79,
+          "t_end": 0.0008,
+          "t_start": 0.00079,
+          "value": 13.322908005406688
+        },
+        {
+          "cycle": 80,
+          "t_end": 0.0008100000000000001,
+          "t_start": 0.0008,
+          "value": 13.322459978210604
+        },
+        {
+          "cycle": 81,
+          "t_end": 0.0008200000000000001,
+          "t_start": 0.0008100000000000001,
+          "value": 13.322010660619862
+        },
+        {
+          "cycle": 82,
+          "t_end": 0.0008300000000000001,
+          "t_start": 0.0008200000000000001,
+          "value": 13.32157157413101
+        },
+        {
+          "cycle": 83,
+          "t_end": 0.00084,
+          "t_start": 0.0008300000000000001,
+          "value": 13.321138142094767
+        },
+        {
+          "cycle": 84,
+          "t_end": 0.0008500000000000001,
+          "t_start": 0.00084,
+          "value": 13.320712673674484
+        },
+        {
+          "cycle": 85,
+          "t_end": 0.0008600000000000001,
+          "t_start": 0.0008500000000000001,
+          "value": 13.320294083871309
+        },
+        {
+          "cycle": 86,
+          "t_end": 0.0008700000000000001,
+          "t_start": 0.0008600000000000001,
+          "value": 13.319874412100605
+        },
+        {
+          "cycle": 87,
+          "t_end": 0.00088,
+          "t_start": 0.0008700000000000001,
+          "value": 13.319462130186256
+        },
+        {
+          "cycle": 88,
+          "t_end": 0.0008900000000000001,
+          "t_start": 0.00088,
+          "value": 13.319054843179556
+        },
+        {
+          "cycle": 89,
+          "t_end": 0.0009000000000000001,
+          "t_start": 0.0008900000000000001,
+          "value": 13.318652645419723
+        },
+        {
+          "cycle": 90,
+          "t_end": 0.0009100000000000001,
+          "t_start": 0.0009000000000000001,
+          "value": 13.318254631411275
+        },
+        {
+          "cycle": 91,
+          "t_end": 0.00092,
+          "t_start": 0.0009100000000000001,
+          "value": 13.317862185216534
+        },
+        {
+          "cycle": 92,
+          "t_end": 0.00093,
+          "t_start": 0.00092,
+          "value": 13.317474066355613
+        },
+        {
+          "cycle": 93,
+          "t_end": 0.0009400000000000001,
+          "t_start": 0.00093,
+          "value": 13.317089312603025
+        },
+        {
+          "cycle": 94,
+          "t_end": 0.0009500000000000001,
+          "t_start": 0.0009400000000000001,
+          "value": 13.316709786646216
+        },
+        {
+          "cycle": 95,
+          "t_end": 0.0009600000000000001,
+          "t_start": 0.0009500000000000001,
+          "value": 13.316335186785624
+        },
+        {
+          "cycle": 96,
+          "t_end": 0.00097,
+          "t_start": 0.0009600000000000001,
+          "value": 13.315963779138302
+        },
+        {
+          "cycle": 97,
+          "t_end": 0.0009800000000000002,
+          "t_start": 0.00097,
+          "value": 13.315599110021793
+        },
+        {
+          "cycle": 98,
+          "t_end": 0.00099,
+          "t_start": 0.0009800000000000002,
+          "value": 13.315250387096055
+        },
+        {
+          "cycle": 99,
+          "t_end": 0.001,
+          "t_start": 0.00099,
+          "value": 13.314881143581905
+        },
+        {
+          "cycle": 100,
+          "t_end": 0.00101,
+          "t_start": 0.001,
+          "value": 13.314528313546269
+        },
+        {
+          "cycle": 101,
+          "t_end": 0.00102,
+          "t_start": 0.00101,
+          "value": 13.314179787627806
+        },
+        {
+          "cycle": 102,
+          "t_end": 0.00103,
+          "t_start": 0.00102,
+          "value": 13.31383478848309
+        },
+        {
+          "cycle": 103,
+          "t_end": 0.0010400000000000001,
+          "t_start": 0.00103,
+          "value": 13.313494843485804
+        },
+        {
+          "cycle": 104,
+          "t_end": 0.0010500000000000002,
+          "t_start": 0.0010400000000000001,
+          "value": 13.31315397922906
+        },
+        {
+          "cycle": 105,
+          "t_end": 0.0010600000000000002,
+          "t_start": 0.0010500000000000002,
+          "value": 13.312828189000228
+        },
+        {
+          "cycle": 106,
+          "t_end": 0.00107,
+          "t_start": 0.0010600000000000002,
+          "value": 13.312495429515227
+        },
+        {
+          "cycle": 107,
+          "t_end": 0.00108,
+          "t_start": 0.00107,
+          "value": 13.312176209901468
+        },
+        {
+          "cycle": 108,
+          "t_end": 0.00109,
+          "t_start": 0.00108,
+          "value": 13.3118693749463
+        },
+        {
+          "cycle": 109,
+          "t_end": 0.0011,
+          "t_start": 0.00109,
+          "value": 13.311543268905263
+        },
+        {
+          "cycle": 110,
+          "t_end": 0.00111,
+          "t_start": 0.0011,
+          "value": 13.311224532409026
+        },
+        {
+          "cycle": 111,
+          "t_end": 0.0011200000000000001,
+          "t_start": 0.00111,
+          "value": 13.310903712628287
+        },
+        {
+          "cycle": 112,
+          "t_end": 0.0011300000000000001,
+          "t_start": 0.0011200000000000001,
+          "value": 13.310600594541782
+        },
+        {
+          "cycle": 113,
+          "t_end": 0.0011400000000000002,
+          "t_start": 0.0011300000000000001,
+          "value": 13.310298477143293
+        },
+        {
+          "cycle": 114,
+          "t_end": 0.0011500000000000002,
+          "t_start": 0.0011400000000000002,
+          "value": 13.310001084595287
+        },
+        {
+          "cycle": 115,
+          "t_end": 0.00116,
+          "t_start": 0.0011500000000000002,
+          "value": 13.309699086428353
+        },
+        {
+          "cycle": 116,
+          "t_end": 0.00117,
+          "t_start": 0.00116,
+          "value": 13.309317938029265
+        },
+        {
+          "cycle": 117,
+          "t_end": 0.00118,
+          "t_start": 0.00117,
+          "value": 13.309031164102448
+        },
+        {
+          "cycle": 118,
+          "t_end": 0.00119,
+          "t_start": 0.00118,
+          "value": 13.308747799323037
+        },
+        {
+          "cycle": 119,
+          "t_end": 0.0012000000000000001,
+          "t_start": 0.00119,
+          "value": 13.308468091151452
+        },
+        {
+          "cycle": 120,
+          "t_end": 0.0012100000000000001,
+          "t_start": 0.0012000000000000001,
+          "value": 13.308193175211404
+        },
+        {
+          "cycle": 121,
+          "t_end": 0.0012200000000000002,
+          "t_start": 0.0012100000000000001,
+          "value": 13.307918296899583
+        },
+        {
+          "cycle": 122,
+          "t_end": 0.0012300000000000002,
+          "t_start": 0.0012200000000000002,
+          "value": 13.30764668280171
+        },
+        {
+          "cycle": 123,
+          "t_end": 0.00124,
+          "t_start": 0.0012300000000000002,
+          "value": 13.307378311567778
+        },
+        {
+          "cycle": 124,
+          "t_end": 0.00125,
+          "t_start": 0.00124,
+          "value": 13.3071129872532
+        },
+        {
+          "cycle": 125,
+          "t_end": 0.00126,
+          "t_start": 0.00125,
+          "value": 13.306955101418042
+        },
+        {
+          "cycle": 126,
+          "t_end": 0.00127,
+          "t_start": 0.00126,
+          "value": 13.306588286985113
+        },
+        {
+          "cycle": 127,
+          "t_end": 0.00128,
+          "t_start": 0.00127,
+          "value": 13.306333153093783
+        },
+        {
+          "cycle": 128,
+          "t_end": 0.0012900000000000001,
+          "t_start": 0.00128,
+          "value": 13.306080147924881
+        },
+        {
+          "cycle": 129,
+          "t_end": 0.0013000000000000002,
+          "t_start": 0.0012900000000000001,
+          "value": 13.305830098122945
+        },
+        {
+          "cycle": 130,
+          "t_end": 0.0013100000000000002,
+          "t_start": 0.0013000000000000002,
+          "value": 13.305581517072333
+        },
+        {
+          "cycle": 131,
+          "t_end": 0.0013200000000000002,
+          "t_start": 0.0013100000000000002,
+          "value": 13.305336592193681
+        },
+        {
+          "cycle": 132,
+          "t_end": 0.00133,
+          "t_start": 0.0013200000000000002,
+          "value": 13.305094444041162
+        },
+        {
+          "cycle": 133,
+          "t_end": 0.00134,
+          "t_start": 0.00133,
+          "value": 13.304855296880046
+        },
+        {
+          "cycle": 134,
+          "t_end": 0.00135,
+          "t_start": 0.00134,
+          "value": 13.304618969355078
+        },
+        {
+          "cycle": 135,
+          "t_end": 0.00136,
+          "t_start": 0.00135,
+          "value": 13.304385255025093
+        },
+        {
+          "cycle": 136,
+          "t_end": 0.0013700000000000001,
+          "t_start": 0.00136,
+          "value": 13.304153077947742
+        },
+        {
+          "cycle": 137,
+          "t_end": 0.0013800000000000002,
+          "t_start": 0.0013700000000000001,
+          "value": 13.303925157886555
+        },
+        {
+          "cycle": 138,
+          "t_end": 0.0013900000000000002,
+          "t_start": 0.0013800000000000002,
+          "value": 13.303701184566977
+        },
+        {
+          "cycle": 139,
+          "t_end": 0.0014000000000000002,
+          "t_start": 0.0013900000000000002,
+          "value": 13.303478931186012
+        },
+        {
+          "cycle": 140,
+          "t_end": 0.00141,
+          "t_start": 0.0014000000000000002,
+          "value": 13.303258694921485
+        },
+        {
+          "cycle": 141,
+          "t_end": 0.00142,
+          "t_start": 0.00141,
+          "value": 13.303040859329217
+        },
+        {
+          "cycle": 142,
+          "t_end": 0.00143,
+          "t_start": 0.00142,
+          "value": 13.302824542114372
+        },
+        {
+          "cycle": 143,
+          "t_end": 0.00144,
+          "t_start": 0.00143,
+          "value": 13.302612178966497
+        },
+        {
+          "cycle": 144,
+          "t_end": 0.0014500000000000001,
+          "t_start": 0.00144,
+          "value": 13.30240090819113
+        },
+        {
+          "cycle": 145,
+          "t_end": 0.0014600000000000001,
+          "t_start": 0.0014500000000000001,
+          "value": 13.302193579455981
+        },
+        {
+          "cycle": 146,
+          "t_end": 0.0014700000000000002,
+          "t_start": 0.0014600000000000001,
+          "value": 13.301988457970232
+        },
+        {
+          "cycle": 147,
+          "t_end": 0.0014800000000000002,
+          "t_start": 0.0014700000000000002,
+          "value": 13.30178534279354
+        },
+        {
+          "cycle": 148,
+          "t_end": 0.0014900000000000002,
+          "t_start": 0.0014800000000000002,
+          "value": 13.301584174054911
+        },
+        {
+          "cycle": 149,
+          "t_end": 0.0015,
+          "t_start": 0.0014900000000000002,
+          "value": 13.301385306836323
+        },
+        {
+          "cycle": 150,
+          "t_end": 0.00151,
+          "t_start": 0.0015,
+          "value": 13.301196143244125
+        },
+        {
+          "cycle": 151,
+          "t_end": 0.00152,
+          "t_start": 0.00151,
+          "value": 13.300989915446792
+        },
+        {
+          "cycle": 152,
+          "t_end": 0.0015300000000000001,
+          "t_start": 0.00152,
+          "value": 13.300797206107365
+        },
+        {
+          "cycle": 153,
+          "t_end": 0.0015400000000000001,
+          "t_start": 0.0015300000000000001,
+          "value": 13.300606865328097
+        },
+        {
+          "cycle": 154,
+          "t_end": 0.0015500000000000002,
+          "t_start": 0.0015400000000000001,
+          "value": 13.300417990745492
+        },
+        {
+          "cycle": 155,
+          "t_end": 0.0015600000000000002,
+          "t_start": 0.0015500000000000002,
+          "value": 13.300233218959969
+        },
+        {
+          "cycle": 156,
+          "t_end": 0.0015700000000000002,
+          "t_start": 0.0015600000000000002,
+          "value": 13.300051054548616
+        },
+        {
+          "cycle": 157,
+          "t_end": 0.00158,
+          "t_start": 0.0015700000000000002,
+          "value": 13.29987069798012
+        },
+        {
+          "cycle": 158,
+          "t_end": 0.00159,
+          "t_start": 0.00158,
+          "value": 13.299691529752776
+        },
+        {
+          "cycle": 159,
+          "t_end": 0.0016,
+          "t_start": 0.00159,
+          "value": 13.299513812242768
+        }
+      ],
+      "periodicity_error": 0.00017255676813909075,
+      "periodicity_tol": 0.01,
+      "reason": "periodic steady state reached",
+      "rel_tol": 0.001,
+      "t0": 0.0015600000000000002,
+      "t1": 0.0016
+    },
+    "switches": [
+      {
+        "bridge": "primary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.5001480326789535
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": 6.047367223006226
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 14.28304863639642
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -14.90947081336344
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 9.373057387131384
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 6.27239288216061e-05
+        },
+        "id": "S1",
+        "leg": "A",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "+1 * i_L; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            -10.31615886274762,
+            -10.317979793970883,
+            -10.31978195236437,
+            -10.321562420761312
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -2.2600229786366063e-06
+        },
+        "side": "high",
+        "turn_off_current": {
+          "max_abs_A": 14.156926124408304,
+          "mean_abs_A": 14.154048600276628,
+          "values_A": [
+            14.151149684028184,
+            14.153096483288484,
+            14.155022109381537,
+            14.156926124408304
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 6.068370155644892,
+          "values_A": [
+            -6.062532439878245,
+            -6.064497792756442,
+            -6.066443612315272,
+            -6.068370155644892
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            803.7268230040592,
+            803.727077364002,
+            803.7273283066445,
+            803.7275760622495
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            -0.7868533110625393,
+            -0.7870766885220176,
+            -0.7872976877399541,
+            -0.787516350716883
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 809.2704638878763
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -4.881590563442728
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "high side needs leg current < -i_min"
+        }
+      },
+      {
+        "bridge": "primary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.5002958760583083
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": 6.079197325926539
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 14.34320220029747
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -14.70295268390987
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 9.412839378428504
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 6.302250036280067e-05
+        },
+        "id": "S2",
+        "leg": "A",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "+1 * i_L; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            10.257794815245159,
+            10.259786837094127,
+            10.261757222979163,
+            10.263705662885297
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -2.240344895660159e-06
+        },
+        "side": "low",
+        "turn_off_current": {
+          "max_abs_A": 14.216547949533213,
+          "mean_abs_A": 14.213933110196539,
+          "values_A": [
+            14.21130007705619,
+            14.21306764738726,
+            14.21481676680949,
+            14.216547949533213
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 6.008557435141853,
+          "values_A": [
+            -6.002183554047789,
+            -6.004333360637641,
+            -6.00645902807819,
+            -6.008557435141853
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            803.7304135091141,
+            803.7305758081197,
+            803.7307504083467,
+            803.7309685632868
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            -0.7799233572917168,
+            -0.7801722339899035,
+            -0.7804186402422892,
+            -0.7806639771895145
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 810.058677042568
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -4.855825792570729
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "low side needs leg current > i_min"
+        }
+      },
+      {
+        "bridge": "primary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.5002958760583083
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": 6.07919732592942
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 14.34320220014342
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -14.7029526842224
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 9.412839378431705
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 6.302250036282567e-05
+        },
+        "id": "S3",
+        "leg": "B",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "-1 * i_L; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            -10.257794815245159,
+            -10.259786837094127,
+            -10.261757222979163,
+            -10.263705662885297
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -2.240344895656362e-06
+        },
+        "side": "high",
+        "turn_off_current": {
+          "max_abs_A": 14.21654794940486,
+          "mean_abs_A": 14.213933109887618,
+          "values_A": [
+            14.211300076589806,
+            14.21306764692676,
+            14.214816766629045,
+            14.21654794940486
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 6.008557434013828,
+          "values_A": [
+            -6.002183554300773,
+            -6.004333360619113,
+            -6.006459029947455,
+            -6.008557434013828
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            803.7304135091193,
+            803.730575808117,
+            803.730750408345,
+            803.7309685632861
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            -0.779923357280177,
+            -0.7801722338765031,
+            -0.7804186403717333,
+            -0.7806639769886049
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 810.058677042637
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -4.85582579260506
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "high side needs leg current < -i_min"
+        }
+      },
+      {
+        "bridge": "primary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.5001480326789535
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": 6.047367223001324
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 14.28304863659748
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -14.90947081379822
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 9.373057387123799
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 6.272392882155523e-05
+        },
+        "id": "S4",
+        "leg": "B",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "-1 * i_L; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            10.31615886274762,
+            10.317979793970883,
+            10.31978195236437,
+            10.321562420761312
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -2.2600229786347645e-06
+        },
+        "side": "low",
+        "turn_off_current": {
+          "max_abs_A": 14.156926124086484,
+          "mean_abs_A": 14.15404860008581,
+          "values_A": [
+            14.15114968374918,
+            14.153096482759471,
+            14.155022109748108,
+            14.156926124086484
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 6.068370155021422,
+          "values_A": [
+            -6.062532438997503,
+            -6.064497791720709,
+            -6.066443612033737,
+            -6.068370155021422
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            803.7268230040572,
+            803.7270773640014,
+            803.7273283066455,
+            803.7275760622493
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            -0.7868533110579384,
+            -0.7870766884849119,
+            -0.7872976876462708,
+            -0.7875163506820273
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 809.2704638880783
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -4.881590563488352
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "low side needs leg current > i_min"
+        }
+      },
+      {
+        "bridge": "secondary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.5009259220936823
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": -12.21513069935867
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 30.64383286977318
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -33.79141130295466
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 19.187836583275228
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 5.304688686291619e-06
+        },
+        "id": "S5",
+        "leg": "C",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "-1 * i_s; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            -30.993963446283963,
+            -30.989173693388175,
+            -30.98444285858598,
+            -30.979754682824233
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -0.00012743626846795298
+        },
+        "side": "high",
+        "turn_off_current": {
+          "max_abs_A": 30.51495398593903,
+          "mean_abs_A": 30.507753420532246,
+          "values_A": [
+            30.51495398593903,
+            30.51011734441721,
+            30.505335018904344,
+            30.500607332868395
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 31.115841287574252,
+          "values_A": [
+            -31.115841287574252,
+            -31.11125665535803,
+            -31.106716077702853,
+            -31.10221895573934
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            398.3413745035284,
+            398.3236839040568,
+            398.30618037919663,
+            398.2888632732099
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            -3.6558065125237675,
+            -3.655492268256208,
+            -3.6551810400355285,
+            -3.654872787055076
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 412.26919114266025
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -7.167186199208345
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "high side needs leg current < -i_min"
+        }
+      },
+      {
+        "bridge": "secondary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.501077227223826
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": -12.177326697307842
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 30.72970473727418
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -33.70372643915088
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 19.137370525009054
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 5.333972297904964e-06
+        },
+        "id": "S6",
+        "leg": "C",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "-1 * i_s; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            30.908688220417638,
+            30.90403676816869,
+            30.899438045056876,
+            30.89489193733604
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -0.00012708757311182765
+        },
+        "side": "low",
+        "turn_off_current": {
+          "max_abs_A": 30.600127053791397,
+          "mean_abs_A": 30.592720832979843,
+          "values_A": [
+            30.600127053791397,
+            30.595157675571954,
+            30.590236251468763,
+            30.58536235108725
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 31.03029720001183,
+          "values_A": [
+            -31.03029720001183,
+            -31.02584867410225,
+            -31.021450422743555,
+            -31.01710264974955
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            398.3388889156137,
+            398.32129853927006,
+            398.3038525731921,
+            398.28659769493567
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            -3.6499436696365644,
+            -3.649638667770396,
+            -3.6493371099373837,
+            -3.649039007038708
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 412.3046346598144
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -7.156958235373012
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "low side needs leg current > i_min"
+        }
+      },
+      {
+        "bridge": "secondary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.501077227223826
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": -12.17732669730175
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 30.72970473728219
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -33.70372643943028
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 19.13737052499941
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 5.333972297905909e-06
+        },
+        "id": "S7",
+        "leg": "D",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "+1 * i_s; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            -30.908688220417638,
+            -30.90403676816869,
+            -30.899438045056876,
+            -30.89489193733604
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -0.00012708757311176764
+        },
+        "side": "high",
+        "turn_off_current": {
+          "max_abs_A": 30.60012705384931,
+          "mean_abs_A": 30.592720832945837,
+          "values_A": [
+            30.60012705384931,
+            30.59515767548075,
+            30.59023625153453,
+            30.585362350918754
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 31.030297199880255,
+          "values_A": [
+            -31.030297199880255,
+            -31.025848673969247,
+            -31.02145042263795,
+            -31.01710264971904
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            398.3388889132291,
+            398.32129853702287,
+            398.30385257071964,
+            398.2865976924297
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            -3.6499436696213743,
+            -3.6496386677756805,
+            -3.649337109939459,
+            -3.649039007037541
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 412.30463465854984
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -7.156958235404602
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "high side needs leg current < -i_min"
+        }
+      },
+      {
+        "bridge": "secondary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.5009259220936823
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": -12.215130700093184
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 30.6438328902507
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -33.79141131616598
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 19.187836583829423
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 5.304688685581393e-06
+        },
+        "id": "S8",
+        "leg": "D",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "+1 * i_s; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            30.993963446283963,
+            30.989173693388175,
+            30.98444285858598,
+            30.979754682824233
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -0.00012743626847458672
+        },
+        "side": "low",
+        "turn_off_current": {
+          "max_abs_A": 30.514953989035817,
+          "mean_abs_A": 30.507753418365297,
+          "values_A": [
+            30.514953989035817,
+            30.510117320448042,
+            30.50533503625281,
+            30.500607327724506
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 31.115841277849704,
+          "values_A": [
+            -31.115841277849704,
+            -31.11125665133819,
+            -31.106716076713276,
+            -31.102218982408015
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            398.34137450355615,
+            398.32368390401496,
+            398.3061803792075,
+            398.2888632732146
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            -3.6558065123531973,
+            -3.655492267604224,
+            -3.655181040998028,
+            -3.654872787767016
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 412.2691911430376
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -7.167186200651564
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "low side needs leg current > i_min"
+        }
+      }
+    ],
+    "symmetry": {
+      "i_L_half_wave_antisymmetry_error": {
+        "unit": "1",
+        "value": 0.004383048336281384
+      },
+      "i_L_periodicity_error": {
+        "unit": "1",
+        "value": 0.00017255676813909075
+      },
+      "i_s_half_wave_antisymmetry_error": {
+        "unit": "1",
+        "value": 0.0029170086637287334
+      },
+      "v_ab_periodicity_error": {
+        "unit": "1",
+        "value": 0.0002520975677606794
+      }
+    },
+    "transformer": {
+      "flux_linkage_peak_to_peak": {
+        "unit": "s*V",
+        "value": 0.003951571362154442
+      },
+      "magnetising_inductance_primary": {
+        "unit": "H",
+        "value": 0.001
+      },
+      "net_volt_seconds_per_cycle": {
+        "unit": "s*V",
+        "value": -1.951671857748537e-05
+      },
+      "note": "flux density requires N_p and A_e from the magnetics design: B_pp = flux_linkage_pp / (N_p * A_e)",
+      "primary_voltage_rms": {
+        "unit": "V",
+        "value": 790.4226474859162
+      },
+      "turns_ratio_np_ns": {
+        "unit": "1",
+        "value": 2.0
+      },
+      "volt_second_relative_imbalance": {
+        "unit": "1",
+        "value": 0.0049389766219088685
+      }
+    },
+    "valid": true,
+    "window": {
+      "cycles": 4,
+      "samples": 3469,
+      "t0": 0.0015600000000000002,
+      "t1": 0.0016
+    },
+    "zvs_overview": {
+      "S1": true,
+      "S2": true,
+      "S3": true,
+      "S4": true,
+      "S5": true,
+      "S6": true,
+      "S7": true,
+      "S8": true
+    }
+  },
+  "summary_path": "runs\\wf-dab-10kw-first\\tasks\\circuit-sim-level2\\ngspice\\summary.json",
+  "valid": true
+}

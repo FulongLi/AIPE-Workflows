@@ -1,0 +1,219 @@
+{
+  "id": "aipe.workflow.dab-10kw-benchmark",
+  "schema_version": "0.1.0",
+  "project": {
+    "id": "project.dab-10kw-benchmark",
+    "name": "AIPE 10 kW DAB simulation-driven benchmark",
+    "description": "First full-system benchmark of the AIPE simulation-driven engineering workflow.",
+    "purpose": "engineering",
+    "created_at": "2026-10-21T05:15:09Z",
+    "updated_at": "2026-10-21T05:15:09Z",
+    "evidence_refs": [
+      "evidence.specification"
+    ]
+  },
+  "requirements": {
+    "nominal_power": {
+      "value": 10000.0,
+      "unit": "W"
+    },
+    "input_voltage": {
+      "value": 800.0,
+      "unit": "V"
+    },
+    "output_voltage": {
+      "value": 400.0,
+      "unit": "V"
+    },
+    "switching_frequency": {
+      "value": 100000.0,
+      "unit": "Hz"
+    },
+    "operating_points": [
+      {
+        "id": "operating-point.nominal",
+        "description": "Requested nominal operating point (design input, not a measurement).",
+        "input_voltage": {
+          "value": 800.0,
+          "unit": "V"
+        },
+        "output_voltage": {
+          "value": 400.0,
+          "unit": "V"
+        },
+        "output_power": {
+          "value": 10000.0,
+          "unit": "W"
+        },
+        "switching_frequency": {
+          "value": 100000.0,
+          "unit": "Hz"
+        },
+        "ambient_temperature": {
+          "value": 313.15,
+          "unit": "K"
+        },
+        "evidence_refs": [
+          "evidence.specification"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "id": "constraint.input-voltage-range",
+        "description": "Operating input DC voltage 700 V to 800 V (nominal 800 V); 800 V also the design point for device stress. [basis: source: TIDUES0 Table 1-1 (700-800 V); adopted as AIPE preliminary range]",
+        "evidence_refs": [
+          "evidence.specification",
+          "evidence.reference-designs"
+        ]
+      },
+      {
+        "id": "constraint.output-voltage-range",
+        "description": "Operating output DC voltage 350 V to 450 V around the 400 V nominal; wider range requires EPS/DPS modulation study. [basis: assumption (AIPE preliminary range; TI covers 250-500 V with EPS)]",
+        "evidence_refs": [
+          "evidence.specification"
+        ]
+      },
+      {
+        "id": "constraint.rated-power-envelope",
+        "description": "10 kW continuous at nominal voltages in both power-flow directions; derated power at the range corners to be established by simulation. [basis: assumption]",
+        "evidence_refs": [
+          "evidence.specification"
+        ]
+      },
+      {
+        "id": "constraint.efficiency-target",
+        "description": "Full-load efficiency target >= 97.5 % and peak >= 98.5 % at nominal voltages. [basis: assumption informed by source: TIDUES0 Table 1-1 (98.0 % full load, 98.8 % peak measured by TI)]",
+        "evidence_refs": [
+          "evidence.specification"
+        ]
+      },
+      {
+        "id": "constraint.device-voltage-derating",
+        "description": "Semiconductor DC-bus voltage utilisation <= 70 % of VDS rating at the maximum bus voltage (1200 V class on the 800 V bus, >= 650 V class on the 400 V bus with overshoot margin). [basis: assumption (common industrial derating practice; not a standard citation)]",
+        "evidence_refs": [
+          "evidence.specification"
+        ]
+      },
+      {
+        "id": "constraint.junction-temperature-limit",
+        "description": "Design maximum junction temperature 125 degC at 40 degC ambient and rated power; absolute maximum per datasheet (150-175 degC) never reached under fault-free operation. [basis: assumption]",
+        "evidence_refs": [
+          "evidence.specification"
+        ]
+      },
+      {
+        "id": "constraint.isolation",
+        "description": "Transformer and all primary-to-secondary barriers rated for reinforced isolation of an 800 V DC system; transformer dielectric test >= 5 kV DC as in the reference design; creepage/clearance per IEC 60664-1 to be verified in the PCB stage. [basis: assumption; source: TIDUES0 BOM (Payton transformer 5000 VDC)]",
+        "evidence_refs": [
+          "evidence.specification"
+        ]
+      },
+      {
+        "id": "constraint.magnetic-saturation-margin",
+        "description": "Peak flux density <= 70 % of the core material's saturation flux density at 100 degC under worst-case volt-seconds. [basis: assumption]",
+        "evidence_refs": [
+          "evidence.specification"
+        ]
+      },
+      {
+        "id": "constraint.switching-frequency",
+        "description": "Fixed 100 kHz switching frequency for the SPS baseline. [basis: task specification; source: TIDUES0 Table 1-1]",
+        "evidence_refs": [
+          "evidence.specification"
+        ]
+      },
+      {
+        "id": "constraint.zvs-at-rated-load",
+        "description": "All eight switches must satisfy the ZVS current condition at the nominal operating point; light-load ZVS loss is reported, not required for the SPS baseline. [basis: assumption]",
+        "evidence_refs": [
+          "evidence.specification"
+        ]
+      }
+    ],
+    "evidence_refs": [
+      "evidence.specification"
+    ]
+  },
+  "architecture": {
+    "stage": "concept",
+    "description": "Single-phase isolated bidirectional DAB; two full bridges, eight controlled switches.",
+    "evidence_refs": [
+      "evidence.specification"
+    ]
+  },
+  "converter": {
+    "id": "converter.dab",
+    "topology": "dual-active-bridge",
+    "isolation": "isolated",
+    "design_status": "concept",
+    "description": "10 kW bidirectional isolated DAB; initial single-phase-shift modulation.",
+    "evidence_refs": [
+      "evidence.specification"
+    ]
+  },
+  "semiconductors": [],
+  "magnetics": [],
+  "passives": [],
+  "control": {
+    "evidence_refs": []
+  },
+  "thermal": {
+    "ambient_temperature": {
+      "value": 313.15,
+      "unit": "K"
+    },
+    "evidence_refs": [
+      "evidence.specification",
+      "evidence.reference-designs"
+    ]
+  },
+  "simulation": {
+    "status": "not_run",
+    "runs": [],
+    "evidence_refs": []
+  },
+  "validation": {
+    "status": "not_run",
+    "checks": [],
+    "limitations": [
+      "Initial state: requested ratings and documented assumptions only; no component, loss, simulation or measurement claimed."
+    ],
+    "evidence_refs": []
+  },
+  "evidence": [
+    {
+      "id": "evidence.specification",
+      "kind": "assumption",
+      "description": "Workflow specification: requested ratings, operating envelope assumptions and design limits with their stated basis.",
+      "source": {
+        "type": "user_requirement",
+        "reference": "AIPE task211026 section 4 (initial 10 kW DAB engineering specification)"
+      },
+      "provenance": {
+        "created_at": "2026-10-21T05:15:09Z",
+        "activity": "Record requested design inputs and explicitly labelled assumptions; no calculation performed.",
+        "inputs": []
+      },
+      "artifacts": [],
+      "review_status": "unreviewed"
+    },
+    {
+      "id": "evidence.reference-designs",
+      "kind": "source",
+      "description": "Reference designs consulted for operating ranges and component stresses: TI TIDA-010054 design guide TIDUES0 (700-800 V input, 250-500 V output, 100 kHz, 35 uH, 200 ns dead time, 40 degC ambient assumption).",
+      "source": {
+        "type": "document",
+        "reference": "https://www.ti.com/lit/pdf/tidues0",
+        "locator": "TIDUES0 Rev F, Tables 1-1, 2-1, 2-2, section 2.3.5.6"
+      },
+      "provenance": {
+        "created_at": "2026-10-21T05:15:09Z",
+        "activity": "Collect published reference-design parameters; values are TI's, not AIPE results.",
+        "inputs": []
+      },
+      "artifacts": [],
+      "review_status": "unreviewed"
+    }
+  ]
+}

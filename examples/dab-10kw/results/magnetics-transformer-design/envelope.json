@@ -1,0 +1,2302 @@
+{
+  "approval_required": [],
+  "artifacts": [
+    {
+      "description": "waveform-informed transformer design result (aipe_magnetics)",
+      "media_type": "application/json",
+      "role": "analysis_summary",
+      "sha256": "5d032a1efbefcc829b63b3ce1b33214bac699225ffc4ba7b896cca4e3622b9e1",
+      "uri": "tasks/magnetics-transformer-design/magnetics-design-result.json"
+    }
+  ],
+  "capability_id": "aipe.magnetics-database",
+  "diagnostics": [],
+  "environment": {},
+  "evidence_kind": "analytical",
+  "finished_at": "2026-10-21T06:03:23Z",
+  "gate": "analytical",
+  "input_hash": "16a51c5002ffa20ec292ed19077b453c9467bd669f3c8b27469425aa5f4e442a",
+  "inputs": {
+    "dataset_sha256": "f1d558d08cd7691785ab0131f0743710ad28cbf6c6a8f7cb4f0e6deb549d4873",
+    "request": {
+      "frequency": {
+        "unit": "Hz",
+        "value": 100000.0
+      },
+      "loss_density_target": {
+        "unit": "W/m^3",
+        "value": 300000.0
+      },
+      "materials": null,
+      "max_candidates": 12,
+      "series_inductance_total": {
+        "unit": "H",
+        "value": 3.5e-05
+      },
+      "temperature": {
+        "unit": "K",
+        "value": 373.15
+      },
+      "turns_ratio_target": 2.0,
+      "turns_ratio_tolerance": 0.05,
+      "waveforms": {
+        "channels": {
+          "magnetising_current": "i_m",
+          "primary_current": "i_L",
+          "primary_voltage": "v_tp",
+          "secondary_current": "i_s"
+        },
+        "kind": "hdf5",
+        "path": "runs\\wf-dab-10kw-first\\tasks\\circuit-sim-level1\\ngspice\\waveforms.h5",
+        "window": {
+          "t0": {
+            "unit": "s",
+            "value": 0.0002
+          },
+          "t1": {
+            "unit": "s",
+            "value": 0.00024000000000000003
+          }
+        }
+      }
+    }
+  },
+  "model": {
+    "id": "aipe-magnetics-waveform-informed-transformer",
+    "validity_range": "analytical: exact harmonics, per-layer Dowell, iGSE on the actual flux, 1-D leakage, lumped/network thermal; no FEA, no insulation design",
+    "version": "0.2.0"
+  },
+  "outputs": {
+    "candidate_counts": {
+      "evaluated": 35,
+      "feasible": 12,
+      "infeasible": 23
+    },
+    "candidates_top": [
+      {
+        "arrangement": "P-S-P",
+        "conductor": "litz",
+        "copper_loss_W": 15.907926004822842,
+        "copper_mass_kg": 0.18213664666192864,
+        "core": "core.tdk-e70-33-32",
+        "core_loss_W": 19.137732451622682,
+        "core_loss_notes": [],
+        "core_name": "E 70/33/32",
+        "core_volume_m3": 0.00010200000000000001,
+        "evaluation": "complete",
+        "external_inductance_required_H": 3.3449416011381665e-05,
+        "feasible": true,
+        "flux_density_allowed_T": 0.27299999999999996,
+        "flux_density_max_T": 0.14642751010785723,
+        "flux_density_peak_T": 0.14642751010658026,
+        "flux_linkage_peak_to_peak_Vs": 0.004000399576111773,
+        "id": "E70/33/32|N87|20:10|litz 436 x 0.1 mm/litz 889 x 0.1 mm|P-S-P",
+        "layout": {
+          "bounding_volume_m3": 0.000266868585,
+          "checks": [
+            {
+              "code": "radial_fit",
+              "message": "radial build 11.05 mm (incl. bobbin and insulation) vs available 12.50 mm",
+              "passed": true
+            }
+          ],
+          "copper_volume_m3": 2.0389191387207952e-05,
+          "core_exposed_area_m2": 0.01584793,
+          "core_volume_m3": 0.00011335679999999998,
+          "fidelity": "parametric_e_core",
+          "layers": [
+            {
+              "d_in_m": 0.0015999999999999999,
+              "d_out_m": 0.004210076627227638,
+              "mean_turn_length_m": 0.12625289404889212,
+              "section": 0,
+              "turns": 10,
+              "winding": "primary"
+            },
+            {
+              "d_in_m": 0.004410076627227638,
+              "d_out_m": 0.008137089506196531,
+              "mean_turn_length_m": 0.14741808494813602,
+              "section": 1,
+              "turns": 10,
+              "winding": "secondary"
+            },
+            {
+              "d_in_m": 0.008337089506196532,
+              "d_out_m": 0.010947166133424169,
+              "mean_turn_length_m": 0.16858327584737992,
+              "section": 2,
+              "turns": 10,
+              "winding": "primary"
+            }
+          ],
+          "notes": [
+            "parametric E-core layout: per-layer radial position and mean turn length from the core outline"
+          ],
+          "winding_exposed_area_m2": 0.0042268571836540725,
+          "winding_height_m": 0.04041,
+          "window_fill_geometric": 0.24284693795636864
+        },
+        "leakage_inductance_H": 1.5505839886183287e-06,
+        "loss_density_W_per_m3": 187624.8279570851,
+        "magnetising_current_peak_A": 0.5111136103301073,
+        "magnetising_current_share_of_primary_peak": 0.03570455079107975,
+        "magnetising_inductance": {
+          "datasheet_AL_H": 0.0038799999999999998,
+          "datasheet_AL_nH": 9700.0,
+          "effective_permeability": 1698.4455958549222,
+          "reluctance_model_H": 0.003913415232210388,
+          "residual_gap_per_leg_m": 1e-05
+        },
+        "mass_kg": 0.6961366466619286,
+        "material": "material.tdk-n87",
+        "material_grade": "N87",
+        "saturation_flux_density_T": 0.39,
+        "saturation_margin": 0.6245448458772891,
+        "series_inductance_total_H": 3.5e-05,
+        "standard_size_equivalent": false,
+        "tags": {
+          "current_density_A_per_mm2": 4.0,
+          "strand_diameter_mm": 0.1
+        },
+        "temperature_rise_K": 63.08387929854996,
+        "thermal": {
+          "ambient_K": 313.15,
+          "assumptions": [
+            "forced convection h = 40 W/m^2/K + radiation (emissivity 0.9), ambient 40.0 degC",
+            "core node = volume average; winding nodes at the section mid-build",
+            "end turns of the outermost winding are its only surface to ambient; inner windings reach ambient through the outer windings and the core",
+            "hot spots: uniformly heated slab estimates (labelled estimates)"
+          ],
+          "converged": true,
+          "cooling": {
+            "ambient_K": 313.15,
+            "description": "forced convection h = 40 W/m^2/K + radiation (emissivity 0.9), ambient 40.0 degC",
+            "emissivity": 0.9,
+            "forced_h_W_per_m2K": 40.0,
+            "mode": "forced",
+            "radiation": true
+          },
+          "hotspot_core_K": 350.54468928287713,
+          "hotspot_winding_K": 376.23387929854994,
+          "hotspots_K": {
+            "core": 350.54468928287713,
+            "primary": 374.6845365861552,
+            "primary.s0": 374.6845365861552,
+            "primary.s2": 368.1880324247054,
+            "secondary": 376.23387929854994,
+            "secondary.s1": 376.23387929854994
+          },
+          "iterations": 4,
+          "losses_at_estimated_temperatures": {
+            "core_W": 21.152272236325068,
+            "total_W": 37.053404208571735,
+            "windings_W": {
+              "primary": 9.282076979980426,
+              "secondary": 6.619054992266244
+            }
+          },
+          "method": "thermal_network_electrothermal",
+          "temperature_rise_K": 63.08387929854996,
+          "temperatures_K": {
+            "core": 347.7223785121566,
+            "primary.s0": 374.1926279683516,
+            "primary.s2": 367.69612380690177,
+            "secondary.s1": 375.5323186027198
+          }
+        },
+        "total_loss_W": 35.04565845644552,
+        "turns": {
+          "primary": 20,
+          "secondary": 10
+        },
+        "turns_ratio": 2.0,
+        "turns_ratio_error": 0.0,
+        "turns_ratio_target": 2.0,
+        "violation_codes": [],
+        "violations": [],
+        "warnings": [],
+        "windings": {
+          "primary": {
+            "conductor": "litz 436 x 0.1 mm",
+            "copper_area_m2": 3.4243359924128744e-06,
+            "current_density_A_per_m2": 3994097.0391284167,
+            "current_rms_A": 13.67713024827713,
+            "effective_ac_factor": 2.613125338289631,
+            "harmonics_used": 41,
+            "layers": 2,
+            "litz_1d_reference": {
+              "dc_and_skin_W": 3.5569899198853703,
+              "method": "strand skin factor + 1-D window-field proximity (Sullivan 1999), reference only",
+              "proximity_W": 2.3168580254137368,
+              "total_W": 5.873847945299107
+            },
+            "loss_W": 9.29375948212997,
+            "loss_dc_resistance_W": 3.5565685832019884,
+            "method": "dowell_per_layer_harmonic_litz_strand_sublayers",
+            "r_dc_Ohm": 0.01901258734884946,
+            "turns": 20
+          },
+          "secondary": {
+            "conductor": "litz 889 x 0.1 mm",
+            "copper_area_m2": 6.982189672603315e-06,
+            "current_density_A_per_m2": 3999800.8319908925,
+            "current_rms_A": 27.927368061596958,
+            "effective_ac_factor": 1.8189432618939296,
+            "harmonics_used": 41,
+            "layers": 1,
+            "litz_1d_reference": {
+              "dc_and_skin_W": 3.6366977092975468,
+              "method": "strand skin factor + 1-D window-field proximity (Sullivan 1999), reference only",
+              "proximity_W": 2.4508117617083403,
+              "total_W": 6.0875094710058875
+            },
+            "loss_W": 6.614166522692873,
+            "loss_dc_resistance_W": 3.636268739798973,
+            "method": "dowell_per_layer_harmonic_litz_strand_sublayers",
+            "r_dc_Ohm": 0.00466225426552214,
+            "turns": 10
+          }
+        },
+        "window_fill": 0.30330836968046193
+      },
+      {
+        "arrangement": "P-S-P",
+        "conductor": "litz",
+        "copper_loss_W": 15.93186142037228,
+        "copper_mass_kg": 0.18241069346874134,
+        "core": "core.tdk-e65-32-27",
+        "core_loss_W": 19.690198540329593,
+        "core_loss_notes": [],
+        "core_name": "E 65/32/27",
+        "core_volume_m3": 7.865e-05,
+        "evaluation": "complete",
+        "external_inductance_required_H": 3.3316783346421594e-05,
+        "feasible": true,
+        "flux_density_allowed_T": 0.27299999999999996,
+        "flux_density_max_T": 0.16994050875729227,
+        "flux_density_peak_T": 0.16994050875581024,
+        "flux_linkage_peak_to_peak_Vs": 0.004000399576111773,
+        "id": "E65/32/27|N87|22:11|litz 436 x 0.1 mm/litz 889 x 0.1 mm|P-S-P",
+        "layout": {
+          "bounding_volume_m3": 0.00021579129,
+          "checks": [
+            {
+              "code": "radial_fit",
+              "message": "radial build 11.05 mm (incl. bobbin and insulation) vs available 11.60 mm",
+              "passed": true
+            }
+          ],
+          "copper_volume_m3": 2.0419869413270044e-05,
+          "core_exposed_area_m2": 0.013537283999999997,
+          "core_volume_m3": 8.739284799999997e-05,
+          "fidelity": "parametric_e_core",
+          "layers": [
+            {
+              "d_in_m": 0.0015999999999999999,
+              "d_out_m": 0.004210076627227638,
+              "mean_turn_length_m": 0.1130528940488921,
+              "section": 0,
+              "turns": 11,
+              "winding": "primary"
+            },
+            {
+              "d_in_m": 0.004410076627227638,
+              "d_out_m": 0.008137089506196531,
+              "mean_turn_length_m": 0.13421808494813603,
+              "section": 1,
+              "turns": 11,
+              "winding": "secondary"
+            },
+            {
+              "d_in_m": 0.008337089506196532,
+              "d_out_m": 0.010947166133424169,
+              "mean_turn_length_m": 0.15538327584737993,
+              "section": 2,
+              "turns": 11,
+              "winding": "primary"
+            }
+          ],
+          "notes": [
+            "parametric E-core layout: per-layer radial position and mean turn length from the core outline"
+          ],
+          "winding_exposed_area_m2": 0.004485554335344848,
+          "winding_height_m": 0.041010000000000005,
+          "window_fill_geometric": 0.28312340908945693
+        },
+        "leakage_inductance_H": 1.6832166535784028e-06,
+        "loss_density_W_per_m3": 250352.17470221987,
+        "magnetising_current_peak_A": 0.5336727840077661,
+        "magnetising_current_share_of_primary_peak": 0.037280453185575844,
+        "magnetising_inductance": {
+          "datasheet_AL_H": 0.0038236000000000003,
+          "datasheet_AL_nH": 7900.0,
+          "effective_permeability": 1693.193717277487,
+          "reluctance_model_H": 0.0037479891199150585,
+          "residual_gap_per_leg_m": 1e-05
+        },
+        "mass_kg": 0.5764106934687414,
+        "material": "material.tdk-n87",
+        "material_grade": "N87",
+        "saturation_flux_density_T": 0.39,
+        "saturation_margin": 0.5642551057505327,
+        "series_inductance_total_H": 3.5e-05,
+        "standard_size_equivalent": false,
+        "tags": {
+          "current_density_A_per_mm2": 4.0,
+          "strand_diameter_mm": 0.1
+        },
+        "temperature_rise_K": 64.61785166319737,
+        "thermal": {
+          "ambient_K": 313.15,
+          "assumptions": [
+            "forced convection h = 40 W/m^2/K + radiation (emissivity 0.9), ambient 40.0 degC",
+            "core node = volume average; winding nodes at the section mid-build",
+            "end turns of the outermost winding are its only surface to ambient; inner windings reach ambient through the outer windings and the core",
+            "hot spots: uniformly heated slab estimates (labelled estimates)"
+          ],
+          "converged": true,
+          "cooling": {
+            "ambient_K": 313.15,
+            "description": "forced convection h = 40 W/m^2/K + radiation (emissivity 0.9), ambient 40.0 degC",
+            "emissivity": 0.9,
+            "forced_h_W_per_m2K": 40.0,
+            "mode": "forced",
+            "radiation": true
+          },
+          "hotspot_core_K": 357.30105448951275,
+          "hotspot_winding_K": 377.76785166319735,
+          "hotspots_K": {
+            "core": 357.30105448951275,
+            "primary": 377.38934856717356,
+            "primary.s0": 377.38934856717356,
+            "primary.s2": 368.7880504320519,
+            "secondary": 377.76785166319735,
+            "secondary.s1": 377.76785166319735
+          },
+          "iterations": 4,
+          "losses_at_estimated_temperatures": {
+            "core_W": 22.376997617926794,
+            "total_W": 38.29729521410178,
+            "windings_W": {
+              "primary": 9.287447411536402,
+              "secondary": 6.632850184638588
+            }
+          },
+          "method": "thermal_network_electrothermal",
+          "temperature_rise_K": 64.61785166319737,
+          "temperatures_K": {
+            "core": 354.10042106669437,
+            "primary.s0": 376.89789479265113,
+            "primary.s2": 368.29659665752945,
+            "secondary.s1": 377.0658849947167
+          }
+        },
+        "total_loss_W": 35.622059960701876,
+        "turns": {
+          "primary": 22,
+          "secondary": 11
+        },
+        "turns_ratio": 2.0,
+        "turns_ratio_error": 0.0,
+        "turns_ratio_target": 2.0,
+        "violation_codes": [],
+        "violations": [],
+        "warnings": [],
+        "windings": {
+          "primary": {
+            "conductor": "litz 436 x 0.1 mm",
+            "copper_area_m2": 3.4243359924128744e-06,
+            "current_density_A_per_m2": 3994097.0391284167,
+            "current_rms_A": 13.67713024827713,
+            "effective_ac_factor": 2.613125338289631,
+            "harmonics_used": 41,
+            "layers": 2,
+            "litz_1d_reference": {
+              "dc_and_skin_W": 3.5623418451968045,
+              "method": "strand skin factor + 1-D window-field proximity (Sullivan 1999), reference only",
+              "proximity_W": 2.726063149338526,
+              "total_W": 6.28840499453533
+            },
+            "loss_W": 9.30774307717271,
+            "loss_dc_resistance_W": 3.5619198745609757,
+            "method": "dowell_per_layer_harmonic_litz_strand_sublayers",
+            "r_dc_Ohm": 0.01904119410618079,
+            "turns": 22
+          },
+          "secondary": {
+            "conductor": "litz 889 x 0.1 mm",
+            "copper_area_m2": 6.982189672603315e-06,
+            "current_density_A_per_m2": 3999800.8319908925,
+            "current_rms_A": 27.927368061596958,
+            "effective_ac_factor": 1.8189432618939294,
+            "harmonics_used": 41,
+            "layers": 1,
+            "litz_1d_reference": {
+              "dc_and_skin_W": 3.6421695647030443,
+              "method": "strand skin factor + 1-D window-field proximity (Sullivan 1999), reference only",
+              "proximity_W": 2.8836758904833877,
+              "total_W": 6.525845455186432
+            },
+            "loss_W": 6.624118343199571,
+            "loss_dc_resistance_W": 3.6417399497675222,
+            "method": "dowell_per_layer_harmonic_litz_strand_sublayers",
+            "r_dc_Ohm": 0.004669269195891353,
+            "turns": 11
+          }
+        },
+        "window_fill": 0.3571349254265721
+      },
+      {
+        "arrangement": "P-S-P",
+        "conductor": "litz",
+        "copper_loss_W": 13.63985868977354,
+        "copper_mass_kg": 0.1561685742028687,
+        "core": "core.tdk-pm87-70",
+        "core_loss_W": 22.053214996874445,
+        "core_loss_notes": [],
+        "core_name": "PM 87/70",
+        "core_volume_m3": 0.000133,
+        "evaluation": "complete",
+        "external_inductance_required_H": 3.4036313927116314e-05,
+        "feasible": true,
+        "flux_density_allowed_T": 0.27299999999999996,
+        "flux_density_max_T": 0.13737635907097046,
+        "flux_density_peak_T": 0.1373763590697724,
+        "flux_linkage_peak_to_peak_Vs": 0.004000399576111773,
+        "id": "PM87/70|N87|16:8|litz 436 x 0.1 mm/litz 889 x 0.1 mm|P-S-P",
+        "layout": {
+          "checks": [
+            {
+              "code": "radial_fit",
+              "message": "radial build 11.05 mm (incl. bobbin and insulation) vs available 13.19 mm",
+              "passed": true
+            }
+          ],
+          "copper_volume_m3": 1.7482209134990338e-05,
+          "exposed_area_m2": 0.031021656657872418,
+          "fidelity": "generic_layer_stack",
+          "layers": [
+            {
+              "d_in_m": 0.0015999999999999999,
+              "d_out_m": 0.004210076627227638,
+              "mean_turn_length_m": 0.158,
+              "section": 0,
+              "turns": 8,
+              "winding": "primary"
+            },
+            {
+              "d_in_m": 0.004410076627227638,
+              "d_out_m": 0.008137089506196531,
+              "mean_turn_length_m": 0.158,
+              "section": 1,
+              "turns": 8,
+              "winding": "secondary"
+            },
+            {
+              "d_in_m": 0.008337089506196532,
+              "d_out_m": 0.010947166133424169,
+              "mean_turn_length_m": 0.158,
+              "section": 2,
+              "turns": 8,
+              "winding": "primary"
+            }
+          ],
+          "notes": [
+            "generic layer stack: radial space = coil-former window area / window height; every layer uses the datasheet mean turn length"
+          ],
+          "radial_available_m": 0.013187499999999998,
+          "radial_build_m": 0.011047166133424168,
+          "winding_height_m": 0.0446
+        },
+        "leakage_inductance_H": 9.636860728836848e-07,
+        "loss_density_W_per_m3": 165813.64659304093,
+        "magnetising_current_peak_A": 0.5900829621624475,
+        "magnetising_current_share_of_primary_peak": 0.04122106449067659,
+        "magnetising_inductance": {
+          "datasheet_AL_H": 0.0035840000000000004,
+          "datasheet_AL_nH": 14000.0,
+          "effective_permeability": 1690.5263157894738,
+          "reluctance_model_H": 0.0033896924946381344,
+          "residual_gap_per_leg_m": 1e-05
+        },
+        "mass_kg": 0.9261685742028687,
+        "material": "material.tdk-n87",
+        "material_grade": "N87",
+        "saturation_flux_density_T": 0.39,
+        "saturation_margin": 0.6477529254590502,
+        "series_inductance_total_H": 3.5e-05,
+        "standard_size_equivalent": false,
+        "tags": {
+          "current_density_A_per_mm2": 4.0,
+          "strand_diameter_mm": 0.1
+        },
+        "temperature_rise_K": 24.458571216527844,
+        "thermal": {
+          "ambient_K": 313.15,
+          "assumptions": [
+            "forced convection h = 40 W/m^2/K + radiation (emissivity 0.9), ambient 40.0 degC",
+            "uniform surface temperature; no internal gradient (hot spots are not resolved: optimistic)"
+          ],
+          "converged": true,
+          "cooling": {
+            "ambient_K": 313.15,
+            "description": "forced convection h = 40 W/m^2/K + radiation (emissivity 0.9), ambient 40.0 degC",
+            "emissivity": 0.9,
+            "forced_h_W_per_m2K": 40.0,
+            "mode": "forced",
+            "radiation": true
+          },
+          "exposed_area_m2": 0.031021656657872418,
+          "heat_transfer_coefficient_W_per_m2K": 47.042015833986255,
+          "hotspot_core_K": 337.6085712165278,
+          "hotspot_winding_K": 337.6085712165278,
+          "losses_at_estimated_temperatures": null,
+          "method": "lumped_surface_estimate",
+          "note": "losses evaluated at the design temperature; surface temperature is a lower bound for the hot spots",
+          "surface_temperature_K": 337.6085712165278,
+          "temperature_rise_K": 24.458571216527844
+        },
+        "total_loss_W": 35.693073686647985,
+        "turns": {
+          "primary": 16,
+          "secondary": 8
+        },
+        "turns_ratio": 2.0,
+        "turns_ratio_error": 0.0,
+        "turns_ratio_target": 2.0,
+        "violation_codes": [],
+        "violations": [],
+        "warnings": [],
+        "windings": {
+          "primary": {
+            "conductor": "litz 436 x 0.1 mm",
+            "copper_area_m2": 3.4243359924128744e-06,
+            "current_density_A_per_m2": 3994097.0391284167,
+            "current_rms_A": 13.67713024827713,
+            "effective_ac_factor": 2.61312533828963,
+            "harmonics_used": 41,
+            "layers": 2,
+            "litz_1d_reference": {
+              "dc_and_skin_W": 3.0498532526161095,
+              "method": "strand skin factor + 1-D window-field proximity (Sullivan 1999), reference only",
+              "proximity_W": 1.04371923612759,
+              "total_W": 4.0935724887437
+            },
+            "loss_W": 7.96870478241877,
+            "loss_dc_resistance_W": 3.049491987871707,
+            "method": "dowell_per_layer_harmonic_litz_strand_sublayers",
+            "r_dc_Ohm": 0.016301873964378606,
+            "turns": 16
+          },
+          "secondary": {
+            "conductor": "litz 889 x 0.1 mm",
+            "copper_area_m2": 6.982189672603315e-06,
+            "current_density_A_per_m2": 3999800.8319908925,
+            "current_rms_A": 27.927368061596958,
+            "effective_ac_factor": 1.8189432618939292,
+            "harmonics_used": 41,
+            "layers": 1,
+            "litz_1d_reference": {
+              "dc_and_skin_W": 3.118196730183628,
+              "method": "strand skin factor + 1-D window-field proximity (Sullivan 1999), reference only",
+              "proximity_W": 1.104063931308846,
+              "total_W": 4.222260661492474
+            },
+            "loss_W": 5.67115390735477,
+            "loss_dc_resistance_W": 3.117828920870145,
+            "method": "dowell_per_layer_harmonic_litz_strand_sublayers",
+            "r_dc_Ohm": 0.0039975348979016155,
+            "turns": 8
+          }
+        },
+        "window_fill": 0.16841231850750765
+      },
+      {
+        "arrangement": "P-S-P",
+        "conductor": "litz",
+        "copper_loss_W": 14.858333908448898,
+        "copper_mass_kg": 0.16928614521733648,
+        "core": "core.tdk-e65-32-27",
+        "core_loss_W": 21.54666271597533,
+        "core_loss_notes": [],
+        "core_name": "E 65/32/27",
+        "core_volume_m3": 7.865e-05,
+        "evaluation": "complete",
+        "external_inductance_required_H": 3.346812516495804e-05,
+        "feasible": true,
+        "flux_density_allowed_T": 0.27299999999999996,
+        "flux_density_max_T": 0.17803291393621093,
+        "flux_density_peak_T": 0.17803291393465834,
+        "flux_linkage_peak_to_peak_Vs": 0.004000399576111773,
+        "id": "E65/32/27|N87|21:10|litz 436 x 0.1 mm/litz 889 x 0.1 mm|P-S-P",
+        "layout": {
+          "bounding_volume_m3": 0.00021579129,
+          "checks": [
+            {
+              "code": "radial_fit",
+              "message": "radial build 11.05 mm (incl. bobbin and insulation) vs available 11.60 mm",
+              "passed": true
+            }
+          ],
+          "copper_volume_m3": 1.8950648742565374e-05,
+          "core_exposed_area_m2": 0.013537283999999997,
+          "core_volume_m3": 8.739284799999997e-05,
+          "fidelity": "parametric_e_core",
+          "layers": [
+            {
+              "d_in_m": 0.0015999999999999999,
+              "d_out_m": 0.004210076627227638,
+              "mean_turn_length_m": 0.1130528940488921,
+              "section": 0,
+              "turns": 11,
+              "winding": "primary"
+            },
+            {
+              "d_in_m": 0.004410076627227638,
+              "d_out_m": 0.008137089506196531,
+              "mean_turn_length_m": 0.13421808494813603,
+              "section": 1,
+              "turns": 10,
+              "winding": "secondary"
+            },
+            {
+              "d_in_m": 0.008337089506196532,
+              "d_out_m": 0.010947166133424169,
+              "mean_turn_length_m": 0.15538327584737993,
+              "section": 2,
+              "turns": 10,
+              "winding": "primary"
+            }
+          ],
+          "notes": [
+            "parametric E-core layout: per-layer radial position and mean turn length from the core outline"
+          ],
+          "winding_exposed_area_m2": 0.004077776668495316,
+          "winding_height_m": 0.041010000000000005,
+          "window_fill_geometric": 0.26375742297394766
+        },
+        "leakage_inductance_H": 1.5318748350419592e-06,
+        "loss_density_W_per_m3": 273956.2964523246,
+        "magnetising_current_peak_A": 0.5857089058044417,
+        "magnetising_current_share_of_primary_peak": 0.04091550871160705,
+        "magnetising_inductance": {
+          "datasheet_AL_H": 0.0034839000000000003,
+          "datasheet_AL_nH": 7900.0,
+          "effective_permeability": 1693.193717277487,
+          "reluctance_model_H": 0.003415006615459795,
+          "residual_gap_per_leg_m": 1e-05
+        },
+        "mass_kg": 0.5632861452173366,
+        "material": "material.tdk-n87",
+        "material_grade": "N87",
+        "saturation_flux_density_T": 0.39,
+        "saturation_margin": 0.5435053488815105,
+        "series_inductance_total_H": 3.5e-05,
+        "standard_size_equivalent": false,
+        "tags": {
+          "current_density_A_per_mm2": 4.0,
+          "strand_diameter_mm": 0.1
+        },
+        "temperature_rise_K": 65.9424576102046,
+        "thermal": {
+          "ambient_K": 313.15,
+          "assumptions": [
+            "forced convection h = 40 W/m^2/K + radiation (emissivity 0.9), ambient 40.0 degC",
+            "core node = volume average; winding nodes at the section mid-build",
+            "end turns of the outermost winding are its only surface to ambient; inner windings reach ambient through the outer windings and the core",
+            "hot spots: uniformly heated slab estimates (labelled estimates)"
+          ],
+          "converged": true,
+          "cooling": {
+            "ambient_K": 313.15,
+            "description": "forced convection h = 40 W/m^2/K + radiation (emissivity 0.9), ambient 40.0 degC",
+            "emissivity": 0.9,
+            "forced_h_W_per_m2K": 40.0,
+            "mode": "forced",
+            "radiation": true
+          },
+          "hotspot_core_K": 360.38779894776087,
+          "hotspot_winding_K": 379.0924576102046,
+          "hotspots_K": {
+            "core": 360.38779894776087,
+            "primary": 379.03269746512643,
+            "primary.s0": 379.03269746512643,
+            "primary.s2": 369.79793844860114,
+            "secondary": 379.0924576102046,
+            "secondary.s1": 379.0924576102046
+          },
+          "iterations": 4,
+          "losses_at_estimated_temperatures": {
+            "core_W": 24.43770653273425,
+            "total_W": 39.280470940063836,
+            "windings_W": {
+              "primary": 8.791397739614094,
+              "secondary": 6.05136666771549
+            }
+          },
+          "method": "thermal_network_electrothermal",
+          "temperature_rise_K": 65.9424576102046,
+          "temperatures_K": {
+            "core": 356.8924175904766,
+            "primary.s0": 378.5416526624553,
+            "primary.s2": 369.30689364593,
+            "secondary.s1": 378.3879876856069
+          }
+        },
+        "total_loss_W": 36.40499662442423,
+        "turns": {
+          "primary": 21,
+          "secondary": 10
+        },
+        "turns_ratio": 2.1,
+        "turns_ratio_error": 0.050000000000000044,
+        "turns_ratio_target": 2.0,
+        "violation_codes": [],
+        "violations": [],
+        "warnings": [],
+        "windings": {
+          "primary": {
+            "conductor": "litz 436 x 0.1 mm",
+            "copper_area_m2": 3.4243359924128744e-06,
+            "current_density_A_per_m2": 3994097.0391284167,
+            "current_rms_A": 13.67713024827713,
+            "effective_ac_factor": 2.6131253382896307,
+            "harmonics_used": 41,
+            "layers": 2,
+            "litz_1d_reference": {
+              "dc_and_skin_W": 3.374882909577627,
+              "method": "strand skin factor + 1-D window-field proximity (Sullivan 1999), reference only",
+              "proximity_W": 2.333644995797009,
+              "total_W": 5.708527905374636
+            },
+            "loss_W": 8.81794740733374,
+            "loss_dc_resistance_W": 3.374483144044423,
+            "method": "dowell_per_layer_harmonic_litz_strand_sublayers",
+            "r_dc_Ohm": 0.018039200997384798,
+            "turns": 21
+          },
+          "secondary": {
+            "conductor": "litz 889 x 0.1 mm",
+            "copper_area_m2": 6.982189672603315e-06,
+            "current_density_A_per_m2": 3999800.8319908925,
+            "current_rms_A": 27.927368061596958,
+            "effective_ac_factor": 1.8245193898731935,
+            "harmonics_used": 41,
+            "layers": 1,
+            "litz_1d_reference": {
+              "dc_and_skin_W": 3.3110632406391316,
+              "method": "strand skin factor + 1-D window-field proximity (Sullivan 1999), reference only",
+              "proximity_W": 2.1812868018600997,
+              "total_W": 5.492350042499231
+            },
+            "loss_W": 6.040386501115158,
+            "loss_dc_resistance_W": 3.3106726816068384,
+            "method": "dowell_per_layer_harmonic_litz_strand_sublayers",
+            "r_dc_Ohm": 0.004244790178083048,
+            "turns": 10
+          }
+        },
+        "window_fill": 0.33270646142418664
+      },
+      {
+        "arrangement": "P-S-P",
+        "conductor": "litz",
+        "copper_loss_W": 15.401291254367948,
+        "copper_mass_kg": 0.17697975279630776,
+        "core": "core.tdk-e70-33-32",
+        "core_loss_W": 21.13661320851959,
+        "core_loss_notes": [],
+        "core_name": "E 70/33/32",
+        "core_volume_m3": 0.00010200000000000001,
+        "evaluation": "complete",
+        "external_inductance_required_H": 3.360083529219584e-05,
+        "feasible": true,
+        "flux_density_allowed_T": 0.27299999999999996,
+        "flux_density_max_T": 0.1541342211661655,
+        "flux_density_peak_T": 0.1541342211648213,
+        "flux_linkage_peak_to_peak_Vs": 0.004000399576111773,
+        "id": "E70/33/32|N87|19:10|litz 436 x 0.1 mm/litz 889 x 0.1 mm|P-S-P",
+        "layout": {
+          "bounding_volume_m3": 0.000266868585,
+          "checks": [
+            {
+              "code": "radial_fit",
+              "message": "radial build 11.05 mm (incl. bobbin and insulation) vs available 12.50 mm",
+              "passed": true
+            }
+          ],
+          "copper_volume_m3": 1.9811905608004898e-05,
+          "core_exposed_area_m2": 0.01584793,
+          "core_volume_m3": 0.00011335679999999998,
+          "fidelity": "parametric_e_core",
+          "layers": [
+            {
+              "d_in_m": 0.0015999999999999999,
+              "d_out_m": 0.004210076627227638,
+              "mean_turn_length_m": 0.12625289404889212,
+              "section": 0,
+              "turns": 10,
+              "winding": "primary"
+            },
+            {
+              "d_in_m": 0.004410076627227638,
+              "d_out_m": 0.008137089506196531,
+              "mean_turn_length_m": 0.14741808494813602,
+              "section": 1,
+              "turns": 10,
+              "winding": "secondary"
+            },
+            {
+              "d_in_m": 0.008337089506196532,
+              "d_out_m": 0.010947166133424169,
+              "mean_turn_length_m": 0.16858327584737992,
+              "section": 2,
+              "turns": 9,
+              "winding": "primary"
+            }
+          ],
+          "notes": [
+            "parametric E-core layout: per-layer radial position and mean turn length from the core outline"
+          ],
+          "winding_exposed_area_m2": 0.0042268571836540725,
+          "winding_height_m": 0.04041,
+          "window_fill_geometric": 0.23683437322332054
+        },
+        "leakage_inductance_H": 1.3991647078041575e-06,
+        "loss_density_W_per_m3": 207221.69812274107,
+        "magnetising_current_peak_A": 0.566330870171864,
+        "magnetising_current_share_of_primary_peak": 0.03956182913139031,
+        "magnetising_inductance": {
+          "datasheet_AL_H": 0.0035017,
+          "datasheet_AL_nH": 9700.0,
+          "effective_permeability": 1698.4455958549222,
+          "reluctance_model_H": 0.0035318572470698748,
+          "residual_gap_per_leg_m": 1e-05
+        },
+        "mass_kg": 0.6909797527963077,
+        "material": "material.tdk-n87",
+        "material_grade": "N87",
+        "saturation_flux_density_T": 0.39,
+        "saturation_margin": 0.6047840482918834,
+        "series_inductance_total_H": 3.5e-05,
+        "standard_size_equivalent": false,
+        "tags": {
+          "current_density_A_per_mm2": 4.0,
+          "strand_diameter_mm": 0.1
+        },
+        "temperature_rise_K": 63.521096850138576,
+        "thermal": {
+          "ambient_K": 313.15,
+          "assumptions": [
+            "forced convection h = 40 W/m^2/K + radiation (emissivity 0.9), ambient 40.0 degC",
+            "core node = volume average; winding nodes at the section mid-build",
+            "end turns of the outermost winding are its only surface to ambient; inner windings reach ambient through the outer windings and the core",
+            "hot spots: uniformly heated slab estimates (labelled estimates)"
+          ],
+          "converged": true,
+          "cooling": {
+            "ambient_K": 313.15,
+            "description": "forced convection h = 40 W/m^2/K + radiation (emissivity 0.9), ambient 40.0 degC",
+            "emissivity": 0.9,
+            "forced_h_W_per_m2K": 40.0,
+            "mode": "forced",
+            "radiation": true
+          },
+          "hotspot_core_K": 353.4828571227922,
+          "hotspot_winding_K": 376.67109685013855,
+          "hotspots_K": {
+            "core": 353.4828571227922,
+            "primary": 375.6122605229561,
+            "primary.s0": 375.6122605229561,
+            "primary.s2": 367.24992852058597,
+            "secondary": 376.67109685013855,
+            "secondary.s1": 376.67109685013855
+          },
+          "iterations": 4,
+          "losses_at_estimated_temperatures": {
+            "core_W": 23.487326314118107,
+            "total_W": 38.88109774585812,
+            "windings_W": {
+              "primary": 8.749065799988658,
+              "secondary": 6.644705631751357
+            }
+          },
+          "method": "thermal_network_electrothermal",
+          "temperature_rise_K": 63.521096850138576,
+          "temperatures_K": {
+            "core": 350.3489841614786,
+            "primary.s0": 375.12047976810146,
+            "primary.s2": 366.75814776573134,
+            "secondary.s1": 375.96681741568085
+          }
+        },
+        "total_loss_W": 36.53790446288754,
+        "turns": {
+          "primary": 19,
+          "secondary": 10
+        },
+        "turns_ratio": 1.9,
+        "turns_ratio_error": -0.050000000000000044,
+        "turns_ratio_target": 2.0,
+        "violation_codes": [],
+        "violations": [],
+        "warnings": [],
+        "windings": {
+          "primary": {
+            "conductor": "litz 436 x 0.1 mm",
+            "copper_area_m2": 3.4243359924128744e-06,
+            "current_density_A_per_m2": 3994097.0391284167,
+            "current_rms_A": 13.67713024827713,
+            "effective_ac_factor": 2.613125338289629,
+            "harmonics_used": 41,
+            "layers": 2,
+            "litz_1d_reference": {
+              "dc_and_skin_W": 3.3536061175990524,
+              "method": "strand skin factor + 1-D window-field proximity (Sullivan 1999), reference only",
+              "proximity_W": 1.957851419256248,
+              "total_W": 5.3114575368553005
+            },
+            "loss_W": 8.762355068965073,
+            "loss_dc_resistance_W": 3.3532088723690174,
+            "method": "dowell_per_layer_harmonic_litz_strand_sublayers",
+            "r_dc_Ohm": 0.017925473695619216,
+            "turns": 19
+          },
+          "secondary": {
+            "conductor": "litz 889 x 0.1 mm",
+            "copper_area_m2": 6.982189672603315e-06,
+            "current_density_A_per_m2": 3999800.8319908925,
+            "current_rms_A": 27.927368061596958,
+            "effective_ac_factor": 1.8257550969046092,
+            "harmonics_used": 41,
+            "layers": 1,
+            "litz_1d_reference": {
+              "dc_and_skin_W": 3.6366977092975468,
+              "method": "strand skin factor + 1-D window-field proximity (Sullivan 1999), reference only",
+              "proximity_W": 2.471178618453838,
+              "total_W": 6.107876327751384
+            },
+            "loss_W": 6.6389361854028754,
+            "loss_dc_resistance_W": 3.636268739798973,
+            "method": "dowell_per_layer_harmonic_litz_strand_sublayers",
+            "r_dc_Ohm": 0.00466225426552214,
+            "turns": 10
+          }
+        },
+        "window_fill": 0.29579886092517055
+      }
+    ],
+    "copper_loss_W": 15.907926004822842,
+    "core_loss_W": 19.137732451622682,
+    "excitation": {
+      "basis": "imported",
+      "flux_linkage_peak_to_peak_Vs": 0.004000399576111773,
+      "series_inductance_total_H": 3.5e-05,
+      "throughput_power_W": 10000.25042050165
+    },
+    "external_inductance_required_H": 3.3449416011381665e-05,
+    "flux_density_peak_T": 0.14642751010658026,
+    "hot_spot_temperature_rise_K": 63.08387929854996,
+    "leakage_inductance_H": 1.5505839886183287e-06,
+    "loss_model_verification": {
+      "evidence_refs": [
+        "check:igse.ki-approximation-agreement",
+        "check:igse.minor-loop-detection"
+      ],
+      "in_verified_range": true,
+      "level": "L2",
+      "state": "verified",
+      "statement": "Passing evidence up to L2 applies to these conditions for aipe.magnetics.model.igse. 3 ranged record(s) do not cover the supplied conditions."
+    },
+    "magnetising_inductance_H": 0.003913415232210388,
+    "material_comparison_summary": {
+      "reference_core": "core.tdk-e70-33-32",
+      "rows": [
+        {
+          "bsat_T": 0.38,
+          "bsat_status": "looked_up",
+          "core_loss_W": 9.556365201130895,
+          "evaluable_for_design": true,
+          "flux_density_peak_T": 0.14642751010658026,
+          "grade": "3C94",
+          "interpolated": false,
+          "loss_density_W_per_m3": 93689.85491304798,
+          "loss_notes": [
+            "material.ferroxcube-3c94: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-3c94-90c is used"
+          ],
+          "manufacturer_ref": "manufacturer.ferroxcube",
+          "material": "material.ferroxcube-3c94",
+          "minimum_primary_turns": 12,
+          "missing_data": [
+            "B-H loop data (coercivity / remanence)",
+            "DC-bias (premagnetisation) data",
+            "permeability vs amplitude / temperature (complex permeability)"
+          ],
+          "offered_in_reference_core": false,
+          "parameter_sets": [
+            "set.magnet-fit-3c94-90c"
+          ],
+          "reasons_not_evaluable": [],
+          "saturation_margin": 0.6146644470879468
+        },
+        {
+          "bsat_T": 0.38,
+          "bsat_status": "looked_up",
+          "core_loss_W": 12.733234146891723,
+          "evaluable_for_design": true,
+          "flux_density_peak_T": 0.14642751010658026,
+          "grade": "3C90",
+          "interpolated": false,
+          "loss_density_W_per_m3": 124835.62889109532,
+          "loss_notes": [
+            "material.ferroxcube-3c90: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-3c90-90c is used"
+          ],
+          "manufacturer_ref": "manufacturer.ferroxcube",
+          "material": "material.ferroxcube-3c90",
+          "minimum_primary_turns": 12,
+          "missing_data": [
+            "B-H loop data (coercivity / remanence)",
+            "DC-bias (premagnetisation) data",
+            "permeability vs amplitude / temperature (complex permeability)"
+          ],
+          "offered_in_reference_core": false,
+          "parameter_sets": [
+            "set.magnet-fit-3c90-90c"
+          ],
+          "reasons_not_evaluable": [],
+          "saturation_margin": 0.6146644470879468
+        },
+        {
+          "bsat_T": null,
+          "bsat_status": null,
+          "core_loss_W": 13.324985731161032,
+          "evaluable_for_design": false,
+          "flux_density_peak_T": 0.14642751010658026,
+          "grade": "77",
+          "interpolated": false,
+          "loss_density_W_per_m3": 130637.11501138266,
+          "loss_notes": [
+            "material.fair-rite-77: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-77-90c is used"
+          ],
+          "manufacturer_ref": "manufacturer.fair-rite",
+          "material": "material.fair-rite-77",
+          "minimum_primary_turns": null,
+          "missing_data": [
+            "saturation flux density vs temperature",
+            "density",
+            "Curie temperature",
+            "resistivity",
+            "datasheet core-loss reference points",
+            "B-H loop data (coercivity / remanence)",
+            "DC-bias (premagnetisation) data",
+            "permeability vs amplitude / temperature (complex permeability)"
+          ],
+          "offered_in_reference_core": false,
+          "parameter_sets": [
+            "set.magnet-fit-77-90c"
+          ],
+          "reasons_not_evaluable": [
+            "no saturation flux density data"
+          ],
+          "saturation_margin": null
+        },
+        {
+          "bsat_T": null,
+          "bsat_status": null,
+          "core_loss_W": 14.024439810251513,
+          "evaluable_for_design": false,
+          "flux_density_peak_T": 0.14642751010658026,
+          "grade": "78",
+          "interpolated": false,
+          "loss_density_W_per_m3": 137494.50794364227,
+          "loss_notes": [
+            "material.fair-rite-78: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-78-90c is used"
+          ],
+          "manufacturer_ref": "manufacturer.fair-rite",
+          "material": "material.fair-rite-78",
+          "minimum_primary_turns": null,
+          "missing_data": [
+            "saturation flux density vs temperature",
+            "density",
+            "Curie temperature",
+            "resistivity",
+            "datasheet core-loss reference points",
+            "B-H loop data (coercivity / remanence)",
+            "DC-bias (premagnetisation) data",
+            "permeability vs amplitude / temperature (complex permeability)"
+          ],
+          "offered_in_reference_core": false,
+          "parameter_sets": [
+            "set.magnet-fit-78-90c"
+          ],
+          "reasons_not_evaluable": [
+            "no saturation flux density data"
+          ],
+          "saturation_margin": null
+        },
+        {
+          "bsat_T": null,
+          "bsat_status": null,
+          "core_loss_W": 18.064105949636897,
+          "evaluable_for_design": false,
+          "flux_density_peak_T": 0.14642751010658026,
+          "grade": "N27",
+          "interpolated": false,
+          "loss_density_W_per_m3": 177099.07793761662,
+          "loss_notes": [
+            "material.tdk-n27: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-n27-90c is used"
+          ],
+          "manufacturer_ref": "manufacturer.tdk",
+          "material": "material.tdk-n27",
+          "minimum_primary_turns": null,
+          "missing_data": [
+            "saturation flux density vs temperature",
+            "density",
+            "Curie temperature",
+            "resistivity",
+            "datasheet core-loss reference points",
+            "B-H loop data (coercivity / remanence)",
+            "DC-bias (premagnetisation) data",
+            "permeability vs amplitude / temperature (complex permeability)"
+          ],
+          "offered_in_reference_core": true,
+          "parameter_sets": [
+            "set.magnet-fit-n27-90c"
+          ],
+          "reasons_not_evaluable": [
+            "no saturation flux density data"
+          ],
+          "saturation_margin": null
+        },
+        {
+          "bsat_T": 0.39,
+          "bsat_status": "looked_up",
+          "core_loss_W": 19.137732451622682,
+          "evaluable_for_design": true,
+          "flux_density_peak_T": 0.14642751010658026,
+          "grade": "N87",
+          "interpolated": false,
+          "loss_density_W_per_m3": 187624.8279570851,
+          "loss_notes": [],
+          "manufacturer_ref": "manufacturer.tdk",
+          "material": "material.tdk-n87",
+          "minimum_primary_turns": 11,
+          "missing_data": [
+            "DC-bias (premagnetisation) data",
+            "permeability vs amplitude / temperature (complex permeability)"
+          ],
+          "offered_in_reference_core": true,
+          "parameter_sets": [
+            "set.tdk-datasheet-fit-n87-100c"
+          ],
+          "reasons_not_evaluable": [],
+          "saturation_margin": 0.6245448458805635
+        },
+        {
+          "bsat_T": null,
+          "bsat_status": null,
+          "core_loss_W": 27.876550381156118,
+          "evaluable_for_design": false,
+          "flux_density_peak_T": 0.14642751010658026,
+          "grade": "3E6",
+          "interpolated": false,
+          "loss_density_W_per_m3": 273299.51354074624,
+          "loss_notes": [
+            "material.ferroxcube-3e6: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-3e6-90c is used"
+          ],
+          "manufacturer_ref": "manufacturer.ferroxcube",
+          "material": "material.ferroxcube-3e6",
+          "minimum_primary_turns": null,
+          "missing_data": [
+            "saturation flux density vs temperature",
+            "density",
+            "Curie temperature",
+            "resistivity",
+            "datasheet core-loss reference points",
+            "B-H loop data (coercivity / remanence)",
+            "DC-bias (premagnetisation) data",
+            "permeability vs amplitude / temperature (complex permeability)"
+          ],
+          "offered_in_reference_core": false,
+          "parameter_sets": [
+            "set.magnet-fit-3e6-90c"
+          ],
+          "reasons_not_evaluable": [
+            "no saturation flux density data"
+          ],
+          "saturation_margin": null
+        },
+        {
+          "bsat_T": null,
+          "bsat_status": null,
+          "core_loss_W": 32.36842779749779,
+          "evaluable_for_design": false,
+          "flux_density_peak_T": 0.14642751010658026,
+          "grade": "N30",
+          "interpolated": false,
+          "loss_density_W_per_m3": 317337.5274264489,
+          "loss_notes": [
+            "material.tdk-n30: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-n30-90c is used"
+          ],
+          "manufacturer_ref": "manufacturer.tdk",
+          "material": "material.tdk-n30",
+          "minimum_primary_turns": null,
+          "missing_data": [
+            "saturation flux density vs temperature",
+            "density",
+            "Curie temperature",
+            "resistivity",
+            "datasheet core-loss reference points",
+            "B-H loop data (coercivity / remanence)",
+            "DC-bias (premagnetisation) data",
+            "permeability vs amplitude / temperature (complex permeability)"
+          ],
+          "offered_in_reference_core": false,
+          "parameter_sets": [
+            "set.magnet-fit-n30-90c"
+          ],
+          "reasons_not_evaluable": [
+            "no saturation flux density data"
+          ],
+          "saturation_margin": null
+        },
+        {
+          "bsat_T": null,
+          "bsat_status": null,
+          "core_loss_W": 41.80692635117333,
+          "evaluable_for_design": false,
+          "flux_density_peak_T": 0.14642751010658026,
+          "grade": "N49",
+          "interpolated": false,
+          "loss_density_W_per_m3": 409871.8269722875,
+          "loss_notes": [
+            "material.tdk-n49: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-n49-90c is used"
+          ],
+          "manufacturer_ref": "manufacturer.tdk",
+          "material": "material.tdk-n49",
+          "minimum_primary_turns": null,
+          "missing_data": [
+            "saturation flux density vs temperature",
+            "density",
+            "Curie temperature",
+            "resistivity",
+            "datasheet core-loss reference points",
+            "B-H loop data (coercivity / remanence)",
+            "DC-bias (premagnetisation) data",
+            "permeability vs amplitude / temperature (complex permeability)"
+          ],
+          "offered_in_reference_core": false,
+          "parameter_sets": [
+            "set.magnet-fit-n49-90c"
+          ],
+          "reasons_not_evaluable": [
+            "no saturation flux density data"
+          ],
+          "saturation_margin": null
+        },
+        {
+          "bsat_T": null,
+          "bsat_status": null,
+          "core_loss_W": 63.51942982765004,
+          "evaluable_for_design": false,
+          "flux_density_peak_T": 0.14642751010658026,
+          "grade": "3F4",
+          "interpolated": false,
+          "loss_density_W_per_m3": 622739.508114216,
+          "loss_notes": [
+            "material.ferroxcube-3f4: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-3f4-90c is used",
+            "set.magnet-fit-3f4-90c: peak flux density 0.146 T exceeds the set's fitted range"
+          ],
+          "manufacturer_ref": "manufacturer.ferroxcube",
+          "material": "material.ferroxcube-3f4",
+          "minimum_primary_turns": null,
+          "missing_data": [
+            "saturation flux density vs temperature",
+            "density",
+            "Curie temperature",
+            "resistivity",
+            "datasheet core-loss reference points",
+            "B-H loop data (coercivity / remanence)",
+            "DC-bias (premagnetisation) data",
+            "permeability vs amplitude / temperature (complex permeability)"
+          ],
+          "offered_in_reference_core": false,
+          "parameter_sets": [
+            "set.magnet-fit-3f4-90c"
+          ],
+          "reasons_not_evaluable": [
+            "no saturation flux density data"
+          ],
+          "saturation_margin": null
+        }
+      ]
+    },
+    "measurement_requests_count": 10,
+    "result_path": "runs\\wf-dab-10kw-first\\tasks\\magnetics-transformer-design\\magnetics-design-result.json",
+    "selected_candidate": {
+      "arrangement": "P-S-P",
+      "conductor": "litz",
+      "copper_loss_W": 15.907926004822842,
+      "copper_mass_kg": 0.18213664666192864,
+      "core": "core.tdk-e70-33-32",
+      "core_loss_W": 19.137732451622682,
+      "core_loss_notes": [],
+      "core_name": "E 70/33/32",
+      "core_volume_m3": 0.00010200000000000001,
+      "evaluation": "complete",
+      "external_inductance_required_H": 3.3449416011381665e-05,
+      "feasible": true,
+      "flux_density_allowed_T": 0.27299999999999996,
+      "flux_density_max_T": 0.14642751010785723,
+      "flux_density_peak_T": 0.14642751010658026,
+      "flux_linkage_peak_to_peak_Vs": 0.004000399576111773,
+      "id": "E70/33/32|N87|20:10|litz 436 x 0.1 mm/litz 889 x 0.1 mm|P-S-P",
+      "layout": {
+        "bounding_volume_m3": 0.000266868585,
+        "checks": [
+          {
+            "code": "radial_fit",
+            "message": "radial build 11.05 mm (incl. bobbin and insulation) vs available 12.50 mm",
+            "passed": true
+          }
+        ],
+        "copper_volume_m3": 2.0389191387207952e-05,
+        "core_exposed_area_m2": 0.01584793,
+        "core_volume_m3": 0.00011335679999999998,
+        "fidelity": "parametric_e_core",
+        "layers": [
+          {
+            "d_in_m": 0.0015999999999999999,
+            "d_out_m": 0.004210076627227638,
+            "mean_turn_length_m": 0.12625289404889212,
+            "section": 0,
+            "turns": 10,
+            "winding": "primary"
+          },
+          {
+            "d_in_m": 0.004410076627227638,
+            "d_out_m": 0.008137089506196531,
+            "mean_turn_length_m": 0.14741808494813602,
+            "section": 1,
+            "turns": 10,
+            "winding": "secondary"
+          },
+          {
+            "d_in_m": 0.008337089506196532,
+            "d_out_m": 0.010947166133424169,
+            "mean_turn_length_m": 0.16858327584737992,
+            "section": 2,
+            "turns": 10,
+            "winding": "primary"
+          }
+        ],
+        "notes": [
+          "parametric E-core layout: per-layer radial position and mean turn length from the core outline"
+        ],
+        "winding_exposed_area_m2": 0.0042268571836540725,
+        "winding_height_m": 0.04041,
+        "window_fill_geometric": 0.24284693795636864
+      },
+      "leakage_inductance_H": 1.5505839886183287e-06,
+      "loss_density_W_per_m3": 187624.8279570851,
+      "magnetising_current_peak_A": 0.5111136103301073,
+      "magnetising_current_share_of_primary_peak": 0.03570455079107975,
+      "magnetising_inductance": {
+        "datasheet_AL_H": 0.0038799999999999998,
+        "datasheet_AL_nH": 9700.0,
+        "effective_permeability": 1698.4455958549222,
+        "reluctance_model_H": 0.003913415232210388,
+        "residual_gap_per_leg_m": 1e-05
+      },
+      "mass_kg": 0.6961366466619286,
+      "material": "material.tdk-n87",
+      "material_grade": "N87",
+      "saturation_flux_density_T": 0.39,
+      "saturation_margin": 0.6245448458772891,
+      "series_inductance_total_H": 3.5e-05,
+      "standard_size_equivalent": false,
+      "tags": {
+        "current_density_A_per_mm2": 4.0,
+        "strand_diameter_mm": 0.1
+      },
+      "temperature_rise_K": 63.08387929854996,
+      "thermal": {
+        "ambient_K": 313.15,
+        "assumptions": [
+          "forced convection h = 40 W/m^2/K + radiation (emissivity 0.9), ambient 40.0 degC",
+          "core node = volume average; winding nodes at the section mid-build",
+          "end turns of the outermost winding are its only surface to ambient; inner windings reach ambient through the outer windings and the core",
+          "hot spots: uniformly heated slab estimates (labelled estimates)"
+        ],
+        "converged": true,
+        "cooling": {
+          "ambient_K": 313.15,
+          "description": "forced convection h = 40 W/m^2/K + radiation (emissivity 0.9), ambient 40.0 degC",
+          "emissivity": 0.9,
+          "forced_h_W_per_m2K": 40.0,
+          "mode": "forced",
+          "radiation": true
+        },
+        "hotspot_core_K": 350.54468928287713,
+        "hotspot_winding_K": 376.23387929854994,
+        "hotspots_K": {
+          "core": 350.54468928287713,
+          "primary": 374.6845365861552,
+          "primary.s0": 374.6845365861552,
+          "primary.s2": 368.1880324247054,
+          "secondary": 376.23387929854994,
+          "secondary.s1": 376.23387929854994
+        },
+        "iterations": 4,
+        "losses_at_estimated_temperatures": {
+          "core_W": 21.152272236325068,
+          "total_W": 37.053404208571735,
+          "windings_W": {
+            "primary": 9.282076979980426,
+            "secondary": 6.619054992266244
+          }
+        },
+        "method": "thermal_network_electrothermal",
+        "temperature_rise_K": 63.08387929854996,
+        "temperatures_K": {
+          "core": 347.7223785121566,
+          "primary.s0": 374.1926279683516,
+          "primary.s2": 367.69612380690177,
+          "secondary.s1": 375.5323186027198
+        }
+      },
+      "total_loss_W": 35.04565845644552,
+      "turns": {
+        "primary": 20,
+        "secondary": 10
+      },
+      "turns_ratio": 2.0,
+      "turns_ratio_error": 0.0,
+      "turns_ratio_target": 2.0,
+      "violation_codes": [],
+      "violations": [],
+      "warnings": [],
+      "windings": {
+        "primary": {
+          "conductor": "litz 436 x 0.1 mm",
+          "copper_area_m2": 3.4243359924128744e-06,
+          "current_density_A_per_m2": 3994097.0391284167,
+          "current_rms_A": 13.67713024827713,
+          "effective_ac_factor": 2.613125338289631,
+          "harmonics_used": 41,
+          "layers": 2,
+          "litz_1d_reference": {
+            "dc_and_skin_W": 3.5569899198853703,
+            "method": "strand skin factor + 1-D window-field proximity (Sullivan 1999), reference only",
+            "proximity_W": 2.3168580254137368,
+            "total_W": 5.873847945299107
+          },
+          "loss_W": 9.29375948212997,
+          "loss_dc_resistance_W": 3.5565685832019884,
+          "method": "dowell_per_layer_harmonic_litz_strand_sublayers",
+          "r_dc_Ohm": 0.01901258734884946,
+          "turns": 20
+        },
+        "secondary": {
+          "conductor": "litz 889 x 0.1 mm",
+          "copper_area_m2": 6.982189672603315e-06,
+          "current_density_A_per_m2": 3999800.8319908925,
+          "current_rms_A": 27.927368061596958,
+          "effective_ac_factor": 1.8189432618939296,
+          "harmonics_used": 41,
+          "layers": 1,
+          "litz_1d_reference": {
+            "dc_and_skin_W": 3.6366977092975468,
+            "method": "strand skin factor + 1-D window-field proximity (Sullivan 1999), reference only",
+            "proximity_W": 2.4508117617083403,
+            "total_W": 6.0875094710058875
+          },
+          "loss_W": 6.614166522692873,
+          "loss_dc_resistance_W": 3.636268739798973,
+          "method": "dowell_per_layer_harmonic_litz_strand_sublayers",
+          "r_dc_Ohm": 0.00466225426552214,
+          "turns": 10
+        }
+      },
+      "window_fill": 0.30330836968046193
+    },
+    "selected_core": "core.tdk-e70-33-32",
+    "square_current_comparison": {
+      "actual_currents": {
+        "primary_peak_A": 14.31508306380377,
+        "primary_rms_A": 13.67713024827713,
+        "secondary_peak_A": 32.62850034236908,
+        "secondary_rms_A": 27.927368061596958
+      },
+      "copper_loss_W": {
+        "actual_rms_dowell_at_fundamental": {
+          "primary": 9.183629328630662,
+          "secondary": 6.571234521713328
+        },
+        "actual_waveform_per_layer_harmonic_dowell": {
+          "primary": 9.29375948212997,
+          "secondary": 6.614166522692873
+        },
+        "square_rms_dowell_at_fundamental_v02_method": {
+          "primary": 7.668746730667337,
+          "secondary": 5.264376660614912
+        }
+      },
+      "copper_loss_total_W": {
+        "actual_rms_dowell_at_fundamental": 15.754863850343991,
+        "actual_waveform_per_layer_harmonic_dowell": 15.907926004822842,
+        "square_rms_dowell_at_fundamental_v02_method": 12.933123391282248
+      },
+      "dowell_factor_at_fundamental": {
+        "primary": 2.582160055061448,
+        "secondary": 1.8071366535127462
+      },
+      "note": "same core, turns, conductors and arrangement for all three columns; the square approximation defines only an RMS value, so no harmonic content is attributed to it",
+      "public_design_transformer": {
+        "copper_loss_W": 15.269839484030538,
+        "core_loss_W": 29.487331269072733,
+        "current_basis": "P/V square approximation, Dowell at the fundamental, datasheet mean turn length",
+        "flux_density_peak_T": 0.1830459780146583,
+        "status": "ok",
+        "total_loss_W": 44.75717075310327,
+        "turns": {
+          "primary": 16.0,
+          "secondary": 8.0
+        },
+        "window_fill": 0.2193603291453926
+      },
+      "rms_ratio_actual_over_square": {
+        "primary": 1.0943216105381621,
+        "secondary": 1.1172490807824456
+      },
+      "square_currents": {
+        "basis": "I_rms = P / V (public design_transformer assumption)",
+        "primary_rms_A": 12.498273009112042,
+        "secondary_rms_A": 24.996546018224084
+      },
+      "throughput_power_W": 10000.25042050165
+    },
+    "total_loss_W": 35.04565845644552,
+    "turns_primary": 20,
+    "turns_ratio_actual": 2.0,
+    "turns_secondary": 10
+  },
+  "source_state_id": "aipe.workflow.dab-10kw-benchmark",
+  "source_state_sha256": "ec7604cdd5761c0d05d44d129043cf04b8df3030e7dd67ae72e4ffc4e53a6081",
+  "started_at": "2026-10-21T06:03:21Z",
+  "state_proposal": {
+    "append": [
+      {
+        "path": "magnetics",
+        "value": {
+          "database_ref": "aipe-magnetics:core.tdk-e70-33-32",
+          "design_status": "candidate",
+          "evidence_refs": [
+            "evidence.magnetics-design-a25b59"
+          ],
+          "id": "magnetics.transformer-design",
+          "inductance": {
+            "unit": "H",
+            "value": 0.003913415232210388
+          },
+          "kind": "transformer",
+          "leakage_inductance": {
+            "unit": "H",
+            "value": 1.5505839886183287e-06
+          },
+          "role": "dab-isolation-transformer-candidate",
+          "turns_ratio": {
+            "unit": "1",
+            "value": 2.0
+          }
+        }
+      },
+      {
+        "path": "magnetics",
+        "value": {
+          "design_status": "candidate",
+          "evidence_refs": [
+            "evidence.magnetics-design-a25b59"
+          ],
+          "id": "magnetics.external-series-inductor",
+          "inductance": {
+            "unit": "H",
+            "value": 3.3449416011381665e-05
+          },
+          "kind": "inductor",
+          "role": "dab-external-series-inductance-required"
+        }
+      },
+      {
+        "path": "validation.checks",
+        "value": {
+          "description": "Waveform-informed transformer candidates found with saturation, fill and thermal constraints satisfied; L_total - L_leak split recorded.",
+          "evidence_refs": [
+            "evidence.magnetics-design-a25b59"
+          ],
+          "id": "check.magnetics-design-a25b59",
+          "kind": "analytical",
+          "status": "pass"
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "artifacts": [
+          {
+            "description": "waveform-informed transformer design result (aipe_magnetics)",
+            "media_type": "application/json",
+            "sha256": "5d032a1efbefcc829b63b3ce1b33214bac699225ffc4ba7b896cca4e3622b9e1",
+            "uri": "tasks/magnetics-transformer-design/magnetics-design-result.json"
+          }
+        ],
+        "description": "Waveform-informed transformer design from the executed Level 1 dataset: selected core.tdk-e70-33-32 20:10 turns, L_leak = 1.55 uH, external inductance required 33.45 uH, total loss 35.04565845644552 W at the design temperature; analytical models only (1-D Dowell, iGSE, 1-D leakage).",
+        "id": "evidence.magnetics-design-a25b59",
+        "kind": "analytical",
+        "provenance": {
+          "activity": "Design transformer candidates from imported winding waveforms; rank feasible candidates by total loss.",
+          "agent": {
+            "id": "aipe.workflows",
+            "version": "0.1.0"
+          },
+          "created_at": "2026-10-21T06:03:21Z",
+          "inputs": [
+            "evidence.specification",
+            "evidence.analytic-sps-a25b59"
+          ],
+          "tool": {
+            "id": "aipe.magnetics-database.waveform-informed-design",
+            "version": "0.2.0"
+          }
+        },
+        "review_status": "unreviewed",
+        "source": {
+          "locator": "src/aipe_magnetics/design/transformers/waveform_informed.py",
+          "reference": "https://github.com/FulongLi/AIPE-Magnetics-Database",
+          "type": "repository"
+        }
+      }
+    ],
+    "extensions": {
+      "aipe.workflows.dab": {
+        "magnetics_design": {
+          "candidate_counts": {
+            "evaluated": 35,
+            "feasible": 12,
+            "infeasible": 23
+          },
+          "copper_loss_W": 15.907926004822842,
+          "core_loss_W": 19.137732451622682,
+          "excitation": {
+            "basis": "imported",
+            "flux_linkage_peak_to_peak_Vs": 0.004000399576111773,
+            "series_inductance_total_H": 3.5e-05,
+            "throughput_power_W": 10000.25042050165
+          },
+          "external_inductance_required_H": 3.3449416011381665e-05,
+          "flux_density_peak_T": 0.14642751010658026,
+          "hot_spot_temperature_rise_K": 63.08387929854996,
+          "leakage_inductance_H": 1.5505839886183287e-06,
+          "loss_model_verification": {
+            "evidence_refs": [
+              "check:igse.ki-approximation-agreement",
+              "check:igse.minor-loop-detection"
+            ],
+            "in_verified_range": true,
+            "level": "L2",
+            "state": "verified",
+            "statement": "Passing evidence up to L2 applies to these conditions for aipe.magnetics.model.igse. 3 ranged record(s) do not cover the supplied conditions."
+          },
+          "magnetising_inductance_H": 0.003913415232210388,
+          "material_comparison_summary": {
+            "reference_core": "core.tdk-e70-33-32",
+            "rows": [
+              {
+                "bsat_T": 0.38,
+                "bsat_status": "looked_up",
+                "core_loss_W": 9.556365201130895,
+                "evaluable_for_design": true,
+                "flux_density_peak_T": 0.14642751010658026,
+                "grade": "3C94",
+                "interpolated": false,
+                "loss_density_W_per_m3": 93689.85491304798,
+                "loss_notes": [
+                  "material.ferroxcube-3c94: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-3c94-90c is used"
+                ],
+                "manufacturer_ref": "manufacturer.ferroxcube",
+                "material": "material.ferroxcube-3c94",
+                "minimum_primary_turns": 12,
+                "missing_data": [
+                  "B-H loop data (coercivity / remanence)",
+                  "DC-bias (premagnetisation) data",
+                  "permeability vs amplitude / temperature (complex permeability)"
+                ],
+                "offered_in_reference_core": false,
+                "parameter_sets": [
+                  "set.magnet-fit-3c94-90c"
+                ],
+                "reasons_not_evaluable": [],
+                "saturation_margin": 0.6146644470879468
+              },
+              {
+                "bsat_T": 0.38,
+                "bsat_status": "looked_up",
+                "core_loss_W": 12.733234146891723,
+                "evaluable_for_design": true,
+                "flux_density_peak_T": 0.14642751010658026,
+                "grade": "3C90",
+                "interpolated": false,
+                "loss_density_W_per_m3": 124835.62889109532,
+                "loss_notes": [
+                  "material.ferroxcube-3c90: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-3c90-90c is used"
+                ],
+                "manufacturer_ref": "manufacturer.ferroxcube",
+                "material": "material.ferroxcube-3c90",
+                "minimum_primary_turns": 12,
+                "missing_data": [
+                  "B-H loop data (coercivity / remanence)",
+                  "DC-bias (premagnetisation) data",
+                  "permeability vs amplitude / temperature (complex permeability)"
+                ],
+                "offered_in_reference_core": false,
+                "parameter_sets": [
+                  "set.magnet-fit-3c90-90c"
+                ],
+                "reasons_not_evaluable": [],
+                "saturation_margin": 0.6146644470879468
+              },
+              {
+                "bsat_T": null,
+                "bsat_status": null,
+                "core_loss_W": 13.324985731161032,
+                "evaluable_for_design": false,
+                "flux_density_peak_T": 0.14642751010658026,
+                "grade": "77",
+                "interpolated": false,
+                "loss_density_W_per_m3": 130637.11501138266,
+                "loss_notes": [
+                  "material.fair-rite-77: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-77-90c is used"
+                ],
+                "manufacturer_ref": "manufacturer.fair-rite",
+                "material": "material.fair-rite-77",
+                "minimum_primary_turns": null,
+                "missing_data": [
+                  "saturation flux density vs temperature",
+                  "density",
+                  "Curie temperature",
+                  "resistivity",
+                  "datasheet core-loss reference points",
+                  "B-H loop data (coercivity / remanence)",
+                  "DC-bias (premagnetisation) data",
+                  "permeability vs amplitude / temperature (complex permeability)"
+                ],
+                "offered_in_reference_core": false,
+                "parameter_sets": [
+                  "set.magnet-fit-77-90c"
+                ],
+                "reasons_not_evaluable": [
+                  "no saturation flux density data"
+                ],
+                "saturation_margin": null
+              },
+              {
+                "bsat_T": null,
+                "bsat_status": null,
+                "core_loss_W": 14.024439810251513,
+                "evaluable_for_design": false,
+                "flux_density_peak_T": 0.14642751010658026,
+                "grade": "78",
+                "interpolated": false,
+                "loss_density_W_per_m3": 137494.50794364227,
+                "loss_notes": [
+                  "material.fair-rite-78: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-78-90c is used"
+                ],
+                "manufacturer_ref": "manufacturer.fair-rite",
+                "material": "material.fair-rite-78",
+                "minimum_primary_turns": null,
+                "missing_data": [
+                  "saturation flux density vs temperature",
+                  "density",
+                  "Curie temperature",
+                  "resistivity",
+                  "datasheet core-loss reference points",
+                  "B-H loop data (coercivity / remanence)",
+                  "DC-bias (premagnetisation) data",
+                  "permeability vs amplitude / temperature (complex permeability)"
+                ],
+                "offered_in_reference_core": false,
+                "parameter_sets": [
+                  "set.magnet-fit-78-90c"
+                ],
+                "reasons_not_evaluable": [
+                  "no saturation flux density data"
+                ],
+                "saturation_margin": null
+              },
+              {
+                "bsat_T": null,
+                "bsat_status": null,
+                "core_loss_W": 18.064105949636897,
+                "evaluable_for_design": false,
+                "flux_density_peak_T": 0.14642751010658026,
+                "grade": "N27",
+                "interpolated": false,
+                "loss_density_W_per_m3": 177099.07793761662,
+                "loss_notes": [
+                  "material.tdk-n27: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-n27-90c is used"
+                ],
+                "manufacturer_ref": "manufacturer.tdk",
+                "material": "material.tdk-n27",
+                "minimum_primary_turns": null,
+                "missing_data": [
+                  "saturation flux density vs temperature",
+                  "density",
+                  "Curie temperature",
+                  "resistivity",
+                  "datasheet core-loss reference points",
+                  "B-H loop data (coercivity / remanence)",
+                  "DC-bias (premagnetisation) data",
+                  "permeability vs amplitude / temperature (complex permeability)"
+                ],
+                "offered_in_reference_core": true,
+                "parameter_sets": [
+                  "set.magnet-fit-n27-90c"
+                ],
+                "reasons_not_evaluable": [
+                  "no saturation flux density data"
+                ],
+                "saturation_margin": null
+              },
+              {
+                "bsat_T": 0.39,
+                "bsat_status": "looked_up",
+                "core_loss_W": 19.137732451622682,
+                "evaluable_for_design": true,
+                "flux_density_peak_T": 0.14642751010658026,
+                "grade": "N87",
+                "interpolated": false,
+                "loss_density_W_per_m3": 187624.8279570851,
+                "loss_notes": [],
+                "manufacturer_ref": "manufacturer.tdk",
+                "material": "material.tdk-n87",
+                "minimum_primary_turns": 11,
+                "missing_data": [
+                  "DC-bias (premagnetisation) data",
+                  "permeability vs amplitude / temperature (complex permeability)"
+                ],
+                "offered_in_reference_core": true,
+                "parameter_sets": [
+                  "set.tdk-datasheet-fit-n87-100c"
+                ],
+                "reasons_not_evaluable": [],
+                "saturation_margin": 0.6245448458805635
+              },
+              {
+                "bsat_T": null,
+                "bsat_status": null,
+                "core_loss_W": 27.876550381156118,
+                "evaluable_for_design": false,
+                "flux_density_peak_T": 0.14642751010658026,
+                "grade": "3E6",
+                "interpolated": false,
+                "loss_density_W_per_m3": 273299.51354074624,
+                "loss_notes": [
+                  "material.ferroxcube-3e6: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-3e6-90c is used"
+                ],
+                "manufacturer_ref": "manufacturer.ferroxcube",
+                "material": "material.ferroxcube-3e6",
+                "minimum_primary_turns": null,
+                "missing_data": [
+                  "saturation flux density vs temperature",
+                  "density",
+                  "Curie temperature",
+                  "resistivity",
+                  "datasheet core-loss reference points",
+                  "B-H loop data (coercivity / remanence)",
+                  "DC-bias (premagnetisation) data",
+                  "permeability vs amplitude / temperature (complex permeability)"
+                ],
+                "offered_in_reference_core": false,
+                "parameter_sets": [
+                  "set.magnet-fit-3e6-90c"
+                ],
+                "reasons_not_evaluable": [
+                  "no saturation flux density data"
+                ],
+                "saturation_margin": null
+              },
+              {
+                "bsat_T": null,
+                "bsat_status": null,
+                "core_loss_W": 32.36842779749779,
+                "evaluable_for_design": false,
+                "flux_density_peak_T": 0.14642751010658026,
+                "grade": "N30",
+                "interpolated": false,
+                "loss_density_W_per_m3": 317337.5274264489,
+                "loss_notes": [
+                  "material.tdk-n30: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-n30-90c is used"
+                ],
+                "manufacturer_ref": "manufacturer.tdk",
+                "material": "material.tdk-n30",
+                "minimum_primary_turns": null,
+                "missing_data": [
+                  "saturation flux density vs temperature",
+                  "density",
+                  "Curie temperature",
+                  "resistivity",
+                  "datasheet core-loss reference points",
+                  "B-H loop data (coercivity / remanence)",
+                  "DC-bias (premagnetisation) data",
+                  "permeability vs amplitude / temperature (complex permeability)"
+                ],
+                "offered_in_reference_core": false,
+                "parameter_sets": [
+                  "set.magnet-fit-n30-90c"
+                ],
+                "reasons_not_evaluable": [
+                  "no saturation flux density data"
+                ],
+                "saturation_margin": null
+              },
+              {
+                "bsat_T": null,
+                "bsat_status": null,
+                "core_loss_W": 41.80692635117333,
+                "evaluable_for_design": false,
+                "flux_density_peak_T": 0.14642751010658026,
+                "grade": "N49",
+                "interpolated": false,
+                "loss_density_W_per_m3": 409871.8269722875,
+                "loss_notes": [
+                  "material.tdk-n49: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-n49-90c is used"
+                ],
+                "manufacturer_ref": "manufacturer.tdk",
+                "material": "material.tdk-n49",
+                "minimum_primary_turns": null,
+                "missing_data": [
+                  "saturation flux density vs temperature",
+                  "density",
+                  "Curie temperature",
+                  "resistivity",
+                  "datasheet core-loss reference points",
+                  "B-H loop data (coercivity / remanence)",
+                  "DC-bias (premagnetisation) data",
+                  "permeability vs amplitude / temperature (complex permeability)"
+                ],
+                "offered_in_reference_core": false,
+                "parameter_sets": [
+                  "set.magnet-fit-n49-90c"
+                ],
+                "reasons_not_evaluable": [
+                  "no saturation flux density data"
+                ],
+                "saturation_margin": null
+              },
+              {
+                "bsat_T": null,
+                "bsat_status": null,
+                "core_loss_W": 63.51942982765004,
+                "evaluable_for_design": false,
+                "flux_density_peak_T": 0.14642751010658026,
+                "grade": "3F4",
+                "interpolated": false,
+                "loss_density_W_per_m3": 622739.508114216,
+                "loss_notes": [
+                  "material.ferroxcube-3f4: temperature 100.0 degC is outside the fit temperatures 25..90 degC of the parameter sets covering 100000 Hz; temperature_extrapolated: set set.magnet-fit-3f4-90c is used",
+                  "set.magnet-fit-3f4-90c: peak flux density 0.146 T exceeds the set's fitted range"
+                ],
+                "manufacturer_ref": "manufacturer.ferroxcube",
+                "material": "material.ferroxcube-3f4",
+                "minimum_primary_turns": null,
+                "missing_data": [
+                  "saturation flux density vs temperature",
+                  "density",
+                  "Curie temperature",
+                  "resistivity",
+                  "datasheet core-loss reference points",
+                  "B-H loop data (coercivity / remanence)",
+                  "DC-bias (premagnetisation) data",
+                  "permeability vs amplitude / temperature (complex permeability)"
+                ],
+                "offered_in_reference_core": false,
+                "parameter_sets": [
+                  "set.magnet-fit-3f4-90c"
+                ],
+                "reasons_not_evaluable": [
+                  "no saturation flux density data"
+                ],
+                "saturation_margin": null
+              }
+            ]
+          },
+          "measurement_requests_count": 10,
+          "result_path": "runs\\wf-dab-10kw-first\\tasks\\magnetics-transformer-design\\magnetics-design-result.json",
+          "selected_candidate": {
+            "arrangement": "P-S-P",
+            "conductor": "litz",
+            "copper_loss_W": 15.907926004822842,
+            "copper_mass_kg": 0.18213664666192864,
+            "core": "core.tdk-e70-33-32",
+            "core_loss_W": 19.137732451622682,
+            "core_loss_notes": [],
+            "core_name": "E 70/33/32",
+            "core_volume_m3": 0.00010200000000000001,
+            "evaluation": "complete",
+            "external_inductance_required_H": 3.3449416011381665e-05,
+            "feasible": true,
+            "flux_density_allowed_T": 0.27299999999999996,
+            "flux_density_max_T": 0.14642751010785723,
+            "flux_density_peak_T": 0.14642751010658026,
+            "flux_linkage_peak_to_peak_Vs": 0.004000399576111773,
+            "id": "E70/33/32|N87|20:10|litz 436 x 0.1 mm/litz 889 x 0.1 mm|P-S-P",
+            "layout": {
+              "bounding_volume_m3": 0.000266868585,
+              "checks": [
+                {
+                  "code": "radial_fit",
+                  "message": "radial build 11.05 mm (incl. bobbin and insulation) vs available 12.50 mm",
+                  "passed": true
+                }
+              ],
+              "copper_volume_m3": 2.0389191387207952e-05,
+              "core_exposed_area_m2": 0.01584793,
+              "core_volume_m3": 0.00011335679999999998,
+              "fidelity": "parametric_e_core",
+              "layers": [
+                {
+                  "d_in_m": 0.0015999999999999999,
+                  "d_out_m": 0.004210076627227638,
+                  "mean_turn_length_m": 0.12625289404889212,
+                  "section": 0,
+                  "turns": 10,
+                  "winding": "primary"
+                },
+                {
+                  "d_in_m": 0.004410076627227638,
+                  "d_out_m": 0.008137089506196531,
+                  "mean_turn_length_m": 0.14741808494813602,
+                  "section": 1,
+                  "turns": 10,
+                  "winding": "secondary"
+                },
+                {
+                  "d_in_m": 0.008337089506196532,
+                  "d_out_m": 0.010947166133424169,
+                  "mean_turn_length_m": 0.16858327584737992,
+                  "section": 2,
+                  "turns": 10,
+                  "winding": "primary"
+                }
+              ],
+              "notes": [
+                "parametric E-core layout: per-layer radial position and mean turn length from the core outline"
+              ],
+              "winding_exposed_area_m2": 0.0042268571836540725,
+              "winding_height_m": 0.04041,
+              "window_fill_geometric": 0.24284693795636864
+            },
+            "leakage_inductance_H": 1.5505839886183287e-06,
+            "loss_density_W_per_m3": 187624.8279570851,
+            "magnetising_current_peak_A": 0.5111136103301073,
+            "magnetising_current_share_of_primary_peak": 0.03570455079107975,
+            "magnetising_inductance": {
+              "datasheet_AL_H": 0.0038799999999999998,
+              "datasheet_AL_nH": 9700.0,
+              "effective_permeability": 1698.4455958549222,
+              "reluctance_model_H": 0.003913415232210388,
+              "residual_gap_per_leg_m": 1e-05
+            },
+            "mass_kg": 0.6961366466619286,
+            "material": "material.tdk-n87",
+            "material_grade": "N87",
+            "saturation_flux_density_T": 0.39,
+            "saturation_margin": 0.6245448458772891,
+            "series_inductance_total_H": 3.5e-05,
+            "standard_size_equivalent": false,
+            "tags": {
+              "current_density_A_per_mm2": 4.0,
+              "strand_diameter_mm": 0.1
+            },
+            "temperature_rise_K": 63.08387929854996,
+            "thermal": {
+              "ambient_K": 313.15,
+              "assumptions": [
+                "forced convection h = 40 W/m^2/K + radiation (emissivity 0.9), ambient 40.0 degC",
+                "core node = volume average; winding nodes at the section mid-build",
+                "end turns of the outermost winding are its only surface to ambient; inner windings reach ambient through the outer windings and the core",
+                "hot spots: uniformly heated slab estimates (labelled estimates)"
+              ],
+              "converged": true,
+              "cooling": {
+                "ambient_K": 313.15,
+                "description": "forced convection h = 40 W/m^2/K + radiation (emissivity 0.9), ambient 40.0 degC",
+                "emissivity": 0.9,
+                "forced_h_W_per_m2K": 40.0,
+                "mode": "forced",
+                "radiation": true
+              },
+              "hotspot_core_K": 350.54468928287713,
+              "hotspot_winding_K": 376.23387929854994,
+              "hotspots_K": {
+                "core": 350.54468928287713,
+                "primary": 374.6845365861552,
+                "primary.s0": 374.6845365861552,
+                "primary.s2": 368.1880324247054,
+                "secondary": 376.23387929854994,
+                "secondary.s1": 376.23387929854994
+              },
+              "iterations": 4,
+              "losses_at_estimated_temperatures": {
+                "core_W": 21.152272236325068,
+                "total_W": 37.053404208571735,
+                "windings_W": {
+                  "primary": 9.282076979980426,
+                  "secondary": 6.619054992266244
+                }
+              },
+              "method": "thermal_network_electrothermal",
+              "temperature_rise_K": 63.08387929854996,
+              "temperatures_K": {
+                "core": 347.7223785121566,
+                "primary.s0": 374.1926279683516,
+                "primary.s2": 367.69612380690177,
+                "secondary.s1": 375.5323186027198
+              }
+            },
+            "total_loss_W": 35.04565845644552,
+            "turns": {
+              "primary": 20,
+              "secondary": 10
+            },
+            "turns_ratio": 2.0,
+            "turns_ratio_error": 0.0,
+            "turns_ratio_target": 2.0,
+            "violation_codes": [],
+            "violations": [],
+            "warnings": [],
+            "windings": {
+              "primary": {
+                "conductor": "litz 436 x 0.1 mm",
+                "copper_area_m2": 3.4243359924128744e-06,
+                "current_density_A_per_m2": 3994097.0391284167,
+                "current_rms_A": 13.67713024827713,
+                "effective_ac_factor": 2.613125338289631,
+                "harmonics_used": 41,
+                "layers": 2,
+                "litz_1d_reference": {
+                  "dc_and_skin_W": 3.5569899198853703,
+                  "method": "strand skin factor + 1-D window-field proximity (Sullivan 1999), reference only",
+                  "proximity_W": 2.3168580254137368,
+                  "total_W": 5.873847945299107
+                },
+                "loss_W": 9.29375948212997,
+                "loss_dc_resistance_W": 3.5565685832019884,
+                "method": "dowell_per_layer_harmonic_litz_strand_sublayers",
+                "r_dc_Ohm": 0.01901258734884946,
+                "turns": 20
+              },
+              "secondary": {
+                "conductor": "litz 889 x 0.1 mm",
+                "copper_area_m2": 6.982189672603315e-06,
+                "current_density_A_per_m2": 3999800.8319908925,
+                "current_rms_A": 27.927368061596958,
+                "effective_ac_factor": 1.8189432618939296,
+                "harmonics_used": 41,
+                "layers": 1,
+                "litz_1d_reference": {
+                  "dc_and_skin_W": 3.6366977092975468,
+                  "method": "strand skin factor + 1-D window-field proximity (Sullivan 1999), reference only",
+                  "proximity_W": 2.4508117617083403,
+                  "total_W": 6.0875094710058875
+                },
+                "loss_W": 6.614166522692873,
+                "loss_dc_resistance_W": 3.636268739798973,
+                "method": "dowell_per_layer_harmonic_litz_strand_sublayers",
+                "r_dc_Ohm": 0.00466225426552214,
+                "turns": 10
+              }
+            },
+            "window_fill": 0.30330836968046193
+          },
+          "selected_core": "core.tdk-e70-33-32",
+          "square_current_comparison": {
+            "actual_currents": {
+              "primary_peak_A": 14.31508306380377,
+              "primary_rms_A": 13.67713024827713,
+              "secondary_peak_A": 32.62850034236908,
+              "secondary_rms_A": 27.927368061596958
+            },
+            "copper_loss_W": {
+              "actual_rms_dowell_at_fundamental": {
+                "primary": 9.183629328630662,
+                "secondary": 6.571234521713328
+              },
+              "actual_waveform_per_layer_harmonic_dowell": {
+                "primary": 9.29375948212997,
+                "secondary": 6.614166522692873
+              },
+              "square_rms_dowell_at_fundamental_v02_method": {
+                "primary": 7.668746730667337,
+                "secondary": 5.264376660614912
+              }
+            },
+            "copper_loss_total_W": {
+              "actual_rms_dowell_at_fundamental": 15.754863850343991,
+              "actual_waveform_per_layer_harmonic_dowell": 15.907926004822842,
+              "square_rms_dowell_at_fundamental_v02_method": 12.933123391282248
+            },
+            "dowell_factor_at_fundamental": {
+              "primary": 2.582160055061448,
+              "secondary": 1.8071366535127462
+            },
+            "note": "same core, turns, conductors and arrangement for all three columns; the square approximation defines only an RMS value, so no harmonic content is attributed to it",
+            "public_design_transformer": {
+              "copper_loss_W": 15.269839484030538,
+              "core_loss_W": 29.487331269072733,
+              "current_basis": "P/V square approximation, Dowell at the fundamental, datasheet mean turn length",
+              "flux_density_peak_T": 0.1830459780146583,
+              "status": "ok",
+              "total_loss_W": 44.75717075310327,
+              "turns": {
+                "primary": 16.0,
+                "secondary": 8.0
+              },
+              "window_fill": 0.2193603291453926
+            },
+            "rms_ratio_actual_over_square": {
+              "primary": 1.0943216105381621,
+              "secondary": 1.1172490807824456
+            },
+            "square_currents": {
+              "basis": "I_rms = P / V (public design_transformer assumption)",
+              "primary_rms_A": 12.498273009112042,
+              "secondary_rms_A": 24.996546018224084
+            },
+            "throughput_power_W": 10000.25042050165
+          },
+          "total_loss_W": 35.04565845644552,
+          "turns_primary": 20,
+          "turns_ratio_actual": 2.0,
+          "turns_secondary": 10
+        }
+      }
+    },
+    "updated_at": "2026-10-21T06:03:23Z"
+  },
+  "status": "completed",
+  "task_id": "magnetics-transformer-design",
+  "task_version": "0.1.2",
+  "tool": {
+    "id": "aipe.magnetics-database.waveform-informed-design",
+    "name": "aipe_magnetics",
+    "version": "0.2.0"
+  },
+  "verification": {
+    "core_state_export_valid": true,
+    "evaluated_candidates": 35,
+    "external_inductance_consistent": true,
+    "feasible_candidates": 12
+  }
+}

@@ -1,0 +1,576 @@
+{
+  "created_at": "2026-10-21T07:26:06Z",
+  "levels": [
+    [
+      "requirements"
+    ],
+    [
+      "analytic-sps",
+      "pcb-erc-drc"
+    ],
+    [
+      "circuit-sim-level1",
+      "control-baseline"
+    ],
+    [
+      "circuit-sim-level1-convergence",
+      "circuit-sim-level2",
+      "magnetics-transformer-design"
+    ],
+    [
+      "cad-transformer",
+      "fem-transformer-window",
+      "semiconductor-screening"
+    ],
+    [
+      "thermal-cooling-design"
+    ],
+    [
+      "cad-heatsink",
+      "fem-heatsink"
+    ]
+  ],
+  "order": [
+    "requirements",
+    "analytic-sps",
+    "circuit-sim-level1",
+    "circuit-sim-level1-convergence",
+    "circuit-sim-level2",
+    "control-baseline",
+    "magnetics-transformer-design",
+    "cad-transformer",
+    "fem-transformer-window",
+    "pcb-erc-drc",
+    "semiconductor-screening",
+    "thermal-cooling-design",
+    "cad-heatsink",
+    "fem-heatsink"
+  ],
+  "run_id": "wf-dab-10kw-first",
+  "tasks": [
+    {
+      "adapter": "aipe_workflows.adapters.requirements:RequirementsTask",
+      "adapter_info": {
+        "id": "aipe.workflows.requirements",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "engineering-state-schema",
+      "capability_registered": true,
+      "depends_on": [],
+      "gate": "software",
+      "id": "requirements",
+      "optional": false,
+      "previous": {
+        "attempts": 2,
+        "envelope_path": "runs\\wf-dab-10kw-first\\tasks\\requirements\\envelope.json",
+        "finished_at": "2026-10-21T05:52:57Z",
+        "input_hash": "b22cfe871987fb05f118f2a8994ef95e1a5bce69779c0cab11bb2b103dae8620",
+        "message": "",
+        "started_at": "2026-10-21T05:52:57Z",
+        "state_version_after": null,
+        "status": "reused",
+        "task_id": "requirements"
+      },
+      "registry": {
+        "id": "aipe.core",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-Core",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": []
+    },
+    {
+      "adapter": "aipe_workflows.adapters.design_agent:AnalyticSpsTask",
+      "adapter_info": {
+        "id": "aipe.design-agent.dab-sps-analysis",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "converter-concept-calculation",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements"
+      ],
+      "gate": "analytical",
+      "id": "analytic-sps",
+      "optional": false,
+      "previous": {
+        "attempts": 2,
+        "envelope_path": "runs\\wf-dab-10kw-first\\tasks\\analytic-sps\\envelope.json",
+        "finished_at": "2026-10-21T05:52:57Z",
+        "input_hash": "8953ffaae849d631c243021fcb3b077158e1438f817086bf977f526eeb0739a6",
+        "message": "",
+        "started_at": "2026-10-21T05:52:57Z",
+        "state_version_after": 1,
+        "status": "reused",
+        "task_id": "analytic-sps"
+      },
+      "registry": {
+        "id": "aipe.design-agent",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-Design-Agent",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": []
+    },
+    {
+      "adapter": "aipe_workflows.adapters.simulation_skills:DabNgspiceTask",
+      "adapter_info": {
+        "id": "aipe.simulation-skills.dab-ngspice",
+        "version": "0.1.1"
+      },
+      "blockers": [],
+      "capability": "switching-circuit-simulation",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "analytic-sps"
+      ],
+      "gate": "circuit_simulation",
+      "id": "circuit-sim-level1",
+      "optional": false,
+      "previous": {
+        "attempts": 2,
+        "envelope_path": "runs\\wf-dab-10kw-first\\tasks\\circuit-sim-level1\\envelope.json",
+        "finished_at": "2026-10-21T05:52:58Z",
+        "input_hash": "8ba6950518cd49a2762a0fc13c4efc6f459f8159745904f8f558e20365018a36",
+        "message": "",
+        "started_at": "2026-10-21T05:52:57Z",
+        "state_version_after": 2,
+        "status": "reused",
+        "task_id": "circuit-sim-level1"
+      },
+      "registry": {
+        "id": "aipe.simulation-skills",
+        "maturity": "usable",
+        "repository": "https://github.com/FulongLi/AIPE-Simulation-Skills",
+        "status": "active",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "ngspice"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.simulation_skills:DabNgspiceTask",
+      "adapter_info": {
+        "id": "aipe.simulation-skills.dab-ngspice",
+        "version": "0.1.1"
+      },
+      "blockers": [],
+      "capability": "switching-circuit-simulation",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "analytic-sps",
+        "circuit-sim-level1"
+      ],
+      "gate": "circuit_simulation",
+      "id": "circuit-sim-level1-convergence",
+      "optional": true,
+      "previous": {
+        "attempts": 2,
+        "envelope_path": "runs\\wf-dab-10kw-first\\tasks\\circuit-sim-level1-convergence\\envelope.json",
+        "finished_at": "2026-10-21T05:52:59Z",
+        "input_hash": "9dddd16adcc277954c18a4a4c72a7b2ac863f6719cde1a3af356cee951d8e271",
+        "message": "",
+        "started_at": "2026-10-21T05:52:58Z",
+        "state_version_after": 3,
+        "status": "reused",
+        "task_id": "circuit-sim-level1-convergence"
+      },
+      "registry": {
+        "id": "aipe.simulation-skills",
+        "maturity": "usable",
+        "repository": "https://github.com/FulongLi/AIPE-Simulation-Skills",
+        "status": "active",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "ngspice"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.simulation_skills:DabNgspiceTask",
+      "adapter_info": {
+        "id": "aipe.simulation-skills.dab-ngspice",
+        "version": "0.1.1"
+      },
+      "blockers": [],
+      "capability": "switching-circuit-simulation",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "analytic-sps",
+        "circuit-sim-level1"
+      ],
+      "gate": "circuit_simulation",
+      "id": "circuit-sim-level2",
+      "optional": false,
+      "previous": {
+        "attempts": 5,
+        "envelope_path": "runs\\wf-dab-10kw-first\\tasks\\circuit-sim-level2\\envelope.json",
+        "finished_at": "2026-10-21T05:58:30Z",
+        "input_hash": "3a1d62c1871e51f33aeb2b0a4dd2fa642305b5940b7f18851c7163bf372be4d7",
+        "message": "",
+        "started_at": "2026-10-21T05:58:20Z",
+        "state_version_after": 4,
+        "status": "reused",
+        "task_id": "circuit-sim-level2"
+      },
+      "registry": {
+        "id": "aipe.simulation-skills",
+        "maturity": "usable",
+        "repository": "https://github.com/FulongLi/AIPE-Simulation-Skills",
+        "status": "active",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "ngspice"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.control_baseline:SpsControlBaselineTask",
+      "adapter_info": {
+        "id": "aipe.simulation-skills.sps-control-baseline",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "averaged-control-analysis",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "analytic-sps"
+      ],
+      "gate": "analytical",
+      "id": "control-baseline",
+      "optional": false,
+      "previous": {
+        "attempts": 1,
+        "envelope_path": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\envelope.json",
+        "finished_at": "2026-10-21T06:26:28Z",
+        "input_hash": "c531a1035873cd1f56078b86a643c7540163a25c71cfc6783767ca20847f3147",
+        "message": "",
+        "started_at": "2026-10-21T06:26:26Z",
+        "state_version_after": 5,
+        "status": "reused",
+        "task_id": "control-baseline"
+      },
+      "registry": {
+        "id": "aipe.simulation-skills",
+        "maturity": "usable",
+        "repository": "https://github.com/FulongLi/AIPE-Simulation-Skills",
+        "status": "active",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "ngspice"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.magnetics_database:WaveformInformedTransformerTask",
+      "adapter_info": {
+        "id": "aipe.magnetics-database.waveform-informed-transformer-design",
+        "version": "0.1.2"
+      },
+      "blockers": [],
+      "capability": "magnetics-waveform-informed-transformer-design",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "analytic-sps",
+        "circuit-sim-level1"
+      ],
+      "gate": "analytical",
+      "id": "magnetics-transformer-design",
+      "optional": false,
+      "previous": {
+        "attempts": 3,
+        "envelope_path": "runs\\wf-dab-10kw-first\\tasks\\magnetics-transformer-design\\envelope.json",
+        "finished_at": "2026-10-21T06:03:23Z",
+        "input_hash": "16a51c5002ffa20ec292ed19077b453c9467bd669f3c8b27469425aa5f4e442a",
+        "message": "",
+        "started_at": "2026-10-21T06:03:21Z",
+        "state_version_after": 6,
+        "status": "reused",
+        "task_id": "magnetics-transformer-design"
+      },
+      "registry": {
+        "id": "aipe.magnetics-database",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-Magnetics-Database",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": []
+    },
+    {
+      "adapter": "aipe_workflows.adapters.cad_agent:TransformerCadTask",
+      "adapter_info": {
+        "id": "aipe.cad-agent.transformer",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "parametric-transformer-cad",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "magnetics-transformer-design"
+      ],
+      "gate": "cad_pcb",
+      "id": "cad-transformer",
+      "optional": false,
+      "previous": {
+        "attempts": 3,
+        "envelope_path": "runs\\wf-dab-10kw-first\\tasks\\cad-transformer\\envelope.json",
+        "finished_at": "2026-10-21T06:41:57Z",
+        "input_hash": "d931444ce3475ac19d7fd5d78b60728f68d7389e5cbc9208712bce23db96e740",
+        "message": "",
+        "started_at": "2026-10-21T06:41:37Z",
+        "state_version_after": 7,
+        "status": "completed",
+        "task_id": "cad-transformer"
+      },
+      "registry": {
+        "id": "aipe.cad-agent",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-CAD-Agent",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "freecad"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.field_simulation:TransformerLeakageFemTask",
+      "adapter_info": {
+        "id": "aipe.field-simulation.transformer-window-2d",
+        "version": "0.1.1"
+      },
+      "blockers": [],
+      "capability": "fem-magnetostatics-2d",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "circuit-sim-level1",
+        "magnetics-transformer-design"
+      ],
+      "gate": "field_simulation",
+      "id": "fem-transformer-window",
+      "optional": false,
+      "previous": {
+        "attempts": 2,
+        "envelope_path": "runs\\wf-dab-10kw-first\\tasks\\fem-transformer-window\\envelope.json",
+        "finished_at": "2026-10-21T06:36:20Z",
+        "input_hash": "6ee85a87103012f1cc6fbb5ae4b8ad900234e8743447013d36fbb080b318991c",
+        "message": "",
+        "started_at": "2026-10-21T06:36:17Z",
+        "state_version_after": 8,
+        "status": "reused",
+        "task_id": "fem-transformer-window"
+      },
+      "registry": {
+        "id": "aipe.field-simulation",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-Field-Simulation",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "gmsh",
+        "elmer"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.pcb_agent:KicadBoardChecksTask",
+      "adapter_info": {
+        "id": "aipe.pcb-agent.kicad-erc-drc",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "pcb-erc-drc-verification",
+      "capability_registered": false,
+      "depends_on": [
+        "requirements"
+      ],
+      "gate": "cad_pcb",
+      "id": "pcb-erc-drc",
+      "optional": true,
+      "previous": null,
+      "registry": null,
+      "runnable": true,
+      "tools": [
+        "kicad-cli"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.semiconductor_database:DabDeviceScreeningTask",
+      "adapter_info": {
+        "id": "aipe.semiconductor-database.dab-screening",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "semiconductor-dab-screening",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "circuit-sim-level2"
+      ],
+      "gate": "analytical",
+      "id": "semiconductor-screening",
+      "optional": false,
+      "previous": {
+        "attempts": 3,
+        "envelope_path": "runs\\wf-dab-10kw-first\\tasks\\semiconductor-screening\\envelope.json",
+        "finished_at": "2026-10-21T06:30:00Z",
+        "input_hash": "6228a0998fefc64a5860f83014643c151d3b57d51564ef56f58b78aa8ee1f18f",
+        "message": "",
+        "started_at": "2026-10-21T06:29:59Z",
+        "state_version_after": 9,
+        "status": "reused",
+        "task_id": "semiconductor-screening"
+      },
+      "registry": {
+        "id": "aipe.semiconductor-database",
+        "maturity": "usable",
+        "repository": "https://github.com/FulongLi/AIPE-Semiconductor-Database",
+        "status": "active",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": []
+    },
+    {
+      "adapter": "aipe_workflows.adapters.thermal_design:CoolingDesignTask",
+      "adapter_info": {
+        "id": "aipe.design-agent.thermal-cooling-screening",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "thermal-cooling-screening",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "semiconductor-screening"
+      ],
+      "gate": "analytical",
+      "id": "thermal-cooling-design",
+      "optional": false,
+      "previous": {
+        "attempts": 2,
+        "envelope_path": "runs\\wf-dab-10kw-first\\tasks\\thermal-cooling-design\\envelope.json",
+        "finished_at": "2026-10-21T06:36:40Z",
+        "input_hash": "800a2b6c119d56c39a76d6dd4154e801c354ef85c84d8aacc6f419630c6e3f60",
+        "message": "",
+        "started_at": "2026-10-21T06:36:20Z",
+        "state_version_after": 10,
+        "status": "reused",
+        "task_id": "thermal-cooling-design"
+      },
+      "registry": {
+        "id": "aipe.design-agent",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-Design-Agent",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": []
+    },
+    {
+      "adapter": "aipe_workflows.adapters.cad_agent:HeatSinkCadTask",
+      "adapter_info": {
+        "id": "aipe.cad-agent.heatsink",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "heat-sink-cad",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "semiconductor-screening",
+        "thermal-cooling-design"
+      ],
+      "gate": "cad_pcb",
+      "id": "cad-heatsink",
+      "optional": false,
+      "previous": {
+        "attempts": 1,
+        "envelope_path": "runs\\wf-dab-10kw-first\\tasks\\cad-heatsink\\envelope.json",
+        "finished_at": "2026-10-21T06:36:43Z",
+        "input_hash": "cf3403b1e8de46c6d3c4dc82bed4ec04c3630753f28f3cddc4fc3c53d044cfe9",
+        "message": "",
+        "started_at": "2026-10-21T06:36:40Z",
+        "state_version_after": 11,
+        "status": "reused",
+        "task_id": "cad-heatsink"
+      },
+      "registry": {
+        "id": "aipe.cad-agent",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-CAD-Agent",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "freecad"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.field_simulation:HeatSinkFemTask",
+      "adapter_info": {
+        "id": "aipe.field-simulation.heatsink-3d",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "fem-thermal-conduction",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "semiconductor-screening",
+        "thermal-cooling-design"
+      ],
+      "gate": "field_simulation",
+      "id": "fem-heatsink",
+      "optional": false,
+      "previous": {
+        "attempts": 1,
+        "envelope_path": "runs\\wf-dab-10kw-first\\tasks\\fem-heatsink\\envelope.json",
+        "finished_at": "2026-10-21T06:36:52Z",
+        "input_hash": "14abe728c3c31e036ec485d38eba9d1c79d0e5f5334a49404ca92e3167d05072",
+        "message": "",
+        "started_at": "2026-10-21T06:36:43Z",
+        "state_version_after": 12,
+        "status": "reused",
+        "task_id": "fem-heatsink"
+      },
+      "registry": {
+        "id": "aipe.field-simulation",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-Field-Simulation",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "gmsh",
+        "elmer"
+      ]
+    }
+  ],
+  "workflow": "aipe.workflow.converter-dab"
+}

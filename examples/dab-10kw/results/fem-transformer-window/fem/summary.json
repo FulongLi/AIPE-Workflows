@@ -1,0 +1,452 @@
+{
+  "schema": "aipe.field-simulation/model-summary/0.1",
+  "package": {
+    "name": "aipe-fieldsim",
+    "version": "0.1.0"
+  },
+  "model": "transformer_window_2d",
+  "title": "2-D E-core transformer window (leakage, magnetising, homogenised AC loss)",
+  "description": "Planar cross-section of an E-core with parametrised window and winding blocks (N1=21, N2=10 by default, optional P-S-P interleaving). Elmer MgDyn2D magnetostatics for leakage and magnetising inductance from stored energy; MgDyn2DHarmonic at 100 kHz with homogenised winding conductivity for an approximate AC loss factor.",
+  "status": "executed",
+  "status_note": "harmonic solve skipped (--no-harmonic)",
+  "created_at": "2026-10-21T14:36:17+08:00",
+  "finished_at": "2026-10-21T14:36:20+08:00",
+  "parameters": {
+    "N1": 20,
+    "N2": 10,
+    "I1_A": 14.31515752256699,
+    "frequency_Hz": 100000.0,
+    "centre_leg_width_m": 0.022,
+    "outer_leg_width_m": 0.011250000000000003,
+    "yoke_thickness_m": 0.011300000000000001,
+    "window_width_m": 0.013000000000000001,
+    "window_height_m": 0.0438,
+    "core_depth_m": 0.032,
+    "air_margin_m": 0.006,
+    "winding_margin_m": 0.0016949999999999986,
+    "clearance_centre_m": 0.0015999999999999999,
+    "insulation_gap_m": 0.00019999999999999966,
+    "primary_width_m": 0.005220153254455275,
+    "secondary_width_m": 0.0037270128789688934,
+    "interleaved": true,
+    "mu_r_core": 2000.0,
+    "fill_factor": 0.3825382663900647,
+    "sigma_cu_S_per_m": 58000000.0,
+    "strand_diameter_m": 0.0001,
+    "h0_core_m": 0.002,
+    "h0_window_m": 0.001
+  },
+  "results": {
+    "L_leakage_primary_H": {
+      "value": 1.4831218771540288e-06,
+      "unit": "H",
+      "note": "FEM energy method, finest mesh; depth = MLT/2"
+    },
+    "L_leakage_primary_1d_estimate_H": {
+      "value": 1.5505839957288152e-06,
+      "unit": "H",
+      "note": "1-D MMF-diagram estimate with the same layout and MLT"
+    },
+    "L_leakage_richardson_H": {
+      "value": 1.4831218771540288e-06,
+      "unit": "H",
+      "note": "same as finest (needs 3 levels)"
+    },
+    "leakage_energy_window_fraction": {
+      "value": 0.9999867169146329,
+      "unit": "1",
+      "note": "share of leakage energy stored outside the core"
+    },
+    "max_B_window_T": {
+      "value": 0.004467005781371658,
+      "unit": "T",
+      "note": "peak leakage flux density in the window at I1"
+    },
+    "L_magnetising_primary_H": {
+      "value": 0.005180328373919709,
+      "unit": "H",
+      "note": "FEM energy method, secondary open; depth = core depth"
+    },
+    "L_magnetising_reluctance_estimate_H": {
+      "value": 0.004176677444678127,
+      "unit": "H",
+      "note": "N1^2 mu0 mu_r A_c / l_c with l_c = 0.1694 m"
+    },
+    "turns_ratio": {
+      "value": 2.0,
+      "unit": "1",
+      "note": "N1/N2"
+    },
+    "mean_turn_length_m": {
+      "value": 0.14741808494813602,
+      "unit": "m",
+      "note": "rectangular leg + 2 pi r_mean approximation"
+    },
+    "F_R_litz_proximity_estimate": {
+      "value": 1.2902626979827618,
+      "unit": "1",
+      "note": "SFD estimate, strand d = 0.10 mm, delta_cu = 0.209 mm (approximation)"
+    },
+    "skin_depth_copper_m": {
+      "value": 0.00020898067849388921,
+      "unit": "m",
+      "note": "at the switching frequency"
+    }
+  },
+  "checks": [
+    {
+      "name": "ampere_turn_balance_right_window",
+      "value": 1.8935420497632225e-11,
+      "tolerance": 0.002,
+      "passed": true,
+      "description": "net current of all blocks in the right window / (N1 I1); should vanish for the leakage solve"
+    },
+    {
+      "name": "elmer_vs_python_energy",
+      "value": 6.860054314527746e-08,
+      "tolerance": 1e-06,
+      "passed": true,
+      "description": "numpy energy integral vs Elmer CalcFields energy"
+    },
+    {
+      "name": "primary_block_current",
+      "value": 1.0588682694918025e-11,
+      "tolerance": 1e-06,
+      "passed": true,
+      "description": "integrated J over the first primary block (right window) vs N_block * I1"
+    }
+  ],
+  "all_checks_passed": true,
+  "limitations": [
+    "2-D planar model: end effects and the real 3-D turn geometry are ignored; energies per unit depth are scaled by MLT/2 (leakage) and the core depth (magnetising).",
+    "Winding blocks carry uniform current density (stranded assumption) in the magnetostatic solves.",
+    "The 100 kHz AC loss factor uses a HOMOGENISED solid-block conductivity (sigma_eff = fill * sigma_cu); each block carries its total N*I (enforced by superposing unit-source solves) but current may redistribute freely inside the block as in a single massive conductor. It is an approximation indicator (close to a one-turn foil of the block width), not a Litz or multi-turn foil winding loss prediction.",
+    "The Litz proximity estimate assumes strand diameter << skin depth and uses the magnetostatic field (no field redistribution).",
+    "No measured validation; core modelled as linear, lossless, mu_r constant."
+  ],
+  "timing": {
+    "leakage_level0_s": 0.711,
+    "leakage_level1_s": 1.096,
+    "magnetising_s": 1.021,
+    "total_s": 2.992
+  },
+  "tools": {
+    "elmersolver": {
+      "id": "elmersolver",
+      "name": "Elmer FEM ElmerSolver",
+      "found": true,
+      "path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64\\bin\\ElmerSolver.exe",
+      "version": "9.0",
+      "revision": "Release",
+      "compiled": "2026-01-20",
+      "source": "workspace-tools",
+      "licence": "GPL-2.0-or-later (ElmerSolver), LGPL-2.1 (elmersolver library parts)",
+      "home": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64",
+      "notes": []
+    },
+    "elmergrid": {
+      "id": "elmergrid",
+      "name": "Elmer FEM ElmerGrid",
+      "found": true,
+      "path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64\\bin\\ElmerGrid.exe",
+      "version": "9.0",
+      "revision": "Release",
+      "compiled": "2026-01-20",
+      "source": "workspace-tools",
+      "licence": "GPL-2.0-or-later",
+      "home": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64",
+      "notes": []
+    },
+    "gmsh": {
+      "id": "gmsh",
+      "name": "Gmsh (python SDK)",
+      "found": true,
+      "path": "C:\\Users\\Zhongnan Qian\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\gmsh.py",
+      "version": "4.15.2",
+      "revision": null,
+      "compiled": null,
+      "source": "python-module",
+      "licence": "GPL-2.0-or-later",
+      "home": null,
+      "notes": []
+    },
+    "python": {
+      "executable": "C:\\Users\\Zhongnan Qian\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+      "version": "3.10.11",
+      "packages": {
+        "numpy": "2.2.6",
+        "scipy": "1.15.3",
+        "matplotlib": "3.10.9",
+        "gmsh": "4.15.2"
+      },
+      "platform": {
+        "system": "Windows",
+        "release": "10",
+        "machine": "AMD64"
+      }
+    }
+  },
+  "evidence": [
+    {
+      "id": "assumption.transformer_window_2d.parameters",
+      "kind": "assumption",
+      "description": "Parametric E-core window geometry and winding layout as recorded in summary.json parameters.",
+      "source": {
+        "type": "assumption",
+        "reference": "declared model assumption"
+      },
+      "provenance": {
+        "activity": "aipe_fieldsim run",
+        "tools": [],
+        "inputs": []
+      },
+      "timestamp": "2026-10-21T14:36:17+08:00",
+      "artifacts": [],
+      "review_status": "unreviewed"
+    },
+    {
+      "id": "evidence.transformer_window_2d.leakage.level0",
+      "kind": "simulation",
+      "description": "Leakage magnetostatic solve level 0: 7662 elements.",
+      "source": {
+        "type": "computation",
+        "reference": "Elmer FEM case directory (case.json)"
+      },
+      "provenance": {
+        "activity": "aipe_fieldsim run",
+        "tools": [
+          {
+            "id": "elmersolver",
+            "version": "9.0",
+            "name": "Elmer FEM ElmerSolver"
+          },
+          {
+            "id": "elmergrid",
+            "version": "9.0",
+            "name": "Elmer FEM ElmerGrid"
+          },
+          {
+            "id": "gmsh",
+            "version": "4.15.2",
+            "name": "Gmsh (python SDK)"
+          }
+        ],
+        "inputs": [
+          "assumption.transformer_window_2d.parameters"
+        ]
+      },
+      "timestamp": "2026-10-21T14:36:17+08:00",
+      "artifacts": [
+        {
+          "uri": "leakage_level0/case.json",
+          "sha256": "01fc0370e7244b1c4ede307e221bf796a3afa593d8260a09a5de1c4c58d35ee2"
+        }
+      ],
+      "review_status": "unreviewed"
+    },
+    {
+      "id": "evidence.transformer_window_2d.leakage.level1",
+      "kind": "simulation",
+      "description": "Leakage magnetostatic solve level 1: 26920 elements.",
+      "source": {
+        "type": "computation",
+        "reference": "Elmer FEM case directory (case.json)"
+      },
+      "provenance": {
+        "activity": "aipe_fieldsim run",
+        "tools": [
+          {
+            "id": "elmersolver",
+            "version": "9.0",
+            "name": "Elmer FEM ElmerSolver"
+          },
+          {
+            "id": "elmergrid",
+            "version": "9.0",
+            "name": "Elmer FEM ElmerGrid"
+          },
+          {
+            "id": "gmsh",
+            "version": "4.15.2",
+            "name": "Gmsh (python SDK)"
+          }
+        ],
+        "inputs": [
+          "assumption.transformer_window_2d.parameters"
+        ]
+      },
+      "timestamp": "2026-10-21T14:36:17+08:00",
+      "artifacts": [
+        {
+          "uri": "leakage_level1/case.json",
+          "sha256": "0e059b75d77626deb1812736fc2ac65b2172ffb8497e9051f40b362cc8ad1b7a"
+        }
+      ],
+      "review_status": "unreviewed"
+    },
+    {
+      "id": "evidence.transformer_window_2d.magnetising",
+      "kind": "simulation",
+      "description": "Magnetising magnetostatic solve (secondary open).",
+      "source": {
+        "type": "computation",
+        "reference": "Elmer FEM case directory (case.json)"
+      },
+      "provenance": {
+        "activity": "aipe_fieldsim run",
+        "tools": [
+          {
+            "id": "elmersolver",
+            "version": "9.0",
+            "name": "Elmer FEM ElmerSolver"
+          },
+          {
+            "id": "elmergrid",
+            "version": "9.0",
+            "name": "Elmer FEM ElmerGrid"
+          },
+          {
+            "id": "gmsh",
+            "version": "4.15.2",
+            "name": "Gmsh (python SDK)"
+          }
+        ],
+        "inputs": [
+          "assumption.transformer_window_2d.parameters"
+        ]
+      },
+      "timestamp": "2026-10-21T14:36:17+08:00",
+      "artifacts": [
+        {
+          "uri": "magnetising/case.json",
+          "sha256": "7cb4392552a2567336d806593ccca2858497ce4645047c1155ba13d57f58fc76"
+        }
+      ],
+      "review_status": "unreviewed"
+    }
+  ],
+  "leakage_convergence": [
+    {
+      "level": 0,
+      "h_m": 0.001,
+      "elements": 7662,
+      "nodes": 3914,
+      "value": 1.4401939361929503e-06
+    },
+    {
+      "level": 1,
+      "h_m": 0.0005,
+      "elements": 26920,
+      "nodes": 13623,
+      "value": 1.4831218771540288e-06
+    }
+  ],
+  "leakage_levels": [
+    {
+      "level": 0,
+      "h": 0.001,
+      "elements": 7662,
+      "nodes": 3914,
+      "L_leakage_H": 1.4401939361929503e-06,
+      "energy_total_J_per_m": 0.002001992635319657,
+      "values": {
+        "energy_total_J_per_m": 0.002001992635319657,
+        "energy_window_J_per_m": 0.0020019653401277524,
+        "energy_core_J_per_m": 2.7295191904352853e-08,
+        "energy_elmer_J_per_m": 0.002001993,
+        "L_leakage_H": 1.4401939361929503e-06,
+        "block_currents_A": {
+          "pri0_r": 143.15157522415407,
+          "pri0_l": -143.1515752241541,
+          "sec0_r": -286.30315045372953,
+          "sec0_l": 286.30315045372953,
+          "pri1_r": 143.1515752241541,
+          "pri1_l": -143.1515752241541
+        },
+        "right_window_net_current_A": -5.421355808721273e-09,
+        "B2_integral_per_block_T2m2": {
+          "pri0_r": 6.332527609513954e-10,
+          "pri0_l": 6.332131883917447e-10,
+          "sec0_r": 8.897172458443085e-10,
+          "sec0_l": 8.89281324179227e-10,
+          "pri1_r": 6.323712777920293e-10,
+          "pri1_l": 6.323319771025741e-10
+        },
+        "max_B_window_T": 0.004489964791578737
+      },
+      "case_dir": "runs\\wf-dab-10kw-first\\tasks\\fem-transformer-window\\fem\\leakage_level0"
+    },
+    {
+      "level": 1,
+      "h": 0.0005,
+      "elements": 26920,
+      "nodes": 13623,
+      "L_leakage_H": 1.4831218771540288e-06,
+      "energy_total_J_per_m": 0.0020616661414314076,
+      "values": {
+        "energy_total_J_per_m": 0.0020616661414314076,
+        "energy_window_J_per_m": 0.0020616387561440525,
+        "energy_core_J_per_m": 2.738528735546188e-08,
+        "energy_elmer_J_per_m": 0.002061666,
+        "L_leakage_H": 1.4831218771540288e-06,
+        "block_currents_A": {
+          "pri0_r": 143.1515752241541,
+          "pri0_l": -143.1515752241541,
+          "sec0_r": -286.3031504537295,
+          "sec0_l": 286.30315045372953,
+          "pri1_r": 143.1515752241541,
+          "pri1_l": -143.1515752241541
+        },
+        "right_window_net_current_A": -5.421270543592982e-09,
+        "B2_integral_per_block_T2m2": {
+          "pri0_r": 6.464309758691057e-10,
+          "pri0_l": 6.464670510415215e-10,
+          "sec0_r": 9.372094249421285e-10,
+          "sec0_l": 9.37218680773129e-10,
+          "pri1_r": 6.455621834716181e-10,
+          "pri1_l": 6.455264628067178e-10
+        },
+        "max_B_window_T": 0.004467005781371658
+      },
+      "case_dir": "runs\\wf-dab-10kw-first\\tasks\\fem-transformer-window\\fem\\leakage_level1"
+    }
+  ],
+  "block_layout": [
+    {
+      "winding": "pri",
+      "section": 0,
+      "xmin": 0.0126,
+      "xmax": 0.015210076627227637,
+      "ymin": -0.020205,
+      "ymax": 0.020205,
+      "turns": 10.0
+    },
+    {
+      "winding": "sec",
+      "section": 0,
+      "xmin": 0.015410076627227636,
+      "xmax": 0.01913708950619653,
+      "ymin": -0.020205,
+      "ymax": 0.020205,
+      "turns": 10
+    },
+    {
+      "winding": "pri",
+      "section": 1,
+      "xmin": 0.019337089506196527,
+      "xmax": 0.021947166133424165,
+      "ymin": -0.020205,
+      "ymax": 0.020205,
+      "turns": 10.0
+    }
+  ],
+  "block_currents_finest_A": {
+    "pri0_r": 143.1515752241541,
+    "pri0_l": -143.1515752241541,
+    "sec0_r": -286.3031504537295,
+    "sec0_l": 286.30315045372953,
+    "pri1_r": 143.1515752241541,
+    "pri1_l": -143.1515752241541
+  },
+  "interleaved": true
+}

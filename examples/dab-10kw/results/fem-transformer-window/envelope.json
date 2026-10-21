@@ -1,0 +1,555 @@
+{
+  "approval_required": [],
+  "artifacts": [
+    {
+      "description": "transformer window FEM summary (levels, results, checks, limitations)",
+      "media_type": "application/json",
+      "role": "fem_summary",
+      "sha256": "a3baffd1730a6607dc8bc10d872b2ba2ba73fee8ae02a8f259228685220553ba",
+      "uri": "tasks/fem-transformer-window/fem/summary.json"
+    },
+    {
+      "description": "leakage_level0/case.sif",
+      "media_type": "text/plain",
+      "role": "fem_case_file",
+      "sha256": "5577078f64292a1e9fbbd5453b1015b1827eec371a88e8d422779a59901a5fc1",
+      "uri": "tasks/fem-transformer-window/fem/leakage_level0/case.sif"
+    },
+    {
+      "description": "leakage_level1/case.sif",
+      "media_type": "text/plain",
+      "role": "fem_case_file",
+      "sha256": "5577078f64292a1e9fbbd5453b1015b1827eec371a88e8d422779a59901a5fc1",
+      "uri": "tasks/fem-transformer-window/fem/leakage_level1/case.sif"
+    },
+    {
+      "description": "leakage_level0/mesh.msh",
+      "media_type": "model/gmsh",
+      "role": "fem_case_file",
+      "sha256": "9691dfd1129044475dce2a28a82bb8267de7232f8eb463c7bc2d666b71d02cc2",
+      "uri": "tasks/fem-transformer-window/fem/leakage_level0/mesh.msh"
+    },
+    {
+      "description": "leakage_level1/mesh.msh",
+      "media_type": "model/gmsh",
+      "role": "fem_case_file",
+      "sha256": "d36b0abd089ab31464116a4658462c1b1545ac2e9b46a6b72756500e626aa194",
+      "uri": "tasks/fem-transformer-window/fem/leakage_level1/mesh.msh"
+    },
+    {
+      "description": "leakage_level0/elmersolver.log",
+      "media_type": "text/plain",
+      "role": "fem_case_file",
+      "sha256": "ffa99464fa2f15c97e8b601d076d184eb68fbeebddb4572f6439f176a03e5407",
+      "uri": "tasks/fem-transformer-window/fem/leakage_level0/elmersolver.log"
+    },
+    {
+      "description": "leakage_level1/elmersolver.log",
+      "media_type": "text/plain",
+      "role": "fem_case_file",
+      "sha256": "c684355cdfde503c0a9804a2208224b33c3558e46a3c575650bf4acd4925f5ed",
+      "uri": "tasks/fem-transformer-window/fem/leakage_level1/elmersolver.log"
+    },
+    {
+      "description": "leakage_level0/results.json",
+      "media_type": "application/json",
+      "role": "fem_case_file",
+      "sha256": "fb4975a767869f923e92d1cf644a4ccae8debabbcb031e5f8db5743a3c877f00",
+      "uri": "tasks/fem-transformer-window/fem/leakage_level0/results.json"
+    },
+    {
+      "description": "leakage_level1/results.json",
+      "media_type": "application/json",
+      "role": "fem_case_file",
+      "sha256": "a73dcf98c24844a8a67559b7420034e9611442686cdcf47d7382fa356850f1e0",
+      "uri": "tasks/fem-transformer-window/fem/leakage_level1/results.json"
+    },
+    {
+      "description": "leakage_level0/case.json",
+      "media_type": "application/json",
+      "role": "fem_case_file",
+      "sha256": "01fc0370e7244b1c4ede307e221bf796a3afa593d8260a09a5de1c4c58d35ee2",
+      "uri": "tasks/fem-transformer-window/fem/leakage_level0/case.json"
+    },
+    {
+      "description": "leakage_level1/case.json",
+      "media_type": "application/json",
+      "role": "fem_case_file",
+      "sha256": "0e059b75d77626deb1812736fc2ac65b2172ffb8497e9051f40b362cc8ad1b7a",
+      "uri": "tasks/fem-transformer-window/fem/leakage_level1/case.json"
+    },
+    {
+      "description": "FEM plot convergence_L_leakage",
+      "media_type": "image/png",
+      "role": "figure",
+      "sha256": "8f0e303f65f166c9ad80f5547c9f1c8e2cd7ed1d724162d8e795403447d93932",
+      "uri": "tasks/fem-transformer-window/fem/convergence_L_leakage.png"
+    },
+    {
+      "description": "FEM plot B_leakage",
+      "media_type": "image/png",
+      "role": "figure",
+      "sha256": "a61f69cb7fee61b8d53010a716286b1e5dde02afa1e13dcc515f0f7f3a381b4f",
+      "uri": "tasks/fem-transformer-window/fem/leakage_level0/B_leakage.png"
+    },
+    {
+      "description": "FEM plot B_leakage",
+      "media_type": "image/png",
+      "role": "figure",
+      "sha256": "16bab315ab1d44a113e0a1b78e4cb2d7a4f018127383eae62a8d816fe879aa5b",
+      "uri": "tasks/fem-transformer-window/fem/leakage_level1/B_leakage.png"
+    },
+    {
+      "description": "FEM plot B_magnetising",
+      "media_type": "image/png",
+      "role": "figure",
+      "sha256": "429170597619478d92db62b24c842c3ddd5b38fb22ec7735dc5e6d37d5cab797",
+      "uri": "tasks/fem-transformer-window/fem/magnetising/B_magnetising.png"
+    }
+  ],
+  "capability_id": "aipe.field-simulation",
+  "diagnostics": [],
+  "environment": {
+    "elmer": "9.0",
+    "gmsh": "4.15.2"
+  },
+  "evidence_kind": "simulation",
+  "finished_at": "2026-10-21T06:36:20Z",
+  "gate": "field_simulation",
+  "input_hash": "6ee85a87103012f1cc6fbb5ae4b8ad900234e8743447013d36fbb080b318991c",
+  "inputs": {
+    "geometry_notes": [
+      "core window from catalogue record core.tdk-e70-33-32 (E 70/33/32): centre leg 22.0 mm, window 13.0 x 43.8 mm, depth 32.0 mm",
+      "winding blocks from the magnetics parametric layout: primary build 5.22 mm in 2 section(s), secondary build 3.73 mm, section gap 0.20 mm, bobbin/clearance 1.60 mm, axial margin 1.69 mm, copper fill 0.38"
+    ],
+    "geometry_source": "core window from catalogue record core.tdk-e70-33-32 (E 70/33/32): centre leg 22.0 mm, window 13.0 x 43.8 mm, depth 32.0 mm",
+    "params": {
+      "I1_A": 14.31515752256699,
+      "N1": 20,
+      "N2": 10,
+      "centre_leg_width_m": 0.022,
+      "clearance_centre_m": 0.0015999999999999999,
+      "core_depth_m": 0.032,
+      "fill_factor": 0.3825382663900647,
+      "frequency_Hz": 100000.0,
+      "insulation_gap_m": 0.00019999999999999966,
+      "interleaved": true,
+      "outer_leg_width_m": 0.011250000000000003,
+      "primary_width_m": 0.005220153254455275,
+      "secondary_width_m": 0.0037270128789688934,
+      "strand_diameter_m": 0.0001,
+      "winding_margin_m": 0.0016949999999999986,
+      "window_height_m": 0.0438,
+      "window_width_m": 0.013000000000000001,
+      "yoke_thickness_m": 0.011300000000000001
+    }
+  },
+  "model": {
+    "id": "fieldsim-transformer-window-2d",
+    "validity_range": "2-D planar window magnetostatics with homogenised winding blocks on the selected core's window and the magnetics parametric layout (package default window when the record is unavailable); no 3-D end effects, no core loss; proximity factor is a strand-level estimate",
+    "version": "0.1.0"
+  },
+  "outputs": {
+    "F_R_litz_proximity_estimate": 1.2902626979827618,
+    "I1_A": 14.31515752256699,
+    "L_leakage_primary_H_1d_estimate": 1.5505839957288152e-06,
+    "L_leakage_primary_H_fem": 1.4831218771540288e-06,
+    "L_leakage_primary_H_magnetics_design": 1.5505839886183287e-06,
+    "L_magnetising_primary_H_fem": 0.005180328373919709,
+    "L_magnetising_primary_H_reluctance_estimate": 0.004176677444678127,
+    "checks": [
+      {
+        "description": "net current of all blocks in the right window / (N1 I1); should vanish for the leakage solve",
+        "name": "ampere_turn_balance_right_window",
+        "passed": true,
+        "tolerance": 0.002,
+        "value": 1.8935420497632225e-11
+      },
+      {
+        "description": "numpy energy integral vs Elmer CalcFields energy",
+        "name": "elmer_vs_python_energy",
+        "passed": true,
+        "tolerance": 1e-06,
+        "value": 6.860054314527746e-08
+      },
+      {
+        "description": "integrated J over the first primary block (right window) vs N_block * I1",
+        "name": "primary_block_current",
+        "passed": true,
+        "tolerance": 1e-06,
+        "value": 1.0588682694918025e-11
+      }
+    ],
+    "convergence": [
+      {
+        "elements": 7662,
+        "h_m": 0.001,
+        "level": 0,
+        "nodes": 3914,
+        "value": 1.4401939361929503e-06
+      },
+      {
+        "elements": 26920,
+        "h_m": 0.0005,
+        "level": 1,
+        "nodes": 13623,
+        "value": 1.4831218771540288e-06
+      }
+    ],
+    "geometry_note": "core window from catalogue record core.tdk-e70-33-32 (E 70/33/32): centre leg 22.0 mm, window 13.0 x 43.8 mm, depth 32.0 mm; homogenised rectangular winding blocks (no individual turns); 2-D planar approximation of the E-core window",
+    "geometry_notes": [
+      "core window from catalogue record core.tdk-e70-33-32 (E 70/33/32): centre leg 22.0 mm, window 13.0 x 43.8 mm, depth 32.0 mm",
+      "winding blocks from the magnetics parametric layout: primary build 5.22 mm in 2 section(s), secondary build 3.73 mm, section gap 0.20 mm, bobbin/clearance 1.60 mm, axial margin 1.69 mm, copper fill 0.38"
+    ],
+    "geometry_source": "core window from catalogue record core.tdk-e70-33-32 (E 70/33/32): centre leg 22.0 mm, window 13.0 x 43.8 mm, depth 32.0 mm",
+    "interleaved": true,
+    "leakage_fem_vs_1d_relative": -0.04350755506352136,
+    "leakage_fem_vs_magnetics_relative": -0.043507550677350314,
+    "limitations": [
+      "2-D planar model: end effects and the real 3-D turn geometry are ignored; energies per unit depth are scaled by MLT/2 (leakage) and the core depth (magnetising).",
+      "Winding blocks carry uniform current density (stranded assumption) in the magnetostatic solves.",
+      "The 100 kHz AC loss factor uses a HOMOGENISED solid-block conductivity (sigma_eff = fill * sigma_cu); each block carries its total N*I (enforced by superposing unit-source solves) but current may redistribute freely inside the block as in a single massive conductor. It is an approximation indicator (close to a one-turn foil of the block width), not a Litz or multi-turn foil winding loss prediction.",
+      "The Litz proximity estimate assumes strand diameter << skin depth and uses the magnetostatic field (no field redistribution).",
+      "No measured validation; core modelled as linear, lossless, mu_r constant."
+    ],
+    "max_B_window_T": 0.004467005781371658,
+    "mesh_levels": [
+      {
+        "L_leakage_H": 1.4401939361929503e-06,
+        "elements": 7662,
+        "h": 0.001,
+        "level": 0,
+        "nodes": 3914
+      },
+      {
+        "L_leakage_H": 1.4831218771540288e-06,
+        "elements": 26920,
+        "h": 0.0005,
+        "level": 1,
+        "nodes": 13623
+      }
+    ],
+    "summary_path": "runs\\wf-dab-10kw-first\\tasks\\fem-transformer-window\\fem\\summary.json",
+    "turns": [
+      20,
+      10
+    ],
+    "window_geometry": {
+      "centre_leg_width_m": 0.022,
+      "clearance_centre_m": 0.0015999999999999999,
+      "core_depth_m": 0.032,
+      "fill_factor": 0.3825382663900647,
+      "insulation_gap_m": 0.00019999999999999966,
+      "primary_width_m": 0.005220153254455275,
+      "secondary_width_m": 0.0037270128789688934,
+      "strand_diameter_m": 0.0001,
+      "winding_margin_m": 0.0016949999999999986,
+      "window_height_m": 0.0438,
+      "window_width_m": 0.013000000000000001
+    }
+  },
+  "source_state_id": "aipe.workflow.dab-10kw-benchmark",
+  "source_state_sha256": "c713d6b5bba0319c71b1611ecc984645637060810d3ad18c0e95e97fcd9dee96",
+  "started_at": "2026-10-21T06:36:17Z",
+  "state_proposal": {
+    "append": [
+      {
+        "path": "simulation.runs",
+        "value": {
+          "completed_at": "2026-10-21T06:36:20Z",
+          "evidence_refs": [
+            "evidence.fem-transformer-window-a25b59"
+          ],
+          "id": "run.fem-transformer-window-a25b59",
+          "model": {
+            "description": "transformer window FEM summary (levels, results, checks, limitations)",
+            "media_type": "application/json",
+            "sha256": "a3baffd1730a6607dc8bc10d872b2ba2ba73fee8ae02a8f259228685220553ba",
+            "uri": "tasks/fem-transformer-window/fem/summary.json"
+          },
+          "outputs": [
+            {
+              "description": "transformer window FEM summary (levels, results, checks, limitations)",
+              "media_type": "application/json",
+              "sha256": "a3baffd1730a6607dc8bc10d872b2ba2ba73fee8ae02a8f259228685220553ba",
+              "uri": "tasks/fem-transformer-window/fem/summary.json"
+            },
+            {
+              "description": "leakage_level0/case.sif",
+              "media_type": "text/plain",
+              "sha256": "5577078f64292a1e9fbbd5453b1015b1827eec371a88e8d422779a59901a5fc1",
+              "uri": "tasks/fem-transformer-window/fem/leakage_level0/case.sif"
+            },
+            {
+              "description": "leakage_level1/case.sif",
+              "media_type": "text/plain",
+              "sha256": "5577078f64292a1e9fbbd5453b1015b1827eec371a88e8d422779a59901a5fc1",
+              "uri": "tasks/fem-transformer-window/fem/leakage_level1/case.sif"
+            },
+            {
+              "description": "leakage_level0/mesh.msh",
+              "media_type": "model/gmsh",
+              "sha256": "9691dfd1129044475dce2a28a82bb8267de7232f8eb463c7bc2d666b71d02cc2",
+              "uri": "tasks/fem-transformer-window/fem/leakage_level0/mesh.msh"
+            },
+            {
+              "description": "leakage_level1/mesh.msh",
+              "media_type": "model/gmsh",
+              "sha256": "d36b0abd089ab31464116a4658462c1b1545ac2e9b46a6b72756500e626aa194",
+              "uri": "tasks/fem-transformer-window/fem/leakage_level1/mesh.msh"
+            },
+            {
+              "description": "leakage_level0/elmersolver.log",
+              "media_type": "text/plain",
+              "sha256": "ffa99464fa2f15c97e8b601d076d184eb68fbeebddb4572f6439f176a03e5407",
+              "uri": "tasks/fem-transformer-window/fem/leakage_level0/elmersolver.log"
+            },
+            {
+              "description": "leakage_level1/elmersolver.log",
+              "media_type": "text/plain",
+              "sha256": "c684355cdfde503c0a9804a2208224b33c3558e46a3c575650bf4acd4925f5ed",
+              "uri": "tasks/fem-transformer-window/fem/leakage_level1/elmersolver.log"
+            },
+            {
+              "description": "leakage_level0/results.json",
+              "media_type": "application/json",
+              "sha256": "fb4975a767869f923e92d1cf644a4ccae8debabbcb031e5f8db5743a3c877f00",
+              "uri": "tasks/fem-transformer-window/fem/leakage_level0/results.json"
+            },
+            {
+              "description": "leakage_level1/results.json",
+              "media_type": "application/json",
+              "sha256": "a73dcf98c24844a8a67559b7420034e9611442686cdcf47d7382fa356850f1e0",
+              "uri": "tasks/fem-transformer-window/fem/leakage_level1/results.json"
+            },
+            {
+              "description": "leakage_level0/case.json",
+              "media_type": "application/json",
+              "sha256": "01fc0370e7244b1c4ede307e221bf796a3afa593d8260a09a5de1c4c58d35ee2",
+              "uri": "tasks/fem-transformer-window/fem/leakage_level0/case.json"
+            },
+            {
+              "description": "leakage_level1/case.json",
+              "media_type": "application/json",
+              "sha256": "0e059b75d77626deb1812736fc2ac65b2172ffb8497e9051f40b362cc8ad1b7a",
+              "uri": "tasks/fem-transformer-window/fem/leakage_level1/case.json"
+            }
+          ],
+          "started_at": "2026-10-21T06:36:17Z",
+          "status": "completed",
+          "tool": {
+            "id": "tool.elmer",
+            "name": "Elmer FEM (ElmerGrid/ElmerSolver) with Gmsh meshing",
+            "version": "9.0"
+          }
+        }
+      },
+      {
+        "path": "validation.checks",
+        "value": {
+          "description": "2-D window FEM executed at two mesh levels with energy and ampere-turn consistency checks; leakage compared with the analytical magnetics design.",
+          "evidence_refs": [
+            "evidence.fem-transformer-window-a25b59"
+          ],
+          "id": "check.fem-transformer-window-a25b59",
+          "kind": "simulation",
+          "status": "pass"
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "artifacts": [
+          {
+            "description": "transformer window FEM summary (levels, results, checks, limitations)",
+            "media_type": "application/json",
+            "sha256": "a3baffd1730a6607dc8bc10d872b2ba2ba73fee8ae02a8f259228685220553ba",
+            "uri": "tasks/fem-transformer-window/fem/summary.json"
+          },
+          {
+            "description": "leakage_level0/case.sif",
+            "media_type": "text/plain",
+            "sha256": "5577078f64292a1e9fbbd5453b1015b1827eec371a88e8d422779a59901a5fc1",
+            "uri": "tasks/fem-transformer-window/fem/leakage_level0/case.sif"
+          },
+          {
+            "description": "leakage_level1/case.sif",
+            "media_type": "text/plain",
+            "sha256": "5577078f64292a1e9fbbd5453b1015b1827eec371a88e8d422779a59901a5fc1",
+            "uri": "tasks/fem-transformer-window/fem/leakage_level1/case.sif"
+          },
+          {
+            "description": "leakage_level0/mesh.msh",
+            "media_type": "model/gmsh",
+            "sha256": "9691dfd1129044475dce2a28a82bb8267de7232f8eb463c7bc2d666b71d02cc2",
+            "uri": "tasks/fem-transformer-window/fem/leakage_level0/mesh.msh"
+          },
+          {
+            "description": "leakage_level1/mesh.msh",
+            "media_type": "model/gmsh",
+            "sha256": "d36b0abd089ab31464116a4658462c1b1545ac2e9b46a6b72756500e626aa194",
+            "uri": "tasks/fem-transformer-window/fem/leakage_level1/mesh.msh"
+          },
+          {
+            "description": "leakage_level0/elmersolver.log",
+            "media_type": "text/plain",
+            "sha256": "ffa99464fa2f15c97e8b601d076d184eb68fbeebddb4572f6439f176a03e5407",
+            "uri": "tasks/fem-transformer-window/fem/leakage_level0/elmersolver.log"
+          },
+          {
+            "description": "leakage_level1/elmersolver.log",
+            "media_type": "text/plain",
+            "sha256": "c684355cdfde503c0a9804a2208224b33c3558e46a3c575650bf4acd4925f5ed",
+            "uri": "tasks/fem-transformer-window/fem/leakage_level1/elmersolver.log"
+          },
+          {
+            "description": "leakage_level0/results.json",
+            "media_type": "application/json",
+            "sha256": "fb4975a767869f923e92d1cf644a4ccae8debabbcb031e5f8db5743a3c877f00",
+            "uri": "tasks/fem-transformer-window/fem/leakage_level0/results.json"
+          },
+          {
+            "description": "leakage_level1/results.json",
+            "media_type": "application/json",
+            "sha256": "a73dcf98c24844a8a67559b7420034e9611442686cdcf47d7382fa356850f1e0",
+            "uri": "tasks/fem-transformer-window/fem/leakage_level1/results.json"
+          },
+          {
+            "description": "leakage_level0/case.json",
+            "media_type": "application/json",
+            "sha256": "01fc0370e7244b1c4ede307e221bf796a3afa593d8260a09a5de1c4c58d35ee2",
+            "uri": "tasks/fem-transformer-window/fem/leakage_level0/case.json"
+          },
+          {
+            "description": "leakage_level1/case.json",
+            "media_type": "application/json",
+            "sha256": "0e059b75d77626deb1812736fc2ac65b2172ffb8497e9051f40b362cc8ad1b7a",
+            "uri": "tasks/fem-transformer-window/fem/leakage_level1/case.json"
+          },
+          {
+            "description": "FEM plot convergence_L_leakage",
+            "media_type": "image/png",
+            "sha256": "8f0e303f65f166c9ad80f5547c9f1c8e2cd7ed1d724162d8e795403447d93932",
+            "uri": "tasks/fem-transformer-window/fem/convergence_L_leakage.png"
+          },
+          {
+            "description": "FEM plot B_leakage",
+            "media_type": "image/png",
+            "sha256": "a61f69cb7fee61b8d53010a716286b1e5dde02afa1e13dcc515f0f7f3a381b4f",
+            "uri": "tasks/fem-transformer-window/fem/leakage_level0/B_leakage.png"
+          },
+          {
+            "description": "FEM plot B_leakage",
+            "media_type": "image/png",
+            "sha256": "16bab315ab1d44a113e0a1b78e4cb2d7a4f018127383eae62a8d816fe879aa5b",
+            "uri": "tasks/fem-transformer-window/fem/leakage_level1/B_leakage.png"
+          },
+          {
+            "description": "FEM plot B_magnetising",
+            "media_type": "image/png",
+            "sha256": "429170597619478d92db62b24c842c3ddd5b38fb22ec7735dc5e6d37d5cab797",
+            "uri": "tasks/fem-transformer-window/fem/magnetising/B_magnetising.png"
+          }
+        ],
+        "description": "Executed Elmer 2-D window magnetostatics for 20:10 turns (interleaved) at I1 = 14.32 A: L_leak = 1.4831218771540288e-06 H (1-D estimate on the same layout 1.5505839957288152e-06 H; magnetics-database 1-D design value 1.5505839886183287e-06 H), L_m = 0.005180328373919709 H; 2 mesh levels; geometry: core window from catalogue record core.tdk-e70-33-32 (E 70/33/32): centre leg 22.0 mm, window 13.0 x 43.8 mm, depth 32.0 mm.",
+        "id": "evidence.fem-transformer-window-a25b59",
+        "kind": "simulation",
+        "provenance": {
+          "activity": "Mesh the window with Gmsh, solve MgDyn2D with Elmer at two refinement levels, extract energies and inductances, run energy/ampere-turn checks.",
+          "agent": {
+            "id": "aipe.workflows",
+            "version": "0.1.0"
+          },
+          "created_at": "2026-10-21T06:36:17Z",
+          "inputs": [
+            "evidence.specification"
+          ],
+          "tool": {
+            "id": "tool.elmer",
+            "name": "Elmer FEM (ElmerGrid/ElmerSolver) with Gmsh meshing",
+            "version": "9.0"
+          }
+        },
+        "review_status": "unreviewed",
+        "source": {
+          "locator": "src/aipe_fieldsim/models/transformer_window.py",
+          "reference": "https://github.com/FulongLi/AIPE-Field-Simulation",
+          "type": "repository"
+        }
+      }
+    ],
+    "extensions": {
+      "aipe.workflows.dab": {
+        "fem_transformer_window": {
+          "F_R_litz_proximity_estimate": 1.2902626979827618,
+          "I1_A": 14.31515752256699,
+          "L_leakage_primary_H_1d_estimate": 1.5505839957288152e-06,
+          "L_leakage_primary_H_fem": 1.4831218771540288e-06,
+          "L_leakage_primary_H_magnetics_design": 1.5505839886183287e-06,
+          "L_magnetising_primary_H_fem": 0.005180328373919709,
+          "L_magnetising_primary_H_reluctance_estimate": 0.004176677444678127,
+          "convergence": [
+            {
+              "elements": 7662,
+              "h_m": 0.001,
+              "level": 0,
+              "nodes": 3914,
+              "value": 1.4401939361929503e-06
+            },
+            {
+              "elements": 26920,
+              "h_m": 0.0005,
+              "level": 1,
+              "nodes": 13623,
+              "value": 1.4831218771540288e-06
+            }
+          ],
+          "geometry_note": "core window from catalogue record core.tdk-e70-33-32 (E 70/33/32): centre leg 22.0 mm, window 13.0 x 43.8 mm, depth 32.0 mm; homogenised rectangular winding blocks (no individual turns); 2-D planar approximation of the E-core window",
+          "geometry_notes": [
+            "core window from catalogue record core.tdk-e70-33-32 (E 70/33/32): centre leg 22.0 mm, window 13.0 x 43.8 mm, depth 32.0 mm",
+            "winding blocks from the magnetics parametric layout: primary build 5.22 mm in 2 section(s), secondary build 3.73 mm, section gap 0.20 mm, bobbin/clearance 1.60 mm, axial margin 1.69 mm, copper fill 0.38"
+          ],
+          "geometry_source": "core window from catalogue record core.tdk-e70-33-32 (E 70/33/32): centre leg 22.0 mm, window 13.0 x 43.8 mm, depth 32.0 mm",
+          "interleaved": true,
+          "leakage_fem_vs_1d_relative": -0.04350755506352136,
+          "leakage_fem_vs_magnetics_relative": -0.043507550677350314,
+          "max_B_window_T": 0.004467005781371658,
+          "summary_path": "runs\\wf-dab-10kw-first\\tasks\\fem-transformer-window\\fem\\summary.json",
+          "turns": [
+            20,
+            10
+          ],
+          "window_geometry": {
+            "centre_leg_width_m": 0.022,
+            "clearance_centre_m": 0.0015999999999999999,
+            "core_depth_m": 0.032,
+            "fill_factor": 0.3825382663900647,
+            "insulation_gap_m": 0.00019999999999999966,
+            "primary_width_m": 0.005220153254455275,
+            "secondary_width_m": 0.0037270128789688934,
+            "strand_diameter_m": 0.0001,
+            "winding_margin_m": 0.0016949999999999986,
+            "window_height_m": 0.0438,
+            "window_width_m": 0.013000000000000001
+          }
+        }
+      }
+    },
+    "updated_at": "2026-10-21T06:36:20Z"
+  },
+  "status": "completed",
+  "task_id": "fem-transformer-window",
+  "task_version": "0.1.1",
+  "tool": {
+    "id": "tool.elmer",
+    "name": "Elmer FEM (ElmerGrid/ElmerSolver) with Gmsh meshing",
+    "version": "9.0"
+  },
+  "verification": {
+    "checks_passed": true,
+    "finest_level_relative_change": null,
+    "leakage_fem_vs_magnetics_relative": -0.043507550677350314,
+    "mesh_levels": 2,
+    "status": "executed"
+  }
+}

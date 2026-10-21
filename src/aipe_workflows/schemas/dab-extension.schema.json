@@ -1,0 +1,752 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/FulongLi/AIPE-Workflows/v0.1.0/schemas/dab-extension.schema.json",
+  "title": "AIPE Engineering State extension aipe.workflows.dab v0.1",
+  "description": "Workflow-specific metadata stored under extensions['aipe.workflows.dab'] of a Core v0.1 Engineering State. Core does not interpret it; this contract does. Keys are task-derived: analytic_sps, simulation_<task_id_with_underscores>, magnetics_design, semiconductor_screening, control_baseline, thermal_design, fem_transformer_window, fem_heatsink, cad_transformer, cad_heatsink, pcb_checks.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "analytic_sps": {
+      "type": "object",
+      "required": [
+        "model",
+        "inputs",
+        "derived",
+        "assumptions"
+      ],
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "inputs": {
+          "type": "object"
+        },
+        "derived": {
+          "type": "object"
+        },
+        "zvs": {
+          "type": "object"
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "phase_shift_source": {
+          "type": "string"
+        },
+        "phase_shift_for_requested_power_rad": {
+          "type": "number"
+        },
+        "phase_shift_for_requested_power_deg": {
+          "type": "number"
+        },
+        "series_current_at_centre_origin_A": {
+          "type": "number"
+        },
+        "power_deviation_from_request_W": {
+          "type": "number"
+        }
+      }
+    },
+    "magnetics_design": {
+      "type": "object",
+      "required": [
+        "selected_core",
+        "turns_ratio_actual",
+        "leakage_inductance_H",
+        "external_inductance_required_H"
+      ],
+      "properties": {
+        "selected_core": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "turns_primary": {
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ]
+        },
+        "turns_secondary": {
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ]
+        },
+        "turns_ratio_actual": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "leakage_inductance_H": {
+          "type": "number",
+          "minimum": 0
+        },
+        "external_inductance_required_H": {
+          "type": "number"
+        },
+        "magnetising_inductance_H": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "core_loss_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "copper_loss_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "total_loss_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "flux_density_peak_T": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "hot_spot_temperature_rise_K": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "semiconductor_screening": {
+      "type": "object",
+      "required": [
+        "primary_device_id",
+        "secondary_device_id",
+        "junction_temperature_K",
+        "dataset_sha256"
+      ],
+      "properties": {
+        "dataset_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "primary_device_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "secondary_device_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "primary_part_number": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "secondary_part_number": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "primary_loss_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "secondary_loss_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "primary_rth_jc_K_per_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "secondary_rth_jc_K_per_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "semiconductor_loss_total_W_at_tj": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "junction_temperature_K": {
+          "type": "number"
+        },
+        "preferred_integration": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "discrete",
+            "module",
+            null
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "control_baseline": {
+      "type": "object",
+      "required": [
+        "design_sha256",
+        "current_loop_phase_margin_deg",
+        "voltage_loop_phase_margin_deg"
+      ],
+      "properties": {
+        "design_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "current_loop_crossover_Hz": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "current_loop_phase_margin_deg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "current_loop_gain_margin_dB": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "voltage_loop_crossover_Hz": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "voltage_loop_phase_margin_deg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "voltage_loop_gain_margin_dB": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "worst_phase_margin_deg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "plant_verification_max_abs_rel_err_p2": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "plant_verification_all_valid": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "thermal_design": {
+      "type": "object",
+      "required": [
+        "worst_bridge",
+        "best_option",
+        "tj_max_best_option_C"
+      ],
+      "properties": {
+        "worst_bridge": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary"
+          ]
+        },
+        "best_option": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tj_max_best_option_C": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "t_ambient_C": {
+          "type": "number"
+        },
+        "devices_per_sink": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "stage_a_knee_candidate": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "fem_candidate_geometry": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "fem_transformer_window": {
+      "type": "object",
+      "required": [
+        "L_leakage_primary_H_fem",
+        "L_magnetising_primary_H_fem",
+        "turns"
+      ],
+      "properties": {
+        "L_leakage_primary_H_fem": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "L_leakage_primary_H_1d_estimate": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "L_magnetising_primary_H_fem": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "L_leakage_primary_H_magnetics_design": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "leakage_fem_vs_magnetics_relative": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "max_B_window_T": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "turns": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "interleaved": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "fem_heatsink": {
+      "type": "object",
+      "required": [
+        "T_max_K",
+        "R_th_hotspot_K_per_W",
+        "device_power_W",
+        "h_W_per_m2_K"
+      ],
+      "properties": {
+        "T_max_K": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "T_rise_hotspot_K": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "R_th_hotspot_K_per_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "R_th_footprint_mean_K_per_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "Q_convective_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "device_power_W": {
+          "type": "number"
+        },
+        "h_W_per_m2_K": {
+          "type": "number"
+        },
+        "T_ambient_K": {
+          "type": "number"
+        },
+        "R_th_analytical_candidate_K_per_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "R_th_fem_vs_analytical_relative": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "cad_transformer": {
+      "type": "object",
+      "required": [
+        "core",
+        "mass_kg",
+        "check_status"
+      ],
+      "properties": {
+        "core": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "core_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mass_kg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "volume_m3": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "body_count": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "check_status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "magnetics_mass_kg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "cad_heatsink": {
+      "type": "object",
+      "required": [
+        "candidate_id",
+        "mass_kg",
+        "check_status"
+      ],
+      "properties": {
+        "candidate_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mass_kg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "sink_mass_cad_kg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "sink_mass_analytical_kg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "sink_mass_cad_vs_analytical_relative": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "check_status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "pcb_checks": {
+      "type": "object",
+      "required": [
+        "totals",
+        "all_clean"
+      ],
+      "properties": {
+        "totals": {
+          "type": "object"
+        },
+        "all_clean": {
+          "type": "boolean"
+        },
+        "kicad_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "boards": {
+          "type": "object"
+        },
+        "sources": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "patternProperties": {
+    "^simulation_[a-z][a-z0-9_]*$": {
+      "type": "object",
+      "required": [
+        "run_dir",
+        "dataset",
+        "dataset_sha256",
+        "valid",
+        "level",
+        "p_in_W",
+        "p_out_W",
+        "i_L_rms_A",
+        "switches",
+        "steady_state",
+        "circuit_spec_sha256"
+      ],
+      "properties": {
+        "run_dir": {
+          "type": "string"
+        },
+        "dataset": {
+          "type": "string"
+        },
+        "dataset_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "summary_path": {
+          "type": "string"
+        },
+        "valid": {
+          "type": "boolean"
+        },
+        "level": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "p_in_W": {
+          "type": "number"
+        },
+        "p_out_W": {
+          "type": "number"
+        },
+        "loss_W": {
+          "type": "number"
+        },
+        "efficiency": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "i_dc1_A": {
+          "type": "number"
+        },
+        "i_dc2_A": {
+          "type": "number"
+        },
+        "i_L_rms_A": {
+          "type": "number",
+          "minimum": 0
+        },
+        "i_L_peak_A": {
+          "type": "number",
+          "minimum": 0
+        },
+        "i_s_rms_A": {
+          "type": "number",
+          "minimum": 0
+        },
+        "i_s_peak_A": {
+          "type": "number",
+          "minimum": 0
+        },
+        "i_m_peak_A": {
+          "type": "number",
+          "minimum": 0
+        },
+        "flux_linkage_pp_Vs": {
+          "type": "number",
+          "minimum": 0
+        },
+        "measured_phase_shift_deg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "switches": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^S[1-8]$"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "i_rms_A",
+              "i_avg_A",
+              "v_ds_max_V",
+              "zvs_current_condition_all_events"
+            ],
+            "properties": {
+              "i_rms_A": {
+                "type": "number",
+                "minimum": 0
+              },
+              "i_avg_A": {
+                "type": "number"
+              },
+              "i_turn_off_mean_abs_A": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "i_peak_fwd_A": {
+                "type": "number"
+              },
+              "i_peak_rev_A": {
+                "type": "number"
+              },
+              "v_ds_max_V": {
+                "type": "number"
+              },
+              "zvs_current_condition_all_events": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "conduction_fraction": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        },
+        "zvs_overview": {
+          "type": "object"
+        },
+        "energy_unaccounted_W": {
+          "type": "number"
+        },
+        "steady_state": {
+          "type": "object",
+          "required": [
+            "ok",
+            "reason"
+          ]
+        },
+        "comparison_vs_analytic": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "circuit_spec_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    }
+  }
+}

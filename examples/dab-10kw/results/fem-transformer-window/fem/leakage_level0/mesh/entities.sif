@@ -1,0 +1,38 @@
+!------ Skeleton for body section -----
+Body 1
+  Name = core
+End
+
+Body 2
+  Name = air
+End
+
+Body 3
+  Name = pri0_r
+End
+
+Body 4
+  Name = pri0_l
+End
+
+Body 5
+  Name = sec0_r
+End
+
+Body 6
+  Name = sec0_l
+End
+
+Body 7
+  Name = pri1_r
+End
+
+Body 8
+  Name = pri1_l
+End
+
+!------ Skeleton for boundary section -----
+Boundary Condition 1
+  Name = outer
+End
+

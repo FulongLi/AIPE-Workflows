@@ -1,0 +1,136 @@
+{
+  "kind": "transformer",
+  "name": "dab_transformer",
+  "description": "DAB transformer from the workflow Engineering State: E 70/33/32 core set, {'primary': 20, 'secondary': 10} turns, P-S-P arrangement from the magnetics design; illustrative parametric model, not a manufacturable design.",
+  "core": {
+    "shape": "E",
+    "total_width": 0.07050000000000001,
+    "half_height": 0.0332,
+    "depth": 0.032,
+    "window_height": 0.0219,
+    "inner_width": 0.048,
+    "centre_leg_width": 0.022,
+    "air_gap": 0.0,
+    "material": "ferrite_n87",
+    "net": "pe",
+    "reference": "AIPE-Magnetics-Database catalogue record core.tdk-e70-33-32 (E 70/33/32); outline letters A/B/C/D/E/F from the record's datasheet transcription"
+  },
+  "bobbin": {
+    "wall_thickness": 0.0013,
+    "flange_thickness": 0.0015,
+    "core_clearance": 0.0003,
+    "window_clearance": 0.0005,
+    "pin_strip_width": 0.006,
+    "corner_radius": 0.001,
+    "material": "bobbin_pet_gf"
+  },
+  "windings": [
+    {
+      "name": "primary-0",
+      "turns": 10,
+      "net": "primary",
+      "margin": 0.0,
+      "terminal_count": 2,
+      "terminal_side": "-y",
+      "conductor": {
+        "type": "litz",
+        "outer_diameter": 0.002610076627227638,
+        "insulation_thickness": 5e-05,
+        "fill_factor": 0.4,
+        "strand_count": 436,
+        "strand_diameter": 0.0001
+      }
+    },
+    {
+      "name": "secondary-1",
+      "turns": 10,
+      "net": "secondary",
+      "margin": 0.0,
+      "terminal_count": 2,
+      "terminal_side": "+y",
+      "conductor": {
+        "type": "litz",
+        "outer_diameter": 0.0037270128789688934,
+        "insulation_thickness": 5e-05,
+        "fill_factor": 0.4,
+        "strand_count": 889,
+        "strand_diameter": 0.0001
+      }
+    },
+    {
+      "name": "primary-2",
+      "turns": 10,
+      "net": "primary",
+      "margin": 0.0,
+      "terminal_count": 0,
+      "terminal_side": "-y",
+      "conductor": {
+        "type": "litz",
+        "outer_diameter": 0.0026100766272276373,
+        "insulation_thickness": 5e-05,
+        "fill_factor": 0.4,
+        "strand_count": 436,
+        "strand_diameter": 0.0001
+      }
+    }
+  ],
+  "insulation": {
+    "inter_winding_barrier": 0.00019999999999999966,
+    "outer_wrap": 0.0003,
+    "fill_margins": true,
+    "material": "kapton"
+  },
+  "terminals": {
+    "style": "pin",
+    "diameter": 0.0015,
+    "length": 0.012,
+    "pitch": 0.005,
+    "flange": "top",
+    "direction": "+z",
+    "material": "brass"
+  },
+  "mounting": {
+    "clips": true,
+    "clip_thickness": 0.0008,
+    "clip_width": 0.01,
+    "clip_inset": 0.002,
+    "clip_material": "stainless_steel",
+    "base_plate": true,
+    "plate_thickness": 0.002,
+    "plate_margin_x": 0.012,
+    "hole_diameter": 0.0045,
+    "hole_inset": 0.006,
+    "plate_material": "aluminium_6063",
+    "net": "pe"
+  },
+  "clearance_envelope_margin": 0.005,
+  "checks": {
+    "interference": {
+      "enabled": true,
+      "min_overlap_volume": 1e-12
+    },
+    "clearance_pairs": [
+      {
+        "net_a": "primary",
+        "net_b": "secondary",
+        "required_clearance": 0.0055,
+        "required_creepage": 0.008,
+        "note": "illustrative caller-supplied value; not a standard assertion (800 V primary to 400 V secondary)"
+      },
+      {
+        "net_a": "primary",
+        "net_b": "pe",
+        "required_clearance": 0.002,
+        "required_creepage": 0.004,
+        "note": "illustrative caller-supplied value; not a standard assertion (functional insulation to earthed parts)"
+      },
+      {
+        "net_a": "secondary",
+        "net_b": "pe",
+        "required_clearance": 0.002,
+        "required_creepage": 0.004,
+        "note": "illustrative caller-supplied value; not a standard assertion"
+      }
+    ]
+  }
+}

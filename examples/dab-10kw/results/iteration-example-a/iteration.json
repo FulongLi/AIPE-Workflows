@@ -1,0 +1,135 @@
+{
+  "iteration_id": "it02",
+  "parent_run": "runs\\wf-dab-10kw-first",
+  "child_run": "runs\\wf-dab-10kw-first-it02",
+  "reason": "Example A: magnetics design proposes 21:10 actual turns; re-solve phase shift for rated power and re-simulate",
+  "changes": {
+    "converter.turns_ratio_np_ns": 2.1,
+    "converter.phase_shift_deg": null
+  },
+  "created_at": "2026-10-21T05:58:30Z",
+  "status": "accepted",
+  "decision_reasons": [
+    "completed; simulations match their analytical references; ZVS retained; rated power within 2 %"
+  ],
+  "observables_parent": {
+    "p_out_W": 9996.81343609198,
+    "loss_W_level1": 5.176394752410488,
+    "i_L_rms_A": 13.677914459973177,
+    "i_L_peak_A": 14.31515752256699,
+    "i_s_rms_A": 27.928873627976863,
+    "phi_deg": 22.5,
+    "analytic_power_W": 10000.0,
+    "circuit-sim-level1:comparison_pass": true,
+    "circuit-sim-level1:all_zvs": true,
+    "circuit-sim-level1:efficiency": 0.9994824635057669,
+    "circuit-sim-level1-convergence:comparison_pass": true,
+    "circuit-sim-level1-convergence:all_zvs": true,
+    "circuit-sim-level1-convergence:efficiency": 0.9994829052371329,
+    "circuit-sim-level2:comparison_pass": true,
+    "circuit-sim-level2:all_zvs": true,
+    "circuit-sim-level2:efficiency": 0.9910908398356887
+  },
+  "observables_child": {
+    "p_out_W": 9994.129414423905,
+    "loss_W_level1": 5.620425262661229,
+    "i_L_rms_A": 13.378925133302545,
+    "i_L_peak_A": 16.38099795136215,
+    "i_s_rms_A": 28.99791230344908,
+    "phi_deg": 21.261364575662395,
+    "analytic_power_W": 10000.0,
+    "circuit-sim-level1:comparison_pass": true,
+    "circuit-sim-level1:all_zvs": true,
+    "circuit-sim-level1:efficiency": 0.9994379434133087,
+    "circuit-sim-level1-convergence:comparison_pass": true,
+    "circuit-sim-level1-convergence:all_zvs": true,
+    "circuit-sim-level1-convergence:efficiency": 0.9994879454007248,
+    "circuit-sim-level2:comparison_pass": true,
+    "circuit-sim-level2:all_zvs": true,
+    "circuit-sim-level2:efficiency": 0.9922488767138029
+  },
+  "tasks_rerun": [
+    "analytic-sps",
+    "circuit-sim-level1",
+    "circuit-sim-level1-convergence",
+    "circuit-sim-level2",
+    "requirements"
+  ],
+  "tasks_reused": [],
+  "comparison": {
+    "analytic_power_W": {
+      "parent": 10000.0,
+      "child": 10000.0,
+      "relative_change": 0.0
+    },
+    "circuit-sim-level1-convergence:all_zvs": {
+      "parent": true,
+      "child": true
+    },
+    "circuit-sim-level1-convergence:comparison_pass": {
+      "parent": true,
+      "child": true
+    },
+    "circuit-sim-level1-convergence:efficiency": {
+      "parent": 0.9994829052371329,
+      "child": 0.9994879454007248,
+      "relative_change": 5.0427711824982986e-06
+    },
+    "circuit-sim-level1:all_zvs": {
+      "parent": true,
+      "child": true
+    },
+    "circuit-sim-level1:comparison_pass": {
+      "parent": true,
+      "child": true
+    },
+    "circuit-sim-level1:efficiency": {
+      "parent": 0.9994824635057669,
+      "child": 0.9994379434133087,
+      "relative_change": -4.4543145161333505e-05
+    },
+    "circuit-sim-level2:all_zvs": {
+      "parent": true,
+      "child": true
+    },
+    "circuit-sim-level2:comparison_pass": {
+      "parent": true,
+      "child": true
+    },
+    "circuit-sim-level2:efficiency": {
+      "parent": 0.9910908398356887,
+      "child": 0.9922488767138029,
+      "relative_change": 0.0011684467574195423
+    },
+    "i_L_peak_A": {
+      "parent": 14.31515752256699,
+      "child": 16.38099795136215,
+      "relative_change": 0.14431140038371823
+    },
+    "i_L_rms_A": {
+      "parent": 13.677914459973177,
+      "child": 13.378925133302545,
+      "relative_change": -0.021859277417298515
+    },
+    "i_s_rms_A": {
+      "parent": 27.928873627976863,
+      "child": 28.99791230344908,
+      "relative_change": 0.03827718545732335
+    },
+    "loss_W_level1": {
+      "parent": 5.176394752410488,
+      "child": 5.620425262661229,
+      "relative_change": 0.08577987798244513
+    },
+    "p_out_W": {
+      "parent": 9996.81343609198,
+      "child": 9994.129414423905,
+      "relative_change": -0.0002684877221359015
+    },
+    "phi_deg": {
+      "parent": 22.5,
+      "child": 21.261364575662395,
+      "relative_change": -0.05505046330389358
+    }
+  }
+}

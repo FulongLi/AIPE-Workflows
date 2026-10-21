@@ -1,0 +1,696 @@
+{
+  "schema": "pea-thermal-cooling-comparison/0.1",
+  "t_ambient_C": 40.0,
+  "devices": [
+    {
+      "name": "primary-1",
+      "power_W": 9.041852876016772,
+      "r_jc": 0.634779,
+      "r_cs": 0.1,
+      "footprint_area_m2": 0.00032,
+      "tj_max_C": 175.0,
+      "tj_design_C": 125.0,
+      "note": "C4MS047120K: database loss at the evaluation Tj, database Rth(j-c)",
+      "loss_model": null
+    },
+    {
+      "name": "primary-2",
+      "power_W": 9.041852876016772,
+      "r_jc": 0.634779,
+      "r_cs": 0.1,
+      "footprint_area_m2": 0.00032,
+      "tj_max_C": 175.0,
+      "tj_design_C": 125.0,
+      "note": "C4MS047120K: database loss at the evaluation Tj, database Rth(j-c)",
+      "loss_model": null
+    },
+    {
+      "name": "primary-3",
+      "power_W": 9.041852876016772,
+      "r_jc": 0.634779,
+      "r_cs": 0.1,
+      "footprint_area_m2": 0.00032,
+      "tj_max_C": 175.0,
+      "tj_design_C": 125.0,
+      "note": "C4MS047120K: database loss at the evaluation Tj, database Rth(j-c)",
+      "loss_model": null
+    },
+    {
+      "name": "primary-4",
+      "power_W": 9.041852876016772,
+      "r_jc": 0.634779,
+      "r_cs": 0.1,
+      "footprint_area_m2": 0.00032,
+      "tj_max_C": 175.0,
+      "tj_design_C": 125.0,
+      "note": "C4MS047120K: database loss at the evaluation Tj, database Rth(j-c)",
+      "loss_model": null
+    }
+  ],
+  "ranking_by_tj": [
+    "forced-air-Al-100x100x46-2-fans",
+    "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm",
+    "natural-convection-Al-200x200x88"
+  ],
+  "summary_table": [
+    {
+      "option": "forced-air-Al-100x100x46-2-fans",
+      "kind": "forced",
+      "tj_max_C": 54.197403195448835,
+      "t_sink_C": 46.311566181655124,
+      "r_sink_to_fluid_K_per_W": 0.174509756689261,
+      "r_hottest_total_K_per_W": 0.20885209272476388,
+      "mass_kg": 0.5784,
+      "volume_L": 0.5680000000000001,
+      "auxiliary_power_W": 1.4334310478697978,
+      "pressure_drop_Pa": 27.973773191029583,
+      "total_power_W": 36.16741150406709,
+      "within_design_limit": true,
+      "within_absolute_limit": true
+    },
+    {
+      "option": "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm",
+      "kind": "liquid",
+      "tj_max_C": 55.952630549622846,
+      "t_sink_C": 47.798834902577525,
+      "r_sink_to_fluid_K_per_W": 0.07738554644041334,
+      "r_hottest_total_K_per_W": 0.11913672436169724,
+      "mass_kg": 0.27012969494767175,
+      "volume_L": 0.12000000000000002,
+      "auxiliary_power_W": 0.004835696720960529,
+      "pressure_drop_Pa": 43.52127048864475,
+      "total_power_W": 36.16741150406709,
+      "within_design_limit": true,
+      "within_absolute_limit": true
+    },
+    {
+      "option": "natural-convection-Al-200x200x88",
+      "kind": "natural",
+      "tj_max_C": 65.45219734181812,
+      "t_sink_C": 57.20427390227468,
+      "r_sink_to_fluid_K_per_W": 0.47568441275760154,
+      "r_hottest_total_K_per_W": 0.520038148854428,
+      "mass_kg": 2.5920000000000005,
+      "volume_L": 3.5200000000000005,
+      "auxiliary_power_W": 0.0,
+      "pressure_drop_Pa": null,
+      "total_power_W": 36.16741150406709,
+      "within_design_limit": true,
+      "within_absolute_limit": true
+    }
+  ],
+  "results": [
+    {
+      "option_name": "natural-convection-Al-200x200x88",
+      "kind": "natural",
+      "t_ambient_C": 40.0,
+      "fluid_inlet_C": 40.0,
+      "total_power_W": 36.16741150406709,
+      "r_sink_to_fluid": 0.47568441275760154,
+      "r_hottest_total": 0.520038148854428,
+      "t_sink_C": 57.20427390227468,
+      "tj_max_C": 65.45219734181812,
+      "hottest_device": "primary-1",
+      "devices": [
+        {
+          "name": "primary-1",
+          "power_W": 9.041852876016772,
+          "t_base_local_C": 58.80843372743139,
+          "t_case_C": 59.71261901503307,
+          "t_j_C": 65.45219734181812,
+          "rise_above_ambient_K": 25.45219734181812,
+          "margin_to_tj_max_K": 109.54780265818188,
+          "margin_to_tj_design_K": 59.54780265818188,
+          "within_design_limit": true,
+          "within_absolute_limit": true
+        },
+        {
+          "name": "primary-2",
+          "power_W": 9.041852876016772,
+          "t_base_local_C": 58.80843372743139,
+          "t_case_C": 59.71261901503307,
+          "t_j_C": 65.45219734181812,
+          "rise_above_ambient_K": 25.45219734181812,
+          "margin_to_tj_max_K": 109.54780265818188,
+          "margin_to_tj_design_K": 59.54780265818188,
+          "within_design_limit": true,
+          "within_absolute_limit": true
+        },
+        {
+          "name": "primary-3",
+          "power_W": 9.041852876016772,
+          "t_base_local_C": 58.80843372743139,
+          "t_case_C": 59.71261901503307,
+          "t_j_C": 65.45219734181812,
+          "rise_above_ambient_K": 25.45219734181812,
+          "margin_to_tj_max_K": 109.54780265818188,
+          "margin_to_tj_design_K": 59.54780265818188,
+          "within_design_limit": true,
+          "within_absolute_limit": true
+        },
+        {
+          "name": "primary-4",
+          "power_W": 9.041852876016772,
+          "t_base_local_C": 58.80843372743139,
+          "t_case_C": 59.71261901503307,
+          "t_j_C": 65.45219734181812,
+          "rise_above_ambient_K": 25.45219734181812,
+          "margin_to_tj_max_K": 109.54780265818188,
+          "margin_to_tj_design_K": 59.54780265818188,
+          "within_design_limit": true,
+          "within_absolute_limit": true
+        }
+      ],
+      "mass_kg": 2.5920000000000005,
+      "volume_m3": 0.0035200000000000006,
+      "auxiliary_power_W": 0.0,
+      "pressure_drop_Pa": null,
+      "volumetric_flow": null,
+      "details": {
+        "heat_sink": {
+          "length": 0.2,
+          "width": 0.2,
+          "fin_height": 0.08,
+          "fin_thickness": 0.002,
+          "fin_gap": 0.008,
+          "base_thickness": 0.008,
+          "material": "Al-6063-T5",
+          "n_fins": 20,
+          "gap_effective": 0.008421052631578947,
+          "mass_kg": 2.5920000000000005,
+          "envelope_volume_m3": 0.0035200000000000006,
+          "hydraulic_diameter": 0.015238095238095236,
+          "base_area": 0.04000000000000001
+        },
+        "h": 3.195292999936988,
+        "fin_efficiency": 0.9683105102558283,
+        "effective_area_m2": 0.6579159138293674,
+        "delta_T_base_K": 18.808386058434785,
+        "elenbaas": 31.77082754138272,
+        "reynolds_dh": null,
+        "reynolds_b_star": null,
+        "regime": "natural-laminar",
+        "channel_velocity": null,
+        "pressure_drop_breakdown": null,
+        "fan_air_power_W": null,
+        "solver": {
+          "mode": "heat-load",
+          "method": "damped-fixed-point",
+          "converged": true,
+          "iterations": 8,
+          "tolerance_K": 0.0001,
+          "relaxation": 0.5
+        },
+        "sources": [
+          {
+            "name": "primary-1",
+            "power": 9.041852876016772,
+            "area": 0.00032,
+            "cell_area": 0.010000000000000002,
+            "r_base_1d": 0.0038277511961722485,
+            "r_spreading_max": 0.1735871931911335,
+            "r_base_total": 0.17741494438730573,
+            "base_rise_K": 1.6041598251567162
+          },
+          {
+            "name": "primary-2",
+            "power": 9.041852876016772,
+            "area": 0.00032,
+            "cell_area": 0.010000000000000002,
+            "r_base_1d": 0.0038277511961722485,
+            "r_spreading_max": 0.1735871931911335,
+            "r_base_total": 0.17741494438730573,
+            "base_rise_K": 1.6041598251567162
+          },
+          {
+            "name": "primary-3",
+            "power": 9.041852876016772,
+            "area": 0.00032,
+            "cell_area": 0.010000000000000002,
+            "r_base_1d": 0.0038277511961722485,
+            "r_spreading_max": 0.1735871931911335,
+            "r_base_total": 0.17741494438730573,
+            "base_rise_K": 1.6041598251567162
+          },
+          {
+            "name": "primary-4",
+            "power": 9.041852876016772,
+            "area": 0.00032,
+            "cell_area": 0.010000000000000002,
+            "r_base_1d": 0.0038277511961722485,
+            "r_spreading_max": 0.1735871931911335,
+            "r_base_total": 0.17741494438730573,
+            "base_rise_K": 1.6041598251567162
+          }
+        ],
+        "auxiliary_note": "no auxiliary power"
+      },
+      "electrothermal": null,
+      "validity": [
+        "natural convection: Bar-Cohen & Rohsenow composite for vertical isothermal parallel plates (laminar, b << L, open channel ends); fins vertical, base vertical; air at film temperature",
+        "fin efficiency: straight rectangular fin, perimeter 2(L + t), tip 'adiabatic'",
+        "base: 1-D conduction plus Lee-Song-Au-Moran spreading per footprint (power-weighted base cells); uniform base heating when no sources are given"
+      ],
+      "warnings": [],
+      "review_items": [
+        {
+          "topic": "interface material",
+          "item": "TIM/pad thermal resistance, pump-out and dry-out over temperature cycling; mounting pressure and flatness",
+          "action": "specify pad part, thickness, clamp force; qualify by thermal cycling"
+        },
+        {
+          "topic": "isolation",
+          "item": "heat sink potential (floating vs. earthed), creepage/clearance from device tabs to the sink, isolation pad withstand voltage at 800 V bus",
+          "action": "define sink potential; verify pad isolation rating and creepage per the applicable safety standard"
+        },
+        {
+          "topic": "verification",
+          "item": "all values here are analytical correlations",
+          "action": "FEM/CFD verification of the shortlisted geometry; thermocouple/IR measurement on hardware"
+        },
+        {
+          "topic": "orientation",
+          "item": "performance depends on vertical fin orientation and free inflow/outflow; enclosure or horizontal mounting degrades it",
+          "action": "confirm mounting orientation and enclosure openings"
+        },
+        {
+          "topic": "altitude/ambient",
+          "item": "buoyancy-driven flow weakens with air density (altitude) and high ambient",
+          "action": "derate for the installation altitude and worst-case ambient"
+        },
+        {
+          "topic": "radiation",
+          "item": "surface finish (anodised vs. bare) changes the radiative share",
+          "action": "specify finish; evaluate with emissivity set"
+        },
+        {
+          "topic": "reliability",
+          "item": "no moving parts; large mass may stress the PCB/mounting under vibration",
+          "action": "mechanical mounting review"
+        },
+        {
+          "topic": "acoustic",
+          "item": "silent",
+          "action": "none"
+        }
+      ],
+      "all_within_design_limit": true,
+      "all_within_absolute_limit": true
+    },
+    {
+      "option_name": "forced-air-Al-100x100x46-2-fans",
+      "kind": "forced",
+      "t_ambient_C": 40.0,
+      "fluid_inlet_C": 40.0,
+      "total_power_W": 36.16741150406709,
+      "r_sink_to_fluid": 0.174509756689261,
+      "r_hottest_total": 0.20885209272476388,
+      "t_sink_C": 46.311566181655124,
+      "tj_max_C": 54.197403195448835,
+      "hottest_device": "primary-1",
+      "devices": [
+        {
+          "name": "primary-1",
+          "power_W": 9.041852876016772,
+          "t_base_local_C": 47.55363958106211,
+          "t_case_C": 48.457824868663785,
+          "t_j_C": 54.197403195448835,
+          "rise_above_ambient_K": 14.197403195448835,
+          "margin_to_tj_max_K": 120.80259680455117,
+          "margin_to_tj_design_K": 70.80259680455117,
+          "within_design_limit": true,
+          "within_absolute_limit": true
+        },
+        {
+          "name": "primary-2",
+          "power_W": 9.041852876016772,
+          "t_base_local_C": 47.55363958106211,
+          "t_case_C": 48.457824868663785,
+          "t_j_C": 54.197403195448835,
+          "rise_above_ambient_K": 14.197403195448835,
+          "margin_to_tj_max_K": 120.80259680455117,
+          "margin_to_tj_design_K": 70.80259680455117,
+          "within_design_limit": true,
+          "within_absolute_limit": true
+        },
+        {
+          "name": "primary-3",
+          "power_W": 9.041852876016772,
+          "t_base_local_C": 47.55363958106211,
+          "t_case_C": 48.457824868663785,
+          "t_j_C": 54.197403195448835,
+          "rise_above_ambient_K": 14.197403195448835,
+          "margin_to_tj_max_K": 120.80259680455117,
+          "margin_to_tj_design_K": 70.80259680455117,
+          "within_design_limit": true,
+          "within_absolute_limit": true
+        },
+        {
+          "name": "primary-4",
+          "power_W": 9.041852876016772,
+          "t_base_local_C": 47.55363958106211,
+          "t_case_C": 48.457824868663785,
+          "t_j_C": 54.197403195448835,
+          "rise_above_ambient_K": 14.197403195448835,
+          "margin_to_tj_max_K": 120.80259680455117,
+          "margin_to_tj_design_K": 70.80259680455117,
+          "within_design_limit": true,
+          "within_absolute_limit": true
+        }
+      ],
+      "mass_kg": 0.5784,
+      "volume_m3": 0.000568,
+      "auxiliary_power_W": 1.4334310478697978,
+      "pressure_drop_Pa": 27.973773191029583,
+      "volumetric_flow": 0.012810490723588367,
+      "details": {
+        "heat_sink": {
+          "length": 0.1,
+          "width": 0.1,
+          "fin_height": 0.04,
+          "fin_thickness": 0.0015,
+          "fin_gap": 0.003,
+          "base_thickness": 0.006,
+          "material": "Al-6063-T5",
+          "n_fins": 22,
+          "gap_effective": 0.0031904761904761906,
+          "mass_kg": 0.5184000000000001,
+          "envelope_volume_m3": 0.00046000000000000007,
+          "hydraulic_diameter": 0.005909592061742007,
+          "base_area": 0.010000000000000002
+        },
+        "h": 34.3583831507233,
+        "fin_efficiency": 0.8961116330573955,
+        "effective_area_m2": 0.16678138212937316,
+        "delta_T_base_K": 7.5536395001002115,
+        "elenbaas": null,
+        "reynolds_dh": 1634.4541488254542,
+        "reynolds_b_star": 28.153102088994906,
+        "regime": "forced-laminar",
+        "channel_velocity": 4.780033852085212,
+        "pressure_drop_breakdown": {
+          "velocity": 4.780033852085212,
+          "reynolds_dh": 1634.4541488254542,
+          "friction": 21.164098231433677,
+          "contraction": 2.9451791607767284,
+          "expansion": 3.864495798819178,
+          "total": 27.973773191029583,
+          "fanning_friction_factor": 0.024573400702022595,
+          "regime": "laminar"
+        },
+        "fan_air_power_W": 0.35835776196744945,
+        "solver": {
+          "mode": "heat-load",
+          "method": "damped-fixed-point",
+          "converged": true,
+          "iterations": 18,
+          "tolerance_K": 0.0001,
+          "relaxation": 0.5
+        },
+        "sources": [
+          {
+            "name": "primary-1",
+            "power": 9.041852876016772,
+            "area": 0.00032,
+            "cell_area": 0.0025000000000000005,
+            "r_base_1d": 0.011483253588516745,
+            "r_spreading_max": 0.12588609055349476,
+            "r_base_total": 0.1373693441420115,
+            "base_rise_K": 1.2420733994069844
+          },
+          {
+            "name": "primary-2",
+            "power": 9.041852876016772,
+            "area": 0.00032,
+            "cell_area": 0.0025000000000000005,
+            "r_base_1d": 0.011483253588516745,
+            "r_spreading_max": 0.12588609055349476,
+            "r_base_total": 0.1373693441420115,
+            "base_rise_K": 1.2420733994069844
+          },
+          {
+            "name": "primary-3",
+            "power": 9.041852876016772,
+            "area": 0.00032,
+            "cell_area": 0.0025000000000000005,
+            "r_base_1d": 0.011483253588516745,
+            "r_spreading_max": 0.12588609055349476,
+            "r_base_total": 0.1373693441420115,
+            "base_rise_K": 1.2420733994069844
+          },
+          {
+            "name": "primary-4",
+            "power": 9.041852876016772,
+            "area": 0.00032,
+            "cell_area": 0.0025000000000000005,
+            "r_base_1d": 0.011483253588516745,
+            "r_spreading_max": 0.12588609055349476,
+            "r_base_total": 0.1373693441420115,
+            "base_rise_K": 1.2420733994069844
+          }
+        ],
+        "auxiliary_note": "Q dp / eta_fan with eta_fan = 0.25"
+      },
+      "electrothermal": null,
+      "validity": [
+        "forced convection: Teertstra-Yovanovich-Culham composite (developing laminar flow between parallel plates, h referenced to inlet temperature); fully ducted flow, no bypass",
+        "pressure drop: Kays & London contraction/expansion asymptotes plus Muzychka-Yovanovich developing laminar friction (Petukhov when turbulent); fan power = Q dp / eta_fan",
+        "fin efficiency: straight rectangular fin, perimeter 2(L + t), tip 'adiabatic'",
+        "base: 1-D conduction plus Lee-Song-Au-Moran spreading per footprint (power-weighted base cells); uniform base heating when no sources are given"
+      ],
+      "warnings": [],
+      "review_items": [
+        {
+          "topic": "interface material",
+          "item": "TIM/pad thermal resistance, pump-out and dry-out over temperature cycling; mounting pressure and flatness",
+          "action": "specify pad part, thickness, clamp force; qualify by thermal cycling"
+        },
+        {
+          "topic": "isolation",
+          "item": "heat sink potential (floating vs. earthed), creepage/clearance from device tabs to the sink, isolation pad withstand voltage at 800 V bus",
+          "action": "define sink potential; verify pad isolation rating and creepage per the applicable safety standard"
+        },
+        {
+          "topic": "verification",
+          "item": "all values here are analytical correlations",
+          "action": "FEM/CFD verification of the shortlisted geometry; thermocouple/IR measurement on hardware"
+        },
+        {
+          "topic": "acoustic",
+          "item": "fan noise rises with speed and static pressure; tonal components",
+          "action": "check fan datasheet sound level at the operating point; consider speed control"
+        },
+        {
+          "topic": "reliability",
+          "item": "fan bearing life derates strongly with temperature; single-fan failure removes most of the cooling",
+          "action": "fan MTTF at bearing temperature; tachometer monitoring; redundancy or thermal shutdown"
+        },
+        {
+          "topic": "dust/filter",
+          "item": "dust loading increases pressure drop and fin fouling",
+          "action": "filter or maintenance interval; design margin on flow"
+        },
+        {
+          "topic": "bypass",
+          "item": "the model assumes fully ducted flow; unducted fans lose a large share through bypass",
+          "action": "duct the fins; verify with CFD/measurement"
+        },
+        {
+          "topic": "EMI/supply",
+          "item": "fan motor and PWM speed control add EMI and auxiliary supply load",
+          "action": "filter the fan supply; include in the auxiliary power budget"
+        }
+      ],
+      "all_within_design_limit": true,
+      "all_within_absolute_limit": true
+    },
+    {
+      "option_name": "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm",
+      "kind": "liquid",
+      "t_ambient_C": 40.0,
+      "fluid_inlet_C": 45.0,
+      "total_power_W": 36.16741150406709,
+      "r_sink_to_fluid": 0.07738554644041334,
+      "r_hottest_total": 0.11913672436169724,
+      "t_sink_C": 47.798834902577525,
+      "tj_max_C": 55.952630549622846,
+      "hottest_device": "primary-1",
+      "devices": [
+        {
+          "name": "primary-1",
+          "power_W": 9.041852876016772,
+          "t_base_local_C": 49.30886693523612,
+          "t_case_C": 50.213052222837796,
+          "t_j_C": 55.952630549622846,
+          "rise_above_ambient_K": 10.952630549622846,
+          "margin_to_tj_max_K": 119.04736945037715,
+          "margin_to_tj_design_K": 69.04736945037715,
+          "within_design_limit": true,
+          "within_absolute_limit": true
+        },
+        {
+          "name": "primary-2",
+          "power_W": 9.041852876016772,
+          "t_base_local_C": 49.30886693523612,
+          "t_case_C": 50.213052222837796,
+          "t_j_C": 55.952630549622846,
+          "rise_above_ambient_K": 10.952630549622846,
+          "margin_to_tj_max_K": 119.04736945037715,
+          "margin_to_tj_design_K": 69.04736945037715,
+          "within_design_limit": true,
+          "within_absolute_limit": true
+        },
+        {
+          "name": "primary-3",
+          "power_W": 9.041852876016772,
+          "t_base_local_C": 49.30886693523612,
+          "t_case_C": 50.213052222837796,
+          "t_j_C": 55.952630549622846,
+          "rise_above_ambient_K": 10.952630549622846,
+          "margin_to_tj_max_K": 119.04736945037715,
+          "margin_to_tj_design_K": 69.04736945037715,
+          "within_design_limit": true,
+          "within_absolute_limit": true
+        },
+        {
+          "name": "primary-4",
+          "power_W": 9.041852876016772,
+          "t_base_local_C": 49.30886693523612,
+          "t_case_C": 50.213052222837796,
+          "t_j_C": 55.952630549622846,
+          "rise_above_ambient_K": 10.952630549622846,
+          "margin_to_tj_max_K": 119.04736945037715,
+          "margin_to_tj_design_K": 69.04736945037715,
+          "within_design_limit": true,
+          "within_absolute_limit": true
+        }
+      ],
+      "mass_kg": 0.27012969494767175,
+      "volume_m3": 0.00012000000000000003,
+      "auxiliary_power_W": 0.004835696720960529,
+      "pressure_drop_Pa": 43.52127048864475,
+      "volumetric_flow": 3.3333333333333335e-05,
+      "details": {
+        "coolant": {
+          "name": "water",
+          "temperature_C": 45.13112366332225,
+          "density": 989.7789561529877,
+          "specific_heat": 4179.914056183166,
+          "viscosity": 0.0006008923810798208,
+          "conductivity": 0.6376795169454851,
+          "note": "Incropera & DeWitt Table A.6, linear interpolation 27-67 C"
+        },
+        "mass_flow_kg_s": 0.03299263187176626,
+        "coolant_rise_K": 0.26226063835072666,
+        "coolant_outlet_C": 45.262260638350725,
+        "channel_velocity": 0.1388888888888889,
+        "hydraulic_diameter": 0.00375,
+        "reynolds_dh": 857.907154805261,
+        "prandtl": 3.9387787174974247,
+        "nusselt": 3.8963387318400007,
+        "regime": "laminar",
+        "h": 662.5641067668574,
+        "wall_fin_efficiency": 0.9788859165704141,
+        "wetted_area_effective_m2": 0.020462174665126627,
+        "r_convective": 0.07375989799828976,
+        "r_caloric": 0.0036256484421235808,
+        "darcy_friction_factor": 0.11470806958508047,
+        "pump_hydraulic_power_W": 0.0014507090162881584,
+        "solid_volume_m3": 9.125000000000002e-05,
+        "coolant_volume_m3": 2.4e-05,
+        "sources": [
+          {
+            "name": "primary-1",
+            "power": 9.041852876016772,
+            "cell_area": 0.0025000000000000005,
+            "r_base_total": 0.1670047116851356,
+            "r_spreading_max": 0.1593492092927911
+          },
+          {
+            "name": "primary-2",
+            "power": 9.041852876016772,
+            "cell_area": 0.0025000000000000005,
+            "r_base_total": 0.1670047116851356,
+            "r_spreading_max": 0.1593492092927911
+          },
+          {
+            "name": "primary-3",
+            "power": 9.041852876016772,
+            "cell_area": 0.0025000000000000005,
+            "r_base_total": 0.1670047116851356,
+            "r_spreading_max": 0.1593492092927911
+          },
+          {
+            "name": "primary-4",
+            "power": 9.041852876016772,
+            "cell_area": 0.0025000000000000005,
+            "r_base_total": 0.1670047116851356,
+            "r_spreading_max": 0.1593492092927911
+          }
+        ],
+        "t_ambient_room_C": 40.0,
+        "auxiliary_note": "pump Q dp / eta_pump with eta_pump = 0.3"
+      },
+      "electrothermal": null,
+      "validity": [
+        "cold plate: fully developed laminar Shah-London Nusselt (uniform heat flux), Re_Dh < 2300; entrance enhancement neglected (conservative); Muzychka-Yovanovich developing friction",
+        "cold plate: single-phase coolant, uniform flow split between channels, lid adiabatic, properties at the mean coolant temperature; resistance referenced to the coolant inlet (caloric term 1/(2 m_dot c_p))",
+        "cold plate: 1-D base conduction plus Lee-Song-Au-Moran spreading per footprint cell"
+      ],
+      "warnings": [
+        "external loop (pump, radiator, hoses) not included: inlet temperature is an assumption to be met by the loop"
+      ],
+      "review_items": [
+        {
+          "topic": "interface material",
+          "item": "TIM/pad thermal resistance, pump-out and dry-out over temperature cycling; mounting pressure and flatness",
+          "action": "specify pad part, thickness, clamp force; qualify by thermal cycling"
+        },
+        {
+          "topic": "isolation",
+          "item": "heat sink potential (floating vs. earthed), creepage/clearance from device tabs to the sink, isolation pad withstand voltage at 800 V bus",
+          "action": "define sink potential; verify pad isolation rating and creepage per the applicable safety standard"
+        },
+        {
+          "topic": "verification",
+          "item": "all values here are analytical correlations",
+          "action": "FEM/CFD verification of the shortlisted geometry; thermocouple/IR measurement on hardware"
+        },
+        {
+          "topic": "leakage",
+          "item": "fittings, hoses and gaskets near 800 V electronics",
+          "action": "leak test; drip routing away from live parts; leak sensor"
+        },
+        {
+          "topic": "condensation",
+          "item": "coolant below the local dew point condenses on the cold plate and devices",
+          "action": "keep inlet above dew point or control humidity; conformal coating"
+        },
+        {
+          "topic": "isolation",
+          "item": "coolant conductivity and wetted-path creepage if the plate is at a different potential; deionised water needs resistivity control",
+          "action": "specify coolant and insulating hose length; isolation pads"
+        },
+        {
+          "topic": "corrosion/compatibility",
+          "item": "galvanic couples (Al/Cu) and inhibitor depletion",
+          "action": "single wetted metal or inhibited coolant; material compatibility list"
+        },
+        {
+          "topic": "reliability/maintenance",
+          "item": "pump wear, coolant ageing, air locks, freeze protection",
+          "action": "pump MTTF, flow/pressure monitoring, service interval, glycol fraction for the climate"
+        },
+        {
+          "topic": "external loop",
+          "item": "radiator, pump and fans (noise, volume, mass, power) are outside the cold plate unless specified",
+          "action": "size the heat rejection loop at the assumed inlet temperature"
+        }
+      ],
+      "all_within_design_limit": true,
+      "all_within_absolute_limit": true
+    }
+  ],
+  "method": "analytical correlations (HeatSinkOptimisation heatsink_model + pea.thermal cold-plate model) -> shared-sink network",
+  "disclaimer": "Screening estimates with stated validity ranges; not CFD, FEM or measured results. Qualitative criteria are listed as review items."
+}

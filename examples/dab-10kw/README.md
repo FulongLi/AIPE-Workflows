@@ -245,6 +245,16 @@ generator fixes (0.3 mm stubs, via keep-outs at net-tie pads) are in place but
 not re-run. Reports: `results/pcb-erc-drc/` (ERC/DRC JSON per board, source
 file SHA-256, the agent's verification summaries). Nothing has been fabricated.
 
+Remediation (AIPE-PCB-Agent PR #8, branch `fix/dab-v1-routing`, 2026-10-21): the
+generator and router were repaired (0.3 mm capacitor stubs, net-tie copper as via
+exclusion, fine-pitch row escapes with exit lanes, plane continuity, time-boxed
+routing with checkpoints) and the boards regenerated. The clean-checkout
+acceptance run below checked those boards with the same task: ERC 0 / 0 / 0, DRC
+errors **0 / 0 / 0** (18 / 18 / 28 `track_dangling` warnings), unconnected items
+**26 / 23 / 24**, parity 0. The task still fails and the gate still reads `fail`
+because open connections remain; no clearance or rule was relaxed and no Gerber
+set is manufacturing-ready.
+
 ## Adapter migration check (2026-10-21)
 
 The analytical and thermal stages moved from the legacy `pea` modules (sibling checkout) to the installed
@@ -252,6 +262,18 @@ The analytical and thermal stages moved from the legacy `pea` modules (sibling c
 every compared value of the reference run exactly — analytic operating point, Level 1 and Level 2 ngspice results,
 control margins, magnetics, device losses, cooling, FEM and CAD — see `results/migration-check-2026-10-21.json`.
 The analytical envelope now also records the power-flow direction and the ZVS current-direction evidence label.
+
+## Clean-checkout acceptance (2026-10-21)
+
+`tools/acceptance/run_acceptance.ps1` cloned the eleven official repositories into an empty workspace (PR heads where
+the stabilisation PRs are still open), created a fresh virtual environment, installed every package with its README's
+command, qualified ngspice 47, KiCad 10.0.6, FreeCAD 1.1.4, Gmsh 4.15.2 and Elmer 9.0, ran the Core and Registry
+contract tests (Core `unittest` 23 OK, Registry validate 18 manifests / 0 errors, pytest 43 passed) and executed this
+workflow end to end: 13 tasks completed, `pcb-erc-drc` failed by design, status `completed_with_failed_optional`,
+gates analytical / software / circuit_simulation / field_simulation pass, `cad_pcb` fail, `verify` clean. A leaf-by-leaf
+comparison with `runs/wf-dab-10kw-stab` found every engineering value identical (only run-specific evidence ids and the
+PCB counts differ, because the acceptance checked the remediated boards). Evidence: `results/acceptance-2026-10-21/`
+(log with commits and exit codes, doctor manifest, plan/run/verification, generated report, comparison).
 
 ## Cross-module feedback example A (executed)
 

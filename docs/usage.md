@@ -51,6 +51,20 @@ magnetising inductance, turns ratio) and writes `reconciliation.json`; `iterate`
 inputs, re-executes only what the change invalidates, compares the key observables with the parent and records an
 accept/reject decision with reasons in `iterations.json`.
 
+## Clean-checkout acceptance
+
+```powershell
+powershell -ExecutionPolicy Bypass -File toolscceptanceun_acceptance.ps1 -Workspace D:ipe-acceptance -ToolsDir D:ipe-tools
+```
+
+`tools/acceptance/run_acceptance.ps1` (Windows PowerShell 5.1) clones the official repositories named in
+`tools/acceptance/sources.json` into an empty workspace, creates a fresh virtual environment, installs every package with
+its README's own command, runs `doctor --qualify`, the Core and Registry contract tests and then `plan`, `run`, `verify`,
+`report` and `status`; every command and exit code is logged. The workflow run may end with exit 2
+(`completed_with_failed_optional`, e.g. while the PCB boards still have open connections) - that status is recorded and
+judged in the report, never hidden; any other failure stops the harness. The executed result of 2026-10-21 is under
+`examples/dab-10kw/results/acceptance-2026-10-21/`.
+
 ## Stages of the DAB workflow
 
 | Stage | Specialist | Gate |

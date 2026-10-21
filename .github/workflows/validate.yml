@@ -59,7 +59,13 @@ jobs:
 
       - name: Environment doctor runs (tools are expected to be absent here; the command itself must succeed)
         working-directory: AIPE-Workflows
-        run: aipe-workflows doctor --no-qualify --json > doctor.json && python -c "import json; d=json.load(open('doctor.json')); print({k: v['found'] for k, v in d['tools'].items()})"
+        run: |
+          aipe-workflows doctor --no-qualify --json > doctor.json
+          python - <<'EOF'
+          import json
+          tools = json.load(open("doctor.json"))["tools"]
+          print({name: info["found"] for name, info in tools.items()})
+          EOF
 
       - name: Plan against the sibling checkouts (capabilities must resolve; only missing tools or packages may block)
         working-directory: AIPE-Workflows

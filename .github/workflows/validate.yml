@@ -79,8 +79,10 @@ jobs:
           import json
           plan = json.load(open("plan.json"))
           unregistered = [t["id"] for t in plan["tasks"] if not t["capability_registered"]]
-          bad = {t["id"]: [b for b in t["blockers"] if not (b.startswith("tool ") or "not installed" in b or "not found" in b or "not importable" in b or "not loadable" in b)]
-                 for t in plan["tasks"]}
+          # Acceptable on this runner: a missing external tool or a missing specialist Python package. Anything else
+          # (adapter import error, invalid binding, unregistered capability) is a contract defect and fails the job.
+          ACCEPTABLE = ("tool ", "not installed", "not found", "not importable", "not loadable")
+          bad = {t["id"]: [b for b in t["blockers"] if not any(pat in b for pat in ACCEPTABLE)] for t in plan["tasks"]}
           bad = {k: v for k, v in bad.items() if v}
           print("tasks:", len(plan["tasks"]), "| unregistered capabilities:", unregistered, "| unexpected blockers:", bad)
           assert not unregistered, "every task capability must be registered in a sibling manifest or the Registry index"

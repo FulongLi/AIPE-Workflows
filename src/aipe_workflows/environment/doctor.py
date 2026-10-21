@@ -260,7 +260,7 @@ TOOL_SPECS: list[ToolSpec] = [
     ToolSpec("node", "Node.js", ["node"], ["--version"], r"v(\d+\.\d+\.\d+)", "MIT", install_hint="https://nodejs.org/", required_for=[]),
 ]
 
-PYTHON_PACKAGES = ["numpy", "scipy", "h5py", "matplotlib", "yaml", "jsonschema", "gmsh", "pydantic", "aipe_simulation", "pea", "cadquery"]
+PYTHON_PACKAGES = ["numpy", "scipy", "h5py", "matplotlib", "yaml", "jsonschema", "gmsh", "pydantic", "aipe_simulation", "aipe_electrical", "aipe_thermal", "cadquery"]
 
 
 @dataclass

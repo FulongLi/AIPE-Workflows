@@ -29,8 +29,10 @@ jobs:
         with: { repository: FulongLi/AIPE-Magnetics-Database, path: AIPE-Magnetics-Database }
       - uses: actions/checkout@v4
         with: { repository: FulongLi/AIPE-Field-Simulation, path: AIPE-Field-Simulation }
+      # The official CAD repository receives its implementation (and manifest) through FulongLi/AIPE-CAD-Agent#1;
+      # the PR head is checked out until that PR is merged, then the ref line is removed.
       - uses: actions/checkout@v4
-        with: { repository: FulongLi/AIPE-CAD-Agent, path: AIPE-CAD-Agent }
+        with: { repository: FulongLi/AIPE-CAD-Agent, path: AIPE-CAD-Agent, ref: refs/pull/1/head }
 
       - uses: actions/setup-python@v5
         with:

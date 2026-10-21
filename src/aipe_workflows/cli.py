@@ -182,11 +182,8 @@ def cmd_verify(args: argparse.Namespace) -> int:
     return 0 if not problems and not state_errors else 1
 
 
-def cmd_iterate(args: argparse.Namespace) -> int:
-    from .optimisation.iterate import iterate_run, parse_change
-
-    parent = _resolve_run(args.run)
-    changes = dict(parse_change(c) for c in args.set)
+def _iteration_run_factory(args: argparse.Namespace):
+    """Child-run factory shared by `iterate` and `reconcile --apply`."""
 
     def run_factory(spec, child_dir, child_id):
         definition = load_workflow_definition(_workflow_path(spec, args.workflow))
@@ -199,9 +196,34 @@ def cmd_iterate(args: argparse.Namespace) -> int:
         build_ledger(child_dir)
         return state
 
-    record = iterate_run(parent, changes, args.reason, run_factory, child_run_id=args.child_id)
+    return run_factory
+
+
+def cmd_iterate(args: argparse.Namespace) -> int:
+    from .optimisation.iterate import iterate_run, parse_change
+
+    parent = _resolve_run(args.run)
+    changes = dict(parse_change(c) for c in args.set)
+    record = iterate_run(parent, changes, args.reason, _iteration_run_factory(args), child_run_id=args.child_id)
     print(json.dumps(record.to_dict(), indent=2, default=str))
     return 0 if record.status == "accepted" else (2 if record.status == "rejected" else 1)
+
+
+def cmd_reconcile(args: argparse.Namespace) -> int:
+    """Compare the circuit model's converter parameters with the magnetics/FEM results; optionally re-run through iterate."""
+    from .optimisation.reconcile import reconcile, reconcile_and_iterate
+
+    run_dir = _resolve_run(args.run)
+    if args.apply:
+        result, record = reconcile_and_iterate(run_dir, _iteration_run_factory(args), tolerance=args.tolerance, prefer=args.prefer,
+                                               child_run_id=args.child_id)
+        print(json.dumps(result, indent=2, default=str))
+        if record is None:
+            return 0
+        return 0 if record.status == "accepted" else (2 if record.status == "rejected" else 1)
+    result = reconcile(run_dir, tolerance=args.tolerance, prefer=args.prefer)
+    print(json.dumps(result, indent=2, default=str))
+    return 0 if result["consistent"] else 3
 
 
 def cmd_report(args: argparse.Namespace) -> int:
@@ -267,6 +289,19 @@ def main(argv: Optional[list[str]] = None) -> int:
     p.add_argument("--checkouts")
     p.add_argument("--core")
     p.set_defaults(func=cmd_iterate)
+    p = sub.add_parser("reconcile", help="compare the circuit model's series inductance, magnetising inductance and turns ratio with the "
+                                         "magnetics/FEM results of a run; exit 3 when they disagree; --apply derives the child run that re-simulates")
+    p.add_argument("run")
+    p.add_argument("--tolerance", type=float, default=0.02, help="relative tolerance below which a quantity counts as consistent (default 2 %%)")
+    p.add_argument("--prefer", choices=["fem", "magnetics"], default="fem", help="which result wins when both exist (default: executed FEM)")
+    p.add_argument("--apply", action="store_true", help="run `iterate` with the proposed changes (re-executes the affected tasks in a child run)")
+    p.add_argument("--child-id")
+    p.add_argument("--workflow")
+    p.add_argument("--registry")
+    p.add_argument("--checkouts")
+    p.add_argument("--core")
+    p.set_defaults(func=cmd_reconcile)
+
     p = sub.add_parser("report", help="assemble the JSON and Markdown review package")
     p.add_argument("run")
     p.add_argument("--out")

@@ -43,7 +43,7 @@ jobs:
           python -m pip install -r AIPE-Core/requirements-dev.txt
           python -m pip install -r AIPE-Registry/requirements-dev.txt
 
-      - name: Engine unit tests (solver-marked tests are deselected: no ngspice on this runner)
+      - name: "Engine unit tests (solver-marked tests deselected; no ngspice on this runner)"
         working-directory: AIPE-Workflows
         run: python -m pytest -q -ra -m "not solver" --junitxml=pytest-engine.xml
 
@@ -57,17 +57,17 @@ jobs:
           assert len(d.tasks) >= 14
           EOF
 
-      - name: Environment doctor runs (tools are expected to be absent here; the command itself must succeed)
+      - name: "Environment doctor runs (tools are expected to be absent here; the command itself must succeed)"
         working-directory: AIPE-Workflows
         run: |
-          aipe-workflows doctor --no-qualify --json > doctor.json
+          aipe-workflows doctor --json > doctor.json
           python - <<'EOF'
           import json
           tools = json.load(open("doctor.json"))["tools"]
           print({name: info["found"] for name, info in tools.items()})
           EOF
 
-      - name: Plan against the sibling checkouts (capabilities must resolve; only missing tools or packages may block)
+      - name: "Plan against the sibling checkouts (capabilities must resolve; only missing tools or packages may block)"
         working-directory: AIPE-Workflows
         run: |
           set +e
@@ -87,7 +87,7 @@ jobs:
           assert not bad, "blockers other than missing tools/packages mean a broken adapter or contract"
           EOF
 
-      - name: Manifests validate against the Registry schema (explicit complete set; failures fail this job)
+      - name: "Manifests validate against the Registry schema (explicit complete set; failures fail this job)"
         run: |
           python AIPE-Registry/scripts/validate.py \
             AIPE-Workflows/aipe.yaml AIPE-Core/aipe.yaml AIPE-Registry/aipe.yaml \

@@ -26,9 +26,9 @@ tasks:
     gate: software
 
   - id: analytic-sps
-    description: Lossless single-phase-shift analysis of the nominal operating point (AIPE-Design-Agent converter mathematics).
-    capability: converter-concept-calculation
-    adapter: aipe_workflows.adapters.design_agent:AnalyticSpsTask
+    description: Lossless single-phase-shift analysis of the nominal operating point (AIPE-Electrical-Design, aipe_electrical.converters.dab_sps).
+    capability: dab-sps-analysis
+    adapter: aipe_workflows.adapters.electrical_design:AnalyticSpsTask
     depends_on: [requirements]
     inputs:
       requirements: $task.requirements.requirements
@@ -182,11 +182,11 @@ tasks:
 
   - id: thermal-cooling-design
     description: >
-      Cooling comparison and Stage A heat-sink screening (AIPE-Design-Agent pea.thermal with the corrected HeatSinkOptimisation
-      correlations): the selected devices' evaluated losses and database junction-to-case resistances on a shared sink per bridge
+      Cooling comparison and Stage A heat-sink screening (AIPE-Thermal-Design, aipe_thermal): the selected devices' evaluated
+      losses and database junction-to-case resistances on a shared sink per bridge
       under natural convection, forced air and a liquid cold plate; seeded Pareto screening of plate-fin geometries under extrusion
       bounds with candidates flagged for FEM verification. Analytical correlations only.
-    capability: thermal-cooling-screening
+    capability: cooling-concept-comparison
     adapter: aipe_workflows.adapters.thermal_design:CoolingDesignTask
     depends_on: [requirements, semiconductor-screening]
     inputs:

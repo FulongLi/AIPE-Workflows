@@ -22,7 +22,7 @@ from typing import Any, Optional
 
 from ..engine.envelope import ExecutionEnvelope, now_iso
 from ..engine.runner import TaskAdapter, TaskContext
-from .design_agent import run_suffix
+from .common import run_suffix
 from .field_simulation import load_core_dimensions
 
 ILLUSTRATIVE_NOTE = "illustrative caller-supplied value; not a standard assertion"

@@ -273,6 +273,15 @@ Still open after this run: PCB generation as a workflow task (AIPE-PCB-Agent pro
 its own repository), CFD (OpenFOAM not installable on this Windows host through winget; job specification only), manufacturer
 SPICE models (Level 3, vendor files not redistributable), measurement and hardware qualification (human records only).
 
+## 16. Stabilisation V0.1 (2026-10-21, later the same day)
+
+AIPE-Design-Agent was renamed **AIPE-Electrical-Design** and refactored into the installable `aipe_electrical` package
+(legacy PEA application archived at tag `legacy-pea-v0.1`); HeatSinkOptimisation was renamed **AIPE-Thermal-Design** and
+consolidated with the former `pea.thermal` modules into `aipe_thermal`. The workflow adapters import these packages
+directly (no sibling-directory lookup), the capability ids are `aipe.electrical-design` and `aipe.thermal-design`, and
+the new `reconcile` command closes the magnetics/FEM → circuit-model parameter loop. The Design-Agent rows above are
+historical audit records.
+
 ## Audit limitations
 
 The agents worked offline and read-only: no GitHub CI results, upstream repositories, Xplore terms, vendor licence pages or GitHub redirects for the renamed Sketcher repository were checked. Several suites were not executed in the audit environment: PEDL (PyQt5 and bson absent), Semiconductor-DB and Magnetics-DB under their declared Python or `jsonschema[format]` extras (verifiers used in-process shims), Sketcher and PCB-Agent full suites (they write into the working tree), IEEE and Labs Jekyll builds. pymoo, cadquery, torch, python-control and the MCP SDK were not installed, so NSGA-II, STEP, ANN training, averaged control and MCP paths are unverified. Audit line numbers are unreliable for `AIPE-PCB-Agent/automation/sic_v3/*` (corrected above) and off by small offsets in Academy and Sketcher. Untracked work observed during the audit (`AIPE-Design-Agent/pea/converters/`, `AIPE-Simulation-Skills/src/aipe_simulation/`, a Magnetics-DB branch switch) was not frozen, so its state may have changed. Two verifiers recorded the local Elmer binary as "9.0" while the installation record says Elmer 26.1; the version string should be reconciled before it is cited as evidence. Nothing in the ecosystem has measured (L3) validation; no claim here should be read as hardware-verified.

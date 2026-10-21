@@ -33,3 +33,10 @@ def import_from_checkout(repo: Path, module: str, sys_path_entry: Optional[Path]
     if entry not in sys.path:
         sys.path.insert(0, entry)
     return importlib.import_module(module)
+
+
+def run_suffix(run_id: str) -> str:
+    """Six lowercase hex characters derived from the run id; valid inside Core entity ids."""
+    import hashlib
+
+    return hashlib.sha256(run_id.encode("utf-8")).hexdigest()[:6]

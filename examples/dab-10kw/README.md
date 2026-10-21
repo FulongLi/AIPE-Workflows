@@ -16,9 +16,9 @@ aipe-workflows verify runs/dab-10kw
 aipe-workflows report runs/dab-10kw
 ```
 
-Requires sibling checkouts of AIPE-Core, AIPE-Registry, AIPE-Design-Agent,
-AIPE-Simulation-Skills, AIPE-Semiconductor-Database, AIPE-Magnetics-Database,
-AIPE-Field-Simulation, AIPE-CAD-Agent and HeatSinkOptimisation (the Python
+Requires sibling checkouts of AIPE-Core, AIPE-Registry, AIPE-Electrical-Design,
+AIPE-Thermal-Design, AIPE-Simulation-Skills, AIPE-Semiconductor-Database,
+AIPE-Magnetics-Database, AIPE-Field-Simulation and AIPE-CAD-Agent (the Python
 packages installed with `pip install -e`), plus ngspice, Gmsh, Elmer and
 FreeCAD found by `aipe-workflows doctor` (portable builds through
 `AIPE_TOOLS_DIR`, `AIPE_NGSPICE`, or the per-user Windows locations). Without a
@@ -39,7 +39,7 @@ Engineering State and the environment manifest). Large raw data (HDF5
 datasets, raw solver output, meshes, STEP/FCStd) stays in the run directory and
 is referenced by path and SHA-256.
 
-### Analytical SPS operating point (AIPE-Design-Agent)
+### Analytical SPS operating point (AIPE-Electrical-Design)
 
 | Quantity | Value |
 | --- | --- |
@@ -170,7 +170,7 @@ meets the ZVS current condition; a charge-based ZVS check needs Coss/Eoss data
 the records do not contain (coverage gaps are listed per evaluation). No
 laboratory measurement backs any value.
 
-### Cooling comparison and Stage A heat-sink screening (AIPE-Design-Agent `pea.thermal`)
+### Cooling comparison and Stage A heat-sink screening (AIPE-Thermal-Design `aipe_thermal`)
 
 Four devices per bridge on one shared sink at 40 °C ambient, device losses and
 Rth(j-c) from the screening, 0.1 K/W pads, generic TO-247 footprint, 125 °C

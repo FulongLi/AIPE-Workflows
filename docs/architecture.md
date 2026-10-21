@@ -10,8 +10,8 @@ architecture freeze:
 | --- | --- | --- |
 | Engineering State schema, SI units, evidence | AIPE-Core | loads states, runs Core's validator, applies provenance-preserving proposals |
 | Capability metadata | AIPE-Registry | reads `generated/aipe.json` and sibling `aipe.yaml` as data; matches task capabilities |
-| Converter mathematics (lossless SPS analysis) | AIPE-Design-Agent `pea.converters` | `adapters/design_agent.py` imports the pure-python module |
-| Cooling comparison, Stage A heat-sink screening | AIPE-Design-Agent `pea.thermal` (+ corrected HeatSinkOptimisation correlations) | `adapters/thermal_design.py` |
+| Converter mathematics (lossless SPS analysis) | AIPE-Electrical-Design `aipe_electrical.converters.dab_sps` | `adapters/electrical_design.py` imports the installed package |
+| Cooling comparison, Stage A heat-sink screening | AIPE-Thermal-Design `aipe_thermal` (cooling, screening, heat-sink correlation model) | `adapters/thermal_design.py` imports the installed package |
 | Circuit simulation, waveform analysis, SPS control baseline | AIPE-Simulation-Skills `aipe_simulation` | `adapters/simulation_skills.py` (ngspice levels 1-2), `adapters/control_baseline.py` |
 | Device screening and losses on executed waveforms | AIPE-Semiconductor-Database `aipe_devices` CLI | `adapters/semiconductor_database.py` |
 | Waveform-informed transformer design | AIPE-Magnetics-Database `aipe_magnetics.api` | `adapters/magnetics_database.py` |
@@ -35,9 +35,10 @@ engineering_state/  Core checkout discovery, canonical validation, apply_proposa
 artifacts/     hashed artifact index (uri, media type, sha256, role, producing task)
 environment/   doctor: tool detection in PATH / env vars / workspace tools / per-user locations, real qualification tests
 capability_discovery/  Registry index + sibling manifests -> capability lookup
-adapters/      requirements, design_agent, simulation_skills, control_baseline, magnetics_database,
+adapters/      requirements, electrical_design, simulation_skills, control_baseline, magnetics_database,
                semiconductor_database, thermal_design, field_simulation, cad_agent, pcb_agent
-optimisation/  iterate: child runs with changed inputs, observable comparison, accept/reject ledger
+optimisation/  iterate: child runs with changed inputs, observable comparison, accept/reject ledger;
+               reconcile: circuit-model parameters versus magnetics/FEM results, derives the iterate child
 verification/  gate ledger: analytical, software, circuit_simulation, field_simulation, cad_pcb, engineering_review,
                experimental, hardware_qualification (never implied by earlier gates)
 reporting/     report.json + report.md + AIPE-Doc styled report.html with executed numbers, figures, gate statuses,

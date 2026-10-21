@@ -75,7 +75,7 @@ adapters and orchestration.
 | HeatSinkOptimisation first-run CI failure | validator needs `jsonschema[format]` | installed in the manifest job | Thermal CI run 39583151444 green | open PR |
 | Workflows CI YAML (first commits) | unquoted `:` in step names, dict literal in a plain scalar | quoted names, block scalars | PR #2 run pass | open PR |
 | DAB-V1 boards: 20 clearance + 2 hole-clearance DRC errors, 30 fan-out and ~35 route failures per power board, control board never routed | 0.5 mm pre-routed capacitor stubs at 3.95 mm against the 4.0 mm bus rule; a via inside the net-tie pad (the tie's `fp_poly` bridge was invisible to the router); 0.35 mm stub ends on the overlapping land halos of the 0.65 mm driver rows; wide nets sealed between narrow stubs; stranded GND decoupling pads; split planes / isolated pours; router without a time box or saves | 0.3 mm stubs; footprint copper graphics registered as via/drill exclusions; 0.45 mm stubs with a geometric end test; `automation/dab_v1/fanout_rows.py` (same-net bridges, exit lanes to a 3 mm fan-out band, wide-first order); fallback ground ports; plane joins and DESAT placement; `time_budget_s` with honest `reason: time_budget` records and checkpoints | kicad-cli ERC/DRC manifests (section F); +8 DAB tests, suite 400 passed / 1 skipped | open PR (PCB #8) |
-| AIPE-PCB-Agent CI run failed with no job | the KiCad-detection `run:` line was a plain scalar containing `: ` (invalid YAML; GitHub rejects the file at start-up) | block scalar (bf9ba9c) | fork run on the fork-internal PR (section D) | open PR (PCB #8) |
+| AIPE-PCB-Agent CI: no job, then collection errors, then one failure | (1) the KiCad-detection `run:` line was a plain scalar containing `: ` (invalid YAML, GitHub created no job); (2) `copper_paths.py` / `sheet_resistance.py` import `scipy.sparse`, present on the development host but undeclared; (3) the sic-buck evidence tests read the board path recorded in `routing_progress_*.json` — the original developer's absolute path, which exists on this machine as a second checkout, so the tests passed locally and failed (or skipped) everywhere else | block scalar (bf9ba9c); extra `analysis = [scipy]` included in `test` (51b1bb6); `recorded_path()` resolves recorded paths by their repository-relative tail and still checks the recorded SHA-256 (33cd48d) | fork run 39629226245: 364 passed, 37 skipped, 0 failed | open PR (PCB #8) |
 | `aipe-workflows doctor` probed the removed `pea` package | legacy package list in `environment/doctor.py` | probes `aipe_electrical` and `aipe_thermal` | acceptance `doctor.json` (section J) | open PR (Workflows #3) |
 
 ## D. CI status (observed on GitHub, 2026-10-21)
@@ -89,8 +89,10 @@ adapters and orchestration.
 | AIPE-Registry | Validate Registry | pass on PR #3 |
 | AIPE-CAD-Agent | Tests (new) | no run yet: fork-PR workflows need maintainer approval in a repository that had none |
 | AIPE-Field-Simulation, AIPE-Doc | new workflows | no run yet (same reason) |
-| AIPE-Core, Semiconductor-Database, Magnetics-Database, Sketcher, Academy, IEEE-Paper-Agent, Spirit-Connect | existing workflows | success on main and on the README PRs (handover-D) |
-| AIPE-PCB-Agent | — | see section F |
+| AIPE-Core, Semiconductor-Database, Magnetics-Database, Sketcher, Academy, IEEE-Paper-Agent, Spirit-Connect, Registry | existing workflows | success on main and on the README PRs (handover-D; re-checked 2026-10-21 15:55 UTC) |
+| AIPE-Simulation-Skills README PR #4 | unit, Skills Validation (legacy) | unit pass; the legacy Skills Validation job fails exactly as it does on main (bare interpreter without pytest — the defect fixed by PR #3); merge #3 first or rebase #4 onto it |
+| AIPE-Field-Simulation #3, AIPE-Doc #3 (README PRs) | none on their base | no workflow exists on main; the CI added by PRs #2 of those repositories will cover them after merge |
+| AIPE-PCB-Agent | Host tests (no KiCad), new | green on the fork-internal PR run of 33cd48d (364 passed, 37 skipped and reported, 0 failed, 585 subtests); upstream fork-PR run on #8 awaits maintainer approval. Three fixes were needed to get there: invalid YAML (no job), undeclared scipy test dependency, evidence tests bound to a developer's absolute path |
 
 ## E. DAB verification results
 
@@ -160,7 +162,8 @@ step: an ordered row escape (river routing with staircase lane ends, or a stagge
 the gate-loop corridor and the control board's routing budget or a dedicated layer pair.
 
 Software: 400 passed, 1 skipped, 680 subtests with KiCad present; the new `.github/workflows/tests.yml` runs the host
-tests without KiCad and reports the KiCad-dependent tests as skipped (simulated run 365 passed / 35 skipped / 0 failed).
+tests without KiCad and reports the KiCad-dependent tests as skipped — executed on GitHub (ubuntu, fork-internal PR run of
+33cd48d): 364 passed, 37 skipped, 0 failed, 585 subtests.
 `pyproject.toml` declares version 0.1.0 for the first time; licence stated as declared in `aipe.yaml` (MIT, no LICENSE
 file; KiCad libraries CC BY-SA 4.0). Architecture review extended (6.1 barrier geometry check, 6.2 gate-drive, protection
 and DESAT review, open items R-18 to R-22). Nothing has been fabricated or energised.
@@ -182,7 +185,7 @@ All branches pushed to the MrCoconut616 forks; PRs opened against `FulongLi/<rep
 has no write access (except AIPE-Electrical-Design, where the coordinator deliberately left PR #3 for review as well),
 so **no PR was merged by the automation**; merge status: awaiting maintainer for every PR listed in section A.
 Branch-level evidence: AIPE-Electrical-Design `legacy-pea-v0.1` tag on the fork; commit SHAs in the handover files.
-AIPE-PCB-Agent: branch `fix/dab-v1-routing` → [PR #8](https://github.com/FulongLi/AIPE-PCB-Agent/pull/8) (f84ce15 remediation, bf9ba9c CI YAML fix); the upstream
+AIPE-PCB-Agent: branch `fix/dab-v1-routing` → [PR #8](https://github.com/FulongLi/AIPE-PCB-Agent/pull/8) (f84ce15 remediation; bf9ba9c, 51b1bb6, 33cd48d CI fixes); the upstream
 fork-PR workflow run needs maintainer approval, so the same workflow was exercised on a fork-internal draft PR
 (MrCoconut616/AIPE-PCB-Agent #1, not for merging).
 

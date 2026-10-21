@@ -208,6 +208,13 @@ def test_failed_task_blocks_downstream_and_blocked_requirements(tmp_path):
     assert state.tasks["a"].status == "completed"
 
 
+def test_failed_optional_task_does_not_fail_the_run(tmp_path):
+    tasks = [task("a"), {**task("opt", ["a"]), "adapter": "tests.test_engine:FailingAdapter", "optional": True}, task("c", ["a"])]
+    state = _runner(tmp_path, tasks).run()
+    assert state.status == "completed_with_failed_optional"
+    assert state.tasks["opt"].status == "failed" and state.tasks["c"].status == "completed" and state.tasks["a"].status == "completed"
+
+
 def test_plan_reports_blockers_and_registry(tmp_path):
     d = definition([{**task("blk"), "adapter": "tests.test_engine:BlockedAdapter", "tools": ["ngspice"]}])
     runner = WorkflowRunner(d, SPEC, tmp_path / "run", {"tools": {"ngspice": {"found": False}}},

@@ -151,7 +151,7 @@ def cmd_run(args: argparse.Namespace) -> int:
     build_ledger(run_dir)
     print(json.dumps({"run_id": state.run_id, "run_dir": str(run_dir), "status": state.status,
                       "tasks": {k: v.status for k, v in state.tasks.items()}, "state_versions": len(state.state_versions)}, indent=2))
-    return 0 if state.status == "completed" else (2 if state.status == "completed_with_blocked" else 1)
+    return 0 if state.status == "completed" else (2 if state.status in ("completed_with_blocked", "completed_with_failed_optional") else 1)
 
 
 def cmd_status(args: argparse.Namespace) -> int:

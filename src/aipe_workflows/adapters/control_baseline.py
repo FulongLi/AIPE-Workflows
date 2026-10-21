@@ -100,6 +100,17 @@ class SpsControlBaselineTask(TaskAdapter):
             metrics = entry.get("metrics") or {}
             scenario_overview[name] = {"final_mode": entry.get("final_mode"), "trips": entry.get("trips"), "duration_s": entry.get("duration_s"),
                                        "metrics": {k: v for k, v in metrics.items() if isinstance(v, (int, float, str, bool)) or v is None}}
+        # Scenario expectations: the canonical 'fault' and 'input_sag' scenarios are designed to end in a latched protection trip;
+        # 'nominal' must not trip. Overridable through parameters.scenario_expectations: {name: "trip" | "no_trip"}.
+        expectations = {"nominal": "no_trip", "fault": "trip", "input_sag": "trip"}
+        expectations.update(p.get("scenario_expectations") or {})
+        scenario_results = {}
+        for name, entry in scenario_summaries.items():
+            tripped = bool(entry.get("trips"))
+            expected = expectations.get(name)
+            scenario_results[name] = {"tripped": tripped, "expected": expected, "final_mode": entry.get("final_mode"),
+                                      "as_expected": (expected is None) or (expected == "trip") == tripped}
+        no_unexpected_trips = all(r["as_expected"] for r in scenario_results.values())
         envelope.outputs = {
             "design_sha256": baseline.get("design_sha256"), "operating_point": controllers.get("operating_point"),
             "sampling": controllers.get("sampling"),
@@ -122,17 +133,6 @@ class SpsControlBaselineTask(TaskAdapter):
         }
         margins_ok = all(m is None or m >= float(p.get("min_phase_margin_deg", 40.0)) for m in (_num(s.get("phase_margin_deg")) for s in loops.values()))
         plant_ok = verification is None or (verification.get("all_valid") and (verification.get("max_abs_rel_err_p2") or 0.0) <= float(p.get("plant_verification_tolerance", 0.03)))
-        # Scenario expectations: the canonical 'fault' and 'input_sag' scenarios are designed to end in a latched protection trip;
-        # 'nominal' must not trip. Overridable through parameters.scenario_expectations: {name: "trip" | "no_trip"}.
-        expectations = {"nominal": "no_trip", "fault": "trip", "input_sag": "trip"}
-        expectations.update(p.get("scenario_expectations") or {})
-        scenario_results = {}
-        for name, entry in scenario_summaries.items():
-            tripped = bool(entry.get("trips"))
-            expected = expectations.get(name)
-            scenario_results[name] = {"tripped": tripped, "expected": expected, "final_mode": entry.get("final_mode"),
-                                      "as_expected": (expected is None) or (expected == "trip") == tripped}
-        no_unexpected_trips = all(r["as_expected"] for r in scenario_results.values())
         envelope.verification = {"design_valid": True, "phase_margins_ok": margins_ok, "min_phase_margin_deg": p.get("min_phase_margin_deg", 40.0),
                                  "plant_verification_rows": len(rows), "plant_verification_ok": plant_ok,
                                  "plant_verification_max_abs_rel_err_p2": (verification or {}).get("max_abs_rel_err_p2"), "scenarios_as_expected": no_unexpected_trips,

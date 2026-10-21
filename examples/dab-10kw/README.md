@@ -245,6 +245,14 @@ generator fixes (0.3 mm stubs, via keep-outs at net-tie pads) are in place but
 not re-run. Reports: `results/pcb-erc-drc/` (ERC/DRC JSON per board, source
 file SHA-256, the agent's verification summaries). Nothing has been fabricated.
 
+## Adapter migration check (2026-10-21)
+
+The analytical and thermal stages moved from the legacy `pea` modules (sibling checkout) to the installed
+`aipe_electrical` 0.2.0 and `aipe_thermal` 0.2.0 packages. A complete re-run (`runs/wf-dab-10kw-stab`) reproduces
+every compared value of the reference run exactly — analytic operating point, Level 1 and Level 2 ngspice results,
+control margins, magnetics, device losses, cooling, FEM and CAD — see `results/migration-check-2026-10-21.json`.
+The analytical envelope now also records the power-flow direction and the ZVS current-direction evidence label.
+
 ## Cross-module feedback example A (executed)
 
 The magnetics design proposes 21:10 actual turns instead of the nominal 2:1.

@@ -275,11 +275,38 @@ were run on the six-task graph of the time; the parent run has since been
 extended in place (checkpoints reused, new stages appended), so the ledger
 remains valid for the tasks it names.
 
+## Cross-module feedback example D (executed): magnetics and FEM parameters back into the circuit model
+
+```sh
+aipe-workflows reconcile runs/wf-dab-10kw-first                        # exit 3: circuit model inconsistent
+aipe-workflows reconcile runs/wf-dab-10kw-first --apply --checkouts ..  # child run wf-dab-10kw-first-it03
+aipe-workflows reconcile runs/wf-dab-10kw-first-it03                    # exit 0: consistent
+```
+
+`reconcile` compared the converter parameters of the reference run (all 35 µH external, L_m = 1 mH placeholder,
+2:1) with the magnetics design and the executed window FEM, proposed `leakage_inductance_primary_H = 1.483e-6`
+(FEM), `external_inductance_H = 33.517e-6` (total kept) and `magnetising_inductance_H = 5.18e-3` (FEM), found the
+20:10 turns ratio consistent, and derived the child run. Decision: accepted (simulations match their analytical
+references, ZVS retained, rated power within 2 %; the optional PCB check fails on the unfinished boards and is recorded
+in its gate).
+
+| Quantity | parent (leakage 0, L_m 1 mH) | child it03 (leakage 1.48 µH, L_m 5.18 mH) |
+| --- | --- | --- |
+| Level 2 total loss | 131.7 W | 127.2 W |
+| Level 2 magnetising current peak | 2.03 A | 0.40 A |
+| Level 2 secondary RMS current | 27.11 A | 26.76 A |
+| Secondary device loss (C3M0025065K) | 17.45 W | 16.18 W |
+| Hottest junction, best cooling option | 63.0 °C | 61.7 °C |
+| Heat-sink FEM hotspot | 332.8 K | 331.2 K |
+| Level 1 power, ZVS, control margins | unchanged |  |
+
+Evidence: `results/iteration-reconcile-it03/` (iteration record, both reconciliation reports, child envelopes, Level 2
+summary, child verification ledger).
+
 ## Open feedback items recorded by the run
 
-- The circuit Level 2 model assumed 2 µH leakage; the magnetics design and the
-  window FEM give 1.5 µH for the interleaved layout (external inductor 33.4 µH).
-  Re-running with the FEM value is a `--set` iteration away.
+- The circuit model started with all 35 µH external and a 1 mH magnetising placeholder; the magnetics design
+  and the window FEM give 1.5 µH leakage and 5.2 mH; example D above feeds them back (loss 131.7 → 127.2 W).
 - The screening ranks a half-bridge module above the discrete devices for both
   bridges; the module route changes the thermal, CAD and PCB layout and was not
   followed here.

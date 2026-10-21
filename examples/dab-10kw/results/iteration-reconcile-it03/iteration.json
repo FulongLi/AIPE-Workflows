@@ -1,0 +1,70 @@
+{
+  "iteration_id": "it03",
+  "parent_run": "runs\\wf-dab-10kw-first",
+  "child_run": "runs\\wf-dab-10kw-first-it03",
+  "reason": "series-inductance / turns-ratio reconciliation: transformer leakage inductance, primary referred 0.0 -> 1.4831218771540288e-06 (fem-transformer-window); external series inductor (total minus transformer leakage) 3.5e-05 -> 3.3516878122845965e-05 (fem-transformer-window); magnetising inductance, primary referred 0.001 -> 0.005180328373919709 (fem-transformer-window)",
+  "changes": {
+    "converter.leakage_inductance_primary_H": 1.4831218771540288e-06,
+    "converter.external_inductance_H": 3.3516878122845965e-05,
+    "converter.magnetising_inductance_H": 0.005180328373919709
+  },
+  "created_at": "2026-10-21T09:53:36Z",
+  "status": "accepted",
+  "decision_reasons": [
+    "completed; simulations match their analytical references; ZVS retained; rated power within 2 %",
+    "optional task(s) failed and are recorded in their gate: pcb-erc-drc"
+  ],
+  "observables_parent": {
+    "p_out_W": 9996.81343609198,
+    "loss_W_level1": 5.176394752410488,
+    "i_L_rms_A": 13.677914459973177,
+    "i_L_peak_A": 14.31515752256699,
+    "i_s_rms_A": 27.928873627976863,
+    "phi_deg": 22.5,
+    "analytic_power_W": 10000.0,
+    "circuit-sim-level1:comparison_pass": true,
+    "circuit-sim-level1:all_zvs": true,
+    "circuit-sim-level1:efficiency": 0.9994824635057669,
+    "circuit-sim-level1-convergence:comparison_pass": true,
+    "circuit-sim-level1-convergence:all_zvs": true,
+    "circuit-sim-level1-convergence:efficiency": 0.9994829052371329,
+    "circuit-sim-level2:comparison_pass": true,
+    "circuit-sim-level2:all_zvs": true,
+    "circuit-sim-level2:efficiency": 0.9910908398356887
+  },
+  "observables_child": {
+    "p_out_W": 9997.119139192147,
+    "loss_W_level1": 5.095794360113359,
+    "i_L_rms_A": 13.678226404409559,
+    "i_L_peak_A": 14.31555155144997,
+    "i_s_rms_A": 27.4528703759602,
+    "phi_deg": 22.5,
+    "analytic_power_W": 10000.0,
+    "circuit-sim-level1:comparison_pass": true,
+    "circuit-sim-level1:all_zvs": true,
+    "circuit-sim-level1:efficiency": 0.9994905334074536,
+    "circuit-sim-level1-convergence:comparison_pass": true,
+    "circuit-sim-level1-convergence:all_zvs": true,
+    "circuit-sim-level1-convergence:efficiency": 0.9994890790677873,
+    "circuit-sim-level2:comparison_pass": true,
+    "circuit-sim-level2:all_zvs": true,
+    "circuit-sim-level2:efficiency": 0.9910878179661503
+  },
+  "tasks_rerun": [
+    "analytic-sps",
+    "cad-heatsink",
+    "cad-transformer",
+    "circuit-sim-level1",
+    "circuit-sim-level1-convergence",
+    "circuit-sim-level2",
+    "control-baseline",
+    "fem-heatsink",
+    "fem-transformer-window",
+    "magnetics-transformer-design",
+    "pcb-erc-drc",
+    "requirements",
+    "semiconductor-screening",
+    "thermal-cooling-design"
+  ],
+  "tasks_reused": []
+}

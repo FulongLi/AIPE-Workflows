@@ -1,0 +1,72 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-21T15:26:13",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.6",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/37da9920-b702-566f-b428-32ae35c2aacc",
+            "violations": []
+        },
+        {
+            "path": "/12 V auxiliary input protection, 5 V buck, 3.3 V LDO and supervisor/",
+            "uuid_path": "/37da9920-b702-566f-b428-32ae35c2aacc/4c265a14-876a-52df-9961-14d1fd91559d",
+            "violations": []
+        },
+        {
+            "path": "/TMS320F280039C controlCARD socket and signal assignment/",
+            "uuid_path": "/37da9920-b702-566f-b428-32ae35c2aacc/5e5404dc-45e3-56ce-8745-6ea62ec5c004",
+            "violations": []
+        },
+        {
+            "path": "/Hardware PWM gating by the armed latch/",
+            "uuid_path": "/37da9920-b702-566f-b428-32ae35c2aacc/91c48b94-97d7-5b9d-ae8c-67600f394c6b",
+            "violations": []
+        },
+        {
+            "path": "/Hardware fault tree, over-voltage comparators and fault latch/",
+            "uuid_path": "/37da9920-b702-566f-b428-32ae35c2aacc/187cfc3d-7b40-51b2-99ba-469afa901cd9",
+            "violations": []
+        },
+        {
+            "path": "/Isolated-voltage receivers, current buffers and ADC conditioning/",
+            "uuid_path": "/37da9920-b702-566f-b428-32ae35c2aacc/c7336d62-6097-5297-9a05-7df80e792843",
+            "violations": []
+        },
+        {
+            "path": "/CAN, optional RS-485 and JTAG/",
+            "uuid_path": "/37da9920-b702-566f-b428-32ae35c2aacc/c6e1737e-6824-56e2-a471-fc27788d1145",
+            "violations": []
+        },
+        {
+            "path": "/Power-board harnesses, indicators, test points and mounting/",
+            "uuid_path": "/37da9920-b702-566f-b428-32ae35c2aacc/4d8816ee-bafe-5c71-8ce2-3e16a7b02c81",
+            "violations": []
+        }
+    ],
+    "source": "dab-control.kicad_sch"
+}

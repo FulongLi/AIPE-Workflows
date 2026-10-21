@@ -1,6 +1,6 @@
 # Simulation-driven dual-active-bridge converter design — engineering review package
 
-Run `wf-dab-10kw-first` · workflow `aipe.workflow.converter-dab` · status **completed** · created 2026-10-21T05:15:09Z · specification hash `d38c34a8afa2a50c`
+Run `wf-dab-10kw-first` · workflow `aipe.workflow.converter-dab` · status **failed** · created 2026-10-21T05:15:09Z · specification hash `d38c34a8afa2a50c`
 
 ## 1. Requirements and specification
 
@@ -51,7 +51,7 @@ Platform: Windows 10 (AMD64); Python 3.10.11
 | --- | --- | --- | --- | --- |
 | analytic-sps | analytical | **reused** | aipe.design-agent.dab-sps 0.1.0 |  |
 | cad-heatsink |  | **reused** | tool.freecad 1.1.4 |  |
-| cad-transformer |  | **completed** | tool.freecad 1.1.4 |  |
+| cad-transformer |  | **reused** | tool.freecad 1.1.4 |  |
 | circuit-sim-level1 | circuit_simulation | **reused** | tool.ngspice 47 |  |
 | circuit-sim-level1-convergence | circuit_simulation | **reused** | tool.ngspice 47 |  |
 | circuit-sim-level2 | circuit_simulation | **reused** | tool.ngspice 47 |  |
@@ -59,6 +59,7 @@ Platform: Windows 10 (AMD64); Python 3.10.11
 | fem-heatsink |  | **reused** | tool.elmer 9.0 |  |
 | fem-transformer-window |  | **reused** | tool.elmer 9.0 |  |
 | magnetics-transformer-design |  | **reused** | aipe.magnetics-database.waveform-informed-design 0.2.0 |  |
+| pcb-erc-drc |  | **failed** | tool.kicad-cli 10.0.6 | boards not clean: ERC errors 0, DRC errors 24, unconnected items {'primary-power': 82, 'secondary-power': 81, 'control': 499}, parity errors 0; boards checked 3/3 |
 | requirements | software | **reused** | aipe.core.validate 0.1.0 |  |
 | semiconductor-screening |  | **reused** | aipe.semiconductor-database.dab-screening 3.1.0 |  |
 | thermal-cooling-design |  | **reused** | aipe.design-agent.thermal 1.0.0 |  |
@@ -427,6 +428,29 @@ Verification metrics:
 
 Model: `aipe-magnetics-waveform-informed-transformer` v0.2.0 — validity: analytical: exact harmonics, per-layer Dowell, iGSE on the actual flux, 1-D leakage, lumped/network thermal; no FEA, no insulation design
 
+### pcb-erc-drc
+
+| Output | Value |
+| --- | --- |
+| all_clean | False |
+| example_dir | D:\Cursor Workspace\AIPE-Full-Ecosystem-Integration\repos\AIPE-PCB-Agent\examples\dab-10kw |
+| kicad_version | 10.0.6 |
+
+Verification metrics:
+
+- all_boards_checked: True
+- all_clean: False
+- boards_checked: 3
+- boards_requested: 3
+- drc_errors: 24
+- drc_warnings: 70
+- erc_errors: 0
+- erc_warnings: 0
+- schematic_parity_errors: 0
+- unconnected_items: 662
+
+Model: `kicad-erc-drc` v10.0.6 — validity: electrical and design rule checks against the project's own rule set; no electrical, thermal or EMC performance claim; board generation and routing are AIPE-PCB-Agent's, not this task's
+
 ### requirements
 
 | Output | Value |
@@ -574,12 +598,16 @@ Model: `pea-thermal-cooling-comparison-and-stage-a` v1.0.0 — validity: analyti
 | software | **pass** | requirements:reused  |
 | circuit_simulation | **pass** | circuit-sim-level1:reused, circuit-sim-level1-convergence:reused, circuit-sim-level2:reused  |
 | field_simulation | **pass** | fem-heatsink:reused, fem-transformer-window:reused  |
-| cad_pcb | **pass** | cad-heatsink:reused, cad-transformer:completed  |
+| cad_pcb | **fail** | cad-heatsink:reused, cad-transformer:reused, pcb-erc-drc:failed  |
 | engineering_review | **not_run** | — no record: requires human review / laboratory measurement / hardware qualification outside this workflow |
 | experimental | **not_run** | — no record: requires human review / laboratory measurement / hardware qualification outside this workflow |
 | hardware_qualification | **not_run** | — no record: requires human review / laboratory measurement / hardware qualification outside this workflow |
 
 Passing an earlier gate does not imply a later one has passed. Experimental measurement and hardware qualification are outside this software workflow.
+
+## 6. Blocked and failed items
+
+- FAILED `pcb-erc-drc`: boards not clean: ERC errors 0, DRC errors 24, unconnected items {'primary-power': 82, 'secondary-power': 81, 'control': 499}, parity errors 0; boards checked 3/3
 
 ## 7. Engineering State
 

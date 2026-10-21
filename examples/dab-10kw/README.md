@@ -23,7 +23,7 @@ packages installed with `pip install -e`), plus ngspice, Gmsh, Elmer and
 FreeCAD found by `aipe-workflows doctor` (portable builds through
 `AIPE_TOOLS_DIR`, `AIPE_NGSPICE`, or the per-user Windows locations). Without a
 tool or package the corresponding tasks are reported as blocked; nothing is
-fabricated in their place. The reference run (13 tasks, 12 Engineering State
+fabricated in their place. The reference run (14 tasks, 12 Engineering State
 versions) takes about 25 minutes on a laptop, most of it in the 160-cycle
 Level 2 ngspice transient, the Stage A heat-sink search and the two FEM models.
 
@@ -220,6 +220,31 @@ STEP re-import volume error 3e-14. Clearance requirements are illustrative
 caller inputs; the transformer's inter-winding insulation system has not been
 designed, so the review item is a genuine open point.
 
+### KiCad boards and executed ERC/DRC (AIPE-PCB-Agent, KiCad 10.0.6)
+
+AIPE-PCB-Agent generated the three DAB boards from requirement files
+(`automation/dab_v1`, `examples/dab-10kw` in that repository: primary power,
+secondary power, control; hierarchical schematics, insulation-coordination
+rules, placement, pairwise grid routing, hashed manufacturing exports) and an
+architecture review of gate drive, protection, sensing and isolation. The
+workflow task `pcb-erc-drc` re-runs `kicad-cli sch erc` and `pcb drc
+--schematic-parity` on the boards as committed and **fails while any board is
+not clean**, so the `cad_pcb` gate reads `fail` for this run:
+
+| Board | ERC errors / warnings | DRC errors / warnings | Unconnected items | Schematic parity |
+| --- | --- | --- | --- | --- |
+| primary-power | 0 / 0 | 22 (20 clearance, 2 hole clearance) / 35 dangling tracks and vias | 82 | 0 |
+| secondary-power | 0 / 0 | 2 (hole clearance) / 35 dangling | 81 | 0 |
+| control | 0 / 0 | 0 / 0 | 499 (placed, not routed) | 0 |
+
+The power boards stopped after two 20-minute routing iterations at the
+session's cut-off (about 80 open connections each, mostly gate-driver bias and
+sense fan-outs); the control-board router did not finish. The clearance errors
+come from 0.5 mm pre-routed capacitor stubs against the 4.0 mm bus rule; the
+generator fixes (0.3 mm stubs, via keep-outs at net-tie pads) are in place but
+not re-run. Reports: `results/pcb-erc-drc/` (ERC/DRC JSON per board, source
+file SHA-256, the agent's verification summaries). Nothing has been fabricated.
+
 ## Cross-module feedback example A (executed)
 
 The magnetics design proposes 21:10 actual turns instead of the nominal 2:1.
@@ -263,11 +288,12 @@ remains valid for the tasks it names.
 
 ## What is not claimed
 
-No PCB task is part of this run (AIPE-PCB-Agent produces the three KiCad boards
-and their ERC/DRC results in its own repository); no CFD, no manufacturer SPICE
-model run (Level 3), no measurement and no hardware qualification. The
-verification ledger (`results/verification.json`) keeps `engineering_review`,
-`experimental` and `hardware_qualification` at `not_run`. Device and material
+The PCB boards are not finished: the `cad_pcb` gate is `fail` because of the
+unrouted connections and DRC errors listed above (the FreeCAD tasks of the same
+gate passed). No CFD, no manufacturer SPICE model run (Level 3), no measurement
+and no hardware qualification. The verification ledger
+(`results/verification.json`) keeps `engineering_review`, `experimental` and
+`hardware_qualification` at `not_run`. Device and material
 parameters are manufacturer-specified datasheet or model values or labelled
 assumptions, not measurements; the behavioural switch model is not a
 manufacturer SPICE model; thermal and FEM film coefficients are correlation

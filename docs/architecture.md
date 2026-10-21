@@ -17,7 +17,7 @@ architecture freeze:
 | Waveform-informed transformer design | AIPE-Magnetics-Database `aipe_magnetics.api` | `adapters/magnetics_database.py` |
 | 2-D window magnetostatics, 3-D heat-sink conduction (Gmsh + Elmer) | AIPE-Field-Simulation `aipe_fieldsim` | `adapters/field_simulation.py` |
 | Parametric FreeCAD geometry and geometric checks | AIPE-CAD-Agent `aipe-cad` CLI | `adapters/cad_agent.py` |
-| PCB generation, ERC/DRC (KiCad) | AIPE-PCB-Agent | not yet wired as a task; its executed DAB boards are documented in that repository |
+| PCB generation (KiCad automation) and ERC/DRC | AIPE-PCB-Agent | `adapters/pcb_agent.py` runs `kicad-cli` ERC/DRC on the boards AIPE-PCB-Agent generated; generation and routing stay in that repository |
 
 Every adapter maps the specialist's native result into the common
 `ExecutionEnvelope` (`docs/execution-envelope.md`): tool and model identity with
@@ -36,7 +36,7 @@ artifacts/     hashed artifact index (uri, media type, sha256, role, producing t
 environment/   doctor: tool detection in PATH / env vars / workspace tools / per-user locations, real qualification tests
 capability_discovery/  Registry index + sibling manifests -> capability lookup
 adapters/      requirements, design_agent, simulation_skills, control_baseline, magnetics_database,
-               semiconductor_database, thermal_design, field_simulation, cad_agent
+               semiconductor_database, thermal_design, field_simulation, cad_agent, pcb_agent
 optimisation/  iterate: child runs with changed inputs, observable comparison, accept/reject ledger
 verification/  gate ledger: analytical, software, circuit_simulation, field_simulation, cad_pcb, engineering_review,
                experimental, hardware_qualification (never implied by earlier gates)
@@ -87,6 +87,7 @@ Core-valid state, the analytical model agrees with its own waveform integral, an
 periodic steady state and matched the analytical reference within the declared tolerance. The
 `field_simulation` gate at `pass` means the Gmsh/Elmer models executed at two mesh levels with their internal
 consistency checks satisfied; the `cad_pcb` gate at `pass` means the FreeCAD geometry built without
-interference or fit failures (clearance items may still be `review`). None of this validates the converter:
+interference or fit failures (clearance items may still be `review`) and every generated KiCad board passed ERC and
+DRC with schematic parity and no unconnected items. None of this validates the converter:
 engineering review, measurement and hardware qualification are separate gates that stay `not_run` until human
 records exist, and no software result ever sets them.

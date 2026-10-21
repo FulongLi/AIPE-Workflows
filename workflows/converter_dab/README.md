@@ -20,7 +20,7 @@ external tools it depends on and the verification gate its result belongs to.
 | `fem-heatsink` | fem-thermal-conduction (aipe.field-simulation) | `aipe_fieldsim` HeatSinkModel on the Stage A knee candidate, Gmsh + Elmer | field_simulation | executed, two mesh levels |
 | `cad-transformer` | parametric-transformer-cad (aipe.cad-agent) | `aipe-cad build transformer` (FreeCAD console) from the core record and winding layout | cad_pcb | executed |
 | `cad-heatsink` | heat-sink-cad (aipe.cad-agent) | `aipe-cad build heatsink` from the Stage A knee candidate | cad_pcb | executed |
-| PCB boards, ERC/DRC | AIPE-PCB-Agent | KiCad automation (`automation/dab_v1`) | cad_pcb | executed in that repository; not yet a workflow task |
+| `pcb-erc-drc` (optional) | native-erc-drc-verification (aipe.pcb-agent) | `kicad-cli sch erc` / `pcb drc --schematic-parity` on the three AIPE-PCB-Agent DAB boards | cad_pcb | executed; fails with the counts while any board has unconnected items |
 | measurement, hardware qualification | — | human records | experimental, hardware_qualification | never asserted by software |
 
 ## Data flow
@@ -70,5 +70,7 @@ and the parametric layout for the window FEM and the transformer CAD.
 A task re-runs when its inputs, parameters or adapter version changed, or when any upstream task
 re-ran in the same invocation; otherwise its checkpoint is reused and its stored state proposal is
 replayed. Failed or blocked tasks block their dependants; optional tasks do not fail the run when blocked.
-A specialist result whose own hard checks fail (for example CAD interference) fails the task; a result
-with soft "review" items completes with the items recorded in the envelope and the report.
+A specialist result whose own hard checks fail (for example CAD interference, or ERC/DRC errors and unconnected
+items on a board) fails the task; a result with soft "review" items completes with the items recorded in the
+envelope and the report. A failed optional task does not block dependants but still marks the run and its gate as
+failed, so an unfinished PCB never reads as a passed `cad_pcb` gate.

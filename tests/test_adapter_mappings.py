@@ -8,6 +8,7 @@ from pathlib import Path
 import pytest
 
 from aipe_workflows.adapters.field_simulation import _parse_strand_diameter, window_params_from_magnetics
+from aipe_workflows.adapters.pcb_agent import board_is_clean, summarise_drc, summarise_erc
 from aipe_workflows.adapters.semiconductor_database import _bridge_block, _compact, _pick
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -89,3 +90,14 @@ def test_extension_schema_lists_every_task_block():
     for key in ("analytic_sps", "magnetics_design", "semiconductor_screening", "control_baseline", "thermal_design", "fem_transformer_window",
                 "fem_heatsink", "cad_transformer", "cad_heatsink"):
         assert key in schema["properties"], key
+
+
+def test_kicad_report_summaries_and_clean_rule():
+    erc = summarise_erc({"kicad_version": "10.0.6", "sheets": [{"violations": [{"severity": "warning", "type": "lib_symbol_mismatch"}]}, {"violations": []}]})
+    assert erc == {"sheets": 2, "errors": 0, "warnings": 1, "excluded": 0, "total": 1, "types": {"lib_symbol_mismatch": 1}, "kicad_version": "10.0.6"}
+    drc = summarise_drc({"violations": [{"severity": "error", "type": "clearance"}], "unconnected_items": [{"severity": "error", "type": "unconnected_items"}] * 3,
+                         "schematic_parity": []})
+    assert drc["violations"]["errors"] == 1 and drc["unconnected_items"]["total"] == 3 and drc["schematic_parity"]["total"] == 0
+    assert not board_is_clean(erc, drc)
+    clean_drc = summarise_drc({"violations": [{"severity": "warning", "type": "silk_overlap"}], "unconnected_items": [], "schematic_parity": []})
+    assert board_is_clean(erc, clean_drc)

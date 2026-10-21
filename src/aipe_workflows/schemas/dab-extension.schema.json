@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/FulongLi/AIPE-Workflows/v0.1.0/schemas/dab-extension.schema.json",
   "title": "AIPE Engineering State extension aipe.workflows.dab v0.1",
-  "description": "Workflow-specific metadata stored under extensions['aipe.workflows.dab'] of a Core v0.1 Engineering State. Core does not interpret it; this contract does. Keys are task-derived: analytic_sps, simulation_<task_id_with_underscores>, magnetics_design, semiconductor_screening, control_baseline, thermal_design, fem_transformer_window, fem_heatsink, cad_transformer, cad_heatsink.",
+  "description": "Workflow-specific metadata stored under extensions['aipe.workflows.dab'] of a Core v0.1 Engineering State. Core does not interpret it; this contract does. Keys are task-derived: analytic_sps, simulation_<task_id_with_underscores>, magnetics_design, semiconductor_screening, control_baseline, thermal_design, fem_transformer_window, fem_heatsink, cad_transformer, cad_heatsink, pcb_checks.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -551,6 +551,34 @@
             "string",
             "null"
           ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "pcb_checks": {
+      "type": "object",
+      "required": [
+        "totals",
+        "all_clean"
+      ],
+      "properties": {
+        "totals": {
+          "type": "object"
+        },
+        "all_clean": {
+          "type": "boolean"
+        },
+        "kicad_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "boards": {
+          "type": "object"
+        },
+        "sources": {
+          "type": "object"
         }
       },
       "additionalProperties": true

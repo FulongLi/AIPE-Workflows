@@ -18,15 +18,16 @@ number is quoted that was not produced by an executed tool.
 | AIPE-Magnetics-Database | `design_transformer_from_waveforms` (harmonics, flux integral, iGSE, per-layer Dowell with litz strand sub-layers, 1-D leakage, external inductance split, thermal network, ranked integer-turn candidates), material measurement requests, Core state export, CLI/MCP/plugin updates | 1044 tests |
 | AIPE-Field-Simulation (new package) | `aipe_fieldsim`: Gmsh/Elmer tool qualification, meshing, SIF generation, execution, extraction, convergence tables, benchmarks (coaxial magnetostatics, fin conduction, slab, skin), parametrised transformer-window and plate-fin heat-sink models, provenance-carrying case files, CLI `aipe-fieldsim` | 37 tests |
 | AIPE-CAD-Agent (first commit) | `aipe_cad`: SI-unit JSON parameter layer with derived rules and schemas, FreeCAD console workers for transformer, heat sink, cold plate and assembly (FCStd/STEP, metadata, mesh hints, interference/fit/clearance checks, renders), CLI `aipe-cad`, executed DAB example | 63 tests |
-| AIPE-PCB-Agent | `automation/dab_v1` pipeline and `examples/dab-10kw` (primary-power, secondary-power, control boards, requirements, verification, manufacturing) — see section B for the execution evidence and section F for the open items | see section B |
-| AIPE-Registry | Sources: `aipe.workflows`, `aipe.doc`, `aipe.field-simulation`, `aipe.cad-agent` added; `aipe.sketch` repointed to AIPE-Sketcher at a pinned commit; snapshots refreshed; index rebuilt (15 capabilities) | 43 tests, validator warnings only (uncommitted snapshots, pre-existing licence notes) |
+| AIPE-PCB-Agent | `automation/dab_v1` requirement-driven generator (models, insulation rules, footprints, hierarchical schematics, floorplan, pairwise grid routing, ERC/DRC verification, provenance, report), `examples/dab-10kw` (three KiCad 10 projects, requirement/provenance files, design and routing records, hashed manufacturing exports), `docs/dab-10kw` architecture review (gate drive, UVLO/DESAT/OV, sensing, isolation, grounding, latch, aux supplies, comms, open items R-01…R-17), `aipe.yaml` | 392 tests (20 new) |
+| AIPE-Registry | Sources: `aipe.workflows`, `aipe.doc`, `aipe.field-simulation`, `aipe.cad-agent`, `aipe.pcb-agent` added; `aipe.sketch` repointed to AIPE-Sketcher at a pinned commit; snapshots refreshed; index rebuilt (16 capabilities) | 43 tests, validator warnings only (uncommitted snapshots, pre-existing licence notes) |
 | AIPE-Doc | `aipe.yaml` manifest and `templates/report-engineering.html` | `check.mjs` |
-| Spirit-Connect-AIPE-Labs | Registry mirror resynced, hub cards for Workflows (updated), Field-Simulation and CAD-Agent, DAB workflow pages (EN/ZH) rewritten with the executed results | 60 checks |
+| Spirit-Connect-AIPE-Labs | Registry mirror resynced, hub cards for Workflows (updated), Field-Simulation, CAD-Agent and PCB-Agent (replacing the placeholder), DAB workflow pages (EN/ZH) rewritten with the executed results | 60 checks |
 
 ## B. Execution evidence (reference run `runs/wf-dab-10kw-first`, review package `examples/dab-10kw/results/`)
 
-Thirteen tasks completed; twelve Core-valid Engineering State versions; verification gates analytical, software,
-circuit_simulation, field_simulation and cad_pcb at `pass`, the three human gates at `not_run`.
+Fourteen tasks executed: thirteen completed, the optional `pcb-erc-drc` task failed on purpose (boards not clean);
+twelve Core-valid Engineering State versions; gates analytical, software, circuit_simulation and field_simulation at
+`pass`, `cad_pcb` at `fail` (FreeCAD tasks passed, PCB checks did not), the three human gates at `not_run`.
 
 | Stage | Tool (version) | Executed result | Cross-check |
 | --- | --- | --- | --- |
@@ -43,9 +44,10 @@ circuit_simulation, field_simulation and cad_pcb at `pass`, the three human gate
 | Heat-sink CAD | FreeCAD 1.1.4 | 19 bodies, sink 0.275 kg, no interference | −1.3 % vs correlation mass |
 | Iterations (parent run) | engine | it01 leakage split (accepted), it02 n = 2.1 → 21.26°, peak current +14 % (accepted) | `iterations.json` |
 
-PCB (AIPE-PCB-Agent): three KiCad 10 boards for the DAB (primary power, secondary power, control) with ERC/DRC were
-being generated and routed by the PCB agent at the time of this report; their status is recorded in section F and in
-`repos/AIPE-PCB-Agent/examples/dab-10kw/verification/` once the routing runs complete.
+| PCB ERC/DRC (`pcb-erc-drc` on AIPE-PCB-Agent boards) | kicad-cli 10.0.6 | ERC 0 on all boards; DRC errors 22 / 2 / 0 (primary / secondary / control), unconnected items 82 / 81 / 499 (control placed only), schematic parity 0 | task failed by design; reports in `examples/dab-10kw/results/pcb-erc-drc/` |
+
+PCB (AIPE-PCB-Agent): the three KiCad 10 boards exist with hierarchical schematics, insulation rules, placement, two
+routing iterations on the power boards and hashed manufacturing exports; routing is unfinished (section F).
 
 ## C. Integration results
 
@@ -85,8 +87,10 @@ thermal conductivity, B-H curve). None executed.
 - CFD (OpenFOAM) is not installable on this Windows host through winget; a job specification exists
   (`repos/AIPE-Field-Simulation/docs/jobs/openfoam-heatsink-cfd-job.md`); film coefficients remain correlation inputs.
 - Level 3 (manufacturer SPICE models) not executed: vendor models are not redistributable.
-- PCB stage not yet a workflow task; AIPE-PCB-Agent routing runs were still executing when this report was written
-  (see the PCB section of the final message and the repository's `examples/dab-10kw/verification/`).
+- PCB routing unfinished: power boards about 80 open connections each (gate-driver bias and sense fan-outs, AC_B pour
+  continuity), 20 clearance errors from 0.5 mm pre-routed capacitor stubs against the 4.0 mm bus rule (generator fix in
+  place, not re-run), control board placed but not routed (router stopped at the session cut-off). The `cad_pcb` gate is
+  therefore `fail`; the next routing pass is a re-run of `automation/dab_v1` followed by the `pcb-erc-drc` task.
 - Pull requests are drafts against FulongLi repositories from the MrCoconut616 forks (read-only access to upstream
   except AIPE-Design-Agent); nothing is merged.
 
@@ -129,7 +133,7 @@ Re-running reuses every unchanged checkpoint; `--force` re-executes everything (
 | HeatSinkOptimisation | b4d3ddb | https://github.com/FulongLi/HeatSinkOptimisation/pull/1 |
 | Spirit-Connect-AIPE-Labs | 1d4c068 | https://github.com/FulongLi/Spirit-Connect-AIPE-Labs/pull/20 |
 | AIPE-CAD-Agent | 72285a6 (first commit) | no PR possible: upstream has no commits; staged at https://github.com/MrCoconut616/AIPE-CAD-Agent |
-| AIPE-PCB-Agent | pending the agent's routing runs | to follow |
+| AIPE-PCB-Agent | 641d478 | https://github.com/FulongLi/AIPE-PCB-Agent/pull/7 |
 
 Upstream access is read-only for MrCoconut616 except AIPE-Design-Agent; every PR is a draft from the fork and no
 branch was merged. The Registry PR pins the sibling branches as `pending_pr`; re-pin to the merged commits after review.

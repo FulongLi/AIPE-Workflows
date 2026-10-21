@@ -100,7 +100,7 @@
         {
           "errors": [],
           "message": "",
-          "status": "completed",
+          "status": "reused",
           "task": "cad-transformer",
           "verification": {
             "build_ok": true,
@@ -114,11 +114,31 @@
             "interference_count": 0,
             "no_hard_failures": true
           }
+        },
+        {
+          "errors": [
+            "boards not clean: ERC errors 0, DRC errors 24, unconnected items {'primary-power': 82, 'secondary-power': 81, 'control': 499}, parity errors 0; boards checked 3/3"
+          ],
+          "message": "boards not clean: ERC errors 0, DRC errors 24, unconnected items {'primary-power': 82, 'secondary-power': 81, 'control': 499}, parity errors 0; boards checked 3/3",
+          "status": "failed",
+          "task": "pcb-erc-drc",
+          "verification": {
+            "all_boards_checked": true,
+            "all_clean": false,
+            "boards_checked": 3,
+            "boards_requested": 3,
+            "drc_errors": 24,
+            "drc_warnings": 70,
+            "erc_errors": 0,
+            "erc_warnings": 0,
+            "schematic_parity_errors": 0,
+            "unconnected_items": 662
+          }
         }
       ],
       "gate": "cad_pcb",
       "notes": [],
-      "status": "pass"
+      "status": "fail"
     },
     "circuit_simulation": {
       "checks": [

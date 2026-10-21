@@ -7,7 +7,7 @@ description: >
   Requirements -> analytical SPS design -> executed ngspice switching simulation (Levels 1 and 2) with
   waveform analysis -> magnetics design, device screening and loss evaluation, control baseline,
   cooling comparison and heat-sink screening -> executed Gmsh/Elmer FEM checks of the transformer
-  window and the heat-sink candidate -> parametric FreeCAD geometry of the transformer and heat sink. Every task declares the Registry capability it needs, the external tools
+  window and the heat-sink candidate -> parametric FreeCAD geometry of the transformer and heat sink -> KiCad ERC/DRC of the AIPE-PCB-Agent boards. Every task declares the Registry capability it needs, the external tools
   it depends on and the verification gate its result belongs to.
 engineering_state:
   schema_version: 0.1.0
@@ -288,4 +288,22 @@ tasks:
     outputs: [candidate_id, bridge, device_part_number, geometry, bbox_m, size_m, volume_m3, mass_kg, mass_by_material_kg, body_count,
               sink_mass_cad_kg, sink_mass_analytical_kg, sink_mass_cad_vs_analytical_relative, check_status, check_summary, clearance,
               step_reimport, analytic_vs_cad, files, warnings]
+    gate: cad_pcb
+
+  - id: pcb-erc-drc
+    description: >
+      Executed KiCad ERC and DRC (with schematic parity) on the three DAB boards generated and routed by AIPE-PCB-Agent
+      (primary power, secondary power, control). The task only checks; it fails with the counts when any board has ERC/DRC
+      errors, unconnected items or parity errors, so the cad_pcb gate is never shown as passed with unrouted connections.
+    capability: native-erc-drc-verification
+    adapter: aipe_workflows.adapters.pcb_agent:KicadBoardChecksTask
+    depends_on: [requirements]
+    tools: [kicad-cli]
+    optional: true
+    inputs:
+      requirements: $task.requirements.requirements
+    parameters:
+      example_dir: examples/dab-10kw
+      timeout_s: 900
+    outputs: [boards, sources, totals, all_clean, kicad_version, pcb_agent_verification_records, example_dir]
     gate: cad_pcb

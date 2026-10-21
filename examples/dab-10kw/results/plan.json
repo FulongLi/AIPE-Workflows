@@ -1,11 +1,12 @@
 {
-  "created_at": "2026-10-21T06:41:37Z",
+  "created_at": "2026-10-21T07:26:06Z",
   "levels": [
     [
       "requirements"
     ],
     [
-      "analytic-sps"
+      "analytic-sps",
+      "pcb-erc-drc"
     ],
     [
       "circuit-sim-level1",
@@ -39,6 +40,7 @@
     "magnetics-transformer-design",
     "cad-transformer",
     "fem-transformer-window",
+    "pcb-erc-drc",
     "semiconductor-screening",
     "thermal-cooling-design",
     "cad-heatsink",
@@ -329,14 +331,14 @@
       "id": "cad-transformer",
       "optional": false,
       "previous": {
-        "attempts": 2,
+        "attempts": 3,
         "envelope_path": "runs\\wf-dab-10kw-first\\tasks\\cad-transformer\\envelope.json",
-        "finished_at": "2026-10-21T06:39:13Z",
+        "finished_at": "2026-10-21T06:41:57Z",
         "input_hash": "d931444ce3475ac19d7fd5d78b60728f68d7389e5cbc9208712bce23db96e740",
-        "message": "state proposal rejected: proposed Engineering State rejected by Core validator: Failed checks require overall validation status failed",
-        "started_at": "2026-10-21T06:38:52Z",
-        "state_version_after": null,
-        "status": "failed",
+        "message": "",
+        "started_at": "2026-10-21T06:41:37Z",
+        "state_version_after": 7,
+        "status": "completed",
         "task_id": "cad-transformer"
       },
       "registry": {
@@ -375,7 +377,7 @@
         "input_hash": "6ee85a87103012f1cc6fbb5ae4b8ad900234e8743447013d36fbb080b318991c",
         "message": "",
         "started_at": "2026-10-21T06:36:17Z",
-        "state_version_after": 7,
+        "state_version_after": 8,
         "status": "reused",
         "task_id": "fem-transformer-window"
       },
@@ -390,6 +392,28 @@
       "tools": [
         "gmsh",
         "elmer"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.pcb_agent:KicadBoardChecksTask",
+      "adapter_info": {
+        "id": "aipe.pcb-agent.kicad-erc-drc",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "pcb-erc-drc-verification",
+      "capability_registered": false,
+      "depends_on": [
+        "requirements"
+      ],
+      "gate": "cad_pcb",
+      "id": "pcb-erc-drc",
+      "optional": true,
+      "previous": null,
+      "registry": null,
+      "runnable": true,
+      "tools": [
+        "kicad-cli"
       ]
     },
     {
@@ -415,7 +439,7 @@
         "input_hash": "6228a0998fefc64a5860f83014643c151d3b57d51564ef56f58b78aa8ee1f18f",
         "message": "",
         "started_at": "2026-10-21T06:29:59Z",
-        "state_version_after": 8,
+        "state_version_after": 9,
         "status": "reused",
         "task_id": "semiconductor-screening"
       },
@@ -452,7 +476,7 @@
         "input_hash": "800a2b6c119d56c39a76d6dd4154e801c354ef85c84d8aacc6f419630c6e3f60",
         "message": "",
         "started_at": "2026-10-21T06:36:20Z",
-        "state_version_after": 9,
+        "state_version_after": 10,
         "status": "reused",
         "task_id": "thermal-cooling-design"
       },
@@ -490,7 +514,7 @@
         "input_hash": "cf3403b1e8de46c6d3c4dc82bed4ec04c3630753f28f3cddc4fc3c53d044cfe9",
         "message": "",
         "started_at": "2026-10-21T06:36:40Z",
-        "state_version_after": 10,
+        "state_version_after": 11,
         "status": "reused",
         "task_id": "cad-heatsink"
       },
@@ -530,7 +554,7 @@
         "input_hash": "14abe728c3c31e036ec485d38eba9d1c79d0e5f5334a49404ca92e3167d05072",
         "message": "",
         "started_at": "2026-10-21T06:36:43Z",
-        "state_version_after": 11,
+        "state_version_after": 12,
         "status": "reused",
         "task_id": "fem-heatsink"
       },

@@ -4051,84 +4051,84 @@
         "version": 0
       },
       {
-        "created_at": "2026-10-21T06:41:37Z",
+        "created_at": "2026-10-21T07:26:06Z",
         "path": "runs\\wf-dab-10kw-first\\state\\state-c01-001.json",
         "sha256": "0bb39c7e9b71a19529f8877643f22444304cbab9916c3935666592dc6d08cd0d",
         "task_id": "analytic-sps",
         "version": 1
       },
       {
-        "created_at": "2026-10-21T06:41:37Z",
+        "created_at": "2026-10-21T07:26:06Z",
         "path": "runs\\wf-dab-10kw-first\\state\\state-c01-002.json",
         "sha256": "38d28350b4092c25ba4704f0ba1dd5e17bff5536a81cdd363a22ed4a22721856",
         "task_id": "circuit-sim-level1",
         "version": 2
       },
       {
-        "created_at": "2026-10-21T06:41:37Z",
+        "created_at": "2026-10-21T07:26:06Z",
         "path": "runs\\wf-dab-10kw-first\\state\\state-c01-003.json",
         "sha256": "7ddf781e0b9df560d3d9ac9062e2c39527fe2ed32635c045f76a49332a6abe92",
         "task_id": "circuit-sim-level1-convergence",
         "version": 3
       },
       {
-        "created_at": "2026-10-21T06:41:37Z",
+        "created_at": "2026-10-21T07:26:06Z",
         "path": "runs\\wf-dab-10kw-first\\state\\state-c02-004.json",
         "sha256": "ec7604cdd5761c0d05d44d129043cf04b8df3030e7dd67ae72e4ffc4e53a6081",
         "task_id": "circuit-sim-level2",
         "version": 4
       },
       {
-        "created_at": "2026-10-21T06:41:37Z",
+        "created_at": "2026-10-21T07:26:06Z",
         "path": "runs\\wf-dab-10kw-first\\state\\state-c02-005.json",
         "sha256": "6628f3a6c68cdb07cbcd5689199b21d853312d8a2446ead84a0b8762a3db1e62",
         "task_id": "control-baseline",
         "version": 5
       },
       {
-        "created_at": "2026-10-21T06:41:37Z",
+        "created_at": "2026-10-21T07:26:06Z",
         "path": "runs\\wf-dab-10kw-first\\state\\state-c02-006.json",
         "sha256": "c713d6b5bba0319c71b1611ecc984645637060810d3ad18c0e95e97fcd9dee96",
         "task_id": "magnetics-transformer-design",
         "version": 6
       },
       {
-        "created_at": "2026-10-21T06:41:57Z",
+        "created_at": "2026-10-21T07:26:06Z",
         "path": "runs\\wf-dab-10kw-first\\state\\state-c02-007.json",
         "sha256": "3d6352c199c9782140faa0a9aeede19ea0fc4e932ad6b95697a4e88a19c7613e",
         "task_id": "cad-transformer",
         "version": 7
       },
       {
-        "created_at": "2026-10-21T06:41:58Z",
+        "created_at": "2026-10-21T07:26:06Z",
         "path": "runs\\wf-dab-10kw-first\\state\\state-c02-008.json",
         "sha256": "6de32a5c547308842fd4cf7abb3496945bdaf20c717864fbc7bba95ef9c15e0b",
         "task_id": "fem-transformer-window",
         "version": 8
       },
       {
-        "created_at": "2026-10-21T06:41:58Z",
+        "created_at": "2026-10-21T07:26:14Z",
         "path": "runs\\wf-dab-10kw-first\\state\\state-c02-009.json",
         "sha256": "1c303a54753735d57aa7b42b1a3573c72846421c053a6066a51151be44ca6818",
         "task_id": "semiconductor-screening",
         "version": 9
       },
       {
-        "created_at": "2026-10-21T06:41:58Z",
+        "created_at": "2026-10-21T07:26:14Z",
         "path": "runs\\wf-dab-10kw-first\\state\\state-c02-010.json",
         "sha256": "a5e185b511d3d7a035565727cd5fa57b5406607cc5f96660dd8ea1e11ac929c2",
         "task_id": "thermal-cooling-design",
         "version": 10
       },
       {
-        "created_at": "2026-10-21T06:41:58Z",
+        "created_at": "2026-10-21T07:26:14Z",
         "path": "runs\\wf-dab-10kw-first\\state\\state-c02-011.json",
         "sha256": "6217ea3058dc6246476f3d4afd847596d4edfb71a0ee2e69943a44cf04d0cfd5",
         "task_id": "cad-heatsink",
         "version": 11
       },
       {
-        "created_at": "2026-10-21T06:41:58Z",
+        "created_at": "2026-10-21T07:26:14Z",
         "path": "runs\\wf-dab-10kw-first\\state\\state-c02-012.json",
         "sha256": "db01aece94849f357bd77c76426f1e66520401edc18e05093759e61552f7c4ea",
         "task_id": "fem-heatsink",
@@ -4218,7 +4218,12 @@
       }
     }
   },
-  "failed_items": [],
+  "failed_items": [
+    {
+      "reason": "boards not clean: ERC errors 0, DRC errors 24, unconnected items {'primary-power': 82, 'secondary-power': 81, 'control': 499}, parity errors 0; boards checked 3/3",
+      "task": "pcb-erc-drc"
+    }
+  ],
   "figures": [
     {
       "path": "figures/cad-heatsink-dab_heatsink.png",
@@ -4315,8 +4320,8 @@
     "created_at": "2026-10-21T05:15:09Z",
     "run_id": "wf-dab-10kw-first",
     "spec_sha256": "d38c34a8afa2a50c88aa55099101504ef078729bcb6bf5c87fd04e0bfefa2e68",
-    "status": "completed",
-    "updated_at": "2026-10-21T06:41:58Z",
+    "status": "failed",
+    "updated_at": "2026-10-21T07:26:14Z",
     "workflow_id": "aipe.workflow.converter-dab"
   },
   "schema": "aipe-workflows-report/0.1",
@@ -4968,7 +4973,7 @@
           }
         ]
       },
-      "status": "completed",
+      "status": "reused",
       "tool": {
         "id": "tool.freecad",
         "name": "FreeCAD (console) via aipe-cad",
@@ -8112,6 +8117,260 @@
         "feasible_candidates": 12
       }
     },
+    "pcb-erc-drc": {
+      "artifacts": [
+        {
+          "description": "primary-power ERC report (kicad-cli, JSON)",
+          "media_type": "application/json",
+          "role": "erc_report",
+          "sha256": "499c086a0d4ab058d91fe79d0b74349bc1beb9d3b120d0468599135ecbbbe5b3",
+          "uri": "tasks/pcb-erc-drc/erc-primary-power.json"
+        },
+        {
+          "description": "primary-power DRC report with schematic parity (kicad-cli, JSON)",
+          "media_type": "application/json",
+          "role": "drc_report",
+          "sha256": "84aaede982f75ca750ba05343623a88f10f1a1a57864c9f648e024683e7b2c06",
+          "uri": "tasks/pcb-erc-drc/drc-primary-power.json"
+        },
+        {
+          "description": "secondary-power ERC report (kicad-cli, JSON)",
+          "media_type": "application/json",
+          "role": "erc_report",
+          "sha256": "c5a0b5956de24eb6a105005597da98771974db9fc31efc5a1d35edd9804e5c79",
+          "uri": "tasks/pcb-erc-drc/erc-secondary-power.json"
+        },
+        {
+          "description": "secondary-power DRC report with schematic parity (kicad-cli, JSON)",
+          "media_type": "application/json",
+          "role": "drc_report",
+          "sha256": "06498fcfa140b0ccaf3a6db662e1f2d04446f2b1921218135a95357f51f521e3",
+          "uri": "tasks/pcb-erc-drc/drc-secondary-power.json"
+        },
+        {
+          "description": "control ERC report (kicad-cli, JSON)",
+          "media_type": "application/json",
+          "role": "erc_report",
+          "sha256": "071dc716779730665b209c46e0669fe85cee46d84a528c5d8ffd2617107f343b",
+          "uri": "tasks/pcb-erc-drc/erc-control.json"
+        },
+        {
+          "description": "control DRC report with schematic parity (kicad-cli, JSON)",
+          "media_type": "application/json",
+          "role": "drc_report",
+          "sha256": "022319ec20607a5193947a89b5659ba451c7b88bf8da70be2a290765a7859e63",
+          "uri": "tasks/pcb-erc-drc/drc-control.json"
+        },
+        {
+          "description": "AIPE-PCB-Agent verification record summary_control.json",
+          "media_type": "application/json",
+          "role": "pcb_verification_record",
+          "sha256": "0d98a0dd3c2ea7121af8c601b2805b2c74625c5890946ca63d8e5f8946b8ce37",
+          "uri": "D:/Cursor Workspace/AIPE-Full-Ecosystem-Integration/repos/AIPE-PCB-Agent/examples/dab-10kw/verification/summary_control.json"
+        },
+        {
+          "description": "AIPE-PCB-Agent verification record summary_primary-power.json",
+          "media_type": "application/json",
+          "role": "pcb_verification_record",
+          "sha256": "2767aef7e1a131358ad5e3639c33ac5d7304e3cf4ade2b8d4efa23929aae9a6d",
+          "uri": "D:/Cursor Workspace/AIPE-Full-Ecosystem-Integration/repos/AIPE-PCB-Agent/examples/dab-10kw/verification/summary_primary-power.json"
+        },
+        {
+          "description": "AIPE-PCB-Agent verification record summary_secondary-power.json",
+          "media_type": "application/json",
+          "role": "pcb_verification_record",
+          "sha256": "a9dbf1e07b85f244808353ebb0e3a68bc55a1b8f847089d3961089759fcb4384",
+          "uri": "D:/Cursor Workspace/AIPE-Full-Ecosystem-Integration/repos/AIPE-PCB-Agent/examples/dab-10kw/verification/summary_secondary-power.json"
+        }
+      ],
+      "diagnostics": [
+        {
+          "code": "pcb-checks",
+          "message": "boards not clean: ERC errors 0, DRC errors 24, unconnected items {'primary-power': 82, 'secondary-power': 81, 'control': 499}, parity errors 0; boards checked 3/3",
+          "severity": "error"
+        }
+      ],
+      "message": "boards not clean: ERC errors 0, DRC errors 24, unconnected items {'primary-power': 82, 'secondary-power': 81, 'control': 499}, parity errors 0; boards checked 3/3",
+      "model": {
+        "id": "kicad-erc-drc",
+        "validity_range": "electrical and design rule checks against the project's own rule set; no electrical, thermal or EMC performance claim; board generation and routing are AIPE-PCB-Agent's, not this task's",
+        "version": "10.0.6"
+      },
+      "outputs": {
+        "all_clean": false,
+        "boards": {
+          "control": {
+            "clean": false,
+            "drc": {
+              "kicad_version": "10.0.6",
+              "schematic_parity": {
+                "errors": 0,
+                "total": 0,
+                "types": {},
+                "warnings": 0
+              },
+              "unconnected_items": {
+                "errors": 499,
+                "total": 499,
+                "types": {
+                  "unconnected_items": 499
+                },
+                "warnings": 0
+              },
+              "violations": {
+                "errors": 0,
+                "total": 0,
+                "types": {},
+                "warnings": 0
+              }
+            },
+            "erc": {
+              "errors": 0,
+              "excluded": 0,
+              "kicad_version": "10.0.6",
+              "sheets": 8,
+              "total": 0,
+              "types": {},
+              "warnings": 0
+            }
+          },
+          "primary-power": {
+            "clean": false,
+            "drc": {
+              "kicad_version": "10.0.6",
+              "schematic_parity": {
+                "errors": 0,
+                "total": 0,
+                "types": {},
+                "warnings": 0
+              },
+              "unconnected_items": {
+                "errors": 82,
+                "total": 82,
+                "types": {
+                  "unconnected_items": 82
+                },
+                "warnings": 0
+              },
+              "violations": {
+                "errors": 22,
+                "total": 57,
+                "types": {
+                  "clearance": 20,
+                  "hole_clearance": 2,
+                  "track_dangling": 34,
+                  "via_dangling": 1
+                },
+                "warnings": 35
+              }
+            },
+            "erc": {
+              "errors": 0,
+              "excluded": 0,
+              "kicad_version": "10.0.6",
+              "sheets": 8,
+              "total": 0,
+              "types": {},
+              "warnings": 0
+            }
+          },
+          "secondary-power": {
+            "clean": false,
+            "drc": {
+              "kicad_version": "10.0.6",
+              "schematic_parity": {
+                "errors": 0,
+                "total": 0,
+                "types": {},
+                "warnings": 0
+              },
+              "unconnected_items": {
+                "errors": 81,
+                "total": 81,
+                "types": {
+                  "unconnected_items": 81
+                },
+                "warnings": 0
+              },
+              "violations": {
+                "errors": 2,
+                "total": 37,
+                "types": {
+                  "hole_clearance": 2,
+                  "track_dangling": 33,
+                  "via_dangling": 2
+                },
+                "warnings": 35
+              }
+            },
+            "erc": {
+              "errors": 0,
+              "excluded": 0,
+              "kicad_version": "10.0.6",
+              "sheets": 8,
+              "total": 0,
+              "types": {},
+              "warnings": 0
+            }
+          }
+        },
+        "example_dir": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\repos\\AIPE-PCB-Agent\\examples\\dab-10kw",
+        "kicad_version": "10.0.6",
+        "pcb_agent_verification_records": [
+          "summary_control.json",
+          "summary_primary-power.json",
+          "summary_secondary-power.json"
+        ],
+        "sources": {
+          "control": {
+            "pcb": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\repos\\AIPE-PCB-Agent\\examples\\dab-10kw\\control\\dab-control.kicad_pcb",
+            "pcb_sha256": "baffe51c611330f4002c2b1d2b9a2251147340bf4157669314d1b451d29026b5",
+            "schematic": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\repos\\AIPE-PCB-Agent\\examples\\dab-10kw\\control\\dab-control.kicad_sch",
+            "schematic_sha256": "8e94925dc3aad01ad82859d4972db838c297f60a0cd2c6611722fe78ee410614"
+          },
+          "primary-power": {
+            "pcb": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\repos\\AIPE-PCB-Agent\\examples\\dab-10kw\\primary-power\\dab-primary.kicad_pcb",
+            "pcb_sha256": "fd10e2ec8827f09744c8d64f653d97e231071c2998165649e0ee263377ffb7c2",
+            "schematic": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\repos\\AIPE-PCB-Agent\\examples\\dab-10kw\\primary-power\\dab-primary.kicad_sch",
+            "schematic_sha256": "2d2f63fc3fe94991cd2e401eb76fc12b882dfbcfc7cf027631890b1bc46dced5"
+          },
+          "secondary-power": {
+            "pcb": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\repos\\AIPE-PCB-Agent\\examples\\dab-10kw\\secondary-power\\dab-secondary.kicad_pcb",
+            "pcb_sha256": "950f865e72268c6c4be1fe4fb9da2d4090c44a4d65fe06fdcebf74a9ab46aa9c",
+            "schematic": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\repos\\AIPE-PCB-Agent\\examples\\dab-10kw\\secondary-power\\dab-secondary.kicad_sch",
+            "schematic_sha256": "26e357184b77e13ad72d6e4dfb5299b5cd3e4965fb06d0d729cc37f820cbba54"
+          }
+        },
+        "totals": {
+          "boards_checked": 3,
+          "boards_requested": 3,
+          "drc_errors": 24,
+          "drc_warnings": 70,
+          "erc_errors": 0,
+          "erc_warnings": 0,
+          "schematic_parity_errors": 0,
+          "unconnected_items": 662
+        }
+      },
+      "status": "failed",
+      "tool": {
+        "id": "tool.kicad-cli",
+        "name": "KiCad command line (ERC/DRC)",
+        "version": "10.0.6"
+      },
+      "verification": {
+        "all_boards_checked": true,
+        "all_clean": false,
+        "boards_checked": 3,
+        "boards_requested": 3,
+        "drc_errors": 24,
+        "drc_warnings": 70,
+        "erc_errors": 0,
+        "erc_warnings": 0,
+        "schematic_parity_errors": 0,
+        "unconnected_items": 662
+      }
+    },
     "requirements": {
       "artifacts": [
         {
@@ -10126,7 +10385,7 @@
           {
             "errors": [],
             "message": "",
-            "status": "completed",
+            "status": "reused",
             "task": "cad-transformer",
             "verification": {
               "build_ok": true,
@@ -10140,11 +10399,31 @@
               "interference_count": 0,
               "no_hard_failures": true
             }
+          },
+          {
+            "errors": [
+              "boards not clean: ERC errors 0, DRC errors 24, unconnected items {'primary-power': 82, 'secondary-power': 81, 'control': 499}, parity errors 0; boards checked 3/3"
+            ],
+            "message": "boards not clean: ERC errors 0, DRC errors 24, unconnected items {'primary-power': 82, 'secondary-power': 81, 'control': 499}, parity errors 0; boards checked 3/3",
+            "status": "failed",
+            "task": "pcb-erc-drc",
+            "verification": {
+              "all_boards_checked": true,
+              "all_clean": false,
+              "boards_checked": 3,
+              "boards_requested": 3,
+              "drc_errors": 24,
+              "drc_warnings": 70,
+              "erc_errors": 0,
+              "erc_warnings": 0,
+              "schematic_parity_errors": 0,
+              "unconnected_items": 662
+            }
           }
         ],
         "gate": "cad_pcb",
         "notes": [],
-        "status": "pass"
+        "status": "fail"
       },
       "circuit_simulation": {
         "checks": [

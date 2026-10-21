@@ -1,0 +1,452 @@
+{
+  "created_at": "2026-10-21T15:38:06Z",
+  "levels": [
+    [
+      "requirements"
+    ],
+    [
+      "analytic-sps",
+      "pcb-erc-drc"
+    ],
+    [
+      "circuit-sim-level1",
+      "control-baseline"
+    ],
+    [
+      "circuit-sim-level1-convergence",
+      "circuit-sim-level2",
+      "magnetics-transformer-design"
+    ],
+    [
+      "cad-transformer",
+      "fem-transformer-window",
+      "semiconductor-screening"
+    ],
+    [
+      "thermal-cooling-design"
+    ],
+    [
+      "cad-heatsink",
+      "fem-heatsink"
+    ]
+  ],
+  "order": [
+    "requirements",
+    "analytic-sps",
+    "circuit-sim-level1",
+    "circuit-sim-level1-convergence",
+    "circuit-sim-level2",
+    "control-baseline",
+    "magnetics-transformer-design",
+    "cad-transformer",
+    "fem-transformer-window",
+    "pcb-erc-drc",
+    "semiconductor-screening",
+    "thermal-cooling-design",
+    "cad-heatsink",
+    "fem-heatsink"
+  ],
+  "run_id": "specification-20261021T153802-25d9a4",
+  "tasks": [
+    {
+      "adapter": "aipe_workflows.adapters.requirements:RequirementsTask",
+      "adapter_info": {
+        "id": "aipe.workflows.requirements",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "engineering-state-schema",
+      "capability_registered": true,
+      "depends_on": [],
+      "gate": "software",
+      "id": "requirements",
+      "optional": false,
+      "previous": null,
+      "registry": {
+        "id": "aipe.core",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-Core",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": []
+    },
+    {
+      "adapter": "aipe_workflows.adapters.electrical_design:AnalyticSpsTask",
+      "adapter_info": {
+        "id": "aipe.electrical-design.dab-sps-analysis",
+        "version": "0.2.0"
+      },
+      "blockers": [],
+      "capability": "dab-sps-analysis",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements"
+      ],
+      "gate": "analytical",
+      "id": "analytic-sps",
+      "optional": false,
+      "previous": null,
+      "registry": {
+        "id": "aipe.design-agent",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-Design-Agent",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": []
+    },
+    {
+      "adapter": "aipe_workflows.adapters.simulation_skills:DabNgspiceTask",
+      "adapter_info": {
+        "id": "aipe.simulation-skills.dab-ngspice",
+        "version": "0.1.1"
+      },
+      "blockers": [],
+      "capability": "switching-circuit-simulation",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "analytic-sps"
+      ],
+      "gate": "circuit_simulation",
+      "id": "circuit-sim-level1",
+      "optional": false,
+      "previous": null,
+      "registry": {
+        "id": "aipe.simulation-skills",
+        "maturity": "usable",
+        "repository": "https://github.com/FulongLi/AIPE-Simulation-Skills",
+        "status": "active",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "ngspice"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.simulation_skills:DabNgspiceTask",
+      "adapter_info": {
+        "id": "aipe.simulation-skills.dab-ngspice",
+        "version": "0.1.1"
+      },
+      "blockers": [],
+      "capability": "switching-circuit-simulation",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "analytic-sps",
+        "circuit-sim-level1"
+      ],
+      "gate": "circuit_simulation",
+      "id": "circuit-sim-level1-convergence",
+      "optional": true,
+      "previous": null,
+      "registry": {
+        "id": "aipe.simulation-skills",
+        "maturity": "usable",
+        "repository": "https://github.com/FulongLi/AIPE-Simulation-Skills",
+        "status": "active",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "ngspice"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.simulation_skills:DabNgspiceTask",
+      "adapter_info": {
+        "id": "aipe.simulation-skills.dab-ngspice",
+        "version": "0.1.1"
+      },
+      "blockers": [],
+      "capability": "switching-circuit-simulation",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "analytic-sps",
+        "circuit-sim-level1"
+      ],
+      "gate": "circuit_simulation",
+      "id": "circuit-sim-level2",
+      "optional": false,
+      "previous": null,
+      "registry": {
+        "id": "aipe.simulation-skills",
+        "maturity": "usable",
+        "repository": "https://github.com/FulongLi/AIPE-Simulation-Skills",
+        "status": "active",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "ngspice"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.control_baseline:SpsControlBaselineTask",
+      "adapter_info": {
+        "id": "aipe.simulation-skills.sps-control-baseline",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "averaged-control-analysis",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "analytic-sps"
+      ],
+      "gate": "analytical",
+      "id": "control-baseline",
+      "optional": false,
+      "previous": null,
+      "registry": {
+        "id": "aipe.simulation-skills",
+        "maturity": "usable",
+        "repository": "https://github.com/FulongLi/AIPE-Simulation-Skills",
+        "status": "active",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "ngspice"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.magnetics_database:WaveformInformedTransformerTask",
+      "adapter_info": {
+        "id": "aipe.magnetics-database.waveform-informed-transformer-design",
+        "version": "0.1.2"
+      },
+      "blockers": [],
+      "capability": "magnetics-waveform-informed-transformer-design",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "analytic-sps",
+        "circuit-sim-level1"
+      ],
+      "gate": "analytical",
+      "id": "magnetics-transformer-design",
+      "optional": false,
+      "previous": null,
+      "registry": {
+        "id": "aipe.magnetics-database",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-Magnetics-Database",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": []
+    },
+    {
+      "adapter": "aipe_workflows.adapters.cad_agent:TransformerCadTask",
+      "adapter_info": {
+        "id": "aipe.cad-agent.transformer",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "parametric-transformer-cad",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "magnetics-transformer-design"
+      ],
+      "gate": "cad_pcb",
+      "id": "cad-transformer",
+      "optional": false,
+      "previous": null,
+      "registry": {
+        "id": "aipe.cad-agent",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-CAD-Agent",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "freecad"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.field_simulation:TransformerLeakageFemTask",
+      "adapter_info": {
+        "id": "aipe.field-simulation.transformer-window-2d",
+        "version": "0.1.1"
+      },
+      "blockers": [],
+      "capability": "fem-magnetostatics-2d",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "circuit-sim-level1",
+        "magnetics-transformer-design"
+      ],
+      "gate": "field_simulation",
+      "id": "fem-transformer-window",
+      "optional": false,
+      "previous": null,
+      "registry": {
+        "id": "aipe.field-simulation",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-Field-Simulation",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "gmsh",
+        "elmer"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.pcb_agent:KicadBoardChecksTask",
+      "adapter_info": {
+        "id": "aipe.pcb-agent.kicad-erc-drc",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "native-erc-drc-verification",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements"
+      ],
+      "gate": "cad_pcb",
+      "id": "pcb-erc-drc",
+      "optional": true,
+      "previous": null,
+      "registry": {
+        "id": "aipe.pcb-agent",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-PCB-Agent",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "kicad-cli"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.semiconductor_database:DabDeviceScreeningTask",
+      "adapter_info": {
+        "id": "aipe.semiconductor-database.dab-screening",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "semiconductor-dab-screening",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "circuit-sim-level2"
+      ],
+      "gate": "analytical",
+      "id": "semiconductor-screening",
+      "optional": false,
+      "previous": null,
+      "registry": {
+        "id": "aipe.semiconductor-database",
+        "maturity": "usable",
+        "repository": "https://github.com/FulongLi/AIPE-Semiconductor-Database",
+        "status": "active",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": []
+    },
+    {
+      "adapter": "aipe_workflows.adapters.thermal_design:CoolingDesignTask",
+      "adapter_info": {
+        "id": "aipe.thermal-design.cooling-screening",
+        "version": "0.2.0"
+      },
+      "blockers": [],
+      "capability": "cooling-concept-comparison",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "semiconductor-screening"
+      ],
+      "gate": "analytical",
+      "id": "thermal-cooling-design",
+      "optional": false,
+      "previous": null,
+      "registry": {
+        "id": "aipe.thermal-design",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-Thermal-Design",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": []
+    },
+    {
+      "adapter": "aipe_workflows.adapters.cad_agent:HeatSinkCadTask",
+      "adapter_info": {
+        "id": "aipe.cad-agent.heatsink",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "heat-sink-cad",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "semiconductor-screening",
+        "thermal-cooling-design"
+      ],
+      "gate": "cad_pcb",
+      "id": "cad-heatsink",
+      "optional": false,
+      "previous": null,
+      "registry": {
+        "id": "aipe.cad-agent",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-CAD-Agent",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "freecad"
+      ]
+    },
+    {
+      "adapter": "aipe_workflows.adapters.field_simulation:HeatSinkFemTask",
+      "adapter_info": {
+        "id": "aipe.field-simulation.heatsink-3d",
+        "version": "0.1.0"
+      },
+      "blockers": [],
+      "capability": "fem-thermal-conduction",
+      "capability_registered": true,
+      "depends_on": [
+        "requirements",
+        "semiconductor-screening",
+        "thermal-cooling-design"
+      ],
+      "gate": "field_simulation",
+      "id": "fem-heatsink",
+      "optional": false,
+      "previous": null,
+      "registry": {
+        "id": "aipe.field-simulation",
+        "maturity": "prototype",
+        "repository": "https://github.com/FulongLi/AIPE-Field-Simulation",
+        "status": "experimental",
+        "validation": "tested"
+      },
+      "runnable": true,
+      "tools": [
+        "gmsh",
+        "elmer"
+      ]
+    }
+  ],
+  "workflow": "aipe.workflow.converter-dab"
+}

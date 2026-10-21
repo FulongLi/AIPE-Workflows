@@ -1,0 +1,309 @@
+{
+  "gate_order": [
+    "analytical",
+    "software",
+    "circuit_simulation",
+    "field_simulation",
+    "cad_pcb",
+    "engineering_review",
+    "experimental",
+    "hardware_qualification"
+  ],
+  "gates": {
+    "analytical": {
+      "checks": [
+        {
+          "errors": [],
+          "message": "",
+          "status": "completed",
+          "task": "analytic-sps",
+          "verification": {
+            "power_deviation_from_request_W": 0.0,
+            "power_equals_waveform_integral": true,
+            "series_inductance_split_consistent": true
+          }
+        },
+        {
+          "errors": [],
+          "message": "",
+          "status": "completed",
+          "task": "control-baseline",
+          "verification": {
+            "design_valid": true,
+            "min_phase_margin_deg": 40.0,
+            "phase_margins_ok": true,
+            "plant_verification_max_abs_rel_err_p2": 0.0006836262967396595,
+            "plant_verification_ok": true,
+            "plant_verification_rows": 3,
+            "scenario_results": {
+              "fault": {
+                "as_expected": true,
+                "expected": "trip",
+                "final_mode": "IDLE",
+                "tripped": true
+              },
+              "input_sag": {
+                "as_expected": true,
+                "expected": "trip",
+                "final_mode": "FAULT",
+                "tripped": true
+              },
+              "nominal": {
+                "as_expected": true,
+                "expected": "no_trip",
+                "final_mode": "OFF",
+                "tripped": false
+              }
+            },
+            "scenarios_as_expected": true
+          }
+        },
+        {
+          "errors": [],
+          "message": "",
+          "status": "completed",
+          "task": "magnetics-transformer-design",
+          "verification": {
+            "core_state_export_valid": true,
+            "evaluated_candidates": 35,
+            "external_inductance_consistent": true,
+            "feasible_candidates": 12
+          }
+        },
+        {
+          "errors": [],
+          "message": "",
+          "status": "completed",
+          "task": "semiconductor-screening",
+          "verification": {
+            "loss_evaluation_complete": true,
+            "loss_evaluations": [
+              "primary",
+              "secondary"
+            ],
+            "primary_candidates": 11,
+            "secondary_candidates": 17,
+            "selection_complete": true
+          }
+        },
+        {
+          "errors": [],
+          "message": "",
+          "status": "completed",
+          "task": "thermal-cooling-design",
+          "verification": {
+            "best_option_within_absolute_limit": true,
+            "best_option_within_design_limit": true,
+            "knee_feasible": true,
+            "stage_a_candidates": 8,
+            "stage_a_feasible": 6
+          }
+        }
+      ],
+      "gate": "analytical",
+      "notes": [],
+      "status": "pass"
+    },
+    "cad_pcb": {
+      "checks": [
+        {
+          "errors": [],
+          "message": "",
+          "status": "completed",
+          "task": "cad-heatsink",
+          "verification": {
+            "build_ok": true,
+            "check_status": "review",
+            "no_hard_failures": true,
+            "sink_mass_cad_vs_analytical_relative": -0.012581387336782079
+          }
+        },
+        {
+          "errors": [],
+          "message": "",
+          "status": "completed",
+          "task": "cad-transformer",
+          "verification": {
+            "build_ok": true,
+            "check_status": "review",
+            "clearance_pairs": {
+              "fail": 0,
+              "no_bodies": 0,
+              "pass": 2,
+              "review": 1
+            },
+            "interference_count": 0,
+            "no_hard_failures": true
+          }
+        },
+        {
+          "errors": [
+            "boards not clean: ERC errors 0, DRC errors 0, unconnected items {'primary-power': 26, 'secondary-power': 23, 'control': 24}, parity errors 0; boards checked 3/3"
+          ],
+          "message": "boards not clean: ERC errors 0, DRC errors 0, unconnected items {'primary-power': 26, 'secondary-power': 23, 'control': 24}, parity errors 0; boards checked 3/3",
+          "status": "failed",
+          "task": "pcb-erc-drc",
+          "verification": {
+            "all_boards_checked": true,
+            "all_clean": false,
+            "boards_checked": 3,
+            "boards_requested": 3,
+            "drc_errors": 0,
+            "drc_warnings": 64,
+            "erc_errors": 0,
+            "erc_warnings": 0,
+            "schematic_parity_errors": 0,
+            "unconnected_items": 73
+          }
+        }
+      ],
+      "gate": "cad_pcb",
+      "notes": [],
+      "status": "fail"
+    },
+    "circuit_simulation": {
+      "checks": [
+        {
+          "errors": [],
+          "message": "",
+          "status": "completed",
+          "task": "circuit-sim-level1",
+          "verification": {
+            "comparison_vs_analytic_pass": true,
+            "energy_balance_relative_unaccounted": -6.593971426216536e-05,
+            "half_wave_antisymmetry_error_i_L": 0.0003792696239963659,
+            "n_solver_warnings": 1,
+            "periodic_steady_state": true,
+            "periodicity_error": 1.7534266997027538e-06,
+            "volt_second_relative_imbalance": 0.0050003108409831685
+          }
+        },
+        {
+          "errors": [],
+          "message": "",
+          "status": "completed",
+          "task": "circuit-sim-level1-convergence",
+          "verification": {
+            "comparison_vs_analytic_pass": true,
+            "energy_balance_relative_unaccounted": -6.630832751418647e-05,
+            "half_wave_antisymmetry_error_i_L": 0.00040836727083548254,
+            "n_solver_warnings": 1,
+            "periodic_steady_state": true,
+            "periodicity_error": 1.8785416637666245e-06,
+            "volt_second_relative_imbalance": 0.0012501335639910894
+          }
+        },
+        {
+          "errors": [],
+          "message": "",
+          "status": "completed",
+          "task": "circuit-sim-level2",
+          "verification": {
+            "comparison_vs_analytic_pass": true,
+            "energy_balance_relative_unaccounted": 0.00046889036085260785,
+            "half_wave_antisymmetry_error_i_L": 0.004383048336281384,
+            "n_solver_warnings": 1,
+            "periodic_steady_state": true,
+            "periodicity_error": 0.00017255676813909075,
+            "volt_second_relative_imbalance": 0.0049389766219088685
+          }
+        }
+      ],
+      "gate": "circuit_simulation",
+      "notes": [],
+      "status": "pass"
+    },
+    "engineering_review": {
+      "checks": [],
+      "gate": "engineering_review",
+      "notes": [
+        "no record: requires human review / laboratory measurement / hardware qualification outside this workflow"
+      ],
+      "status": "not_run"
+    },
+    "experimental": {
+      "checks": [],
+      "gate": "experimental",
+      "notes": [
+        "no record: requires human review / laboratory measurement / hardware qualification outside this workflow"
+      ],
+      "status": "not_run"
+    },
+    "field_simulation": {
+      "checks": [
+        {
+          "errors": [],
+          "message": "",
+          "status": "completed",
+          "task": "fem-heatsink",
+          "verification": {
+            "R_th_fem_vs_analytical_relative": 0.08550277483924326,
+            "checks_passed": true,
+            "convergence": [
+              {
+                "elements": 37805,
+                "h_m": 0.003,
+                "level": 0,
+                "nodes": 12454,
+                "value": 332.7092423142
+              },
+              {
+                "elements": 84666,
+                "h_m": 0.002,
+                "level": 1,
+                "nodes": 26820,
+                "value": 332.774631855
+              }
+            ],
+            "energy_balance_ok": true,
+            "status": "executed"
+          }
+        },
+        {
+          "errors": [],
+          "message": "",
+          "status": "completed",
+          "task": "fem-transformer-window",
+          "verification": {
+            "checks_passed": true,
+            "finest_level_relative_change": null,
+            "leakage_fem_vs_magnetics_relative": -0.043507550677350314,
+            "mesh_levels": 2,
+            "status": "executed"
+          }
+        }
+      ],
+      "gate": "field_simulation",
+      "notes": [],
+      "status": "pass"
+    },
+    "hardware_qualification": {
+      "checks": [],
+      "gate": "hardware_qualification",
+      "notes": [
+        "no record: requires human review / laboratory measurement / hardware qualification outside this workflow"
+      ],
+      "status": "not_run"
+    },
+    "software": {
+      "checks": [
+        {
+          "errors": [],
+          "message": "",
+          "status": "completed",
+          "task": "requirements",
+          "verification": {
+            "core_schema_validation": {
+              "errors": [],
+              "passed": true
+            }
+          }
+        }
+      ],
+      "gate": "software",
+      "notes": [],
+      "status": "pass"
+    }
+  },
+  "run_id": "specification-20261021T153802-25d9a4"
+}

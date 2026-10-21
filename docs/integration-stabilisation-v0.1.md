@@ -120,7 +120,11 @@ copper losses (19.1 / 15.9 W), cooling (liquid 63.0, forced 64.3, natural 79.2 �
 0.864 kg with ferrite 0.550 and copper 0.234; sink 0.275 kg vs 0.278 correlation), artifact hashes (verify reports no
 problems) — all recorded in the run directories and `examples/dab-10kw/results/`.
 
-Clean-checkout acceptance (§16): see section J; the executed result is appended there when the run finishes.
+Clean-checkout acceptance (§16, executed 2026-10-21 15:36–15:39 UTC in a fresh workspace from the official repositories):
+every engineering value is identical to the workspace run — 3 415 task-output leaves and 1 798 Engineering-State leaves
+compared, the only differences being the run-specific evidence ids and the PCB counts (the acceptance checked the
+remediated PR #8 boards: DRC errors 0/0/0, unconnected 26/23/24 instead of 499/499/499 seen by the workspace run during
+remediation). Commits, environment and step results in section J.
 
 ## F. PCB status
 
@@ -196,9 +200,13 @@ fork-PR workflow run needs maintainer approval, so the same workflow was exercis
 
 ## J. Reproduction
 
-Clean-checkout acceptance harness: `stabilisation/acceptance/run_acceptance.ps1` with `sources.json` (official
-repositories; PR heads while the stabilisation PRs are open) — clones, fresh venv, `pip install -e` per README,
-`aipe-workflows doctor --qualify`, Core and Registry contract validation, `plan`, `run`, `verify`, `report`.
+Clean-checkout acceptance harness: `tools/acceptance/run_acceptance.ps1` with `sources.json` (official repositories;
+PR heads while the stabilisation PRs are open; the same files live under `stabilisation/acceptance/` in the integration
+workspace) — clones, fresh venv, each README's own install command (`requirements-dev.txt`, `pip install -e .[extras]`),
+`aipe-workflows doctor --qualify`, each repository's documented contract tests (Core `unittest` + example validation,
+Registry `validate.py`, `validate.py --sources`, `build_registry.py --check`, `pytest`), then `plan`, `run` (exit 2
+tolerated and recorded), `verify`, `report`, `status`. Evidence of the executed run:
+`examples/dab-10kw/results/acceptance-2026-10-21/`.
 
 Developer workspace equivalent:
 
@@ -210,4 +218,48 @@ aipe-workflows reconcile runs/dab --apply --checkouts repos      # closes the ma
 aipe-workflows report runs/dab
 ```
 
-Executed acceptance result: appended below when the clean-checkout run completes.
+### Executed acceptance result (2026-10-21, 15:36–15:39 UTC, `D:\aipe-acceptance`, Windows 11, Python 3.10.11)
+
+Sources (cloned from github.com/FulongLi; `ref` = PR head while the PR is open):
+
+| Repository | Commit | Ref |
+| --- | --- | --- |
+| AIPE-Core | 4e664f03 | main |
+| AIPE-Registry | 2b6e35cf | PR #3 head |
+| AIPE-Simulation-Skills | 9a5e6c25 | PR #3 head |
+| AIPE-Electrical-Design | 5d846e3c | PR #3 head |
+| AIPE-Thermal-Design | 2a8f9813 | PR #2 head |
+| AIPE-Semiconductor-Database | 242765f6 | main |
+| AIPE-Magnetics-Database | 46c6afc1 | main |
+| AIPE-Field-Simulation | afc621ef | PR #2 head |
+| AIPE-CAD-Agent | b5445363 | PR #1 head |
+| AIPE-PCB-Agent | bf9ba9c9 | PR #8 head |
+| AIPE-Workflows | 84d1c2d4 | PR #3 head |
+
+Installed from the READMEs into a fresh venv: aipe-workflows 0.1.0, aipe-electrical 0.2.0, aipe-thermal 0.2.0,
+aipe-simulation-skills 0.2.0, aipe-devices 3.1.0, aipe-magnetics 0.2.0, aipe-fieldsim 0.1.0 (`[mesh,plots,dev]`),
+aipe-cad 0.1.0; numpy 2.2.6, scipy 1.15.3, h5py 3.16.0, gmsh 4.15.2, matplotlib 3.10.9, jsonschema 4.25.1. Tools qualified
+by `doctor --qualify` known-answer cases: ngspice 47, KiCad 10.0.6, FreeCAD 1.1.4, Gmsh 4.15.2, Elmer 9.0. Not available
+on the host: OpenFOAM (no CFD), Xyce, LTspice (optional).
+
+| Step (§16) | Result |
+| --- | --- |
+| 1–2 clone, install | 11 repositories; every README install command exit 0 |
+| 3 tool qualification | all five tools found and qualified |
+| 4 Core / Registry contracts | Core `unittest` 23 tests OK, `validate.py examples/dab-10kw/engineering-state.json` OK; Registry `validate.py` and `--sources` mode: 18 manifests, 13 warnings (6 unresolved licences, 6 missing open alternatives, 1 intentional duplicate capability), 0 errors; `build_registry.py --check` in sync; pytest 43 passed |
+| 5 SPS analysis (aipe_electrical 0.2.0) | φ 22.5°, P 10 000 W, I_rms 13.6775 A, I_peak 14.2857 A, P_max 22 857 W, series-inductance split consistent |
+| 6–7 ngspice circuit model (ngspice 47) | Level 1: P2 9 996.8 W, I_rms 13.678 A, periodic steady state, energy balance 6.6e-5; Level 2 (losses, parasitics): P2 9 607.8 W, I_rms 13.30 A, comparison with the analytic model within tolerance; waveforms exported and checked (half-wave antisymmetry, volt-second balance) |
+| 8 semiconductor candidates (aipe_devices 3.1.0) | 11 primary / 17 secondary candidates, loss evaluation complete at 125 °C |
+| 9 magnetics (aipe_magnetics 0.2.0) | 35 candidates evaluated, 12 feasible; E 70/33/32 N87 20:10 litz P-S-P: core loss 19.14 W, copper loss 15.91 W, external inductance 33.45 µH, B_peak 0.146 T (limit 0.273 T) |
+| 10 thermal (aipe_thermal 0.2.0) | 8 Stage A candidates, 6 feasible; best cooling option within design and absolute limits (liquid cold plate) |
+| 11 CAD (FreeCAD 1.1.4 via aipe-cad) | transformer 16 bodies, 0 interferences, clearance pairs 2 pass / 1 review; heat sink 19 bodies, CAD mass vs analytical −1.3 % |
+| 12 FEM (Elmer 9.0 + Gmsh 4.15.2) | window: L_leak 1.483 µH (magnetics 1.551 µH, −4.4 %), L_m 5.18 mH, all checks passed, 2 mesh levels; heat sink: T_max 332.77 K, R_th hotspot 0.562 K/W (analytical 0.518, +8.6 %), energy balance 1.5e-11 |
+| 13–14 feedback and re-run | the reconciliation loop (`reconcile --apply`) was executed on the reference run (child it03, section E); the acceptance run itself is the parent operating point, so its Engineering State matches the workspace parent run leaf for leaf |
+| 15 PCB checks (kicad-cli 10.0.6) | ERC 0/0/0, DRC errors 0/0/0, warnings 18/18/28 (`track_dangling`), unconnected items 26/23/24, parity 0 → task failed by design (optional), gate `cad_pcb` fail |
+| 16 report and ledger | `report.md/html/json` generated; `verify`: no artifact problems, no Engineering-State errors; run status `completed_with_failed_optional` (exit 2) |
+
+Separation of evidence (§16 principles): software tests executed (Core 23, Registry 43, every package installed);
+analytical verification executed; circuit simulation executed (ngspice, three runs); FEM executed (Elmer, two cases with
+mesh levels); CAD geometry checks executed (status "review", no hard failures); PCB ERC/DRC executed (fails on open
+connections); engineering review, experimental validation and hardware qualification **not performed** — the gates are
+`not_run` and nothing in this report claims physical acceptance.

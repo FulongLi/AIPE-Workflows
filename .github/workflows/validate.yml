@@ -1,36 +1,101 @@
 name: Validate AIPE-Workflows
+
 on: [push, pull_request]
+
 permissions:
   contents: read
+
 jobs:
   engine:
+    name: engine tests, workflow contract, Registry validation
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           path: AIPE-Workflows
+
+      # Sibling checkouts used by capability discovery and by the manifest validation. Default branches only.
       - uses: actions/checkout@v4
-        with:
-          repository: FulongLi/AIPE-Core
-          path: AIPE-Core
+        with: { repository: FulongLi/AIPE-Core, path: AIPE-Core }
+      - uses: actions/checkout@v4
+        with: { repository: FulongLi/AIPE-Registry, path: AIPE-Registry }
+      - uses: actions/checkout@v4
+        with: { repository: FulongLi/AIPE-Electrical-Design, path: AIPE-Electrical-Design }
+      - uses: actions/checkout@v4
+        with: { repository: FulongLi/AIPE-Simulation-Skills, path: AIPE-Simulation-Skills }
+      - uses: actions/checkout@v4
+        with: { repository: FulongLi/AIPE-Semiconductor-Database, path: AIPE-Semiconductor-Database }
+      - uses: actions/checkout@v4
+        with: { repository: FulongLi/AIPE-Magnetics-Database, path: AIPE-Magnetics-Database }
+      - uses: actions/checkout@v4
+        with: { repository: FulongLi/AIPE-Field-Simulation, path: AIPE-Field-Simulation }
+      - uses: actions/checkout@v4
+        with: { repository: FulongLi/AIPE-CAD-Agent, path: AIPE-CAD-Agent }
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install
-        working-directory: AIPE-Workflows
+
+      - name: Install the engine and the Core / Registry validator requirements
         run: |
-          python -m pip install -e .[dev]
-          python -m pip install -r ../AIPE-Core/requirements-dev.txt
-      - name: Unit tests (solver tests skip when ngspice is absent)
-        working-directory: AIPE-Workflows
-        run: python -m pytest -q -m "not solver"
-      - name: Workflow definition and specification parse
-        working-directory: AIPE-Workflows
-        run: |
-          python -c "from aipe_workflows.engine.graph import load_workflow_definition as l; d=l('workflows/converter_dab/workflow.yaml'); print(d.id, [t.id for t in d.tasks])"
-          aipe-workflows doctor --no-qualify >/dev/null 2>&1 || aipe-workflows doctor
-      - name: Manifest validates against the Registry schema
-        run: |
-          git clone --depth 1 https://github.com/FulongLi/AIPE-Registry AIPE-Registry
+          python -m pip install --upgrade pip
+          python -m pip install -e AIPE-Workflows[dev]
+          python -m pip install -r AIPE-Core/requirements-dev.txt
           python -m pip install -r AIPE-Registry/requirements-dev.txt
-          python AIPE-Registry/scripts/validate.py AIPE-Workflows/aipe.yaml AIPE-Core/aipe.yaml AIPE-Registry/aipe.yaml || true
+
+      - name: Engine unit tests (solver-marked tests are deselected: no ngspice on this runner)
+        working-directory: AIPE-Workflows
+        run: python -m pytest -q -ra -m "not solver" --junitxml=pytest-engine.xml
+
+      - name: Workflow definition parses and the task graph resolves
+        working-directory: AIPE-Workflows
+        run: |
+          python - <<'EOF'
+          from aipe_workflows.engine.graph import load_workflow_definition
+          d = load_workflow_definition("workflows/converter_dab/workflow.yaml")
+          print(d.id, len(d.tasks), [t.id for t in d.tasks])
+          assert len(d.tasks) >= 14
+          EOF
+
+      - name: Environment doctor runs (tools are expected to be absent here; the command itself must succeed)
+        working-directory: AIPE-Workflows
+        run: aipe-workflows doctor --no-qualify --json > doctor.json && python -c "import json; d=json.load(open('doctor.json')); print({k: v['found'] for k, v in d['tools'].items()})"
+
+      - name: Plan against the sibling checkouts (capabilities must resolve; only missing tools or packages may block)
+        working-directory: AIPE-Workflows
+        run: |
+          set +e
+          aipe-workflows plan examples/dab-10kw/specification.yaml --checkouts .. --json > plan.json
+          code=$?
+          set -e
+          test $code -eq 0 -o $code -eq 2   # 2 = non-optional tasks blocked by missing tools/packages, which is expected on this runner
+          python - <<'EOF'
+          import json
+          plan = json.load(open("plan.json"))
+          unregistered = [t["id"] for t in plan["tasks"] if not t["capability_registered"]]
+          bad = {t["id"]: [b for b in t["blockers"] if not (b.startswith("tool ") or "not installed" in b or "not found" in b or "not importable" in b or "not loadable" in b)]
+                 for t in plan["tasks"]}
+          bad = {k: v for k, v in bad.items() if v}
+          print("tasks:", len(plan["tasks"]), "| unregistered capabilities:", unregistered, "| unexpected blockers:", bad)
+          assert not unregistered, "every task capability must be registered in a sibling manifest or the Registry index"
+          assert not bad, "blockers other than missing tools/packages mean a broken adapter or contract"
+          EOF
+
+      - name: Manifests validate against the Registry schema (explicit complete set; failures fail this job)
+        run: |
+          python AIPE-Registry/scripts/validate.py \
+            AIPE-Workflows/aipe.yaml AIPE-Core/aipe.yaml AIPE-Registry/aipe.yaml \
+            AIPE-Electrical-Design/aipe.yaml AIPE-Simulation-Skills/aipe.yaml \
+            AIPE-Semiconductor-Database/aipe.yaml AIPE-Magnetics-Database/aipe.yaml \
+            AIPE-Field-Simulation/aipe.yaml AIPE-CAD-Agent/aipe.yaml \
+            --today "$(date -u +%F)"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: workflows-ci-evidence
+          path: |
+            AIPE-Workflows/pytest-engine.xml
+            AIPE-Workflows/doctor.json
+            AIPE-Workflows/plan.json
+          if-no-files-found: ignore

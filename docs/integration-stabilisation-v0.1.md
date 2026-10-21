@@ -24,7 +24,7 @@ finished from this side.
 | AIPE-Doc | GitHub Actions running the template checker | open PR [#2](https://github.com/FulongLi/AIPE-Doc/pull/2) |
 | Spirit-Connect-AIPE-Labs | Registry mirror resynced; hub cards for Electrical-Design and Thermal-Design, legacy identity placed without a card | open PR [#22](https://github.com/FulongLi/Spirit-Connect-AIPE-Labs/pull/22) |
 | README standardisation (Core, Registry, Field-Simulation, Simulation-Skills, Semiconductor-Database, Magnetics-Database, Sketcher, Doc, Academy, IEEE-Paper-Agent, Spirit-Connect) | READMEs rewritten to the template; detailed content moved to `docs/`; every command executed; every test suite run | open PRs: Core [#2](https://github.com/FulongLi/AIPE-Core/pull/2), Registry [#4](https://github.com/FulongLi/AIPE-Registry/pull/4), Field-Simulation [#3](https://github.com/FulongLi/AIPE-Field-Simulation/pull/3), Simulation-Skills [#4](https://github.com/FulongLi/AIPE-Simulation-Skills/pull/4), Semiconductor [#4](https://github.com/FulongLi/AIPE-Semiconductor-Database/pull/4), Magnetics [#4](https://github.com/FulongLi/AIPE-Magnetics-Database/pull/4), Sketcher [#4](https://github.com/FulongLi/AIPE-Sketcher/pull/4), Doc [#3](https://github.com/FulongLi/AIPE-Doc/pull/3), Academy [#3](https://github.com/FulongLi/AIPE-Academy/pull/3), IEEE-Paper-Agent [#3](https://github.com/FulongLi/AIPE-IEEE-Paper-Agent/pull/3), Spirit-Connect [#21](https://github.com/FulongLi/Spirit-Connect-AIPE-Labs/pull/21) |
-| AIPE-PCB-Agent | DAB-V1 board remediation (Task C) | see section F |
+| AIPE-PCB-Agent | DAB-V1 boards regenerated and re-routed with the repaired generator (Task C): DRC errors 22/2/0 → 0/0/0, unconnected items 82/81/499 → 26/23/24, ERC 0, parity 0, no rule relaxed; fine-pitch row-escape planner, time-boxed router with checkpoints, host-test CI, `pyproject.toml` 0.1.0, template README, remediation and review documents | open PR [#8](https://github.com/FulongLi/AIPE-PCB-Agent/pull/8) (routing still incomplete, see section F) |
 
 Not changed: AIPE-Core code (only its README and `docs/validation.md`), AIPE-Semiconductor-Database and
 AIPE-Magnetics-Database code (README/docs only), awesome-open-source-power-electronics (archived catalogue).
@@ -74,6 +74,9 @@ adapters and orchestration.
 | Thermal package depended on a directory name | `_sibling.py` searched `../HeatSinkOptimisation` / `HEATSINK_OPT_DIR` | bundled `aipe_thermal.heatsink`; env var only warns | Thermal-Design `test_compat` | open PR |
 | HeatSinkOptimisation first-run CI failure | validator needs `jsonschema[format]` | installed in the manifest job | Thermal CI run 39583151444 green | open PR |
 | Workflows CI YAML (first commits) | unquoted `:` in step names, dict literal in a plain scalar | quoted names, block scalars | PR #2 run pass | open PR |
+| DAB-V1 boards: 20 clearance + 2 hole-clearance DRC errors, 30 fan-out and ~35 route failures per power board, control board never routed | 0.5 mm pre-routed capacitor stubs at 3.95 mm against the 4.0 mm bus rule; a via inside the net-tie pad (the tie's `fp_poly` bridge was invisible to the router); 0.35 mm stub ends on the overlapping land halos of the 0.65 mm driver rows; wide nets sealed between narrow stubs; stranded GND decoupling pads; split planes / isolated pours; router without a time box or saves | 0.3 mm stubs; footprint copper graphics registered as via/drill exclusions; 0.45 mm stubs with a geometric end test; `automation/dab_v1/fanout_rows.py` (same-net bridges, exit lanes to a 3 mm fan-out band, wide-first order); fallback ground ports; plane joins and DESAT placement; `time_budget_s` with honest `reason: time_budget` records and checkpoints | kicad-cli ERC/DRC manifests (section F); +8 DAB tests, suite 400 passed / 1 skipped | open PR (PCB #8) |
+| AIPE-PCB-Agent CI run failed with no job | the KiCad-detection `run:` line was a plain scalar containing `: ` (invalid YAML; GitHub rejects the file at start-up) | block scalar (bf9ba9c) | fork run on the fork-internal PR (section D) | open PR (PCB #8) |
+| `aipe-workflows doctor` probed the removed `pea` package | legacy package list in `environment/doctor.py` | probes `aipe_electrical` and `aipe_thermal` | acceptance `doctor.json` (section J) | open PR (Workflows #3) |
 
 ## D. CI status (observed on GitHub, 2026-10-21)
 
@@ -121,13 +124,42 @@ Clean-checkout acceptance (§16): see section J; the executed result is appended
 
 ## F. PCB status
 
-Baseline (kicad-cli on the merged boards): ERC 0 on all three boards; DRC errors 22 (primary: 20 clearance, 2 hole
-clearance) / 2 (secondary: hole clearance) / 0 (control); unconnected items 82 / 81 / 499 (control placed, never
-routed); schematic parity 0. Known causes: 0.5 mm pre-routed capacitor stubs against the 4 mm bus rule, via-to-net-tie
-hole clearances, gate-driver bias/sense fan-outs on the 0.65 mm module rows, AC_B pour continuity, control router
-exceeding the time box. Task C (branch `fix/dab-v1-routing`) is remediating the generator and re-routing; its result is
-recorded in `stabilisation/handover-C.md` and in the final section of this report when delivered. Nothing has been
-fabricated or energised; Gerbers are not manufacturing-ready while routing is incomplete.
+Task C (AIPE-PCB-Agent branch `fix/dab-v1-routing`, [PR #8](https://github.com/FulongLi/AIPE-PCB-Agent/pull/8), commits f84ce15 remediation and bf9ba9c CI fix;
+handover `stabilisation/handover-C.md`) repaired the board generator and re-routed the three DAB-V1 boards. Native checks:
+`kicad-cli 10.0.6 sch erc --severity-all` and `pcb drc --schematic-parity --severity-all --refill-zones`, hashed manifests
+under `examples/dab-10kw/verification/{erc,drc}/<stamp>/run.json`. "Errors" are error-severity violations other than
+unconnected items.
+
+| Board | ERC | DRC errors before → after | DRC warnings before → after | Unconnected items (nets) before → after | Parity | Router result |
+| --- | --- | --- | --- | --- | --- | --- |
+| primary-power | 0 | 22 (20 clearance, 2 hole_clearance) → **0** | 35 → 18 (`track_dangling`) | 82 (42) → **26 (18)** | 0 | 2501 tracks, 436 vias, 26 open, 1161 s |
+| secondary-power | 0 | 2 (hole_clearance) → **0** | 35 → 18 (`track_dangling`) | 81 (42) → **23 (16)** | 0 | 2598 tracks, 449 vias, 23 open, 1189 s |
+| control | 0 | 0 → **0** | 0 → 28 (`track_dangling`) | 499 (never routed) → **24 (23)** | 0 | 3090 tracks, 622 vias, 24 open, 2714 s (45-min budget reached) |
+
+Root causes fixed (evidence in `docs/dab-10kw/routing-remediation.md`): capacitor stubs at 3.95 mm against the 4.0 mm
+BUS_P–PGND rule; a via of the tie's own net inside the net-tie pad; 0.35 mm stub ends on the overlapping clearance halos of
+the 0.65 mm UCC14141 rows; wide nets (0.8/0.6/0.5 mm) sealed between narrow stubs; stranded GND_CTRL decoupling pads;
+a capacitor wall above the drivers' HV pins; split laminated planes and isolated pours (DESAT exclusions, sense pours,
+AC_B riser not covering J4); a router without a time box or checkpoint saves.
+
+Not changed: no clearance, hole-clearance, edge or insulation value was reduced, no DRC rule was waived, the
+`.kicad_dru` files are unchanged. Independent checks: model/schematic/board netlist equality passes on all three boards;
+every power and ground pour is a single island on both power boards; HV↔SELV separation 8.0 mm on every copper layer and
+8.0 mm across the stack (`verification/engineering_checks/barrier_geometry_<board>.json`); exports regenerated with hashed
+manifests (36 artefacts per board).
+
+**Open connections remain on every board (26 / 23 / 24): the boards are routing candidates, no Gerber set is
+manufacturing-ready, and the workflow gate `cad_pcb` stays `fail`.** The remaining opens are the narrow UCC14141-row nets
+(BIAS_ENF, PG_BIAS_N, FBVEE/FBVDD/VEEA/RLIM) whose exit lanes end at the fan-out band edge where the first wide tracks turn
+and seal them, plus long harness-to-card paths on the control board that exhaust the 800 000-node budget. Recommended next
+step: an ordered row escape (river routing with staircase lane ends, or a staggered via field beyond the 3 mm band), then
+the gate-loop corridor and the control board's routing budget or a dedicated layer pair.
+
+Software: 400 passed, 1 skipped, 680 subtests with KiCad present; the new `.github/workflows/tests.yml` runs the host
+tests without KiCad and reports the KiCad-dependent tests as skipped (simulated run 365 passed / 35 skipped / 0 failed).
+`pyproject.toml` declares version 0.1.0 for the first time; licence stated as declared in `aipe.yaml` (MIT, no LICENSE
+file; KiCad libraries CC BY-SA 4.0). Architecture review extended (6.1 barrier geometry check, 6.2 gate-drive, protection
+and DESAT review, open items R-18 to R-22). Nothing has been fabricated or energised.
 
 ## G. README standardisation
 
@@ -138,7 +170,7 @@ Registry 824→327, Field-Simulation 2579→407, Simulation-Skills 903→641 (ge
 1343→416, Magnetics 1209→461, Sketcher 551→449, Doc 583→388, Academy 1992→461, IEEE-Paper-Agent 1012→414,
 Spirit-Connect 1338→376 (raw word counts). Every README command was executed in this environment; versions and licences
 quoted from package metadata and licence files (several repositories declare no code licence — stated as such, never
-invented); detailed material moved to `docs/*.md`; Chinese documentation preserved and linked. PCB-Agent README: Task C.
+invented); detailed material moved to `docs/*.md`; Chinese documentation preserved and linked. PCB-Agent README (Task C): template applied, former README moved to `docs/history.md`, first declared version 0.1.0, licence quoted from `aipe.yaml` (MIT, no LICENSE file).
 
 ## H. GitHub delivery
 
@@ -146,14 +178,17 @@ All branches pushed to the MrCoconut616 forks; PRs opened against `FulongLi/<rep
 has no write access (except AIPE-Electrical-Design, where the coordinator deliberately left PR #3 for review as well),
 so **no PR was merged by the automation**; merge status: awaiting maintainer for every PR listed in section A.
 Branch-level evidence: AIPE-Electrical-Design `legacy-pea-v0.1` tag on the fork; commit SHAs in the handover files.
+AIPE-PCB-Agent: branch `fix/dab-v1-routing` → [PR #8](https://github.com/FulongLi/AIPE-PCB-Agent/pull/8) (f84ce15 remediation, bf9ba9c CI YAML fix); the upstream
+fork-PR workflow run needs maintainer approval, so the same workflow was exercised on a fork-internal draft PR
+(MrCoconut616/AIPE-PCB-Agent #1, not for merging).
 
 ## I. Outstanding issues
 
 | Severity | Issue | Next action |
 | --- | --- | --- |
-| high | PCB boards not routed to completion (see F) | finish Task C's routing pass; re-run `pcb-erc-drc`; keep the gate `fail` until clean |
-| high | 22 PRs await maintainer merge; Registry/Hub reference PR heads until then | merge in order: Electrical #3, Thermal #2, CAD #1 → Registry #3 (re-pin to merged commits) → Workflows #2/#3 → Spirit-Connect #21/#22 → README PRs |
-| medium | fork-PR workflows in CAD, Thermal, Field-Simulation, Doc need a maintainer's approval to run | approve the first runs |
+| high | PCB boards still have 26 / 23 / 24 open connections after Task C (see F); gate `cad_pcb` fails by design | implement the ordered row escape for the UCC14141 rows (river routing or staggered via field), re-route under `--time-budget`, re-run `pcb-erc-drc`; keep the gate `fail` until the boards are clean |
+| high | 22 PRs await maintainer merge; Registry/Hub reference PR heads until then | merge in order: Electrical #3, Thermal #2, CAD #1 → Registry #3 (re-pin to merged commits) → Workflows #2/#3 → PCB #8 → Spirit-Connect #21/#22 → README PRs |
+| medium | fork-PR workflows in CAD, Thermal, Field-Simulation, Doc and PCB-Agent need a maintainer's approval to run | approve the first runs |
 | medium | legacy id `aipe.design-agent` still in the index as alias | remove after Workflows #3 and Spirit-Connect #22 are merged |
 | medium | manifests of the README-standardised repositories do not list the new `docs/*.md` files | add them in a follow-up (documentation_drift is only checked for listed files) |
 | low | several repositories declare no code licence (Simulation-Skills, Semiconductor-Database, Magnetics-Database, PCB-Agent, Doc, IEEE-Paper-Agent) | owner decision |

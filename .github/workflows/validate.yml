@@ -19,8 +19,12 @@ jobs:
         with: { repository: FulongLi/AIPE-Core, path: AIPE-Core }
       - uses: actions/checkout@v4
         with: { repository: FulongLi/AIPE-Registry, path: AIPE-Registry }
+      # Electrical-Design and Thermal-Design publish their manifests (ids aipe.electrical-design / aipe.thermal-design)
+      # through FulongLi/AIPE-Electrical-Design#3 and FulongLi/AIPE-Thermal-Design#2; the PR heads are checked out until merged.
       - uses: actions/checkout@v4
-        with: { repository: FulongLi/AIPE-Electrical-Design, path: AIPE-Electrical-Design }
+        with: { repository: FulongLi/AIPE-Electrical-Design, path: AIPE-Electrical-Design, ref: refs/pull/3/head }
+      - uses: actions/checkout@v4
+        with: { repository: FulongLi/AIPE-Thermal-Design, path: AIPE-Thermal-Design, ref: refs/pull/2/head }
       - uses: actions/checkout@v4
         with: { repository: FulongLi/AIPE-Simulation-Skills, path: AIPE-Simulation-Skills }
       - uses: actions/checkout@v4
@@ -95,7 +99,7 @@ jobs:
         run: |
           python AIPE-Registry/scripts/validate.py \
             AIPE-Workflows/aipe.yaml AIPE-Core/aipe.yaml AIPE-Registry/aipe.yaml \
-            AIPE-Electrical-Design/aipe.yaml AIPE-Simulation-Skills/aipe.yaml \
+            AIPE-Electrical-Design/aipe.yaml AIPE-Thermal-Design/aipe.yaml AIPE-Simulation-Skills/aipe.yaml \
             AIPE-Semiconductor-Database/aipe.yaml AIPE-Magnetics-Database/aipe.yaml \
             AIPE-Field-Simulation/aipe.yaml AIPE-CAD-Agent/aipe.yaml \
             --today "$(date -u +%F)"

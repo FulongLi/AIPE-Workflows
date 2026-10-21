@@ -113,3 +113,23 @@ aipe-workflows report runs/wf-dab-10kw-first
 Prerequisites: Python 3.10, the sibling repositories installed with `pip install -e`, ngspice 47 and Elmer under
 `tools/` (or `AIPE_NGSPICE`/`AIPE_TOOLS_DIR`), Gmsh via pip, FreeCAD 1.1.4 and KiCad 10.0.6 per-user installs.
 Re-running reuses every unchanged checkpoint; `--force` re-executes everything (about 25 minutes).
+
+## I. Commits and draft pull requests (branch `feat/dab-10kw-workflow` on the MrCoconut616 forks; nothing merged)
+
+| Repository | Commit | Draft PR |
+| --- | --- | --- |
+| AIPE-Workflows | 64ee220 | https://github.com/FulongLi/AIPE-Workflows/pull/1 |
+| AIPE-Simulation-Skills | 14e4e17 | https://github.com/FulongLi/AIPE-Simulation-Skills/pull/2 |
+| AIPE-Design-Agent | 8e81547 | https://github.com/FulongLi/AIPE-Design-Agent/pull/2 |
+| AIPE-Semiconductor-Database | 067c57f | https://github.com/FulongLi/AIPE-Semiconductor-Database/pull/3 (fork AIPE-Transistor-Database) |
+| AIPE-Magnetics-Database | 617e900 | https://github.com/FulongLi/AIPE-Magnetics-Database/pull/3 |
+| AIPE-Field-Simulation | 278c8ee | https://github.com/FulongLi/AIPE-Field-Simulation/pull/1 |
+| AIPE-Registry | f5bbe6b | https://github.com/FulongLi/AIPE-Registry/pull/2 |
+| AIPE-Doc | 3fbc8d9 | https://github.com/FulongLi/AIPE-Doc/pull/1 |
+| HeatSinkOptimisation | b4d3ddb | https://github.com/FulongLi/HeatSinkOptimisation/pull/1 |
+| Spirit-Connect-AIPE-Labs | 1d4c068 | https://github.com/FulongLi/Spirit-Connect-AIPE-Labs/pull/20 |
+| AIPE-CAD-Agent | 72285a6 (first commit) | no PR possible: upstream has no commits; staged at https://github.com/MrCoconut616/AIPE-CAD-Agent |
+| AIPE-PCB-Agent | pending the agent's routing runs | to follow |
+
+Upstream access is read-only for MrCoconut616 except AIPE-Design-Agent; every PR is a draft from the fork and no
+branch was merged. The Registry PR pins the sibling branches as `pending_pr`; re-pin to the merged commits after review.

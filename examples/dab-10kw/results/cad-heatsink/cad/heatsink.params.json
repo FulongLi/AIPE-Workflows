@@ -1,0 +1,81 @@
+{
+  "kind": "heatsink",
+  "name": "dab_heatsink",
+  "description": "Plate-fin heat sink from the Stage A knee candidate A-001 (Al-6063-T5, forced cooling) of the secondary bridge with two C3M0025065K devices on alumina pads; illustrative model.",
+  "base": {
+    "length": 0.08099197532160482,
+    "width": 0.06462391382662835,
+    "thickness": 0.004112578190442571,
+    "material": "aluminium_6063"
+  },
+  "fins": {
+    "thickness": 0.002025704984332154,
+    "height": 0.04517684721720107,
+    "pitch": 0.006259820884229619,
+    "count": 11,
+    "length": 0.08099197532160482
+  },
+  "devices": [
+    {
+      "name": "Q1",
+      "package": "to247_4l",
+      "position": [
+        0.0,
+        -0.012
+      ],
+      "rotation_deg": 0,
+      "net": "secondary",
+      "pad": {
+        "thickness": 0.00025,
+        "oversize": 0.0025,
+        "material": "alumina"
+      },
+      "screw_hole_diameter": 0.0032,
+      "lead_form": {
+        "horizontal": 0.003,
+        "vertical": 0.014
+      }
+    },
+    {
+      "name": "Q2",
+      "package": "to247_4l",
+      "position": [
+        0.0,
+        0.012
+      ],
+      "rotation_deg": 0,
+      "net": "secondary",
+      "pad": {
+        "thickness": 0.00025,
+        "oversize": 0.0025,
+        "material": "alumina"
+      },
+      "screw_hole_diameter": 0.0032,
+      "lead_form": {
+        "horizontal": 0.003,
+        "vertical": 0.014
+      }
+    }
+  ],
+  "mounting_holes": {
+    "diameter": 0.0045,
+    "inset": 0.005
+  },
+  "net": "pe",
+  "clearance_envelope_margin": 0.003,
+  "checks": {
+    "interference": {
+      "enabled": true,
+      "min_overlap_volume": 1e-12
+    },
+    "clearance_pairs": [
+      {
+        "net_a": "secondary",
+        "net_b": "pe",
+        "required_clearance": 0.002,
+        "required_creepage": 0.004,
+        "note": "illustrative caller-supplied value; not a standard assertion (device tabs/leads to the earthed sink)"
+      }
+    ]
+  }
+}

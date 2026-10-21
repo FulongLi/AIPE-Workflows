@@ -1,0 +1,355 @@
+{
+  "schema": "aipe.field-simulation/model-summary/0.1",
+  "package": {
+    "name": "aipe-fieldsim",
+    "version": "0.1.0"
+  },
+  "model": "heatsink_3d",
+  "title": "3-D finned heat sink with two TO-247 sources",
+  "description": "Aluminium base plate with straight fins; two 20 W TO-247 footprints as heat-flux boundaries on the bottom; convective film coefficient on the exposed faces; Elmer HeatSolve on Gmsh tetrahedra with a mesh-refinement study and an energy-conservation check.",
+  "status": "executed",
+  "status_note": "",
+  "created_at": "2026-10-21T14:36:43+08:00",
+  "finished_at": "2026-10-21T14:36:52+08:00",
+  "parameters": {
+    "base_length_m": 0.08099197532160482,
+    "base_width_m": 0.06462391382662835,
+    "base_thickness_m": 0.004112578190442571,
+    "fin_count": 11,
+    "fin_thickness_m": 0.002025704984332154,
+    "fin_height_m": 0.04517684721720107,
+    "footprint_length_m": 0.016,
+    "footprint_width_m": 0.021,
+    "footprint_offset_m": 0.02,
+    "device_power_W": 17.446227058701883,
+    "h_W_per_m2_K": 31.134716692341737,
+    "T_ambient_K": 313.15,
+    "bottom_convective": false,
+    "k_W_per_m_K": 209.0,
+    "density_kg_per_m3": 2700.0,
+    "heat_capacity_J_per_kg_K": 900.0,
+    "h_levels_m": [
+      0.003,
+      0.002,
+      0.0014
+    ]
+  },
+  "results": {
+    "T_max_K": {
+      "value": 332.774631855,
+      "unit": "K",
+      "note": "hotspot (finest mesh)"
+    },
+    "T_rise_hotspot_K": {
+      "value": 19.62463185500002,
+      "unit": "K",
+      "note": "above ambient"
+    },
+    "T_footprint_1_mean_K": {
+      "value": 332.1180343485119,
+      "unit": "K",
+      "note": "area-mean over the TO-247 footprint"
+    },
+    "T_footprint_2_mean_K": {
+      "value": 332.11653132142857,
+      "unit": "K",
+      "note": ""
+    },
+    "R_th_hotspot_K_per_W": {
+      "value": 0.5624319742305424,
+      "unit": "K/W",
+      "note": "(T_max - T_amb)/40 W"
+    },
+    "R_th_footprint_mean_K_per_W": {
+      "value": 0.5435926854313667,
+      "unit": "K/W",
+      "note": "(mean footprint T - T_amb)/40 W"
+    },
+    "Q_convective_W": {
+      "value": 34.8924541179111,
+      "unit": "W",
+      "note": "must equal the 40 W input"
+    },
+    "convective_area_m2": {
+      "value": 0.07267416410788,
+      "unit": "m^2",
+      "note": ""
+    },
+    "h_W_per_m2_K": {
+      "value": 31.134716692341737,
+      "unit": "W/m^2/K",
+      "note": "supplied film coefficient (no CFD)"
+    }
+  },
+  "checks": [
+    {
+      "name": "energy_conservation",
+      "value": 1.4539952307539732e-11,
+      "tolerance": 1e-06,
+      "passed": true,
+      "description": "|h*(int T dA - T_amb A) - 40 W| / 40 W on the finest mesh (Robin integral from SaveScalars)"
+    },
+    {
+      "name": "vtu_vs_savescalars_convective_heat",
+      "value": 6.479759140897007e-12,
+      "tolerance": 1e-06,
+      "passed": true,
+      "description": "independent numpy boundary integral from the VTU vs SaveScalars"
+    },
+    {
+      "name": "footprint_area",
+      "value": 1.6133960900081909e-16,
+      "tolerance": 1e-09,
+      "passed": true,
+      "description": "imprinted footprint area vs 16 mm x 21 mm"
+    },
+    {
+      "name": "T_max_mesh_sensitivity",
+      "value": 0.0033320136287453314,
+      "tolerance": 0.02,
+      "passed": true,
+      "description": "relative change of the hotspot temperature rise between the two finest meshes"
+    }
+  ],
+  "all_checks_passed": true,
+  "limitations": [
+    "The film coefficient h is a supplied uniform value (25 natural / 80 forced as typical inputs); no CFD or radiation is modelled.",
+    "Heat enters as a uniform flux over the TO-247 footprint (no package, TIM or spreading inside the device).",
+    "Uncovered base bottom treated as adiabatic unless bottom_convective is true.",
+    "Linear, temperature-independent aluminium conductivity; no contact resistances."
+  ],
+  "timing": {
+    "level0_s": 2.759,
+    "level1_s": 6.156,
+    "total_s": 8.93
+  },
+  "tools": {
+    "elmersolver": {
+      "id": "elmersolver",
+      "name": "Elmer FEM ElmerSolver",
+      "found": true,
+      "path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64\\bin\\ElmerSolver.exe",
+      "version": "9.0",
+      "revision": "Release",
+      "compiled": "2026-01-20",
+      "source": "workspace-tools",
+      "licence": "GPL-2.0-or-later (ElmerSolver), LGPL-2.1 (elmersolver library parts)",
+      "home": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64",
+      "notes": []
+    },
+    "elmergrid": {
+      "id": "elmergrid",
+      "name": "Elmer FEM ElmerGrid",
+      "found": true,
+      "path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64\\bin\\ElmerGrid.exe",
+      "version": "9.0",
+      "revision": "Release",
+      "compiled": "2026-01-20",
+      "source": "workspace-tools",
+      "licence": "GPL-2.0-or-later",
+      "home": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64",
+      "notes": []
+    },
+    "gmsh": {
+      "id": "gmsh",
+      "name": "Gmsh (python SDK)",
+      "found": true,
+      "path": "C:\\Users\\Zhongnan Qian\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\gmsh.py",
+      "version": "4.15.2",
+      "revision": null,
+      "compiled": null,
+      "source": "python-module",
+      "licence": "GPL-2.0-or-later",
+      "home": null,
+      "notes": []
+    },
+    "python": {
+      "executable": "C:\\Users\\Zhongnan Qian\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+      "version": "3.10.11",
+      "packages": {
+        "numpy": "2.2.6",
+        "scipy": "1.15.3",
+        "matplotlib": "3.10.9",
+        "gmsh": "4.15.2"
+      },
+      "platform": {
+        "system": "Windows",
+        "release": "10",
+        "machine": "AMD64"
+      }
+    }
+  },
+  "evidence": [
+    {
+      "id": "assumption.heatsink_3d.parameters",
+      "kind": "assumption",
+      "description": "Heat sink geometry, h = 31.134716692341737 W/m^2/K film coefficient (supplied value, not a CFD result), T_ambient = 313.15 K, two 17.446227058701883 W TO-247 footprints.",
+      "source": {
+        "type": "assumption",
+        "reference": "declared model assumption"
+      },
+      "provenance": {
+        "activity": "aipe_fieldsim run",
+        "tools": [],
+        "inputs": []
+      },
+      "timestamp": "2026-10-21T14:36:43+08:00",
+      "artifacts": [],
+      "review_status": "unreviewed"
+    },
+    {
+      "id": "evidence.heatsink_3d.h31.1347.level0",
+      "kind": "simulation",
+      "description": "Heat sink conduction solve, h = 31.134716692341737 W/m^2/K, level 0: 37805 tetrahedra.",
+      "source": {
+        "type": "computation",
+        "reference": "Elmer FEM case directory (case.json)"
+      },
+      "provenance": {
+        "activity": "aipe_fieldsim run",
+        "tools": [
+          {
+            "id": "elmersolver",
+            "version": "9.0",
+            "name": "Elmer FEM ElmerSolver"
+          },
+          {
+            "id": "elmergrid",
+            "version": "9.0",
+            "name": "Elmer FEM ElmerGrid"
+          },
+          {
+            "id": "gmsh",
+            "version": "4.15.2",
+            "name": "Gmsh (python SDK)"
+          }
+        ],
+        "inputs": [
+          "assumption.heatsink_3d.parameters"
+        ]
+      },
+      "timestamp": "2026-10-21T14:36:43+08:00",
+      "artifacts": [
+        {
+          "uri": "h31.1347_level0/case.json",
+          "sha256": "2b34dee1d1bfc6fa7074d9397e7daba215cd52f624ae9368186394ce56034dbb"
+        }
+      ],
+      "review_status": "unreviewed"
+    },
+    {
+      "id": "evidence.heatsink_3d.h31.1347.level1",
+      "kind": "simulation",
+      "description": "Heat sink conduction solve, h = 31.134716692341737 W/m^2/K, level 1: 84666 tetrahedra.",
+      "source": {
+        "type": "computation",
+        "reference": "Elmer FEM case directory (case.json)"
+      },
+      "provenance": {
+        "activity": "aipe_fieldsim run",
+        "tools": [
+          {
+            "id": "elmersolver",
+            "version": "9.0",
+            "name": "Elmer FEM ElmerSolver"
+          },
+          {
+            "id": "elmergrid",
+            "version": "9.0",
+            "name": "Elmer FEM ElmerGrid"
+          },
+          {
+            "id": "gmsh",
+            "version": "4.15.2",
+            "name": "Gmsh (python SDK)"
+          }
+        ],
+        "inputs": [
+          "assumption.heatsink_3d.parameters"
+        ]
+      },
+      "timestamp": "2026-10-21T14:36:43+08:00",
+      "artifacts": [
+        {
+          "uri": "h31.1347_level1/case.json",
+          "sha256": "f3830a0147f8cb641c8f9da856f7faa10e2ecd0e793bbc7b63e802e04583712c"
+        }
+      ],
+      "review_status": "unreviewed"
+    }
+  ],
+  "convergence_T_max": [
+    {
+      "level": 0,
+      "h_m": 0.003,
+      "elements": 37805,
+      "nodes": 12454,
+      "value": 332.7092423142
+    },
+    {
+      "level": 1,
+      "h_m": 0.002,
+      "elements": 84666,
+      "nodes": 26820,
+      "value": 332.774631855
+    }
+  ],
+  "levels": [
+    {
+      "level": 0,
+      "h": 0.003,
+      "elements": 37805,
+      "nodes": 12454,
+      "T_max_K": 332.7092423142,
+      "values": {
+        "T_max_K": 332.7092423142,
+        "hotspot_xyz_m": [
+          0.060307614065,
+          0.0323121192441,
+          0.0
+        ],
+        "T_footprint_1_mean_K": 332.0208234327381,
+        "T_footprint_2_mean_K": 332.01949221458335,
+        "T_footprint_1_max_K": 332.7069659948,
+        "T_footprint_2_max_K": 332.7092423142,
+        "Q_convective_W": 34.892454117813536,
+        "Q_convective_vtu_W": 34.89245411767749,
+        "Q_input_W": 34.892454117403766,
+        "energy_balance_residual_rel": 1.1743799800784532e-11,
+        "convective_area_m2": 0.07267416410789,
+        "footprint_area_m2": 0.000336,
+        "R_th_hotspot_K_per_W": 0.5605579432271641,
+        "R_th_footprint_mean_K_per_W": 0.54080913197357
+      },
+      "case_dir": "runs\\wf-dab-10kw-first\\tasks\\fem-heatsink\\fem\\h31.1347_level0"
+    },
+    {
+      "level": 1,
+      "h": 0.002,
+      "elements": 84666,
+      "nodes": 26820,
+      "T_max_K": 332.774631855,
+      "values": {
+        "T_max_K": 332.774631855,
+        "hotspot_xyz_m": [
+          0.0204526311483,
+          0.0326228353278,
+          0.0
+        ],
+        "T_footprint_1_mean_K": 332.1180343485119,
+        "T_footprint_2_mean_K": 332.11653132142857,
+        "T_footprint_1_max_K": 332.774631855,
+        "T_footprint_2_max_K": 332.7726568471,
+        "Q_convective_W": 34.8924541179111,
+        "Q_convective_vtu_W": 34.892454117685006,
+        "Q_input_W": 34.892454117403766,
+        "energy_balance_residual_rel": 1.4539952307539732e-11,
+        "convective_area_m2": 0.07267416410788,
+        "footprint_area_m2": 0.000336,
+        "R_th_hotspot_K_per_W": 0.5624319742305424,
+        "R_th_footprint_mean_K_per_W": 0.5435926854313667
+      },
+      "case_dir": "runs\\wf-dab-10kw-first\\tasks\\fem-heatsink\\fem\\h31.1347_level1"
+    }
+  ]
+}

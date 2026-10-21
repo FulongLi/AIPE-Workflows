@@ -1,0 +1,111 @@
+{
+  "model": "sps-lossless-ideal-transformer",
+  "inputs": {
+    "v1": {
+      "value": 800.0,
+      "unit": "V"
+    },
+    "v2": {
+      "value": 400.0,
+      "unit": "V"
+    },
+    "turns_ratio_np_ns": {
+      "value": 2.0,
+      "unit": "1"
+    },
+    "switching_frequency": {
+      "value": 100000.0,
+      "unit": "Hz"
+    },
+    "series_inductance_primary_referred": {
+      "value": 3.5e-05,
+      "unit": "H"
+    },
+    "phase_shift": {
+      "value": 0.39269908169872414,
+      "unit": "rad"
+    }
+  },
+  "derived": {
+    "v2_primary_referred": {
+      "value": 800.0,
+      "unit": "V"
+    },
+    "voltage_ratio_d": {
+      "value": 1.0,
+      "unit": "1"
+    },
+    "period": {
+      "value": 1e-05,
+      "unit": "s"
+    },
+    "phase_shift_time": {
+      "value": 6.25e-07,
+      "unit": "s"
+    },
+    "power": {
+      "value": 10000.0,
+      "unit": "W"
+    },
+    "power_from_waveform_integral": {
+      "value": 10000.000000000002,
+      "unit": "W"
+    },
+    "max_power_sps": {
+      "value": 22857.14285714286,
+      "unit": "W"
+    },
+    "dc_current_port1": {
+      "value": 12.5,
+      "unit": "A"
+    },
+    "dc_current_port2": {
+      "value": 25.0,
+      "unit": "A"
+    },
+    "series_current_rms_primary": {
+      "value": 13.677530110804833,
+      "unit": "A"
+    },
+    "series_current_peak_primary": {
+      "value": 14.285714285714288,
+      "unit": "A"
+    },
+    "secondary_current_rms": {
+      "value": 27.355060221609666,
+      "unit": "A"
+    },
+    "secondary_current_peak": {
+      "value": 28.571428571428577,
+      "unit": "A"
+    },
+    "primary_switching_current": {
+      "value": -14.285714285714288,
+      "unit": "A"
+    },
+    "secondary_switching_current": {
+      "value": 28.571428571428577,
+      "unit": "A"
+    }
+  },
+  "zvs": {
+    "primary": true,
+    "secondary": true,
+    "limits": {
+      "d": 1.0,
+      "primary_min_phi_rad": 0.0,
+      "secondary_min_phi_rad": 0.0,
+      "both_bridges_min_phi_rad": 0.0
+    }
+  },
+  "assumptions": [
+    "Ideal switches, zero dead time, stiff DC ports, ideal transformer, magnetising current neglected.",
+    "All series inductance (external plus leakage) lumped and referred to the primary.",
+    "Currents are exact piecewise-linear results of the lossless model, not simulated or measured values."
+  ],
+  "phase_shift_source": "specified",
+  "phase_shift_for_requested_power_rad": 0.39269908169872414,
+  "phase_shift_for_requested_power_deg": 22.5,
+  "series_current_at_centre_origin_A": 14.285714285714288,
+  "power_deviation_from_request_W": 0.0
+}

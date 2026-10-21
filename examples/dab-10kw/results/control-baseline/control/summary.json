@@ -1,0 +1,1643 @@
+{
+  "controllers": {
+    "current_loop": {
+      "f_c_target_Hz": 2000.0,
+      "high_frequency_loop_gain": 0.25,
+      "ki_per_sample_rad_per_A": 0.002192480356896205,
+      "ki_rad_per_A_s": 219.24803568962048,
+      "kp_rad_per_A": 0.0045814892864851145,
+      "output_limit_rad": 0.7853981633974483,
+      "pi": {
+        "integrator": 0.0,
+        "k_tracking": 1.0,
+        "ki": 219.24803568962048,
+        "ki_per_sample": 0.002192480356896205,
+        "kp": 0.0045814892864851145,
+        "saturated": false,
+        "structure": "u[k] = Kp e[k] + x[k]; x[k] = x[k-1] + Ki Ts e[k] + k_tracking (u_applied[k-1] - u[k-1]); clamp to [u_min, u_max] with clamping anti-windup",
+        "ts": 1e-05,
+        "u_max": 0.7853981633974483,
+        "u_min": -0.7853981633974483,
+        "u_prev": 0.0
+      },
+      "structure": "PI on the cycle-averaged port-2 DC current; plant = static gain dI2/dphi with delays"
+    },
+    "loops": {
+      "current_loop_max_gain": {
+        "closed_loop_max_pole_radius": 0.8728694286366276,
+        "closed_loop_stable": true,
+        "f_c_target_hz": 2000.0,
+        "gain_crossover_hz": 2780.6796364595693,
+        "gain_margin_db": 7.48343802561994,
+        "n_gain_crossovers": 1,
+        "name": "current loop at phi -> 0 (maximum plant gain)",
+        "notes": [
+          "plant gain 72.76 A/rad"
+        ],
+        "phase_crossover_hz": 23317.3995183898,
+        "phase_margin_deg": 94.37832349575149
+      },
+      "current_loop_min_gain": {
+        "closed_loop_max_pole_radius": 0.9279889341712395,
+        "closed_loop_stable": true,
+        "f_c_target_hz": 2000.0,
+        "gain_crossover_hz": 1296.656029462948,
+        "gain_margin_db": 13.504037938899565,
+        "n_gain_crossovers": 1,
+        "name": "current loop at phi = phi_max (minimum plant gain)",
+        "notes": [
+          "plant gain 36.38 A/rad"
+        ],
+        "phase_crossover_hz": 23317.3995183898,
+        "phase_margin_deg": 92.58409155634791
+      },
+      "current_loop_nominal": {
+        "closed_loop_max_pole_radius": 0.8983204257959516,
+        "closed_loop_stable": true,
+        "f_c_target_hz": 2000.0,
+        "gain_crossover_hz": 2000.0001284451914,
+        "gain_margin_db": 9.98221275778594,
+        "n_gain_crossovers": 1,
+        "name": "current loop, nominal operating point",
+        "notes": [
+          "plant gain dI2/dphi = 54.57 A/rad at phi = 22.5 deg",
+          "1 computation + 1 measurement sample(s) of delay"
+        ],
+        "phase_crossover_hz": 23317.3995183898,
+        "phase_margin_deg": 93.6483220589073
+      },
+      "voltage_loop_full_load": {
+        "closed_loop_max_pole_radius": 0.9927806485272106,
+        "closed_loop_stable": true,
+        "f_c_target_hz": 300.0,
+        "gain_crossover_hz": 300.00006616450656,
+        "gain_margin_db": 28.387592019441517,
+        "n_gain_crossovers": 1,
+        "name": "voltage loop, nominal load",
+        "notes": [
+          "R_load = 16.0 Ohm, C2 = 0.0004 F, inner loop at nominal gain"
+        ],
+        "phase_crossover_hz": 18148.96407727852,
+        "phase_margin_deg": 60.00001374474175
+      },
+      "voltage_loop_max_inner_gain": {
+        "closed_loop_max_pole_radius": 0.9927406540417555,
+        "closed_loop_stable": true,
+        "f_c_target_hz": 300.0,
+        "gain_crossover_hz": 301.2287252956062,
+        "gain_margin_db": 25.024861016007087,
+        "n_gain_crossovers": 1,
+        "name": "voltage loop, nominal load, inner loop at maximum plant gain",
+        "notes": [],
+        "phase_crossover_hz": 18988.809301283676,
+        "phase_margin_deg": 62.36294351708909
+      },
+      "voltage_loop_no_load": {
+        "closed_loop_max_pole_radius": 0.99343008996206,
+        "closed_loop_stable": true,
+        "f_c_target_hz": 300.0,
+        "gain_crossover_hz": 300.72456411783156,
+        "gain_margin_db": 28.385895149033313,
+        "n_gain_crossovers": 1,
+        "name": "voltage loop, no resistive load (pure capacitor)",
+        "notes": [
+          "Z(z) = Ts/(C2 (z - 1))"
+        ],
+        "phase_crossover_hz": 18138.96138418365,
+        "phase_margin_deg": 55.360861706966205
+      }
+    },
+    "margins_detail": {
+      "current_loop_nominal": {
+        "closed_loop_max_pole_radius": 0.8983204257959516,
+        "closed_loop_stable": true,
+        "frequency_range_hz": [
+          1.0,
+          49999.99999999999
+        ],
+        "gain_crossover_hz": 2000.0001284451914,
+        "gain_margin_db": 9.98221275778594,
+        "low_frequency_gain_db": 65.59378363330632,
+        "phase_crossover_hz": 23317.3995183898,
+        "phase_margin_deg": 93.6483220589073,
+        "samples": 6000,
+        "ts_s": 1e-05
+      },
+      "voltage_loop_full_load": {
+        "closed_loop_max_pole_radius": 0.9927806485272106,
+        "closed_loop_stable": true,
+        "frequency_range_hz": [
+          1.0,
+          49999.99999999999
+        ],
+        "gain_crossover_hz": 300.00006616450656,
+        "gain_margin_db": 28.387592019441517,
+        "low_frequency_gain_db": 68.1674980809016,
+        "phase_crossover_hz": 18148.96407727852,
+        "phase_margin_deg": 60.00001374474175,
+        "samples": 6000,
+        "ts_s": 1e-05
+      }
+    },
+    "operating_point": {
+      "dI2_dphi_A_per_rad": 54.567409060078404,
+      "dI2_dphi_range_A_per_rad": [
+        36.37827270671894,
+        72.75654541343788
+      ],
+      "dP_dphi_W_per_rad": 21826.963624031363,
+      "i2_A": 25.0,
+      "p_W": 10000.0,
+      "phi_deg": 22.5,
+      "phi_rad": 0.39269908169872414,
+      "v1_V": 800.0,
+      "v2_V": 400.0
+    },
+    "sampling": {
+      "computation_delay_samples": 1,
+      "f_s_Hz": 99999.99999999999,
+      "measurement_delay_samples": 1,
+      "note": "one ISR per switching period; both loops at f_s",
+      "ts_s": 1e-05
+    },
+    "voltage_loop": {
+      "coefficients": {
+        "a1": -1.7284825557007275,
+        "a2": 0.7284825557007273,
+        "b0": 3.4765100340969686,
+        "b1": -6.75808390884408,
+        "b2": 3.2843065078942457
+      },
+      "continuous_prototype": {
+        "f_pole_hz": 5000.0,
+        "f_zero2_hz": 452.5402882129142,
+        "f_zero_hz": 452.5402882129142,
+        "form": "C(s) = K (1 + s/w_z)^2 / (s (1 + s/w_p)); Tustin pre-warped at f_c",
+        "k_integrator": 1006.400249414117
+      },
+      "df22": {
+        "a1": -1.7284825557007275,
+        "a2": 0.7284825557007273,
+        "b0": 3.4765100340969686,
+        "b1": -6.75808390884408,
+        "b2": 3.2843065078942457,
+        "difference_equation": "y[n] = b0 e[n] + b1 e[n-1] + b2 e[n-2] - a1 y[n-1] - a2 y[n-2]",
+        "poles_z": [
+          1.0000000000000009,
+          0.7284825557007266
+        ],
+        "y_max": 30.0,
+        "y_min": -30.0,
+        "zeros_z": [
+          0.9719638293472549,
+          0.9719637999597345
+        ]
+      },
+      "difference_equation": "y[n] = b0 e[n] + b1 e[n-1] + b2 e[n-2] - a1 y[n-1] - a2 y[n-2]",
+      "f_c_target_Hz": 300.0,
+      "output_limit_A": 30.0,
+      "phase_of_rest_of_loop_at_fc_deg": -93.64910805015167,
+      "plant_pole_full_load_Hz": 24.867959858108648,
+      "pm_target_deg": 60.0,
+      "structure": "2P2Z (DF22) on the port-2 voltage error, output = current reference clamped to +-i_ref_limit"
+    }
+  },
+  "created_at": "2026-10-21T06:26:26Z",
+  "design": {
+    "computation_delay_samples": 1,
+    "dead_time_s": 2e-07,
+    "f_c_current_Hz": 2000.0,
+    "f_c_voltage_Hz": 300.0,
+    "f_pole_voltage_Hz": 5000.0,
+    "handover_fraction": 0.99,
+    "hr_step_s": 1.5e-10,
+    "i_ref_limit_A": 30.0,
+    "measurement_delay_samples": 1,
+    "nominal_power_W": 10000.0,
+    "phi_max_deg": 45.0,
+    "phi_slew_deg_per_update": 1.0,
+    "pi_high_frequency_gain": 0.25,
+    "plant": {
+      "c2": 0.0004,
+      "f_sw": 100000.0,
+      "i_load": 0.0,
+      "l_total": 3.5e-05,
+      "n_ratio": 2.0,
+      "r_load": 16.0,
+      "r_source": 0.0,
+      "ts": 1e-05,
+      "v1": 800.0
+    },
+    "pm_voltage_deg": 60.0,
+    "precharge_min_fraction": 0.8,
+    "protection": {
+      "i_l_peak_trip_A": 40.0,
+      "soft_start_timeout_s": 0.05,
+      "v2_over_V": 460.0,
+      "v2_under_V": 300.0
+    },
+    "pwm_clock_Hz": 100000000.0,
+    "quantise": true,
+    "soft_start_phi_max_deg": 30.0,
+    "soft_start_rate_deg_per_ms": 2.0,
+    "v_ref": 400.0,
+    "v_ref_slew_V_per_s": 20000.0
+  },
+  "design_sha256": "93b5629562950a14f6772664b0dec300642b76a5a22c589a881cf10131d83321",
+  "gate_pattern_figure": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\control\\gate_pattern.png",
+  "limitations": [
+    "Cycle-averaged lossless plant: no switching waveforms, no losses, no magnetising current, no sensor/ADC model.",
+    "Protection acts with up to one period of latency on quasi-static analytic currents; hardware trips act within the period.",
+    "No firmware was built or executed; controller coefficients are host-side design values."
+  ],
+  "model_assumptions": [
+    "Lossless SPS power stage: ideal switches, ideal transformer, no dead-time effect on power, stiff port-1 source (optional static series resistance).",
+    "Cycle-averaged: phase shift and port voltages held over one update interval; the series-inductor current is not a state (valid for bandwidths well below f_sw/10).",
+    "Magnetising current neglected; the lossless piecewise-linear series current is reported as a quasi-static estimate for protection studies only.",
+    "Port-2 capacitor update is the exact ZOH discretisation of C2 with a resistive and/or current-source load for piecewise-constant currents.",
+    "No sensor dynamics, ADC quantisation or noise; the one-period averaging of the measured current and the computation delay are modelled in the controller loop."
+  ],
+  "modulator": {
+    "coarse_step_s": 1e-08,
+    "dead_band_mode": "centred",
+    "dead_time_counts": 20,
+    "dead_time_realised_s": 2e-07,
+    "dead_time_s": 2e-07,
+    "f_sw_Hz": 100000.0,
+    "hr_step_s": 1.5e-10,
+    "leg_to_leg": "leg B/D outputs are the swapped leg A/C outputs (180 degrees); S4=S1, S3=S2, S8=S5, S7=S6 patterns",
+    "modulation": "single-phase-shift",
+    "period_s": 1e-05,
+    "phase_resolution_deg": 0.005399999999999999,
+    "phase_resolution_s": 1.5e-10,
+    "phi_max_deg": 45.0,
+    "pwm_clock_Hz": 100000000.0,
+    "quantise": true,
+    "sign_convention": "phi > 0: secondary lags primary, power flows from port 1 to port 2",
+    "slew_max_deg_per_update": 1.0,
+    "t_phi_max_s": 1.25e-06,
+    "tbprd_counts": 500.0,
+    "time_origin": "centre of primary positive half-cycle (S1, S4 on); register load at the period boundary (m - 1/2) T",
+    "update_divider": 1
+  },
+  "producer": {
+    "id": "aipe.simulation-skills.control",
+    "version": "0.2.0"
+  },
+  "scenarios": {
+    "fault": {
+      "design_sha256": "93b5629562950a14f6772664b0dec300642b76a5a22c589a881cf10131d83321",
+      "duration_s": 0.04000000000000001,
+      "figure": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\control\\closed_loop_fault.png",
+      "final_mode": "IDLE",
+      "log": [
+        {
+          "detail": "startup",
+          "event": {
+            "kind": "start",
+            "label": "startup",
+            "t": 0.0,
+            "value": null
+          },
+          "kind": "event",
+          "mode": "IDLE",
+          "t": 0.0
+        },
+        {
+          "detail": "start accepted: v2 = 350.0 V >= precharge threshold 320.0 V",
+          "from_mode": "IDLE",
+          "kind": "transition",
+          "mode": "SOFT_START",
+          "t": 0.0,
+          "to_mode": "SOFT_START"
+        },
+        {
+          "detail": "bumpless hand-over to closed loop at v2 = 396.0 V, phi = 13.62 deg",
+          "from_mode": "SOFT_START",
+          "kind": "transition",
+          "mode": "RUN",
+          "t": 0.0068200000000000005,
+          "to_mode": "RUN"
+        },
+        {
+          "detail": "full load",
+          "event": {
+            "kind": "load_resistance",
+            "label": "full load",
+            "t": 0.012,
+            "value": 16.0
+          },
+          "kind": "event",
+          "mode": "RUN",
+          "t": 0.012
+        },
+        {
+          "detail": "output short circuit (0.3 Ohm)",
+          "event": {
+            "kind": "load_resistance",
+            "label": "output short circuit (0.3 Ohm)",
+            "t": 0.025,
+            "value": 0.3
+          },
+          "kind": "event",
+          "mode": "RUN",
+          "t": 0.025
+        },
+        {
+          "detail": "trip: under_voltage",
+          "from_mode": "RUN",
+          "kind": "transition",
+          "mode": "FAULT",
+          "t": 0.025040000000000003,
+          "to_mode": "FAULT"
+        },
+        {
+          "detail": "short removed",
+          "event": {
+            "kind": "load_resistance",
+            "label": "short removed",
+            "t": 0.03,
+            "value": 16.0
+          },
+          "kind": "event",
+          "mode": "FAULT",
+          "t": 0.030000000000000002
+        },
+        {
+          "detail": "fault reset accepted: no condition present, gates remain off until a new start",
+          "from_mode": "FAULT",
+          "kind": "transition",
+          "mode": "IDLE",
+          "t": 0.035,
+          "to_mode": "IDLE"
+        },
+        {
+          "detail": "fault reset",
+          "event": {
+            "kind": "fault_reset",
+            "label": "fault reset",
+            "t": 0.035,
+            "value": null
+          },
+          "kind": "event",
+          "mode": "IDLE",
+          "t": 0.035
+        },
+        {
+          "detail": "restart attempt",
+          "event": {
+            "kind": "start",
+            "label": "restart attempt",
+            "t": 0.036,
+            "value": null
+          },
+          "kind": "event",
+          "mode": "IDLE",
+          "t": 0.036000000000000004
+        },
+        {
+          "detail": "precharge interlock: v2 = 0.0 V below 320.0 V",
+          "kind": "start_rejected",
+          "mode": "IDLE",
+          "t": 0.036000000000000004
+        }
+      ],
+      "metrics": {
+        "final_mode": "IDLE",
+        "gates_off_time_s": 0.025040000000000003,
+        "handover_time_s": 0.0068200000000000005,
+        "i2_abs_max_A": 29.29624649142858,
+        "i_l_peak_max_A": 24.393417575278487,
+        "i_l_peak_trip_A": 40.0,
+        "i_ref_abs_max_A": 30.0,
+        "i_ref_limit_A": 30.0,
+        "i_ref_within_limit": true,
+        "phi_applied_abs_max_deg": 27.172800000000002,
+        "phi_max_deg": 45.0,
+        "quantisation_steps_in_phi_applied": 1368,
+        "startup": {
+          "final_error_V": -0.10819657672612724,
+          "handover_time_s": 0.0068200000000000005,
+          "overshoot_after_handover_V": 5.953119234813471,
+          "phi_at_handover_deg": 13.622399999999999,
+          "settling_time_to_1pct_after_handover_s": 0.0017100000000000006,
+          "soft_start_i2_max_A": 15.965871177142859,
+          "soft_start_v2_min_V": 335.6576107626128,
+          "v2_at_handover_V": 396.00855998755424
+        },
+        "trips": [
+          {
+            "cause": "under_voltage",
+            "i2_A": 26.529362080000002,
+            "i_l_peak_A": 24.393417575278487,
+            "mode_before": "RUN",
+            "t": 0.025040000000000003,
+            "v2_V": 288.79736534936325
+          }
+        ],
+        "v2_max_V": 405.95311923481347,
+        "v2_max_in_run_V": 405.95311923481347,
+        "v2_min_V": 6.789661121053213e-17,
+        "v2_min_in_run_V": 313.20337319049463,
+        "windows": {
+          "fault reset": {
+            "final_error_V": -400.0,
+            "i2_max_A": 0.0,
+            "i2_min_A": 0.0,
+            "i_l_peak_max_A": 0.0,
+            "i_ref_max_A": 0.0,
+            "i_ref_min_A": 0.0,
+            "max_deviation_V": 400.0,
+            "max_deviation_pct": 100.0,
+            "max_overshoot_V": 0.0,
+            "max_undershoot_V": 400.0,
+            "mode_at_end": "IDLE",
+            "p2_max_W": 0.0,
+            "p2_min_W": 0.0,
+            "phi_applied_max_deg": 0.0,
+            "phi_applied_min_deg": 0.0,
+            "recovery_time_to_1pct_s": null,
+            "t_end_s": 0.03599,
+            "t_start_s": 0.035,
+            "v2_max_V": 1.4806829570403345e-16,
+            "v2_min_V": 1.2684756941742494e-16
+          },
+          "full load": {
+            "final_error_V": -0.0003691672329195556,
+            "i2_max_A": 29.29624649142858,
+            "i2_min_A": 6.440649051428572,
+            "i_l_peak_max_A": 18.062941334077433,
+            "i_ref_max_A": 29.343782214938845,
+            "i_ref_min_A": 6.425587743231221,
+            "max_deviation_V": 14.762904358872902,
+            "max_deviation_pct": 3.6907260897182255,
+            "max_overshoot_V": 2.488687762030736,
+            "max_undershoot_V": 14.762904358872902,
+            "mode_at_end": "RUN",
+            "p2_max_W": 11528.393930687207,
+            "p2_min_W": 2573.5964014259985,
+            "phi_applied_max_deg": 27.172800000000002,
+            "phi_applied_min_deg": 5.2236,
+            "recovery_time_to_1pct_s": 0.002,
+            "t_end_s": 0.024990000000000002,
+            "t_start_s": 0.012,
+            "v2_max_V": 402.48868776203074,
+            "v2_min_V": 385.2370956411271
+          },
+          "output short circuit (0.3 Ohm)": {
+            "final_error_V": -400.0,
+            "i2_max_A": 26.529362080000002,
+            "i2_min_A": 0.0,
+            "i_l_peak_max_A": 24.393417575278487,
+            "i_ref_max_A": 30.0,
+            "i_ref_min_A": 0.0,
+            "max_deviation_V": 400.0,
+            "max_deviation_pct": 100.0,
+            "max_overshoot_V": 0.0019597552186496614,
+            "max_undershoot_V": 400.0,
+            "mode_at_end": "FAULT",
+            "p2_max_W": 9999.363267092269,
+            "p2_min_W": 0.0,
+            "phi_applied_max_deg": 24.125400000000003,
+            "phi_applied_min_deg": 0.0,
+            "recovery_time_to_1pct_s": null,
+            "t_end_s": 0.029990000000000003,
+            "t_start_s": 0.025,
+            "v2_max_V": 400.00195975521865,
+            "v2_min_V": 3.515166076663139e-16
+          },
+          "restart attempt": {
+            "final_error_V": -400.0,
+            "i2_max_A": 0.0,
+            "i2_min_A": 0.0,
+            "i_l_peak_max_A": 0.0,
+            "i_ref_max_A": 0.0,
+            "i_ref_min_A": 0.0,
+            "max_deviation_V": 400.0,
+            "max_deviation_pct": 100.0,
+            "max_overshoot_V": 0.0,
+            "max_undershoot_V": 400.0,
+            "mode_at_end": "IDLE",
+            "p2_max_W": 0.0,
+            "p2_min_W": 0.0,
+            "phi_applied_max_deg": 0.0,
+            "phi_applied_min_deg": 0.0,
+            "recovery_time_to_1pct_s": null,
+            "t_end_s": 0.039990000000000005,
+            "t_start_s": 0.036000000000000004,
+            "v2_max_V": 1.2664952485281858e-16,
+            "v2_min_V": 6.789661121053213e-17
+          },
+          "short removed": {
+            "final_error_V": -400.0,
+            "i2_max_A": 0.0,
+            "i2_min_A": 0.0,
+            "i_l_peak_max_A": 0.0,
+            "i_ref_max_A": 0.0,
+            "i_ref_min_A": 0.0,
+            "max_deviation_V": 400.0,
+            "max_deviation_pct": 100.0,
+            "max_overshoot_V": 0.0,
+            "max_undershoot_V": 400.0,
+            "mode_at_end": "FAULT",
+            "p2_max_W": 0.0,
+            "p2_min_W": 0.0,
+            "phi_applied_max_deg": 0.0,
+            "phi_applied_min_deg": 0.0,
+            "recovery_time_to_1pct_s": null,
+            "t_end_s": 0.03499,
+            "t_start_s": 0.030000000000000002,
+            "v2_max_V": 3.2341089153283923e-16,
+            "v2_min_V": 1.4829983325767836e-16
+          },
+          "startup": {
+            "final_error_V": -0.3927430317041238,
+            "i2_max_A": 16.006607337142857,
+            "i2_min_A": 0.0,
+            "i_l_peak_max_A": 12.185141195390171,
+            "i_ref_max_A": 15.125067812986945,
+            "i_ref_min_A": 0.0,
+            "max_deviation_V": 64.34238923738718,
+            "max_deviation_pct": 16.085597309346795,
+            "max_overshoot_V": 5.953119234813471,
+            "max_undershoot_V": 64.34238923738718,
+            "mode_at_end": "RUN",
+            "p2_max_W": 6342.674982037059,
+            "p2_min_W": 0.0,
+            "phi_applied_max_deg": 13.638599999999999,
+            "phi_applied_min_deg": 0.0,
+            "recovery_time_to_1pct_s": 0.008530000000000001,
+            "t_end_s": 0.01199,
+            "t_start_s": 0.0,
+            "v2_max_V": 405.95311923481347,
+            "v2_min_V": 335.6576107626128
+          }
+        }
+      },
+      "samples": 4000,
+      "scenario": {
+        "description": "precharged start at 25 % load, full load, output short circuit -> protection trip -> latched gates off; short removed, reset accepted, restart blocked by the precharge interlock",
+        "events": [
+          {
+            "kind": "start",
+            "label": "startup",
+            "t": 0.0,
+            "value": null
+          },
+          {
+            "kind": "load_resistance",
+            "label": "full load",
+            "t": 0.012,
+            "value": 16.0
+          },
+          {
+            "kind": "load_resistance",
+            "label": "output short circuit (0.3 Ohm)",
+            "t": 0.025,
+            "value": 0.3
+          },
+          {
+            "kind": "load_resistance",
+            "label": "short removed",
+            "t": 0.03,
+            "value": 16.0
+          },
+          {
+            "kind": "fault_reset",
+            "label": "fault reset",
+            "t": 0.035,
+            "value": null
+          },
+          {
+            "kind": "start",
+            "label": "restart attempt",
+            "t": 0.036,
+            "value": null
+          }
+        ],
+        "i_load_initial_A": 0.0,
+        "name": "fault",
+        "r_load_initial_Ohm": 64.0,
+        "t_end_s": 0.04,
+        "v2_initial_V": 350.0
+      },
+      "traces": {
+        "channels": [
+          {
+            "description": "1 = protection latch set",
+            "name": "fault_latched",
+            "sign_convention": "",
+            "unit": "1"
+          },
+          {
+            "description": "1 = modulator enabled, 0 = all gates off",
+            "name": "gates_enabled",
+            "sign_convention": "",
+            "unit": "1"
+          },
+          {
+            "description": "cycle-averaged converter current into port 2 over the interval",
+            "name": "i2",
+            "sign_convention": "positive out of the converter into port 2",
+            "unit": "A"
+          },
+          {
+            "description": "quasi-static lossless series-current peak, primary referred",
+            "name": "i_l_peak",
+            "sign_convention": "",
+            "unit": "A"
+          },
+          {
+            "description": "load current drawn from port 2",
+            "name": "i_load",
+            "sign_convention": "negative = injected (reverse power)",
+            "unit": "A"
+          },
+          {
+            "description": "current reference from the voltage loop (clamped)",
+            "name": "i_ref",
+            "sign_convention": "",
+            "unit": "A"
+          },
+          {
+            "description": "supervisory mode index into metadata.modes",
+            "name": "mode",
+            "sign_convention": "",
+            "unit": "1"
+          },
+          {
+            "description": "power into port 2 (= power from port 1, lossless)",
+            "name": "p2",
+            "sign_convention": "",
+            "unit": "W"
+          },
+          {
+            "description": "phase shift applied over the interval (after limit, slew, quantisation)",
+            "name": "phi_applied",
+            "sign_convention": "",
+            "unit": "rad"
+          },
+          {
+            "description": "phase-shift command computed in the sample",
+            "name": "phi_cmd",
+            "sign_convention": "phi > 0: secondary lags, power 1 -> 2",
+            "unit": "rad"
+          },
+          {
+            "description": "port-1 bus voltage behind the source resistance",
+            "name": "v1_bus",
+            "sign_convention": "",
+            "unit": "V"
+          },
+          {
+            "description": "port-2 voltage at the sample instant",
+            "name": "v2",
+            "sign_convention": "",
+            "unit": "V"
+          },
+          {
+            "description": "effective (rate-limited) voltage reference",
+            "name": "v_ref",
+            "sign_convention": "",
+            "unit": "V"
+          }
+        ],
+        "dataset_sha256": "fb753204c179e7655807fde42de2d025c06a2fce470a63319bf1f244c3d2a788",
+        "path": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\control\\traces_fault.h5"
+      },
+      "trips": [
+        {
+          "cause": "under_voltage",
+          "i2_A": 26.529362080000002,
+          "i_l_peak_A": 24.393417575278487,
+          "mode_before": "RUN",
+          "t": 0.025040000000000003,
+          "v2_V": 288.79736534936325
+        }
+      ]
+    },
+    "input_sag": {
+      "design_sha256": "93b5629562950a14f6772664b0dec300642b76a5a22c589a881cf10131d83321",
+      "duration_s": 0.04000000000000001,
+      "figure": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\control\\closed_loop_input_sag.png",
+      "final_mode": "FAULT",
+      "log": [
+        {
+          "detail": "startup",
+          "event": {
+            "kind": "start",
+            "label": "startup",
+            "t": 0.0,
+            "value": null
+          },
+          "kind": "event",
+          "mode": "IDLE",
+          "t": 0.0
+        },
+        {
+          "detail": "start accepted: v2 = 350.0 V >= precharge threshold 320.0 V",
+          "from_mode": "IDLE",
+          "kind": "transition",
+          "mode": "SOFT_START",
+          "t": 0.0,
+          "to_mode": "SOFT_START"
+        },
+        {
+          "detail": "bumpless hand-over to closed loop at v2 = 396.0 V, phi = 13.62 deg",
+          "from_mode": "SOFT_START",
+          "kind": "transition",
+          "mode": "RUN",
+          "t": 0.0068200000000000005,
+          "to_mode": "RUN"
+        },
+        {
+          "detail": "full load",
+          "event": {
+            "kind": "load_resistance",
+            "label": "full load",
+            "t": 0.012,
+            "value": 16.0
+          },
+          "kind": "event",
+          "mode": "RUN",
+          "t": 0.012
+        },
+        {
+          "detail": "port-1 sag 800 V -> 450 V",
+          "event": {
+            "kind": "source_voltage",
+            "label": "port-1 sag 800 V -> 450 V",
+            "t": 0.025,
+            "value": 450.0
+          },
+          "kind": "event",
+          "mode": "RUN",
+          "t": 0.025
+        },
+        {
+          "detail": "trip: over_current_series_peak",
+          "from_mode": "RUN",
+          "kind": "transition",
+          "mode": "FAULT",
+          "t": 0.02526,
+          "to_mode": "FAULT"
+        },
+        {
+          "detail": "source restored (latch holds)",
+          "event": {
+            "kind": "source_voltage",
+            "label": "source restored (latch holds)",
+            "t": 0.032,
+            "value": 800.0
+          },
+          "kind": "event",
+          "mode": "FAULT",
+          "t": 0.032
+        }
+      ],
+      "metrics": {
+        "final_mode": "FAULT",
+        "gates_off_time_s": 0.02526,
+        "handover_time_s": 0.0068200000000000005,
+        "i2_abs_max_A": 29.29624649142858,
+        "i_l_peak_max_A": 40.17938905650214,
+        "i_l_peak_trip_A": 40.0,
+        "i_ref_abs_max_A": 29.343782214938845,
+        "i_ref_limit_A": 30.0,
+        "i_ref_within_limit": true,
+        "phi_applied_abs_max_deg": 43.92539999999999,
+        "phi_max_deg": 45.0,
+        "quantisation_steps_in_phi_applied": 1390,
+        "startup": {
+          "final_error_V": -0.10819657672612724,
+          "handover_time_s": 0.0068200000000000005,
+          "overshoot_after_handover_V": 5.953119234813471,
+          "phi_at_handover_deg": 13.622399999999999,
+          "settling_time_to_1pct_after_handover_s": 0.0017100000000000006,
+          "soft_start_i2_max_A": 15.965871177142859,
+          "soft_start_v2_min_V": 335.6576107626128,
+          "v2_at_handover_V": 396.00855998755424
+        },
+        "trips": [
+          {
+            "cause": "over_current_series_peak",
+            "i2_A": 23.718774741428568,
+            "i_l_peak_A": 40.17938905650214,
+            "mode_before": "RUN",
+            "t": 0.02526,
+            "v2_V": 396.4157724601699
+          }
+        ],
+        "v2_max_V": 405.95311923481347,
+        "v2_max_in_run_V": 405.95311923481347,
+        "v2_min_V": 39.682135178775184,
+        "v2_min_in_run_V": 385.2370956411271,
+        "windows": {
+          "full load": {
+            "final_error_V": -0.0003691672329195556,
+            "i2_max_A": 29.29624649142858,
+            "i2_min_A": 6.440649051428572,
+            "i_l_peak_max_A": 18.062941334077433,
+            "i_ref_max_A": 29.343782214938845,
+            "i_ref_min_A": 6.425587743231221,
+            "max_deviation_V": 14.762904358872902,
+            "max_deviation_pct": 3.6907260897182255,
+            "max_overshoot_V": 2.488687762030736,
+            "max_undershoot_V": 14.762904358872902,
+            "mode_at_end": "RUN",
+            "p2_max_W": 11528.393930687207,
+            "p2_min_W": 2573.5964014259985,
+            "phi_applied_max_deg": 27.172800000000002,
+            "phi_applied_min_deg": 5.2236,
+            "recovery_time_to_1pct_s": 0.002,
+            "t_end_s": 0.024990000000000002,
+            "t_start_s": 0.012,
+            "v2_max_V": 402.48868776203074,
+            "v2_min_V": 385.2370956411271
+          },
+          "port-1 sag 800 V -> 450 V": {
+            "final_error_V": -253.75173200290394,
+            "i2_max_A": 23.718774741428568,
+            "i2_min_A": 0.0,
+            "i_l_peak_max_A": 40.17938905650214,
+            "i_ref_max_A": 28.678647789914095,
+            "i_ref_min_A": 0.0,
+            "max_deviation_V": 261.49573894171095,
+            "max_deviation_pct": 65.37393473542774,
+            "max_overshoot_V": 0.0019597552186496614,
+            "max_undershoot_V": 261.49573894171095,
+            "mode_at_end": "FAULT",
+            "p2_max_W": 9403.123794709321,
+            "p2_min_W": 0.0,
+            "phi_applied_max_deg": 43.92539999999999,
+            "phi_applied_min_deg": 0.0,
+            "recovery_time_to_1pct_s": null,
+            "t_end_s": 0.031990000000000005,
+            "t_start_s": 0.025,
+            "v2_max_V": 400.00195975521865,
+            "v2_min_V": 138.50426105828905
+          },
+          "source restored (latch holds)": {
+            "final_error_V": -357.76409468603487,
+            "i2_max_A": 0.0,
+            "i2_min_A": 0.0,
+            "i_l_peak_max_A": 0.0,
+            "i_ref_max_A": 0.0,
+            "i_ref_min_A": 0.0,
+            "max_deviation_V": 360.3178648212248,
+            "max_deviation_pct": 90.0794662053062,
+            "max_overshoot_V": 0.0,
+            "max_undershoot_V": 360.3178648212248,
+            "mode_at_end": "FAULT",
+            "p2_max_W": 0.0,
+            "p2_min_W": 0.0,
+            "phi_applied_max_deg": 0.0,
+            "phi_applied_min_deg": 0.0,
+            "recovery_time_to_1pct_s": null,
+            "t_end_s": 0.039990000000000005,
+            "t_start_s": 0.032,
+            "v2_max_V": 138.2880171349455,
+            "v2_min_V": 39.682135178775184
+          },
+          "startup": {
+            "final_error_V": -0.3927430317041238,
+            "i2_max_A": 16.006607337142857,
+            "i2_min_A": 0.0,
+            "i_l_peak_max_A": 12.185141195390171,
+            "i_ref_max_A": 15.125067812986945,
+            "i_ref_min_A": 0.0,
+            "max_deviation_V": 64.34238923738718,
+            "max_deviation_pct": 16.085597309346795,
+            "max_overshoot_V": 5.953119234813471,
+            "max_undershoot_V": 64.34238923738718,
+            "mode_at_end": "RUN",
+            "p2_max_W": 6342.674982037059,
+            "p2_min_W": 0.0,
+            "phi_applied_max_deg": 13.638599999999999,
+            "phi_applied_min_deg": 0.0,
+            "recovery_time_to_1pct_s": 0.008530000000000001,
+            "t_end_s": 0.01199,
+            "t_start_s": 0.0,
+            "v2_max_V": 405.95311923481347,
+            "v2_min_V": 335.6576107626128
+          }
+        }
+      },
+      "samples": 4000,
+      "scenario": {
+        "description": "precharged start at 25 % load, full load, then the port-1 source sags to 450 V: the voltage loop drives the phase shift to its limit, the current limit engages and the quasi-static series-current peak exceeds the over-current threshold -> latched trip; the source recovers while the latch holds",
+        "events": [
+          {
+            "kind": "start",
+            "label": "startup",
+            "t": 0.0,
+            "value": null
+          },
+          {
+            "kind": "load_resistance",
+            "label": "full load",
+            "t": 0.012,
+            "value": 16.0
+          },
+          {
+            "kind": "source_voltage",
+            "label": "port-1 sag 800 V -> 450 V",
+            "t": 0.025,
+            "value": 450.0
+          },
+          {
+            "kind": "source_voltage",
+            "label": "source restored (latch holds)",
+            "t": 0.032,
+            "value": 800.0
+          }
+        ],
+        "i_load_initial_A": 0.0,
+        "name": "input_sag",
+        "r_load_initial_Ohm": 64.0,
+        "t_end_s": 0.04,
+        "v2_initial_V": 350.0
+      },
+      "traces": {
+        "channels": [
+          {
+            "description": "1 = protection latch set",
+            "name": "fault_latched",
+            "sign_convention": "",
+            "unit": "1"
+          },
+          {
+            "description": "1 = modulator enabled, 0 = all gates off",
+            "name": "gates_enabled",
+            "sign_convention": "",
+            "unit": "1"
+          },
+          {
+            "description": "cycle-averaged converter current into port 2 over the interval",
+            "name": "i2",
+            "sign_convention": "positive out of the converter into port 2",
+            "unit": "A"
+          },
+          {
+            "description": "quasi-static lossless series-current peak, primary referred",
+            "name": "i_l_peak",
+            "sign_convention": "",
+            "unit": "A"
+          },
+          {
+            "description": "load current drawn from port 2",
+            "name": "i_load",
+            "sign_convention": "negative = injected (reverse power)",
+            "unit": "A"
+          },
+          {
+            "description": "current reference from the voltage loop (clamped)",
+            "name": "i_ref",
+            "sign_convention": "",
+            "unit": "A"
+          },
+          {
+            "description": "supervisory mode index into metadata.modes",
+            "name": "mode",
+            "sign_convention": "",
+            "unit": "1"
+          },
+          {
+            "description": "power into port 2 (= power from port 1, lossless)",
+            "name": "p2",
+            "sign_convention": "",
+            "unit": "W"
+          },
+          {
+            "description": "phase shift applied over the interval (after limit, slew, quantisation)",
+            "name": "phi_applied",
+            "sign_convention": "",
+            "unit": "rad"
+          },
+          {
+            "description": "phase-shift command computed in the sample",
+            "name": "phi_cmd",
+            "sign_convention": "phi > 0: secondary lags, power 1 -> 2",
+            "unit": "rad"
+          },
+          {
+            "description": "port-1 bus voltage behind the source resistance",
+            "name": "v1_bus",
+            "sign_convention": "",
+            "unit": "V"
+          },
+          {
+            "description": "port-2 voltage at the sample instant",
+            "name": "v2",
+            "sign_convention": "",
+            "unit": "V"
+          },
+          {
+            "description": "effective (rate-limited) voltage reference",
+            "name": "v_ref",
+            "sign_convention": "",
+            "unit": "V"
+          }
+        ],
+        "dataset_sha256": "b916e4e6089d9ff8501102ac71093e09466d1676b75e172f2ba8d7fcc340c109",
+        "path": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\control\\traces_input_sag.h5"
+      },
+      "trips": [
+        {
+          "cause": "over_current_series_peak",
+          "i2_A": 23.718774741428568,
+          "i_l_peak_A": 40.17938905650214,
+          "mode_before": "RUN",
+          "t": 0.02526,
+          "v2_V": 396.4157724601699
+        }
+      ]
+    },
+    "nominal": {
+      "design_sha256": "93b5629562950a14f6772664b0dec300642b76a5a22c589a881cf10131d83321",
+      "duration_s": 0.14,
+      "figure": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\control\\closed_loop_nominal.png",
+      "final_mode": "OFF",
+      "log": [
+        {
+          "detail": "startup",
+          "event": {
+            "kind": "start",
+            "label": "startup",
+            "t": 0.0,
+            "value": null
+          },
+          "kind": "event",
+          "mode": "IDLE",
+          "t": 0.0
+        },
+        {
+          "detail": "start accepted: v2 = 350.0 V >= precharge threshold 320.0 V",
+          "from_mode": "IDLE",
+          "kind": "transition",
+          "mode": "SOFT_START",
+          "t": 0.0,
+          "to_mode": "SOFT_START"
+        },
+        {
+          "detail": "bumpless hand-over to closed loop at v2 = 396.0 V, phi = 13.62 deg",
+          "from_mode": "SOFT_START",
+          "kind": "transition",
+          "mode": "RUN",
+          "t": 0.0068200000000000005,
+          "to_mode": "RUN"
+        },
+        {
+          "detail": "load step 25 % -> 100 %",
+          "event": {
+            "kind": "load_resistance",
+            "label": "load step 25 % -> 100 %",
+            "t": 0.02,
+            "value": 16.0
+          },
+          "kind": "event",
+          "mode": "RUN",
+          "t": 0.02
+        },
+        {
+          "detail": "set-point 400 V -> 380 V",
+          "event": {
+            "kind": "setpoint",
+            "label": "set-point 400 V -> 380 V",
+            "t": 0.04,
+            "value": 380.0
+          },
+          "kind": "event",
+          "mode": "RUN",
+          "t": 0.04
+        },
+        {
+          "detail": "load release 100 % -> 0",
+          "event": {
+            "kind": "load_resistance",
+            "label": "load release 100 % -> 0",
+            "t": 0.055,
+            "value": null
+          },
+          "kind": "event",
+          "mode": "RUN",
+          "t": 0.05500000000000001
+        },
+        {
+          "detail": "power reversal: 12.5 A injected (5 kW regenerative)",
+          "event": {
+            "kind": "load_current",
+            "label": "power reversal: 12.5 A injected (5 kW regenerative)",
+            "t": 0.065,
+            "value": -12.5
+          },
+          "kind": "event",
+          "mode": "RUN",
+          "t": 0.065
+        },
+        {
+          "detail": "load_current",
+          "event": {
+            "kind": "load_current",
+            "label": "",
+            "t": 0.075,
+            "value": 0.0
+          },
+          "kind": "event",
+          "mode": "RUN",
+          "t": 0.07500000000000001
+        },
+        {
+          "detail": "forward full load",
+          "event": {
+            "kind": "load_resistance",
+            "label": "forward full load",
+            "t": 0.075000001,
+            "value": 16.0
+          },
+          "kind": "event",
+          "mode": "RUN",
+          "t": 0.07501000000000001
+        },
+        {
+          "detail": "set-point 380 V -> 400 V",
+          "event": {
+            "kind": "setpoint",
+            "label": "set-point 380 V -> 400 V",
+            "t": 0.085,
+            "value": 400.0
+          },
+          "kind": "event",
+          "mode": "RUN",
+          "t": 0.085
+        },
+        {
+          "detail": "overload 133 % (current limit)",
+          "event": {
+            "kind": "load_resistance",
+            "label": "overload 133 % (current limit)",
+            "t": 0.095,
+            "value": 12.0
+          },
+          "kind": "event",
+          "mode": "RUN",
+          "t": 0.095
+        },
+        {
+          "detail": "overload removed",
+          "event": {
+            "kind": "load_resistance",
+            "label": "overload removed",
+            "t": 0.11,
+            "value": 16.0
+          },
+          "kind": "event",
+          "mode": "RUN",
+          "t": 0.11000000000000001
+        },
+        {
+          "detail": "shutdown",
+          "event": {
+            "kind": "shutdown",
+            "label": "shutdown",
+            "t": 0.12,
+            "value": null
+          },
+          "kind": "event",
+          "mode": "RUN",
+          "t": 0.12000000000000001
+        },
+        {
+          "detail": "controlled shutdown: phase-shift ramp to zero",
+          "from_mode": "RUN",
+          "kind": "transition",
+          "mode": "SHUTDOWN",
+          "t": 0.12000000000000001,
+          "to_mode": "SHUTDOWN"
+        },
+        {
+          "detail": "phase shift at zero: gates disabled from the next period",
+          "from_mode": "SHUTDOWN",
+          "kind": "transition",
+          "mode": "OFF",
+          "t": 0.13125,
+          "to_mode": "OFF"
+        }
+      ],
+      "metrics": {
+        "final_mode": "OFF",
+        "gates_off_time_s": 0.13126000000000002,
+        "handover_time_s": 0.0068200000000000005,
+        "i2_abs_max_A": 30.00176729142857,
+        "i_l_peak_max_A": 29.134554955808472,
+        "i_l_peak_trip_A": 40.0,
+        "i_ref_abs_max_A": 30.0,
+        "i_ref_limit_A": 30.0,
+        "i_ref_within_limit": true,
+        "phi_applied_abs_max_deg": 27.973799999999997,
+        "phi_max_deg": 45.0,
+        "quantisation_steps_in_phi_applied": 3836,
+        "startup": {
+          "final_error_V": 3.5227308526529445e-05,
+          "handover_time_s": 0.0068200000000000005,
+          "overshoot_after_handover_V": 5.953119234813471,
+          "phi_at_handover_deg": 13.622399999999999,
+          "settling_time_to_1pct_after_handover_s": 0.0017100000000000006,
+          "soft_start_i2_max_A": 15.965871177142859,
+          "soft_start_v2_min_V": 335.6576107626128,
+          "v2_at_handover_V": 396.00855998755424
+        },
+        "trips": [],
+        "v2_max_V": 405.95311923481347,
+        "v2_max_in_run_V": 405.95311923481347,
+        "v2_min_V": 50.04121664448541,
+        "v2_min_in_run_V": 351.21414171095864,
+        "windows": {
+          "forward full load": {
+            "final_error_V": 0.04292174583143707,
+            "i2_max_A": 30.00176729142857,
+            "i2_min_A": -12.488228571428573,
+            "i_l_peak_max_A": 21.80769132740116,
+            "i_ref_max_A": 30.0,
+            "i_ref_min_A": -11.405879991061969,
+            "max_deviation_V": 28.785858289041357,
+            "max_deviation_pct": 7.5752258655372,
+            "max_overshoot_V": 3.587749794437343,
+            "max_undershoot_V": 28.785858289041357,
+            "mode_at_end": "RUN",
+            "p2_max_W": 11105.627188233633,
+            "p2_min_W": -4741.7754725050645,
+            "phi_applied_max_deg": 27.973799999999997,
+            "phi_applied_min_deg": -10.440000000000001,
+            "recovery_time_to_1pct_s": 0.0024399999999999977,
+            "t_end_s": 0.08499000000000001,
+            "t_start_s": 0.07501000000000001,
+            "v2_max_V": 383.58774979443734,
+            "v2_min_V": 351.21414171095864
+          },
+          "load release 100 % -> 0": {
+            "final_error_V": -0.021448795695635566,
+            "i2_max_A": 23.74862333714286,
+            "i2_min_A": -6.518129279999999,
+            "i_l_peak_max_A": 15.643553743495021,
+            "i_ref_max_A": 23.750140048222384,
+            "i_ref_min_A": -6.556082281150783,
+            "max_deviation_V": 19.67176789312134,
+            "max_deviation_pct": 5.176781024505616,
+            "max_overshoot_V": 19.67176789312134,
+            "max_undershoot_V": 3.9181514983073384,
+            "mode_at_end": "RUN",
+            "p2_max_W": 9038.586854868056,
+            "p2_min_W": -2545.6601758324346,
+            "phi_applied_max_deg": 21.198600000000003,
+            "phi_applied_min_deg": -5.288399999999999,
+            "recovery_time_to_1pct_s": 0.0034299999999999956,
+            "t_end_s": 0.06499,
+            "t_start_s": 0.05500000000000001,
+            "v2_max_V": 399.67176789312134,
+            "v2_min_V": 376.08184850169266
+          },
+          "load step 25 % -> 100 %": {
+            "final_error_V": 2.4361713102223348e-05,
+            "i2_max_A": 29.358440571428574,
+            "i2_min_A": 6.253160571428571,
+            "i_l_peak_max_A": 18.116414941584104,
+            "i_ref_max_A": 29.405210228509475,
+            "i_ref_min_A": 6.250151053049998,
+            "max_deviation_V": 14.971525323535673,
+            "max_deviation_pct": 3.742881330883918,
+            "max_overshoot_V": 2.5240012476295988,
+            "max_undershoot_V": 14.971525323535673,
+            "mode_at_end": "RUN",
+            "p2_max_W": 11549.20510915517,
+            "p2_min_W": 2498.3266511507077,
+            "phi_applied_max_deg": 27.242999999999995,
+            "phi_applied_min_deg": 5.067,
+            "recovery_time_to_1pct_s": 0.0020100000000000014,
+            "t_end_s": 0.039990000000000005,
+            "t_start_s": 0.02,
+            "v2_max_V": 402.5240012476296,
+            "v2_min_V": 385.0284746764643
+          },
+          "overload 133 % (current limit)": {
+            "final_error_V": -38.056774191488266,
+            "i2_max_A": 30.00176729142857,
+            "i2_min_A": 24.99828569142857,
+            "i_l_peak_max_A": 21.536172932642874,
+            "i_ref_max_A": 30.0,
+            "i_ref_min_A": 24.997824812850983,
+            "max_deviation_V": 38.34297357511838,
+            "max_deviation_pct": 9.585743393779595,
+            "max_overshoot_V": 0.0,
+            "max_undershoot_V": 38.34297357511838,
+            "mode_at_end": "RUN",
+            "p2_max_W": 11779.953880315603,
+            "p2_min_W": 9993.913061987787,
+            "phi_applied_max_deg": 27.973799999999997,
+            "phi_applied_min_deg": 22.498199999999994,
+            "recovery_time_to_1pct_s": null,
+            "t_end_s": 0.10999,
+            "t_start_s": 0.095,
+            "v2_max_V": 399.99207939977913,
+            "v2_min_V": 361.6570264248816
+          },
+          "overload removed": {
+            "final_error_V": 0.02621040123772616,
+            "i2_max_A": 30.00176729142857,
+            "i2_min_A": 24.163194857142855,
+            "i_l_peak_max_A": 21.536508111260765,
+            "i_ref_max_A": 30.0,
+            "i_ref_min_A": 24.15745922595203,
+            "max_deviation_V": 38.34637798372751,
+            "max_deviation_pct": 9.586594495931877,
+            "max_overshoot_V": 2.873129981166528,
+            "max_undershoot_V": 38.34637798372751,
+            "mode_at_end": "RUN",
+            "p2_max_W": 11762.899286456117,
+            "p2_min_W": 9696.80839975999,
+            "phi_applied_max_deg": 27.973799999999997,
+            "phi_applied_min_deg": 21.626999999999995,
+            "recovery_time_to_1pct_s": 0.0022199999999999998,
+            "t_end_s": 0.11999000000000001,
+            "t_start_s": 0.11000000000000001,
+            "v2_max_V": 402.8731299811665,
+            "v2_min_V": 361.6536220162725
+          },
+          "power reversal: 12.5 A injected (5 kW regenerative)": {
+            "final_error_V": -0.009121287575170526,
+            "i2_max_A": 0.020569577142857145,
+            "i2_min_A": -15.965871177142859,
+            "i_l_peak_max_A": 10.548711615505606,
+            "i_ref_max_A": 0.016016032762462343,
+            "i_ref_min_A": -15.988896623623736,
+            "max_deviation_V": 10.379002161121377,
+            "max_deviation_pct": 2.731316358189836,
+            "max_overshoot_V": 10.379002161121377,
+            "max_undershoot_V": 2.0971053714499703,
+            "mode_at_end": "RUN",
+            "p2_max_W": 7.82327139613277,
+            "p2_min_W": -6156.537165446762,
+            "phi_applied_max_deg": 0.0162,
+            "phi_applied_min_deg": -13.6008,
+            "recovery_time_to_1pct_s": 0.0018699999999999967,
+            "t_end_s": 0.07500000000000001,
+            "t_start_s": 0.065,
+            "v2_max_V": 390.3790021611214,
+            "v2_min_V": 377.90289462855003
+          },
+          "set-point 380 V -> 400 V": {
+            "final_error_V": 0.0007100014967295465,
+            "i2_max_A": 29.997041280000005,
+            "i2_min_A": 23.727652000000003,
+            "i_l_peak_max_A": 19.069803894476205,
+            "i_ref_max_A": 30.0,
+            "i_ref_min_A": 24.42538723046266,
+            "max_deviation_V": 8.896456613068551,
+            "max_deviation_pct": 2.224114153267138,
+            "max_overshoot_V": 1.8299362849833187,
+            "max_undershoot_V": 8.896456613068551,
+            "mode_at_end": "RUN",
+            "p2_max_W": 11736.110275609175,
+            "p2_min_W": 9016.692937781985,
+            "phi_applied_max_deg": 27.9684,
+            "phi_applied_min_deg": 21.177,
+            "recovery_time_to_1pct_s": 0.0015000000000000013,
+            "t_end_s": 0.09499,
+            "t_start_s": 0.085,
+            "v2_max_V": 401.8299362849833,
+            "v2_min_V": 380.0072338543997
+          },
+          "set-point 400 V -> 380 V": {
+            "final_error_V": 0.0002870542005481032,
+            "i2_max_A": 24.99828569142857,
+            "i2_min_A": 15.565200000000003,
+            "i_l_peak_max_A": 16.673963169745132,
+            "i_ref_max_A": 24.99200308958383,
+            "i_ref_min_A": 15.267686726938862,
+            "max_deviation_V": 6.995093929043435,
+            "max_deviation_pct": 1.8408141918535355,
+            "max_overshoot_V": 6.995093929043435,
+            "max_undershoot_V": 4.238902859477491,
+            "mode_at_end": "RUN",
+            "p2_max_W": 9999.313484058277,
+            "p2_min_W": 6019.042931463889,
+            "phi_applied_max_deg": 22.498199999999994,
+            "phi_applied_min_deg": 13.229999999999999,
+            "recovery_time_to_1pct_s": 0.002610000000000001,
+            "t_end_s": 0.054990000000000004,
+            "t_start_s": 0.04,
+            "v2_max_V": 399.99996829730003,
+            "v2_min_V": 375.7610971405225
+          },
+          "shutdown": {
+            "final_error_V": -341.303426550413,
+            "i2_max_A": 24.987998880000003,
+            "i2_min_A": 0.0,
+            "i_l_peak_max_A": 29.134554955808472,
+            "i_ref_max_A": 24.987115352062553,
+            "i_ref_min_A": 0.0,
+            "max_deviation_V": 349.9587833555146,
+            "max_deviation_pct": 87.48969583887865,
+            "max_overshoot_V": 0.0,
+            "max_undershoot_V": 349.9587833555146,
+            "mode_at_end": "OFF",
+            "p2_max_W": 9995.196623273334,
+            "p2_min_W": 0.0,
+            "phi_applied_max_deg": 22.4874,
+            "phi_applied_min_deg": 0.0,
+            "recovery_time_to_1pct_s": null,
+            "t_end_s": 0.13999,
+            "t_start_s": 0.12000000000000001,
+            "v2_max_V": 399.99988279466953,
+            "v2_min_V": 50.04121664448541
+          },
+          "startup": {
+            "final_error_V": 0.001698786181585774,
+            "i2_max_A": 16.006607337142857,
+            "i2_min_A": 0.0,
+            "i_l_peak_max_A": 12.185141195390171,
+            "i_ref_max_A": 15.125067812986945,
+            "i_ref_min_A": 0.0,
+            "max_deviation_V": 64.34238923738718,
+            "max_deviation_pct": 16.085597309346795,
+            "max_overshoot_V": 5.953119234813471,
+            "max_undershoot_V": 64.34238923738718,
+            "mode_at_end": "RUN",
+            "p2_max_W": 6342.674982037059,
+            "p2_min_W": 0.0,
+            "phi_applied_max_deg": 13.638599999999999,
+            "phi_applied_min_deg": 0.0,
+            "recovery_time_to_1pct_s": 0.008530000000000001,
+            "t_end_s": 0.01999,
+            "t_start_s": 0.0,
+            "v2_max_V": 405.95311923481347,
+            "v2_min_V": 335.6576107626128
+          }
+        }
+      },
+      "samples": 14000,
+      "scenario": {
+        "description": "precharged start at 25 % load, full-load step, set-point change, load release, power reversal, return to forward full load, overload into the current limit, recovery and controlled shutdown",
+        "events": [
+          {
+            "kind": "start",
+            "label": "startup",
+            "t": 0.0,
+            "value": null
+          },
+          {
+            "kind": "load_resistance",
+            "label": "load step 25 % -> 100 %",
+            "t": 0.02,
+            "value": 16.0
+          },
+          {
+            "kind": "setpoint",
+            "label": "set-point 400 V -> 380 V",
+            "t": 0.04,
+            "value": 380.0
+          },
+          {
+            "kind": "load_resistance",
+            "label": "load release 100 % -> 0",
+            "t": 0.055,
+            "value": null
+          },
+          {
+            "kind": "load_current",
+            "label": "power reversal: 12.5 A injected (5 kW regenerative)",
+            "t": 0.065,
+            "value": -12.5
+          },
+          {
+            "kind": "load_current",
+            "label": "",
+            "t": 0.075,
+            "value": 0.0
+          },
+          {
+            "kind": "load_resistance",
+            "label": "forward full load",
+            "t": 0.075000001,
+            "value": 16.0
+          },
+          {
+            "kind": "setpoint",
+            "label": "set-point 380 V -> 400 V",
+            "t": 0.085,
+            "value": 400.0
+          },
+          {
+            "kind": "load_resistance",
+            "label": "overload 133 % (current limit)",
+            "t": 0.095,
+            "value": 12.0
+          },
+          {
+            "kind": "load_resistance",
+            "label": "overload removed",
+            "t": 0.11,
+            "value": 16.0
+          },
+          {
+            "kind": "shutdown",
+            "label": "shutdown",
+            "t": 0.12,
+            "value": null
+          }
+        ],
+        "i_load_initial_A": 0.0,
+        "name": "nominal",
+        "r_load_initial_Ohm": 64.0,
+        "t_end_s": 0.14,
+        "v2_initial_V": 350.0
+      },
+      "traces": {
+        "channels": [
+          {
+            "description": "1 = protection latch set",
+            "name": "fault_latched",
+            "sign_convention": "",
+            "unit": "1"
+          },
+          {
+            "description": "1 = modulator enabled, 0 = all gates off",
+            "name": "gates_enabled",
+            "sign_convention": "",
+            "unit": "1"
+          },
+          {
+            "description": "cycle-averaged converter current into port 2 over the interval",
+            "name": "i2",
+            "sign_convention": "positive out of the converter into port 2",
+            "unit": "A"
+          },
+          {
+            "description": "quasi-static lossless series-current peak, primary referred",
+            "name": "i_l_peak",
+            "sign_convention": "",
+            "unit": "A"
+          },
+          {
+            "description": "load current drawn from port 2",
+            "name": "i_load",
+            "sign_convention": "negative = injected (reverse power)",
+            "unit": "A"
+          },
+          {
+            "description": "current reference from the voltage loop (clamped)",
+            "name": "i_ref",
+            "sign_convention": "",
+            "unit": "A"
+          },
+          {
+            "description": "supervisory mode index into metadata.modes",
+            "name": "mode",
+            "sign_convention": "",
+            "unit": "1"
+          },
+          {
+            "description": "power into port 2 (= power from port 1, lossless)",
+            "name": "p2",
+            "sign_convention": "",
+            "unit": "W"
+          },
+          {
+            "description": "phase shift applied over the interval (after limit, slew, quantisation)",
+            "name": "phi_applied",
+            "sign_convention": "",
+            "unit": "rad"
+          },
+          {
+            "description": "phase-shift command computed in the sample",
+            "name": "phi_cmd",
+            "sign_convention": "phi > 0: secondary lags, power 1 -> 2",
+            "unit": "rad"
+          },
+          {
+            "description": "port-1 bus voltage behind the source resistance",
+            "name": "v1_bus",
+            "sign_convention": "",
+            "unit": "V"
+          },
+          {
+            "description": "port-2 voltage at the sample instant",
+            "name": "v2",
+            "sign_convention": "",
+            "unit": "V"
+          },
+          {
+            "description": "effective (rate-limited) voltage reference",
+            "name": "v_ref",
+            "sign_convention": "",
+            "unit": "V"
+          }
+        ],
+        "dataset_sha256": "78bca82baa0b45840d5e9f46cd402c99df6ce0a26759e6645e20706c8d451e97",
+        "path": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\control\\traces_nominal.h5"
+      },
+      "trips": []
+    }
+  },
+  "schema": "aipe-dab-sps-control-sim/0.1"
+}

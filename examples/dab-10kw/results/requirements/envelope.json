@@ -1,0 +1,121 @@
+{
+  "approval_required": [],
+  "artifacts": [
+    {
+      "description": "Initial Engineering State built from the specification",
+      "media_type": "application/json",
+      "role": "engineering_state",
+      "sha256": "d1116e834e3a43254fa2e3bb59fd71043f093f02deb9f60fb113d866a27a567f",
+      "uri": "tasks/requirements/initial-state.json"
+    }
+  ],
+  "capability_id": "aipe.core",
+  "diagnostics": [],
+  "environment": {},
+  "evidence_kind": "assumption",
+  "finished_at": "2026-10-21T05:52:57Z",
+  "gate": "software",
+  "input_hash": "b22cfe871987fb05f118f2a8994ef95e1a5bce69779c0cab11bb2b103dae8620",
+  "inputs": {
+    "specification_sha256": "25d9a4d948063a10f927fd4f507460f3c5e75cc98b778f8f72a67f1216710583"
+  },
+  "model": {},
+  "outputs": {
+    "constraints": [
+      {
+        "basis": "source: TIDUES0 Table 1-1 (700-800 V); adopted as AIPE preliminary range",
+        "description": "Operating input DC voltage 700 V to 800 V (nominal 800 V); 800 V also the design point for device stress.",
+        "id": "input-voltage-range"
+      },
+      {
+        "basis": "assumption (AIPE preliminary range; TI covers 250-500 V with EPS)",
+        "description": "Operating output DC voltage 350 V to 450 V around the 400 V nominal; wider range requires EPS/DPS modulation study.",
+        "id": "output-voltage-range"
+      },
+      {
+        "basis": "assumption",
+        "description": "10 kW continuous at nominal voltages in both power-flow directions; derated power at the range corners to be established by simulation.",
+        "id": "rated-power-envelope"
+      },
+      {
+        "basis": "assumption informed by source: TIDUES0 Table 1-1 (98.0 % full load, 98.8 % peak measured by TI)",
+        "description": "Full-load efficiency target >= 97.5 % and peak >= 98.5 % at nominal voltages.",
+        "id": "efficiency-target"
+      },
+      {
+        "basis": "assumption (common industrial derating practice; not a standard citation)",
+        "description": "Semiconductor DC-bus voltage utilisation <= 70 % of VDS rating at the maximum bus voltage (1200 V class on the 800 V bus, >= 650 V class on the 400 V bus with overshoot margin).",
+        "id": "device-voltage-derating"
+      },
+      {
+        "basis": "assumption",
+        "description": "Design maximum junction temperature 125 degC at 40 degC ambient and rated power; absolute maximum per datasheet (150-175 degC) never reached under fault-free operation.",
+        "id": "junction-temperature-limit"
+      },
+      {
+        "basis": "assumption; source: TIDUES0 BOM (Payton transformer 5000 VDC)",
+        "description": "Transformer and all primary-to-secondary barriers rated for reinforced isolation of an 800 V DC system; transformer dielectric test >= 5 kV DC as in the reference design; creepage/clearance per IEC 60664-1 to be verified in the PCB stage.",
+        "id": "isolation"
+      },
+      {
+        "basis": "assumption",
+        "description": "Peak flux density <= 70 % of the core material's saturation flux density at 100 degC under worst-case volt-seconds.",
+        "id": "magnetic-saturation-margin"
+      },
+      {
+        "basis": "task specification; source: TIDUES0 Table 1-1",
+        "description": "Fixed 100 kHz switching frequency for the SPS baseline.",
+        "id": "switching-frequency"
+      },
+      {
+        "basis": "assumption",
+        "description": "All eight switches must satisfy the ZVS current condition at the nominal operating point; light-load ZVS loss is reported, not required for the SPS baseline.",
+        "id": "zvs-at-rated-load"
+      }
+    ],
+    "converter": {
+      "dead_time_s_level2": 2e-07,
+      "description": "Single-phase isolated bidirectional DAB; two full bridges, eight controlled switches.",
+      "external_inductance_H": 3.5e-05,
+      "leakage_inductance_primary_H": 0.0,
+      "leakage_inductance_secondary_H": 0.0,
+      "magnetising_inductance_H": 0.001,
+      "modulation": "single-phase-shift",
+      "phase_shift_deg": 22.5,
+      "series_inductance_H": 3.5e-05,
+      "series_resistance_primary_Ohm": 0.02,
+      "topology": "dual-active-bridge",
+      "turns_ratio_np_ns": 2.0
+    },
+    "environment": {
+      "ambient_temperature_K": 313.15,
+      "cooling": "forced-air baseline; natural convection and liquid cooling evaluated as alternatives (assumption)"
+    },
+    "operating_point_id": "operating-point.nominal",
+    "requirements": {
+      "input_voltage_V": 800,
+      "nominal_power_W": 10000,
+      "output_voltage_V": 400,
+      "power_flow": "bidirectional",
+      "switching_frequency_Hz": 100000
+    },
+    "state_id": "aipe.workflow.dab-10kw-benchmark"
+  },
+  "source_state_id": "aipe.workflow.dab-10kw-benchmark",
+  "source_state_sha256": "ef9bace49efdde83cb7b1377c1ff4d50bf00444d4aea79bbc8c13218a650ad08",
+  "started_at": "2026-10-21T05:52:57Z",
+  "state_proposal": {},
+  "status": "completed",
+  "task_id": "requirements",
+  "task_version": "0.1.0",
+  "tool": {
+    "id": "aipe.core.validate",
+    "version": "0.1.0"
+  },
+  "verification": {
+    "core_schema_validation": {
+      "errors": [],
+      "passed": true
+    }
+  }
+}

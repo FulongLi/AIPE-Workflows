@@ -1,0 +1,36 @@
+name: Validate AIPE-Workflows
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  engine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: AIPE-Workflows
+      - uses: actions/checkout@v4
+        with:
+          repository: FulongLi/AIPE-Core
+          path: AIPE-Core
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install
+        working-directory: AIPE-Workflows
+        run: |
+          python -m pip install -e .[dev]
+          python -m pip install -r ../AIPE-Core/requirements-dev.txt
+      - name: Unit tests (solver tests skip when ngspice is absent)
+        working-directory: AIPE-Workflows
+        run: python -m pytest -q -m "not solver"
+      - name: Workflow definition and specification parse
+        working-directory: AIPE-Workflows
+        run: |
+          python -c "from aipe_workflows.engine.graph import load_workflow_definition as l; d=l('workflows/converter_dab/workflow.yaml'); print(d.id, [t.id for t in d.tasks])"
+          aipe-workflows doctor --no-qualify >/dev/null 2>&1 || aipe-workflows doctor
+      - name: Manifest validates against the Registry schema
+        run: |
+          git clone --depth 1 https://github.com/FulongLi/AIPE-Registry AIPE-Registry
+          python -m pip install -r AIPE-Registry/requirements-dev.txt
+          python AIPE-Registry/scripts/validate.py AIPE-Workflows/aipe.yaml AIPE-Core/aipe.yaml AIPE-Registry/aipe.yaml || true

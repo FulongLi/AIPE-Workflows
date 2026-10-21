@@ -1,0 +1,1372 @@
+{
+  "dataset_path": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\plant-verification\\phi_22p5\\waveforms.h5",
+  "dataset_sha256": "d9109d5a57165837b69cea03b4121946121b75e3a254c61bc11af5a3e5f9f35b",
+  "messages": [],
+  "netlist_path": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\plant-verification\\phi_22p5\\circuit.cir",
+  "run": {
+    "command": [
+      "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\Spice64\\bin\\ngspice_con.exe",
+      "-b",
+      "-r",
+      "circuit.raw",
+      "-o",
+      "circuit.log",
+      "circuit.cir"
+    ],
+    "dataset_file_sha256": "5630432a31596bb23549108d759f0fee35314283d5447440bb7e8973888f485e",
+    "dataset_sha256": "d9109d5a57165837b69cea03b4121946121b75e3a254c61bc11af5a3e5f9f35b",
+    "duration_s": 0.057589899999584304,
+    "errors": [],
+    "finished_at": "2026-10-21T06:26:28Z",
+    "log_path": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\plant-verification\\phi_22p5\\circuit.log",
+    "n_points": 3538,
+    "netlist_path": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\plant-verification\\phi_22p5\\circuit.cir",
+    "netlist_sha256": "d37e71ff039cf0ebf4c645c40ee06edfa0df64bf677bb0b970534652f36fe7d5",
+    "ngspice_path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\Spice64\\bin\\ngspice_con.exe",
+    "ngspice_version": "47",
+    "platform": "Windows 10 AMD64",
+    "producer": {
+      "id": "aipe.simulation-skills.dab",
+      "version": "0.2.0"
+    },
+    "raw_path": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\plant-verification\\phi_22p5\\circuit.raw",
+    "raw_sha256": "cd50972100305325d167bcf2032f8aa81f278d8a617625d8181857a14634abba",
+    "returncode": 0,
+    "started_at": "2026-10-21T06:26:28Z",
+    "stdout_tail": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at https://ngspice.sourceforge.io/bugrep.html\n** Creation Date: Aug 11 2026   13:55:25\n******\n\nBatch mode\n\nSimulation output goes to rawfile: circuit.raw\nComments and warnings go to log-file: circuit.log\n\n",
+    "succeeded": true,
+    "timed_out": false,
+    "warnings": [
+      "Comments and warnings go to log-file: circuit.log"
+    ],
+    "workdir": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\plant-verification\\phi_22p5"
+  },
+  "run_dir": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\plant-verification\\phi_22p5",
+  "spec_sha256": "37adeb1009cdfb8ad130f30509b33f0485c8e84254abdda677e698dec8de76bc",
+  "status": "steady_state",
+  "succeeded": true,
+  "summary": {
+    "bridges": {
+      "ideal_switching_instants_in_window": {
+        "primary": [
+          {
+            "direction": -1,
+            "t": 8.250000000000001e-05
+          },
+          {
+            "direction": 1,
+            "t": 8.750000000000001e-05
+          },
+          {
+            "direction": -1,
+            "t": 9.250000000000001e-05
+          },
+          {
+            "direction": 1,
+            "t": 9.750000000000001e-05
+          },
+          {
+            "direction": -1,
+            "t": 0.00010250000000000001
+          },
+          {
+            "direction": 1,
+            "t": 0.00010750000000000001
+          },
+          {
+            "direction": -1,
+            "t": 0.00011250000000000001
+          },
+          {
+            "direction": 1,
+            "t": 0.00011750000000000001
+          }
+        ],
+        "secondary": [
+          {
+            "direction": -1,
+            "t": 8.3125e-05
+          },
+          {
+            "direction": 1,
+            "t": 8.812500000000001e-05
+          },
+          {
+            "direction": -1,
+            "t": 9.3125e-05
+          },
+          {
+            "direction": 1,
+            "t": 9.812500000000001e-05
+          },
+          {
+            "direction": -1,
+            "t": 0.000103125
+          },
+          {
+            "direction": 1,
+            "t": 0.00010812500000000001
+          },
+          {
+            "direction": -1,
+            "t": 0.000113125
+          },
+          {
+            "direction": 1,
+            "t": 0.00011812500000000001
+          }
+        ]
+      },
+      "measured_phase_shift": {
+        "available": true,
+        "events": 4,
+        "phi_deg_mean": {
+          "unit": "deg",
+          "value": 22.499999711804687
+        },
+        "t_phi_mean": {
+          "unit": "s",
+          "value": 6.249999919945747e-07
+        },
+        "t_phi_spread": {
+          "unit": "s",
+          "value": 6.776263578034403e-20
+        }
+      },
+      "v_ab": {
+        "avg": {
+          "unit": "V",
+          "value": -0.7419382109278488
+        },
+        "max": {
+          "unit": "V",
+          "value": 800.028515680847
+        },
+        "min": {
+          "unit": "V",
+          "value": -800.0285037428263
+        },
+        "rms": {
+          "unit": "V",
+          "value": 799.9749978201237
+        }
+      },
+      "v_cd": {
+        "avg": {
+          "unit": "V",
+          "value": -0.371055397217026
+        },
+        "max": {
+          "unit": "V",
+          "value": 400.0652280332616
+        },
+        "min": {
+          "unit": "V",
+          "value": -400.0652585071329
+        },
+        "rms": {
+          "unit": "V",
+          "value": 400.04997841604853
+        }
+      },
+      "v_cd_primary_referred": {
+        "max": {
+          "unit": "V",
+          "value": 800.1304560665232
+        },
+        "rms": {
+          "unit": "V",
+          "value": 800.0999568320971
+        }
+      }
+    },
+    "conventions": {
+      "i_L": "series inductor current from node a towards the transformer",
+      "i_dc1": "-i(V1): current delivered by port 1 into the converter",
+      "i_dc2": "i(V2): current delivered by the converter into port 2",
+      "i_s": "secondary current out of the transformer into node c",
+      "p_1": "v_dc1 * i_dc1 (positive = power entering from port 1)",
+      "p_2": "v_dc2 * i_dc2 (positive = power leaving into port 2)",
+      "switch_current": "positive = drain-to-source conduction",
+      "time_origin": "centre of primary positive half-cycle (S1, S4 on)"
+    },
+    "dataset_sha256": "d9109d5a57165837b69cea03b4121946121b75e3a254c61bc11af5a3e5f9f35b",
+    "energy_balance": {
+      "note": "p_switches_from_waveforms is the measured average of v_ds*i per switch pair (channel, diode and Coss branch); p_switch_on_resistance_estimate is i_rms^2*Ron for comparison; remaining unaccounted power is ESR/damping/source resistance",
+      "p_capacitor_energy_change": {},
+      "p_in": {
+        "unit": "W",
+        "value": 10000.96681543611
+      },
+      "p_in_effective": {
+        "unit": "W",
+        "value": 10000.96681543611
+      },
+      "p_loss_total": {
+        "unit": "W",
+        "value": 5.4553777112651005
+      },
+      "p_out": {
+        "unit": "W",
+        "value": 9995.511437724845
+      },
+      "p_out_effective": {
+        "unit": "W",
+        "value": 9995.511437724845
+      },
+      "p_series_resistance_primary": {
+        "unit": "W",
+        "value": 3.7428105181860922
+      },
+      "p_series_resistance_secondary": {
+        "unit": "W",
+        "value": 0.0
+      },
+      "p_switch_on_resistance_estimate": {
+        "unit": "W",
+        "value": 1.9347520510265868
+      },
+      "p_switches_from_waveforms": {
+        "unit": "W",
+        "value": 2.094753622653855
+      },
+      "p_unaccounted": {
+        "unit": "W",
+        "value": -0.3821864295748467
+      },
+      "relative_unaccounted": {
+        "unit": "1",
+        "value": -3.821494827729621e-05
+      }
+    },
+    "numerical": {
+      "solver_options": {
+        "abstol": 1e-09,
+        "chgtol": 1e-14,
+        "cycles": 12,
+        "initial_magnetising_current": null,
+        "initial_series_current": 14.285714285714288,
+        "max_step_fraction": 200,
+        "maxord": 2,
+        "method": "gear",
+        "output_from_cycle": 0,
+        "reltol": 0.0001,
+        "timeout_s": 1800.0,
+        "use_initial_conditions": true,
+        "vntol": 1e-06
+      },
+      "t_max_requested": 5.0000000000000004e-08,
+      "timestep": {
+        "dt_max": 5.0000000000109636e-08,
+        "dt_mean": 3.3926915465083404e-08,
+        "dt_median": 5.0000000000001215e-08,
+        "dt_min": 6.487158138684772e-11,
+        "n_points": 3538,
+        "t_end": 0.00012,
+        "t_start": 5e-10
+      }
+    },
+    "ports": {
+      "efficiency": {
+        "unit": "1",
+        "value": 0.9994545149672085
+      },
+      "efficiency_drift_corrected": {
+        "unit": "1",
+        "value": 0.9994545149672085
+      },
+      "loss_total": {
+        "unit": "W",
+        "value": 5.4553777112651005
+      },
+      "port1": {
+        "current_avg": {
+          "unit": "A",
+          "value": 12.501208519295137
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 13.680077713078123
+        },
+        "energy_per_cycle": {
+          "unit": "J",
+          "value": 0.1000096681543611
+        },
+        "power_avg": {
+          "unit": "W",
+          "value": 10000.96681543611
+        },
+        "voltage_avg": {
+          "unit": "V",
+          "value": 800.0000000000001
+        },
+        "voltage_ripple_pp": {
+          "unit": "V",
+          "value": 0.0
+        }
+      },
+      "port2": {
+        "current_avg": {
+          "unit": "A",
+          "value": 24.988778594312112
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 27.932624303815363
+        },
+        "energy_per_cycle": {
+          "unit": "J",
+          "value": 0.09995511437724845
+        },
+        "power_avg": {
+          "unit": "W",
+          "value": 9995.511437724845
+        },
+        "voltage_avg": {
+          "unit": "V",
+          "value": 400.00000000000006
+        },
+        "voltage_ripple_pp": {
+          "unit": "V",
+          "value": 0.0
+        }
+      },
+      "power_flow_direction": "port1_to_port2"
+    },
+    "run": {
+      "dataset": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\plant-verification\\phi_22p5\\waveforms.h5",
+      "dataset_sha256": "d9109d5a57165837b69cea03b4121946121b75e3a254c61bc11af5a3e5f9f35b",
+      "n_warnings": 1,
+      "netlist_sha256": "d37e71ff039cf0ebf4c645c40ee06edfa0df64bf677bb0b970534652f36fe7d5",
+      "run_dir": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\plant-verification\\phi_22p5",
+      "solver": "47",
+      "warnings": [
+        "Comments and warnings go to log-file: circuit.log"
+      ]
+    },
+    "schema": "aipe-dab-waveform-summary/0.1",
+    "series_path": {
+      "i_L_avg": {
+        "unit": "A",
+        "value": -0.016236611569973646
+      },
+      "i_L_max": {
+        "unit": "A",
+        "value": 14.30950965911074
+      },
+      "i_L_min": {
+        "unit": "A",
+        "value": -14.31547533628983
+      },
+      "i_L_peak_abs": {
+        "unit": "A",
+        "value": 14.31547533628983
+      },
+      "i_L_rms": {
+        "unit": "A",
+        "value": 13.679931502361574
+      },
+      "i_m_avg": {
+        "unit": "A",
+        "value": 0.0012771767095779106
+      },
+      "i_m_peak_abs": {
+        "unit": "A",
+        "value": 2.000965691422115
+      },
+      "i_m_rms": {
+        "unit": "A",
+        "value": 1.1554128470095366
+      },
+      "i_p_ideal_peak_abs": {
+        "unit": "A",
+        "value": 16.314646780490875
+      },
+      "i_p_ideal_rms": {
+        "unit": "A",
+        "value": 13.966347933377236
+      },
+      "i_s_avg": {
+        "unit": "A",
+        "value": -0.035027576595759266
+      },
+      "i_s_peak_abs": {
+        "unit": "A",
+        "value": 32.62929356098175
+      },
+      "i_s_rms": {
+        "unit": "A",
+        "value": 27.93269586675447
+      },
+      "l_ext": {
+        "unit": "H",
+        "value": 3.5e-05
+      },
+      "l_leakage_primary_referred": {
+        "unit": "H",
+        "value": 0.0
+      },
+      "l_total_primary": {
+        "unit": "H",
+        "value": 3.5e-05
+      },
+      "v_L_peak_abs": {
+        "unit": "V",
+        "value": 1600.415792956348
+      },
+      "v_L_rms": {
+        "unit": "V",
+        "value": 565.9426232030092
+      }
+    },
+    "spec_sha256": "37adeb1009cdfb8ad130f30509b33f0485c8e84254abdda677e698dec8de76bc",
+    "status": "steady_state",
+    "steady_state": {
+      "converged_from_cycle": 1,
+      "cycles_available": 11,
+      "cycles_in_window": 4,
+      "max_relative_change_in_window": 1.2717206479515038e-10,
+      "ok": true,
+      "per_cycle_metric": [
+        {
+          "cycle": 1,
+          "t_end": 2e-05,
+          "t_start": 1e-05,
+          "value": 13.680505228633995
+        },
+        {
+          "cycle": 2,
+          "t_end": 3.0000000000000004e-05,
+          "t_start": 2e-05,
+          "value": 13.68050523000777
+        },
+        {
+          "cycle": 3,
+          "t_end": 4e-05,
+          "t_start": 3.0000000000000004e-05,
+          "value": 13.68050523143226
+        },
+        {
+          "cycle": 4,
+          "t_end": 5e-05,
+          "t_start": 4e-05,
+          "value": 13.680505232906198
+        },
+        {
+          "cycle": 5,
+          "t_end": 6.000000000000001e-05,
+          "t_start": 5e-05,
+          "value": 13.680505234428034
+        },
+        {
+          "cycle": 6,
+          "t_end": 7.000000000000001e-05,
+          "t_start": 6.000000000000001e-05,
+          "value": 13.680505235996517
+        },
+        {
+          "cycle": 7,
+          "t_end": 8e-05,
+          "t_start": 7.000000000000001e-05,
+          "value": 13.680505237609587
+        },
+        {
+          "cycle": 8,
+          "t_end": 9e-05,
+          "t_start": 8e-05,
+          "value": 13.68050523926635
+        },
+        {
+          "cycle": 9,
+          "t_end": 0.0001,
+          "t_start": 9e-05,
+          "value": 13.680505240965235
+        },
+        {
+          "cycle": 10,
+          "t_end": 0.00011,
+          "t_start": 0.0001,
+          "value": 13.680505242705014
+        },
+        {
+          "cycle": 11,
+          "t_end": 0.00012000000000000002,
+          "t_start": 0.00011,
+          "value": 13.680505244337795
+        }
+      ],
+      "periodicity_error": 1.9439135128694366e-06,
+      "periodicity_tol": 0.01,
+      "reason": "periodic steady state reached",
+      "rel_tol": 0.001,
+      "t0": 8e-05,
+      "t1": 0.00012000000000000002
+    },
+    "switches": [
+      {
+        "bridge": "primary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.49407339603584344
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": 6.242485953886008
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 14.30958965839818
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -14.25784033862874
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 9.666399245002337
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 6.459331975234289e-05
+        },
+        "id": "S1",
+        "leg": "A",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "+1 * i_L; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            -14.261698924523962,
+            -14.261671274467004,
+            -14.261643861124877,
+            -14.261616682471761
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -2.2263033357936463e-06
+        },
+        "side": "high",
+        "turn_off_current": {
+          "max_abs_A": 14.25581301382211,
+          "mean_abs_A": 14.255771833977672,
+          "values_A": [
+            14.255730417421255,
+            14.255758186629317,
+            14.255785718038016,
+            14.25581301382211
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 7.99993748163576e-05,
+          "values_A": [
+            7.999937480813332e-05,
+            7.999937481089836e-05,
+            7.999937481363971e-05,
+            7.99993748163576e-05
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            800.0051575695073,
+            800.0051575972717,
+            800.0051576247985,
+            800.0051576520895
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            799.985738218201,
+            799.9857382458512,
+            799.9857382732645,
+            799.9857383004431
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 800.0142518715603
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -0.014257840338586902
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "high side needs leg current < -i_min"
+        }
+      },
+      {
+        "bridge": "primary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.494999999999996
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": 6.258722565448772
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 14.31555533565925
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -14.2518715602833
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 9.680043993125905
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 6.475352949491084e-05
+        },
+        "id": "S2",
+        "leg": "A",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "+1 * i_L; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            14.255647544333973,
+            14.255675313513322,
+            14.255702844958492,
+            14.255730140704154
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -2.2242974118203388e-06
+        },
+        "side": "low",
+        "turn_off_current": {
+          "max_abs_A": 14.261781798873042,
+          "mean_abs_A": 14.261740559987409,
+          "values_A": [
+            14.261781798873042,
+            14.261754148810345,
+            14.261726735462515,
+            14.261699556803737
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 7.999937541327725e-05,
+          "values_A": [
+            7.999937541327725e-05,
+            7.99993754105003e-05,
+            7.999937540774713e-05,
+            7.999937540501751e-05
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            800.0051636197744,
+            800.0051635921291,
+            800.0051635647204,
+            800.0051635375464
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            799.9857442695826,
+            799.9857442418133,
+            799.9857442142819,
+            799.9857441869862
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 800.0142578403386
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -0.01425187156028255
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "low side needs leg current > i_min"
+        }
+      },
+      {
+        "bridge": "primary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.494999999999996
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": 6.25872256540913
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 14.31555540929548
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -14.25187126593664
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 9.680043993129056
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 6.475352949474714e-05
+        },
+        "id": "S3",
+        "leg": "B",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "-1 * i_L; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            -14.255647544333973,
+            -14.255675313513322,
+            -14.255702844958492,
+            -14.255730140704154
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -2.2242974120526947e-06
+        },
+        "side": "high",
+        "turn_off_current": {
+          "max_abs_A": 14.261781949351757,
+          "mean_abs_A": 14.261740663560454,
+          "values_A": [
+            14.261781949351757,
+            14.261754342034573,
+            14.261726789444692,
+            14.261699573410795
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 7.999937541327988e-05,
+          "values_A": [
+            7.999937541327988e-05,
+            7.99993754105029e-05,
+            7.99993754077511e-05,
+            7.999937540502237e-05
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            800.0051636197735,
+            800.0051635921288,
+            800.0051635647199,
+            800.0051635375462
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            799.9857442695447,
+            799.9857442416986,
+            799.9857442141623,
+            799.9857441868753
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 800.0142578405084
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -0.014251871265969385
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "high side needs leg current < -i_min"
+        }
+      },
+      {
+        "bridge": "primary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.49407339603584344
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": 6.242485953828466
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 14.30958968717683
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -14.25784050846582
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 9.66639924492513
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 6.459331975158466e-05
+        },
+        "id": "S4",
+        "leg": "B",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "-1 * i_L; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            14.261698924523962,
+            14.261671274467004,
+            14.261643861124877,
+            14.261616682471761
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -2.226303335610303e-06
+        },
+        "side": "low",
+        "turn_off_current": {
+          "max_abs_A": 14.255813124738001,
+          "mean_abs_A": 14.255771929749336,
+          "values_A": [
+            14.25573045523686,
+            14.25575830137402,
+            14.255785837648462,
+            14.255813124738001
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 7.99993880659344e-05,
+          "values_A": [
+            7.999935395310918e-05,
+            7.999933654574527e-05,
+            7.99993880659344e-05,
+            7.99992675740805e-05
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            800.0051575695074,
+            800.0051575972719,
+            800.0051576247992,
+            800.0051576520891
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            799.9857382180506,
+            799.9857382456579,
+            799.9857382732105,
+            799.9857383004265
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 800.014251871266
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -0.01425784050846507
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "low side needs leg current > i_min"
+        }
+      },
+      {
+        "bridge": "secondary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.4990733960358436
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": -12.476875514666025
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 32.62030614411924
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -32.61401658889372
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 19.73629599766565
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 5.744859702541214e-06
+        },
+        "id": "S5",
+        "leg": "C",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "-1 * i_s; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            -32.523311171516056,
+            -32.52336711294024,
+            -32.523422426050594,
+            -32.52347758768427
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -0.00013039800362607925
+        },
+        "side": "high",
+        "turn_off_current": {
+          "max_abs_A": 32.51625363817589,
+          "mean_abs_A": 32.51616992625806,
+          "values_A": [
+            32.51625363817589,
+            32.516197330284655,
+            32.51614187942736,
+            32.516086857144316
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 3.999714638226194e-05,
+          "values_A": [
+            3.999714638226194e-05,
+            3.999714637664389e-05,
+            3.9997146371112533e-05,
+            3.999714636562016e-05
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            400.03230968172215,
+            400.0323096256072,
+            400.03230956997277,
+            400.0323095148124
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            399.9674991494978,
+            399.96749909366986,
+            399.96749903839475,
+            399.96749898319575
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 400.03262925355733
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -0.032614016588979666
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "high side needs leg current < -i_min"
+        }
+      },
+      {
+        "bridge": "secondary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.4999999999999961
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": -12.511903080017674
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 32.60506910327918
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -32.62925355732048
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 19.766439236489283
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 5.73969551530202e-06
+        },
+        "id": "S6",
+        "leg": "C",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "-1 * i_s; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            32.53871428652751,
+            32.538658015474965,
+            32.53860245385573,
+            32.53854750582421
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -0.00013074279052554746
+        },
+        "side": "low",
+        "turn_off_current": {
+          "max_abs_A": 32.501016804261724,
+          "mean_abs_A": 32.500933810479395,
+          "values_A": [
+            32.50085050220432,
+            32.500906330188904,
+            32.500961605262624,
+            32.501016804261724
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 3.999714485861154e-05,
+          "values_A": [
+            3.999714484192166e-05,
+            3.999714484753718e-05,
+            3.999714485311668e-05,
+            3.999714485861154e-05
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            400.0322942807271,
+            400.0322943366005,
+            400.0322943919964,
+            400.03229444691993
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            399.9674837463619,
+            399.96748380266973,
+            399.9674838581206,
+            399.96748391314287
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 400.032614016589
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -0.03262925355731792
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "low side needs leg current > i_min"
+        }
+      },
+      {
+        "bridge": "secondary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.4999999999999961
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": -12.511903079646086
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 32.60507062077522
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -32.62925357557833
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 19.76643923604352
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 5.739695515771682e-06
+        },
+        "id": "S7",
+        "leg": "D",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "+1 * i_s; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            -32.53871428652751,
+            -32.538658015474965,
+            -32.53860245385573,
+            -32.53854750582421
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -0.00013074279052230467
+        },
+        "side": "high",
+        "turn_off_current": {
+          "max_abs_A": 32.50101589796143,
+          "mean_abs_A": 32.50093326165086,
+          "values_A": [
+            32.50085012252412,
+            32.50090600189717,
+            32.5009610242207,
+            32.50101589796143
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 3.999714485860479e-05,
+          "values_A": [
+            3.999714484192983e-05,
+            3.999714484757699e-05,
+            3.9997144853126906e-05,
+            3.999714485860479e-05
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            400.0322942806952,
+            400.0322943365673,
+            400.0322943919656,
+            400.0322944468863
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            399.96748374736757,
+            399.96748380276136,
+            399.96748385849213,
+            399.9674839128803
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 400.0326140166726
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -0.03262925357557833
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "high side needs leg current < -i_min"
+        }
+      },
+      {
+        "bridge": "secondary",
+        "conduction_fraction": {
+          "unit": "1",
+          "value": 0.4990733960358436
+        },
+        "current_avg": {
+          "unit": "A",
+          "value": -12.476875503421041
+        },
+        "current_peak_forward": {
+          "unit": "A",
+          "value": 32.62030612677411
+        },
+        "current_peak_reverse": {
+          "unit": "A",
+          "value": -32.61401655618358
+        },
+        "current_rms": {
+          "unit": "A",
+          "value": 19.73629598007823
+        },
+        "forward_charge_per_cycle": {
+          "unit": "C",
+          "value": 5.744859698625004e-06
+        },
+        "id": "S8",
+        "leg": "D",
+        "leg_current_at_switching_instant": {
+          "sign_convention": "+1 * i_s; current leaving the leg mid-node into the AC circuit",
+          "values_A": [
+            32.523311171516056,
+            32.52336711294024,
+            32.523422426050594,
+            32.52347758768427
+          ]
+        },
+        "reverse_charge_per_cycle": {
+          "unit": "C",
+          "value": -0.0001303980035098174
+        },
+        "side": "low",
+        "turn_off_current": {
+          "max_abs_A": 32.5162536208097,
+          "mean_abs_A": 32.51616990890704,
+          "values_A": [
+            32.5162536208097,
+            32.516197312939525,
+            32.516141862100795,
+            32.516086839778126
+          ]
+        },
+        "turn_off_events": 4,
+        "turn_on_current": {
+          "max_abs_A": 3.999714638225321e-05,
+          "values_A": [
+            3.999714638225321e-05,
+            3.999714637661865e-05,
+            3.999714637107517e-05,
+            3.9997146365607836e-05
+          ]
+        },
+        "turn_on_events": 4,
+        "v_ds_after_turn_off": {
+          "values_V": [
+            400.03230968172716,
+            400.03230962561037,
+            400.03230956997675,
+            400.0323095148167
+          ]
+        },
+        "v_ds_before_turn_on": {
+          "values_V": [
+            399.9674991498775,
+            399.96749909399813,
+            399.9674990389758,
+            399.9674989841021
+          ]
+        },
+        "v_ds_max": {
+          "unit": "V",
+          "value": 400.0326292535756
+        },
+        "v_ds_min": {
+          "unit": "V",
+          "value": -0.03261401667259634
+        },
+        "zvs_current_condition": {
+          "all_events_met": true,
+          "fraction_met": 1.0,
+          "i_min_A": 0.0,
+          "per_event": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "rule": "low side needs leg current > i_min"
+        }
+      }
+    ],
+    "symmetry": {
+      "i_L_half_wave_antisymmetry_error": {
+        "unit": "1",
+        "value": 0.0004236745714884259
+      },
+      "i_L_periodicity_error": {
+        "unit": "1",
+        "value": 1.9439135128694366e-06
+      },
+      "i_s_half_wave_antisymmetry_error": {
+        "unit": "1",
+        "value": 0.0004731349317768436
+      },
+      "v_ab_periodicity_error": {
+        "unit": "1",
+        "value": 6.956761219977085e-11
+      }
+    },
+    "transformer": {
+      "flux_linkage_peak_to_peak": {
+        "unit": "s*V",
+        "value": 0.0040003997303101665
+      },
+      "magnetising_inductance_primary": {
+        "unit": "H",
+        "value": 0.001
+      },
+      "net_volt_seconds_per_cycle": {
+        "unit": "s*V",
+        "value": -4.0006221768965655e-05
+      },
+      "note": "flux density requires N_p and A_e from the magnetics design: B_pp = flux_linkage_pp / (N_p * A_e)",
+      "primary_voltage_rms": {
+        "unit": "V",
+        "value": 800.1000068113729
+      },
+      "turns_ratio_np_ns": {
+        "unit": "1",
+        "value": 2.0
+      },
+      "volt_second_relative_imbalance": {
+        "unit": "1",
+        "value": 0.010000556060897399
+      }
+    },
+    "valid": true,
+    "window": {
+      "cycles": 4,
+      "samples": 1177,
+      "t0": 8e-05,
+      "t1": 0.00012000000000000002
+    },
+    "zvs_overview": {
+      "S1": true,
+      "S2": true,
+      "S3": true,
+      "S4": true,
+      "S5": true,
+      "S6": true,
+      "S7": true,
+      "S8": true
+    }
+  },
+  "summary_path": "runs\\wf-dab-10kw-first\\tasks\\control-baseline\\plant-verification\\phi_22p5\\summary.json",
+  "valid": true
+}

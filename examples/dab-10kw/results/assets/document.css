@@ -1,0 +1,47 @@
+@page { size: A4; margin: 17mm 19mm; }
+body { background: var(--canvas); }
+.document-shell { display: grid; grid-template-columns: 180px minmax(0, 794px); justify-content: center; gap: 40px; padding: 26px 30px 70px; }
+.document-nav { position: sticky; top: 100px; align-self: start; padding-top: 22px; }
+.document-nav .eyebrow { margin-bottom: 20px; }
+.document-nav a { display: block; padding: 10px 0; color: var(--muted); font-size: 12px; text-decoration: none; border-bottom: 1px solid var(--line); }
+.document-nav a:hover { color: var(--ink); }
+.document-pages { min-width: 0; }
+.doc-page { display: flex; flex-direction: column; min-height: 1123px; padding: 64px 72px 48px; background: white; box-shadow: 0 4px 30px #241c1008; margin-bottom: 24px; scroll-margin-top: 90px; }
+.doc-page h1 { font-size: 51px; line-height: 1.2; margin: 32px 0 24px; }
+.doc-page h2 { font-size: 27px; margin-bottom: 18px; }
+.doc-page h3 { font-size: 16px; margin-bottom: 8px; }
+.doc-page p { font-size: 13px; }
+.doc-page section { margin-bottom: 28px; }
+.doc-page .lead { font-size: 17px; color: var(--muted); max-width: 32em; line-height: 1.9; }
+.cover { position: relative; }
+.cover .cover-art { margin: 34px 0; }
+.cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; margin-bottom: 36px; }
+.cover-meta dt { font-size: 10px; color: var(--muted); margin-bottom: 5px; }
+.cover-meta dd { margin: 0; font-size: 12px; }
+.doc-page .page-footer { margin-top: auto; }
+.doc-page .compact { margin-bottom: 18px; }
+.references { padding-left: 20px; font-size: 12px; line-height: 1.9; overflow-wrap: anywhere; }
+.references li + li { margin-top: 9px; }
+.doc-page .media-poster { max-height: 190px; object-fit: cover; }
+.doc-page video { display: block; width: 100%; max-height: 240px; background: var(--ink); }
+@media screen and (max-width: 1100px) { .document-shell { display: block; padding: 20px; } .document-nav { display: none; } .document-pages { max-width: 794px; margin: auto; } }
+@media screen and (max-width: 700px) { .document-shell { padding: 12px; } .doc-page { min-height: auto; padding: 28px 24px; } .doc-page h1 { font-size: 37px; } .doc-page h2 { font-size: 24px; } .doc-page .page-footer { margin-top: 40px; } .cover-meta { grid-template-columns: 1fr 1fr; } }
+@media print {
+  body { font-size: 10pt; background: white; }
+  html[lang="en"] body { line-height: 1.55; }
+  .document-shell { display: block; padding: 0; }
+  .document-pages { max-width: none; }
+  .doc-page { width: auto; min-height: 262mm; padding: 0; margin: 0; box-shadow: none; break-after: page; }
+  .doc-page:last-child { break-after: auto; }
+  .doc-page h1 { font-size: 33pt; margin-top: 23px; }
+  .doc-page h2 { font-size: 22pt; }
+  .doc-page p { font-size: 10pt; }
+  .doc-page .lead { font-size: 12pt; }
+  .doc-page section { margin-bottom: 16px; }
+  .doc-page .callout { padding: 14px 20px; }
+  .doc-page th, .doc-page td { padding: 8px 10px; }
+  .doc-page figure > img { max-height: 180px; object-fit: contain; }
+  .doc-page .cover-art img { max-height: 210px; }
+  .doc-page .cover-art { margin: 25px 0; }
+  .doc-page .page-footer { padding-top: 12px; margin-top: auto; }
+}

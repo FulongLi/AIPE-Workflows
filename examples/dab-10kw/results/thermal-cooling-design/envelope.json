@@ -1,0 +1,812 @@
+{
+  "approval_required": [],
+  "artifacts": [
+    {
+      "description": "cooling comparison, primary bridge (4 x 9.04 W)",
+      "media_type": "application/json",
+      "role": "analysis_summary",
+      "sha256": "762ae7dbe7ef6d91f955b1e41506ce65f7a15e20cb9aa43d5c756d56f61eabea",
+      "uri": "tasks/thermal-cooling-design/cooling-comparison-primary.json"
+    },
+    {
+      "description": "cooling comparison, secondary bridge (4 x 17.45 W)",
+      "media_type": "application/json",
+      "role": "analysis_summary",
+      "sha256": "ea6b7f4be20fa0cfda275aeabee68010d39a60b2327938863d6b9685ecadecc6",
+      "uri": "tasks/thermal-cooling-design/cooling-comparison-secondary.json"
+    },
+    {
+      "description": "Stage A heat-sink Pareto screening, secondary bridge",
+      "media_type": "application/json",
+      "role": "analysis_summary",
+      "sha256": "1ae1953c512d702e92b32de78ad80904015c40b939c819a8ef4e6a00d6dd051b",
+      "uri": "tasks/thermal-cooling-design/stage-a-heatsink-screening.json"
+    }
+  ],
+  "capability_id": "aipe.design-agent",
+  "diagnostics": [],
+  "environment": {},
+  "evidence_kind": "analytical",
+  "finished_at": "2026-10-21T06:36:20Z",
+  "gate": "analytical",
+  "input_hash": "800a2b6c119d56c39a76d6dd4154e801c354ef85c84d8aacc6f419630c6e3f60",
+  "inputs": {
+    "device_powers_W": {
+      "primary": 9.041852876016772,
+      "secondary": 17.446227058701883
+    },
+    "devices_per_sink": 4,
+    "footprint_area_m2": 0.00032,
+    "rth_case_sink_K_per_W": 0.1,
+    "stage_a": {
+      "bounds": {
+        "base_thickness": [
+          0.004,
+          0.01
+        ],
+        "fin_gap": [
+          0.004,
+          0.012
+        ],
+        "fin_height": [
+          0.015,
+          0.05
+        ],
+        "fin_thickness": [
+          0.002,
+          0.004
+        ],
+        "length": [
+          0.08,
+          0.16
+        ],
+        "width": [
+          0.06,
+          0.12
+        ]
+      },
+      "cooling": "forced",
+      "flow_bounds": [
+        0.003,
+        0.015
+      ],
+      "materials": [
+        "Al-6063-T5"
+      ],
+      "maxiter": 25,
+      "n_epsilon": 3,
+      "n_weights": 5,
+      "objectives": [
+        "r_th",
+        "mass",
+        "fan_power_W"
+      ],
+      "popsize": 10,
+      "seed": 1
+    },
+    "t_ambient_C": 40.0,
+    "tj_design_C": 125.0
+  },
+  "model": {
+    "id": "pea-thermal-cooling-comparison-and-stage-a",
+    "validity_range": "analytical correlations (Elenbaas/Bar-Cohen natural convection, Teertstra-Yovanovich-Culham channels, Lee spreading, Shah-London/Gnielinski cold plate) with the validity notes recorded per evaluation; no CFD/FEM/measurement",
+    "version": "1.0.0"
+  },
+  "outputs": {
+    "assumptions": [
+      "Device loss per switch = semiconductor-database evaluation at Tj = 398.15 K (fixed, conservative: no electrothermal closure on the shared sink).",
+      "Case-to-sink interface 0.1 K/W (TIDUES0 pad value, reference), TO-247 footprint 320 mm^2 (generic outline), 4 devices per sink (one sink per bridge).",
+      "Junction design limit 125.0 degC (assumption), absolute limit from the database rating where available.",
+      "Comparison option geometries, the generic 60 mm fan curve, fan efficiency 0.25, coolant inlet (ambient + 5 K) and pump efficiency 0.3 are assumptions for the comparison; fan/pump datasheets replace them.",
+      "Stage A bounds restrict fin thickness/gap/height to typical extrusion limits (assumption); the search is seeded and reproducible."
+    ],
+    "best_option": "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm",
+    "best_option_row": {
+      "auxiliary_power_W": 0.004829297666022693,
+      "kind": "liquid",
+      "mass_kg": 0.27012853953439103,
+      "option": "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm",
+      "pressure_drop_Pa": 43.46367899420424,
+      "r_hottest_total_K_per_W": 0.11911780841361214,
+      "r_sink_to_fluid_K_per_W": 0.07736699676294606,
+      "t_sink_C": 50.399048769504844,
+      "tj_max_C": 63.040292612666306,
+      "total_power_W": 69.78490823480753,
+      "volume_L": 0.12000000000000002,
+      "within_absolute_limit": true,
+      "within_design_limit": true
+    },
+    "comparison": {
+      "primary": {
+        "method": "analytical correlations (HeatSinkOptimisation heatsink_model + pea.thermal cold-plate model) -> shared-sink network",
+        "ranking_by_tj": [
+          "forced-air-Al-100x100x46-2-fans",
+          "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm",
+          "natural-convection-Al-200x200x88"
+        ],
+        "summary_table": [
+          {
+            "auxiliary_power_W": 1.4334310478697978,
+            "kind": "forced",
+            "mass_kg": 0.5784,
+            "option": "forced-air-Al-100x100x46-2-fans",
+            "pressure_drop_Pa": 27.973773191029583,
+            "r_hottest_total_K_per_W": 0.20885209272476388,
+            "r_sink_to_fluid_K_per_W": 0.174509756689261,
+            "t_sink_C": 46.311566181655124,
+            "tj_max_C": 54.197403195448835,
+            "total_power_W": 36.16741150406709,
+            "volume_L": 0.5680000000000001,
+            "within_absolute_limit": true,
+            "within_design_limit": true
+          },
+          {
+            "auxiliary_power_W": 0.004835696720960529,
+            "kind": "liquid",
+            "mass_kg": 0.27012969494767175,
+            "option": "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm",
+            "pressure_drop_Pa": 43.52127048864475,
+            "r_hottest_total_K_per_W": 0.11913672436169724,
+            "r_sink_to_fluid_K_per_W": 0.07738554644041334,
+            "t_sink_C": 47.798834902577525,
+            "tj_max_C": 55.952630549622846,
+            "total_power_W": 36.16741150406709,
+            "volume_L": 0.12000000000000002,
+            "within_absolute_limit": true,
+            "within_design_limit": true
+          },
+          {
+            "auxiliary_power_W": 0.0,
+            "kind": "natural",
+            "mass_kg": 2.5920000000000005,
+            "option": "natural-convection-Al-200x200x88",
+            "pressure_drop_Pa": null,
+            "r_hottest_total_K_per_W": 0.520038148854428,
+            "r_sink_to_fluid_K_per_W": 0.47568441275760154,
+            "t_sink_C": 57.20427390227468,
+            "tj_max_C": 65.45219734181812,
+            "total_power_W": 36.16741150406709,
+            "volume_L": 3.5200000000000005,
+            "within_absolute_limit": true,
+            "within_design_limit": true
+          }
+        ]
+      },
+      "secondary": {
+        "method": "analytical correlations (HeatSinkOptimisation heatsink_model + pea.thermal cold-plate model) -> shared-sink network",
+        "ranking_by_tj": [
+          "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm",
+          "forced-air-Al-100x100x46-2-fans",
+          "natural-convection-Al-200x200x88"
+        ],
+        "summary_table": [
+          {
+            "auxiliary_power_W": 0.004829297666022693,
+            "kind": "liquid",
+            "mass_kg": 0.27012853953439103,
+            "option": "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm",
+            "pressure_drop_Pa": 43.46367899420424,
+            "r_hottest_total_K_per_W": 0.11911780841361214,
+            "r_sink_to_fluid_K_per_W": 0.07736699676294606,
+            "t_sink_C": 50.399048769504844,
+            "tj_max_C": 63.040292612666306,
+            "total_power_W": 69.78490823480753,
+            "volume_L": 0.12000000000000002,
+            "within_absolute_limit": true,
+            "within_design_limit": true
+          },
+          {
+            "auxiliary_power_W": 1.4333109797810175,
+            "kind": "forced",
+            "mass_kg": 0.5784,
+            "option": "forced-air-Al-100x100x46-2-fans",
+            "pressure_drop_Pa": 27.955339236723404,
+            "r_hottest_total_K_per_W": 0.20868847008746383,
+            "r_sink_to_fluid_K_per_W": 0.17434638985154288,
+            "t_sink_C": 52.1667468168599,
+            "tj_max_C": 64.29097301810704,
+            "total_power_W": 69.78490823480753,
+            "volume_L": 0.5680000000000001,
+            "within_absolute_limit": true,
+            "within_design_limit": true
+          },
+          {
+            "auxiliary_power_W": 0.0,
+            "kind": "natural",
+            "mass_kg": 2.5920000000000005,
+            "option": "natural-convection-Al-200x200x88",
+            "pressure_drop_Pa": null,
+            "r_hottest_total_K_per_W": 0.42275403226392266,
+            "r_sink_to_fluid_K_per_W": 0.37841755387455045,
+            "t_sink_C": 66.40783427157584,
+            "tj_max_C": 79.2295186308237,
+            "total_power_W": 69.78490823480753,
+            "volume_L": 3.5200000000000005,
+            "within_absolute_limit": true,
+            "within_design_limit": true
+          }
+        ]
+      }
+    },
+    "device_powers_W": {
+      "primary": 9.041852876016772,
+      "secondary": 17.446227058701883
+    },
+    "devices_per_sink": 4,
+    "fem_candidate_geometry": {
+      "base_length_m": 0.08099197532160482,
+      "base_thickness_m": 0.004112578190442571,
+      "base_width_m": 0.06462391382662835,
+      "candidate_id": "A-001",
+      "cooling": "forced",
+      "density_kg_per_m3": 2700.0,
+      "fin_count": 11,
+      "fin_efficiency": 0.9086620360356972,
+      "fin_gap_effective_m": 0.004234115899897466,
+      "fin_height_m": 0.04517684721720107,
+      "fin_thickness_m": 0.002025704984332154,
+      "h_W_per_m2_K": 31.134716692341737,
+      "junction_check": {
+        "feasible": true,
+        "hottest_device": "secondary-1",
+        "limit_C": 125.0,
+        "margin_K": 44.52967026388923,
+        "t_sink_C": 68.58784553664665,
+        "tj_max_C": 80.47032973611077
+      },
+      "k_W_per_m_K": 209.0,
+      "material": "Al-6063-T5",
+      "objectives": {
+        "fan_power_W": 0.29392477468682326,
+        "mass": 0.2782540764293634,
+        "r_th": 0.4405345400652951
+      },
+      "r_convective_K_per_W": 0.40965656127906913,
+      "r_spreading_max_K_per_W": 0.10847382702310296,
+      "r_th_analytical_hotspot_K_per_W": 0.5181303883021721,
+      "regime": "forced-laminar",
+      "volumetric_flow_m3_per_s": 0.006398004819063193
+    },
+    "result_paths": {
+      "cooling_comparison_primary": "runs\\wf-dab-10kw-first\\tasks\\thermal-cooling-design\\cooling-comparison-primary.json",
+      "cooling_comparison_secondary": "runs\\wf-dab-10kw-first\\tasks\\thermal-cooling-design\\cooling-comparison-secondary.json",
+      "stage_a": "runs\\wf-dab-10kw-first\\tasks\\thermal-cooling-design\\stage-a-heatsink-screening.json"
+    },
+    "stage_a_flagged": [
+      {
+        "candidate_id": "A-001",
+        "distance_to_utopia": 0.3877502108940394,
+        "fem_verification_recommended": true,
+        "flag_reason": "knee point (closest to utopia among feasible designs)",
+        "junction_check": {
+          "feasible": true,
+          "hottest_device": "secondary-1",
+          "limit_C": 125.0,
+          "margin_K": 44.52967026388923,
+          "t_sink_C": 68.58784553664665,
+          "tj_max_C": 80.47032973611077
+        },
+        "material": "Al-6063-T5",
+        "objectives": {
+          "fan_power_W": 0.29392477468682326,
+          "mass": 0.2782540764293634,
+          "r_th": 0.4405345400652951
+        },
+        "performance_summary": {
+          "delta_T_base_K": 30.74266271247645,
+          "envelope_volume_m3": 0.0002579817611765843,
+          "fan_electrical_power_W": 0.29392477468682326,
+          "fin_efficiency": 0.9086620360356972,
+          "h": 31.134716692341737,
+          "mass_kg": 0.2782540764293634,
+          "pressure_drop_Pa": 11.485016931022734,
+          "r_convective": 0.40965656127906913,
+          "r_spreading_max": 0.10847382702310296,
+          "regime": "forced-laminar",
+          "volumetric_flow": 0.006398004819063193
+        },
+        "variables": {
+          "base_thickness": 0.004112578190442571,
+          "fin_gap": 0.004084806218350192,
+          "fin_height": 0.04517684721720107,
+          "fin_thickness": 0.002025704984332154,
+          "length": 0.08099197532160482,
+          "volumetric_flow": 0.006398004819063193,
+          "width": 0.06462391382662835
+        },
+        "warnings": []
+      },
+      {
+        "candidate_id": "A-004",
+        "distance_to_utopia": 0.44302673724636193,
+        "fem_verification_recommended": true,
+        "flag_reason": "next closest to utopia",
+        "junction_check": {
+          "feasible": true,
+          "hottest_device": "secondary-1",
+          "limit_C": 125.0,
+          "margin_K": 45.26413598929798,
+          "t_sink_C": 67.43434811905364,
+          "tj_max_C": 79.73586401070202
+        },
+        "material": "Al-6063-T5",
+        "objectives": {
+          "fan_power_W": 0.02061056976848246,
+          "mass": 0.539023752503657,
+          "r_th": 0.43000983287592015
+        },
+        "performance_summary": {
+          "delta_T_base_K": 30.0081963051889,
+          "envelope_volume_m3": 0.0005150210141326854,
+          "fan_electrical_power_W": 0.02061056976848246,
+          "fin_efficiency": 0.9381230125383728,
+          "h": 16.675581152114837,
+          "mass_kg": 0.539023752503657,
+          "pressure_drop_Pa": 1.5104909887753468,
+          "r_convective": 0.3931272364326166,
+          "r_spreading_max": 0.13745502912903204,
+          "regime": "forced-laminar",
+          "volumetric_flow": 0.003411236796783672
+        },
+        "variables": {
+          "base_thickness": 0.004965069388500831,
+          "fin_gap": 0.004198124308382454,
+          "fin_height": 0.04964168320837564,
+          "fin_thickness": 0.0020101645158668736,
+          "length": 0.08059754325830204,
+          "volumetric_flow": 0.003411236796783672,
+          "width": 0.11701911125675549
+        },
+        "warnings": []
+      },
+      {
+        "candidate_id": "A-007",
+        "distance_to_utopia": 1.4142135623730951,
+        "fem_verification_recommended": true,
+        "flag_reason": "lowest thermal resistance",
+        "junction_check": {
+          "feasible": true,
+          "hottest_device": "secondary-1",
+          "limit_C": 125.0,
+          "margin_K": 63.435740727498334,
+          "t_sink_C": 49.3813920774598,
+          "tj_max_C": 61.564259272501666
+        },
+        "material": "Al-6063-T5",
+        "objectives": {
+          "fan_power_W": 1.2113278765935378,
+          "mass": 1.327960409184956,
+          "r_th": 0.16961535507482098
+        },
+        "performance_summary": {
+          "delta_T_base_K": 11.836591942844404,
+          "envelope_volume_m3": 0.001091468448528146,
+          "fan_electrical_power_W": 1.2113278765935378,
+          "fin_efficiency": 0.9176366347973756,
+          "h": 24.891235235585082,
+          "mass_kg": 1.327960409184956,
+          "pressure_drop_Pa": 20.543280533079034,
+          "r_convective": 0.1344329643007329,
+          "r_spreading_max": 0.13158725549876465,
+          "regime": "forced-laminar",
+          "volumetric_flow": 0.014741168951120577
+        },
+        "variables": {
+          "base_thickness": 0.009041225501020034,
+          "fin_gap": 0.004030710653083383,
+          "fin_height": 0.04862559522675326,
+          "fin_thickness": 0.00208131377152295,
+          "length": 0.1584468120800442,
+          "volumetric_flow": 0.014741168951120577,
+          "width": 0.11945426806340814
+        },
+        "warnings": []
+      }
+    ],
+    "stage_a_knee_candidate": {
+      "candidate_id": "A-001",
+      "distance_to_utopia": 0.3877502108940394,
+      "fem_verification_recommended": true,
+      "flag_reason": "knee point (closest to utopia among feasible designs)",
+      "junction_check": {
+        "feasible": true,
+        "hottest_device": "secondary-1",
+        "limit_C": 125.0,
+        "margin_K": 44.52967026388923,
+        "t_sink_C": 68.58784553664665,
+        "tj_max_C": 80.47032973611077
+      },
+      "material": "Al-6063-T5",
+      "objectives": {
+        "fan_power_W": 0.29392477468682326,
+        "mass": 0.2782540764293634,
+        "r_th": 0.4405345400652951
+      },
+      "performance_summary": {
+        "delta_T_base_K": 30.74266271247645,
+        "envelope_volume_m3": 0.0002579817611765843,
+        "fan_electrical_power_W": 0.29392477468682326,
+        "fin_efficiency": 0.9086620360356972,
+        "h": 31.134716692341737,
+        "mass_kg": 0.2782540764293634,
+        "pressure_drop_Pa": 11.485016931022734,
+        "r_convective": 0.40965656127906913,
+        "r_spreading_max": 0.10847382702310296,
+        "regime": "forced-laminar",
+        "volumetric_flow": 0.006398004819063193
+      },
+      "variables": {
+        "base_thickness": 0.004112578190442571,
+        "fin_gap": 0.004084806218350192,
+        "fin_height": 0.04517684721720107,
+        "fin_thickness": 0.002025704984332154,
+        "length": 0.08099197532160482,
+        "volumetric_flow": 0.006398004819063193,
+        "width": 0.06462391382662835
+      },
+      "warnings": []
+    },
+    "stage_a_summary": {
+      "bounds": {
+        "base_thickness": [
+          0.004,
+          0.01
+        ],
+        "fin_gap": [
+          0.004,
+          0.012
+        ],
+        "fin_height": [
+          0.015,
+          0.05
+        ],
+        "fin_thickness": [
+          0.002,
+          0.004
+        ],
+        "length": [
+          0.08,
+          0.16
+        ],
+        "width": [
+          0.06,
+          0.12
+        ]
+      },
+      "disclaimer": "Analytical correlations with the validity notes recorded in each heat-sink evaluation; device powers are the fixed values of the task (no electrothermal closure in the screening).",
+      "flow_bounds": [
+        0.003,
+        0.015
+      ],
+      "label": "stage-A-secondary-bridge-forced",
+      "materials": [
+        "Al-6063-T5"
+      ],
+      "method": "analytical screening: HeatSinkOptimisation heatsink_model Pareto (seeded DE, weight sweep + epsilon-constraint) per material, merged non-dominated set, shared-sink network check",
+      "n_candidates": 8,
+      "n_feasible": 6,
+      "nadir": {
+        "fan_power_W": 1.2113278765935378,
+        "mass": 1.327960409184956,
+        "r_th": 1.202539081782396
+      },
+      "next_stage": "B: FEM/CFD verification of the flagged candidates (not performed; no FEM or CFD result is claimed here)",
+      "objectives": [
+        "r_th",
+        "mass",
+        "fan_power_W"
+      ],
+      "settings": {
+        "maxiter": 25,
+        "n_epsilon": 3,
+        "n_weights": 5,
+        "popsize": 10,
+        "seed": 1
+      },
+      "utopia": {
+        "fan_power_W": 0.0032306302303881716,
+        "mass": 0.0874456161947565,
+        "r_th": 0.16961535507482098
+      }
+    },
+    "t_ambient_C": 40.0,
+    "tj_max_best_option_C": 63.040292612666306,
+    "tj_max_by_option_C": {
+      "primary": {
+        "forced-air-Al-100x100x46-2-fans": 54.197403195448835,
+        "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm": 55.952630549622846,
+        "natural-convection-Al-200x200x88": 65.45219734181812
+      },
+      "secondary": {
+        "forced-air-Al-100x100x46-2-fans": 64.29097301810704,
+        "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm": 63.040292612666306,
+        "natural-convection-Al-200x200x88": 79.2295186308237
+      }
+    },
+    "worst_bridge": "secondary"
+  },
+  "source_state_id": "aipe.workflow.dab-10kw-benchmark",
+  "source_state_sha256": "7dd491e251dc184d8be1af6a4c61048cd6d324c33101f03bda994c98a9868415",
+  "started_at": "2026-10-21T06:36:20Z",
+  "state_proposal": {
+    "append": [
+      {
+        "path": "validation.checks",
+        "value": {
+          "description": "Best cooling option keeps every junction below the 125 degC design limit with database losses and Rth(j-c); Stage A knee candidate feasible.",
+          "evidence_refs": [
+            "evidence.thermal-cooling-a25b59"
+          ],
+          "id": "check.thermal-cooling-a25b59",
+          "kind": "analytical",
+          "status": "pass"
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "artifacts": [
+          {
+            "description": "cooling comparison, primary bridge (4 x 9.04 W)",
+            "media_type": "application/json",
+            "sha256": "762ae7dbe7ef6d91f955b1e41506ce65f7a15e20cb9aa43d5c756d56f61eabea",
+            "uri": "tasks/thermal-cooling-design/cooling-comparison-primary.json"
+          },
+          {
+            "description": "cooling comparison, secondary bridge (4 x 17.45 W)",
+            "media_type": "application/json",
+            "sha256": "ea6b7f4be20fa0cfda275aeabee68010d39a60b2327938863d6b9685ecadecc6",
+            "uri": "tasks/thermal-cooling-design/cooling-comparison-secondary.json"
+          },
+          {
+            "description": "Stage A heat-sink Pareto screening, secondary bridge",
+            "media_type": "application/json",
+            "sha256": "1ae1953c512d702e92b32de78ad80904015c40b939c819a8ef4e6a00d6dd051b",
+            "uri": "tasks/thermal-cooling-design/stage-a-heatsink-screening.json"
+          }
+        ],
+        "description": "Cooling comparison for 4 devices per bridge at 40 degC ambient with database losses/Rth: worst bridge secondary (17.45 W per device); best option 'liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm' Tj,max = 63.0 degC (natural/forced/liquid: liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm 63.0, forced-air-Al-100x100x46-2-fans 64.3, natural-convection-Al-200x200x88 79.2 degC). Stage A forced Pareto screening: 6/8 feasible, knee A-001 flagged for FEM verification. Analytical correlations only.",
+        "id": "evidence.thermal-cooling-a25b59",
+        "kind": "analytical",
+        "provenance": {
+          "activity": "Shared-sink network with correlation-based sink models for three cooling options per bridge; seeded Pareto screening of plate-fin geometries under extrusion bounds.",
+          "agent": {
+            "id": "aipe.workflows",
+            "version": "0.1.0"
+          },
+          "created_at": "2026-10-21T06:36:20Z",
+          "inputs": [
+            "evidence.specification"
+          ],
+          "tool": {
+            "id": "aipe.design-agent.thermal",
+            "version": "1.0.0"
+          }
+        },
+        "review_status": "unreviewed",
+        "source": {
+          "locator": "pea/thermal",
+          "reference": "https://github.com/FulongLi/AIPE-Design-Agent",
+          "type": "repository"
+        }
+      }
+    ],
+    "extensions": {
+      "aipe.workflows.dab": {
+        "thermal_design": {
+          "best_option": "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm",
+          "device_powers_W": {
+            "primary": 9.041852876016772,
+            "secondary": 17.446227058701883
+          },
+          "devices_per_sink": 4,
+          "fem_candidate_geometry": {
+            "base_length_m": 0.08099197532160482,
+            "base_thickness_m": 0.004112578190442571,
+            "base_width_m": 0.06462391382662835,
+            "candidate_id": "A-001",
+            "cooling": "forced",
+            "density_kg_per_m3": 2700.0,
+            "fin_count": 11,
+            "fin_efficiency": 0.9086620360356972,
+            "fin_gap_effective_m": 0.004234115899897466,
+            "fin_height_m": 0.04517684721720107,
+            "fin_thickness_m": 0.002025704984332154,
+            "h_W_per_m2_K": 31.134716692341737,
+            "junction_check": {
+              "feasible": true,
+              "hottest_device": "secondary-1",
+              "limit_C": 125.0,
+              "margin_K": 44.52967026388923,
+              "t_sink_C": 68.58784553664665,
+              "tj_max_C": 80.47032973611077
+            },
+            "k_W_per_m_K": 209.0,
+            "material": "Al-6063-T5",
+            "objectives": {
+              "fan_power_W": 0.29392477468682326,
+              "mass": 0.2782540764293634,
+              "r_th": 0.4405345400652951
+            },
+            "r_convective_K_per_W": 0.40965656127906913,
+            "r_spreading_max_K_per_W": 0.10847382702310296,
+            "r_th_analytical_hotspot_K_per_W": 0.5181303883021721,
+            "regime": "forced-laminar",
+            "volumetric_flow_m3_per_s": 0.006398004819063193
+          },
+          "result_paths": {
+            "cooling_comparison_primary": "runs\\wf-dab-10kw-first\\tasks\\thermal-cooling-design\\cooling-comparison-primary.json",
+            "cooling_comparison_secondary": "runs\\wf-dab-10kw-first\\tasks\\thermal-cooling-design\\cooling-comparison-secondary.json",
+            "stage_a": "runs\\wf-dab-10kw-first\\tasks\\thermal-cooling-design\\stage-a-heatsink-screening.json"
+          },
+          "stage_a_knee_candidate": {
+            "candidate_id": "A-001",
+            "distance_to_utopia": 0.3877502108940394,
+            "fem_verification_recommended": true,
+            "flag_reason": "knee point (closest to utopia among feasible designs)",
+            "junction_check": {
+              "feasible": true,
+              "hottest_device": "secondary-1",
+              "limit_C": 125.0,
+              "margin_K": 44.52967026388923,
+              "t_sink_C": 68.58784553664665,
+              "tj_max_C": 80.47032973611077
+            },
+            "material": "Al-6063-T5",
+            "objectives": {
+              "fan_power_W": 0.29392477468682326,
+              "mass": 0.2782540764293634,
+              "r_th": 0.4405345400652951
+            },
+            "performance_summary": {
+              "delta_T_base_K": 30.74266271247645,
+              "envelope_volume_m3": 0.0002579817611765843,
+              "fan_electrical_power_W": 0.29392477468682326,
+              "fin_efficiency": 0.9086620360356972,
+              "h": 31.134716692341737,
+              "mass_kg": 0.2782540764293634,
+              "pressure_drop_Pa": 11.485016931022734,
+              "r_convective": 0.40965656127906913,
+              "r_spreading_max": 0.10847382702310296,
+              "regime": "forced-laminar",
+              "volumetric_flow": 0.006398004819063193
+            },
+            "variables": {
+              "base_thickness": 0.004112578190442571,
+              "fin_gap": 0.004084806218350192,
+              "fin_height": 0.04517684721720107,
+              "fin_thickness": 0.002025704984332154,
+              "length": 0.08099197532160482,
+              "volumetric_flow": 0.006398004819063193,
+              "width": 0.06462391382662835
+            },
+            "warnings": []
+          },
+          "stage_a_summary": {
+            "bounds": {
+              "base_thickness": [
+                0.004,
+                0.01
+              ],
+              "fin_gap": [
+                0.004,
+                0.012
+              ],
+              "fin_height": [
+                0.015,
+                0.05
+              ],
+              "fin_thickness": [
+                0.002,
+                0.004
+              ],
+              "length": [
+                0.08,
+                0.16
+              ],
+              "width": [
+                0.06,
+                0.12
+              ]
+            },
+            "disclaimer": "Analytical correlations with the validity notes recorded in each heat-sink evaluation; device powers are the fixed values of the task (no electrothermal closure in the screening).",
+            "flow_bounds": [
+              0.003,
+              0.015
+            ],
+            "label": "stage-A-secondary-bridge-forced",
+            "materials": [
+              "Al-6063-T5"
+            ],
+            "method": "analytical screening: HeatSinkOptimisation heatsink_model Pareto (seeded DE, weight sweep + epsilon-constraint) per material, merged non-dominated set, shared-sink network check",
+            "n_candidates": 8,
+            "n_feasible": 6,
+            "nadir": {
+              "fan_power_W": 1.2113278765935378,
+              "mass": 1.327960409184956,
+              "r_th": 1.202539081782396
+            },
+            "next_stage": "B: FEM/CFD verification of the flagged candidates (not performed; no FEM or CFD result is claimed here)",
+            "objectives": [
+              "r_th",
+              "mass",
+              "fan_power_W"
+            ],
+            "settings": {
+              "maxiter": 25,
+              "n_epsilon": 3,
+              "n_weights": 5,
+              "popsize": 10,
+              "seed": 1
+            },
+            "utopia": {
+              "fan_power_W": 0.0032306302303881716,
+              "mass": 0.0874456161947565,
+              "r_th": 0.16961535507482098
+            }
+          },
+          "t_ambient_C": 40.0,
+          "tj_max_best_option_C": 63.040292612666306,
+          "tj_max_by_option_C": {
+            "primary": {
+              "forced-air-Al-100x100x46-2-fans": 54.197403195448835,
+              "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm": 55.952630549622846,
+              "natural-convection-Al-200x200x88": 65.45219734181812
+            },
+            "secondary": {
+              "forced-air-Al-100x100x46-2-fans": 64.29097301810704,
+              "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm": 63.040292612666306,
+              "natural-convection-Al-200x200x88": 79.2295186308237
+            }
+          },
+          "worst_bridge": "secondary"
+        }
+      }
+    },
+    "set": [
+      {
+        "path": "thermal",
+        "value": {
+          "ambient_temperature": {
+            "unit": "K",
+            "value": 313.15
+          },
+          "description": "Analytical shared-sink estimate: hottest junction of the secondary bridge on 'liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm' with 4 devices per sink; total_loss = all semiconductor losses at the evaluation Tj; thermal_resistance = hottest device junction-to-fluid path. Not a CFD/FEM/measured value.",
+          "evidence_refs": [
+            "evidence.reference-designs",
+            "evidence.specification",
+            "evidence.thermal-cooling-a25b59"
+          ],
+          "junction_temperature": {
+            "unit": "K",
+            "value": 336.19029261266627
+          },
+          "thermal_resistance": {
+            "unit": "K/W",
+            "value": 0.11911780841361214
+          },
+          "total_loss": {
+            "unit": "W",
+            "value": 105.95231973887462
+          }
+        }
+      }
+    ],
+    "updated_at": "2026-10-21T06:36:40Z"
+  },
+  "status": "completed",
+  "task_id": "thermal-cooling-design",
+  "task_version": "0.1.0",
+  "tool": {
+    "id": "aipe.design-agent.thermal",
+    "name": "pea.thermal + HeatSinkOptimisation heatsink_model",
+    "version": "1.0.0"
+  },
+  "verification": {
+    "best_option_within_absolute_limit": true,
+    "best_option_within_design_limit": true,
+    "knee_feasible": true,
+    "stage_a_candidates": 8,
+    "stage_a_feasible": 6
+  }
+}

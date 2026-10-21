@@ -1,0 +1,848 @@
+{
+  "units": "SI (m, m^3)",
+  "config": {
+    "interference": {
+      "enabled": true,
+      "min_overlap_volume": 1e-12
+    },
+    "clearance_pairs": [
+      {
+        "net_a": "secondary",
+        "net_b": "pe",
+        "required_clearance": 0.002,
+        "required_creepage": 0.004,
+        "note": "illustrative caller-supplied value; not a standard assertion (device tabs/leads to the earthed sink)"
+      }
+    ]
+  },
+  "interference": [],
+  "contacts": [
+    {
+      "a": "body",
+      "b": "Q1.pad"
+    },
+    {
+      "a": "body",
+      "b": "Q1.bushing"
+    },
+    {
+      "a": "body",
+      "b": "Q2.pad"
+    },
+    {
+      "a": "body",
+      "b": "Q2.bushing"
+    },
+    {
+      "a": "Q1.body",
+      "b": "Q1.tab"
+    },
+    {
+      "a": "Q1.body",
+      "b": "Q1.pad"
+    },
+    {
+      "a": "Q1.body",
+      "b": "Q1.lead_drain"
+    },
+    {
+      "a": "Q1.body",
+      "b": "Q1.lead_source"
+    },
+    {
+      "a": "Q1.body",
+      "b": "Q1.lead_driver_source"
+    },
+    {
+      "a": "Q1.body",
+      "b": "Q1.lead_gate"
+    },
+    {
+      "a": "Q1.body",
+      "b": "Q1.bushing"
+    },
+    {
+      "a": "Q1.tab",
+      "b": "Q1.pad"
+    },
+    {
+      "a": "Q1.tab",
+      "b": "Q1.bushing"
+    },
+    {
+      "a": "Q1.pad",
+      "b": "Q1.bushing"
+    },
+    {
+      "a": "Q1.bushing",
+      "b": "Q1.screw"
+    },
+    {
+      "a": "Q2.body",
+      "b": "Q2.tab"
+    },
+    {
+      "a": "Q2.body",
+      "b": "Q2.pad"
+    },
+    {
+      "a": "Q2.body",
+      "b": "Q2.lead_drain"
+    },
+    {
+      "a": "Q2.body",
+      "b": "Q2.lead_source"
+    },
+    {
+      "a": "Q2.body",
+      "b": "Q2.lead_driver_source"
+    },
+    {
+      "a": "Q2.body",
+      "b": "Q2.lead_gate"
+    },
+    {
+      "a": "Q2.body",
+      "b": "Q2.bushing"
+    },
+    {
+      "a": "Q2.tab",
+      "b": "Q2.pad"
+    },
+    {
+      "a": "Q2.tab",
+      "b": "Q2.bushing"
+    },
+    {
+      "a": "Q2.pad",
+      "b": "Q2.bushing"
+    },
+    {
+      "a": "Q2.bushing",
+      "b": "Q2.screw"
+    }
+  ],
+  "keepout_violations": [],
+  "envelope_intrusions": [],
+  "fit": [],
+  "clearance": [
+    {
+      "net_a": "secondary",
+      "net_b": "pe",
+      "required_clearance_m": 0.002,
+      "required_creepage_m": 0.004,
+      "note": "illustrative caller-supplied value; not a standard assertion (device tabs/leads to the earthed sink)",
+      "bodies_a": 10,
+      "bodies_b": 3,
+      "status": "review",
+      "message": "2 conductor pair(s) are separated only by solid insulation thinner than the requirement and no one-bend air path was found; thinnest: 0.290 mm between Q1.tab and Q1.screw through Q1.bushing. The air/creepage path along the insulation surfaces is not traced - review manually. Shortest evaluated air path: 2.460 mm (Q1.lead_drain - body)",
+      "min_air_clearance_m": 0.00246,
+      "governing_path": {
+        "a": "Q1.lead_drain",
+        "b": "body",
+        "distance_m": 0.00246,
+        "points_m": [
+          [
+            0.011735,
+            -0.01768,
+            0.006572578190442571
+          ],
+          [
+            0.011735,
+            -0.01768,
+            0.004112578190442571
+          ]
+        ],
+        "path": "straight",
+        "length_m": 0.00246
+      },
+      "min_direct_distance": {
+        "a": "Q1.tab",
+        "b": "body",
+        "distance_m": 0.00025,
+        "points_m": [
+          [
+            -0.011735,
+            -0.0188,
+            0.004362578190442571
+          ],
+          [
+            -0.011735,
+            -0.0188,
+            0.004112578190442571
+          ]
+        ]
+      },
+      "min_through_insulation_m": 0.015140439227446473,
+      "air_paths": [
+        {
+          "a": "Q1.lead_drain",
+          "b": "body",
+          "distance_m": 0.00246,
+          "points_m": [
+            [
+              0.011735,
+              -0.01768,
+              0.006572578190442571
+            ],
+            [
+              0.011735,
+              -0.01768,
+              0.004112578190442571
+            ]
+          ],
+          "path": "straight",
+          "length_m": 0.00246
+        },
+        {
+          "a": "Q1.lead_source",
+          "b": "body",
+          "distance_m": 0.00246,
+          "points_m": [
+            [
+              0.011735,
+              -0.0126,
+              0.006572578190442571
+            ],
+            [
+              0.011735,
+              -0.0126,
+              0.004112578190442571
+            ]
+          ],
+          "path": "straight",
+          "length_m": 0.00246
+        },
+        {
+          "a": "Q1.lead_driver_source",
+          "b": "body",
+          "distance_m": 0.00246,
+          "points_m": [
+            [
+              0.011735,
+              -0.01006,
+              0.006572578190442571
+            ],
+            [
+              0.011735,
+              -0.01006,
+              0.004112578190442571
+            ]
+          ],
+          "path": "straight",
+          "length_m": 0.00246
+        },
+        {
+          "a": "Q1.lead_gate",
+          "b": "body",
+          "distance_m": 0.00246,
+          "points_m": [
+            [
+              0.011735,
+              -0.00752,
+              0.006572578190442571
+            ],
+            [
+              0.011735,
+              -0.00752,
+              0.004112578190442571
+            ]
+          ],
+          "path": "straight",
+          "length_m": 0.00246
+        },
+        {
+          "a": "Q2.lead_drain",
+          "b": "body",
+          "distance_m": 0.00246,
+          "points_m": [
+            [
+              0.011735,
+              0.00632,
+              0.006572578190442571
+            ],
+            [
+              0.011735,
+              0.00632,
+              0.004112578190442571
+            ]
+          ],
+          "path": "straight",
+          "length_m": 0.00246
+        },
+        {
+          "a": "Q2.lead_source",
+          "b": "body",
+          "distance_m": 0.00246,
+          "points_m": [
+            [
+              0.011735,
+              0.0114,
+              0.006572578190442571
+            ],
+            [
+              0.011735,
+              0.0114,
+              0.004112578190442571
+            ]
+          ],
+          "path": "straight",
+          "length_m": 0.00246
+        },
+        {
+          "a": "Q2.lead_driver_source",
+          "b": "body",
+          "distance_m": 0.00246,
+          "points_m": [
+            [
+              0.011735,
+              0.013940000000000001,
+              0.006572578190442571
+            ],
+            [
+              0.011735,
+              0.013940000000000001,
+              0.004112578190442571
+            ]
+          ],
+          "path": "straight",
+          "length_m": 0.00246
+        },
+        {
+          "a": "Q2.lead_gate",
+          "b": "body",
+          "distance_m": 0.00246,
+          "points_m": [
+            [
+              0.011735,
+              0.01648,
+              0.006572578190442571
+            ],
+            [
+              0.011735,
+              0.01648,
+              0.004112578190442571
+            ]
+          ],
+          "path": "straight",
+          "length_m": 0.00246
+        },
+        {
+          "a": "Q1.tab",
+          "b": "body",
+          "distance_m": 0.00025,
+          "points_m": [
+            [
+              -0.011735,
+              -0.0188,
+              0.004362578190442571
+            ],
+            [
+              -0.011735,
+              -0.0188,
+              0.004112578190442571
+            ]
+          ],
+          "path": "around_insulator",
+          "length_m": 0.00275,
+          "insulators": [
+            "Q1.pad"
+          ],
+          "detour": {
+            "via_insulator": "Q1.pad",
+            "path_length_m": 0.00275,
+            "points_m": [
+              [
+                -0.011735,
+                -0.0188,
+                0.004362578190442571
+              ],
+              [
+                -0.014235000000000001,
+                -0.0188,
+                0.004362578190442571
+              ],
+              [
+                -0.014235000000000001,
+                -0.0188,
+                0.004112578190442571
+              ]
+            ]
+          }
+        },
+        {
+          "a": "Q2.tab",
+          "b": "body",
+          "distance_m": 0.00025,
+          "points_m": [
+            [
+              -0.011735,
+              0.0052,
+              0.004362578190442571
+            ],
+            [
+              -0.011735,
+              0.0052,
+              0.004112578190442571
+            ]
+          ],
+          "path": "around_insulator",
+          "length_m": 0.00275,
+          "insulators": [
+            "Q2.pad"
+          ],
+          "detour": {
+            "via_insulator": "Q2.pad",
+            "path_length_m": 0.00275,
+            "points_m": [
+              [
+                -0.011735,
+                0.0052,
+                0.004362578190442571
+              ],
+              [
+                -0.014235000000000001,
+                0.0052,
+                0.004362578190442571
+              ],
+              [
+                -0.014235000000000001,
+                0.0052,
+                0.004112578190442571
+              ]
+            ]
+          }
+        }
+      ],
+      "through_insulation_ge_required": [
+        {
+          "a": "Q1.tab",
+          "b": "Q2.screw",
+          "distance_m": 0.015140439227446473,
+          "points_m": [
+            [
+              -0.005985000000000002,
+              -0.0052,
+              0.005862578190442571
+            ],
+            [
+              -0.005985000000000002,
+              0.00925,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q2.body"
+          ]
+        },
+        {
+          "a": "Q2.tab",
+          "b": "Q1.screw",
+          "distance_m": 0.015140439227446473,
+          "points_m": [
+            [
+              -0.005985000000000001,
+              0.0052,
+              0.005862578190442571
+            ],
+            [
+              -0.005985000000000001,
+              -0.00925,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q1.body"
+          ]
+        },
+        {
+          "a": "Q1.lead_source",
+          "b": "Q1.screw",
+          "distance_m": 0.015310290656940517,
+          "points_m": [
+            [
+              0.011735,
+              -0.012,
+              0.007172578190442571
+            ],
+            [
+              -0.0032350000000000005,
+              -0.012,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q1.body"
+          ]
+        },
+        {
+          "a": "Q2.lead_source",
+          "b": "Q2.screw",
+          "distance_m": 0.015310290656940517,
+          "points_m": [
+            [
+              0.011735,
+              0.012,
+              0.007172578190442571
+            ],
+            [
+              -0.0032350000000000005,
+              0.012,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q2.body"
+          ]
+        },
+        {
+          "a": "Q1.lead_driver_source",
+          "b": "Q1.screw",
+          "distance_m": 0.015413833386171544,
+          "points_m": [
+            [
+              0.011735,
+              -0.01006,
+              0.007172578190442571
+            ],
+            [
+              -0.0032513341260376532,
+              -0.011700716038629403,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q1.body"
+          ]
+        },
+        {
+          "a": "Q2.lead_driver_source",
+          "b": "Q2.screw",
+          "distance_m": 0.015413833386171544,
+          "points_m": [
+            [
+              0.011735,
+              0.013940000000000001,
+              0.007172578190442571
+            ],
+            [
+              -0.0032513341260376532,
+              0.012299283961370597,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q2.body"
+          ]
+        },
+        {
+          "a": "Q1.lead_drain",
+          "b": "Q1.screw",
+          "distance_m": 0.015855878408840725,
+          "points_m": [
+            [
+              0.011735,
+              -0.01648,
+              0.007172578190442571
+            ],
+            [
+              -0.00331888761185493,
+              -0.012674050987522004,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q1.body"
+          ]
+        },
+        {
+          "a": "Q1.lead_gate",
+          "b": "Q1.screw",
+          "distance_m": 0.015855878408840725,
+          "points_m": [
+            [
+              0.011735,
+              -0.00752,
+              0.007172578190442571
+            ],
+            [
+              -0.00331888761185493,
+              -0.011325949012477994,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q1.body"
+          ]
+        },
+        {
+          "a": "Q2.lead_drain",
+          "b": "Q2.screw",
+          "distance_m": 0.015855878408840725,
+          "points_m": [
+            [
+              0.011735,
+              0.00752,
+              0.007172578190442571
+            ],
+            [
+              -0.00331888761185493,
+              0.011325949012477994,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q2.body"
+          ]
+        },
+        {
+          "a": "Q2.lead_gate",
+          "b": "Q2.screw",
+          "distance_m": 0.015855878408840725,
+          "points_m": [
+            [
+              0.011735,
+              0.01648,
+              0.007172578190442571
+            ],
+            [
+              -0.00331888761185493,
+              0.012674050987522004,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q2.body"
+          ]
+        },
+        {
+          "a": "Q1.lead_gate",
+          "b": "Q2.screw",
+          "distance_m": 0.02296312851778869,
+          "points_m": [
+            [
+              0.011735,
+              -0.00632,
+              0.007172578190442571
+            ],
+            [
+              -0.004073094377419711,
+              0.01002335716672286,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q1.body"
+          ]
+        },
+        {
+          "a": "Q2.lead_drain",
+          "b": "Q1.screw",
+          "distance_m": 0.02296312851778869,
+          "points_m": [
+            [
+              0.011735,
+              0.00632,
+              0.007172578190442571
+            ],
+            [
+              -0.004073094377419711,
+              -0.01002335716672286,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q2.body"
+          ]
+        },
+        {
+          "a": "Q1.lead_driver_source",
+          "b": "Q2.screw",
+          "distance_m": 0.02482876315874406,
+          "points_m": [
+            [
+              0.011735,
+              -0.00886,
+              0.007172578190442571
+            ],
+            [
+              -0.00420460855908796,
+              0.009904121588181426,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q1.body"
+          ]
+        },
+        {
+          "a": "Q1.lead_source",
+          "b": "Q2.screw",
+          "distance_m": 0.026795284419316272,
+          "points_m": [
+            [
+              0.011735,
+              -0.0114,
+              0.007172578190442571
+            ],
+            [
+              -0.004324824307455877,
+              0.009807668667859341,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q1.body"
+          ]
+        },
+        {
+          "a": "Q2.lead_source",
+          "b": "Q1.screw",
+          "distance_m": 0.026795284419316272,
+          "points_m": [
+            [
+              0.011735,
+              0.0114,
+              0.007172578190442571
+            ],
+            [
+              -0.004324824307455876,
+              -0.009807668667859341,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q2.body"
+          ]
+        },
+        {
+          "a": "Q2.lead_driver_source",
+          "b": "Q1.screw",
+          "distance_m": 0.028843853252661724,
+          "points_m": [
+            [
+              0.011735,
+              0.013940000000000001,
+              0.007172578190442571
+            ],
+            [
+              -0.004433814282036966,
+              -0.009729246189392715,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q2.body"
+          ]
+        },
+        {
+          "a": "Q1.lead_drain",
+          "b": "Q2.screw",
+          "distance_m": 0.030959503737163076,
+          "points_m": [
+            [
+              0.011735,
+              -0.01648,
+              0.007172578190442571
+            ],
+            [
+              -0.004532222347591215,
+              0.009665061651207549,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q1.body"
+          ]
+        },
+        {
+          "a": "Q2.lead_gate",
+          "b": "Q1.screw",
+          "distance_m": 0.030959503737163076,
+          "points_m": [
+            [
+              0.011735,
+              0.01648,
+              0.007172578190442571
+            ],
+            [
+              -0.0045322223475912134,
+              -0.00966506165120755,
+              0.010382578190442571
+            ]
+          ],
+          "insulators": [
+            "Q2.body"
+          ]
+        }
+      ],
+      "solid_insulation_only": [
+        {
+          "a": "Q1.tab",
+          "b": "Q1.screw",
+          "distance_m": 0.00028999999999999875,
+          "points_m": [
+            [
+              -0.004195,
+              -0.012,
+              0.005862578190442571
+            ],
+            [
+              -0.004485,
+              -0.012,
+              0.005862578190442571
+            ]
+          ],
+          "insulators": [
+            "Q1.bushing"
+          ]
+        },
+        {
+          "a": "Q2.tab",
+          "b": "Q2.screw",
+          "distance_m": 0.00028999999999999875,
+          "points_m": [
+            [
+              -0.004195,
+              0.012,
+              0.005862578190442571
+            ],
+            [
+              -0.004485,
+              0.012,
+              0.005862578190442571
+            ]
+          ],
+          "insulators": [
+            "Q2.bushing"
+          ]
+        }
+      ],
+      "contacts": [],
+      "body_pairs_evaluated": 30,
+      "creepage_status": "not_evaluated",
+      "creepage_note": "creepage is only compared against the evaluated air path; surface paths along insulators are not traced"
+    }
+  ],
+  "unassigned_conductors": [],
+  "summary": {
+    "status": "review",
+    "interference_count": 0,
+    "allowed_overlap_count": 0,
+    "contact_count": 26,
+    "keepout_violation_count": 0,
+    "envelope_intrusion_count": 0,
+    "fit_failures": 0,
+    "clearance_pairs": {
+      "pass": 0,
+      "fail": 0,
+      "review": 1,
+      "no_bodies": 0
+    },
+    "unassigned_conductor_count": 0,
+    "bodies_checked": 19,
+    "note": "required clearance/creepage values are caller inputs; no standard compliance is asserted"
+  },
+  "kind": "heatsink",
+  "name": "dab_heatsink"
+}

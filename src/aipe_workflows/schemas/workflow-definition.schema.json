@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/FulongLi/AIPE-Workflows/v0.1.0/schemas/workflow-definition.schema.json",
+  "title": "AIPE workflow definition v0.1",
+  "description": "Versioned machine-readable task graph consumed by aipe_workflows.engine. Bindings: $spec..., $state..., $env..., $task.<id>[.<output>]....",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "name", "description", "tasks"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*(\\.[a-z][a-z0-9-]*)+$"},
+    "name": {"type": "string", "minLength": 1},
+    "description": {"type": "string", "minLength": 1},
+    "engineering_state": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"schema_version": {"const": "0.1.0"}},
+      "required": ["schema_version"]
+    },
+    "metadata": {"type": "object"},
+    "tasks": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "capability", "adapter"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"},
+          "description": {"type": "string"},
+          "capability": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"},
+          "adapter": {"type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_.]*:[A-Za-z_][A-Za-z0-9_]*$"},
+          "depends_on": {"type": "array", "items": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"}, "uniqueItems": true},
+          "inputs": {"type": "object", "propertyNames": {"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"}},
+          "outputs": {"type": "array", "items": {"type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"}, "uniqueItems": true},
+          "parameters": {"type": "object"},
+          "tools": {"type": "array", "items": {"type": "string", "pattern": "^[a-z][a-z0-9._-]*$"}, "uniqueItems": true},
+          "gate": {"enum": ["analytical", "software", "circuit_simulation", "field_simulation", "cad_pcb", "engineering_review", "experimental", "hardware_qualification"]},
+          "optional": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}

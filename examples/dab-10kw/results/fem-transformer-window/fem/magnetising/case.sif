@@ -1,0 +1,177 @@
+Header
+  CHECK KEYWORDS Warn
+  Mesh DB "." "mesh"
+End
+
+Simulation
+  Coordinate System = Cartesian 2D
+  Simulation Type = Steady State
+  Steady State Max Iterations = 1
+  Output Intervals = 1
+  Max Output Level = 5
+End
+
+Constants
+  Permeability of Vacuum = 1.2566370614359173e-06
+End
+
+Body 1
+  Name = "core"
+  Equation = 1
+  Material = 1
+End
+
+Body 2
+  Name = "air"
+  Equation = 1
+  Material = 2
+End
+
+Body 4
+  Name = "pri0_l"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+End
+
+Body 3
+  Name = "pri0_r"
+  Equation = 1
+  Material = 3
+  Body Force = 2
+End
+
+Body 8
+  Name = "pri1_l"
+  Equation = 1
+  Material = 3
+  Body Force = 3
+End
+
+Body 7
+  Name = "pri1_r"
+  Equation = 1
+  Material = 3
+  Body Force = 4
+End
+
+Body 6
+  Name = "sec0_l"
+  Equation = 1
+  Material = 3
+  Body Force = 5
+End
+
+Body 5
+  Name = "sec0_r"
+  Equation = 1
+  Material = 3
+  Body Force = 6
+End
+
+Equation 1
+  Active Solvers(4) = 1 2 3 4
+End
+
+Solver 1
+  Equation = MgDyn2D
+  Procedure = "MagnetoDynamics2D" "MagnetoDynamics2D"
+  Variable = Potential
+  Linear System Solver = Direct
+  Linear System Direct Method = UMFPack
+  Nonlinear System Max Iterations = 1
+  Steady State Convergence Tolerance = 1e-08
+End
+
+Solver 2
+  Equation = CalcFields
+  Procedure = "MagnetoDynamics" "MagnetoDynamicsCalcFields"
+  Potential Variable = Potential
+  Calculate Magnetic Field Strength = Logical True
+  Calculate Magnetic Flux Density = Logical True
+  Calculate Current Density = Logical True
+  Calculate Joule Heating = Logical False
+  Calculate Nodal Fields = Logical True
+  Calculate Elemental Fields = Logical True
+  Linear System Solver = Iterative
+  Linear System Iterative Method = CG
+  Linear System Max Iterations = 5000
+  Linear System Convergence Tolerance = 1e-10
+  Linear System Preconditioning = ILU0
+  Linear System Residual Output = 100
+  Linear System Abort Not Converged = Logical True
+End
+
+Solver 3
+  Exec Solver = After All
+  Equation = SaveScalars
+  Procedure = "SaveData" "SaveScalars"
+  Filename = "scalars.dat"
+  Variable 1 = Potential
+  Operator 1 = max abs
+End
+
+Solver 4
+  Exec Solver = After All
+  Equation = ResultOutput
+  Procedure = "ResultOutputSolve" "ResultOutputSolver"
+  Output File Name = "window"
+  Vtu Format = Logical True
+  Binary Output = Logical True
+  Save Geometry Ids = Logical True
+End
+
+Material 1
+  Name = "ferrite"
+  Relative Permeability = 2000.0
+  Electric Conductivity = 0.0
+End
+
+Material 2
+  Name = "air"
+  Relative Permeability = 1.0
+  Electric Conductivity = 0.0
+End
+
+! stranded winding: zero conductivity (magnetostatic)
+Material 3
+  Name = "winding_homogenised"
+  Relative Permeability = 1.0
+  Electric Conductivity = 0.0
+End
+
+! block pri0_l: N*I/A
+Body Force 1
+  Current Density = -1357231.7893784668
+End
+
+! block pri0_r: N*I/A
+Body Force 2
+  Current Density = 1357231.7893784668
+End
+
+! block pri1_l: N*I/A
+Body Force 3
+  Current Density = -1357231.7893784668
+End
+
+! block pri1_r: N*I/A
+Body Force 4
+  Current Density = 1357231.7893784668
+End
+
+! block sec0_l: N*I/A
+Body Force 5
+  Current Density = -0.0
+End
+
+! block sec0_r: N*I/A
+Body Force 6
+  Current Density = 0.0
+End
+
+Boundary Condition 1
+  Name = "outer"
+  Target Boundaries(1) = 1
+  Potential = 0.0
+End

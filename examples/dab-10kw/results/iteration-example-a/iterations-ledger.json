@@ -1,0 +1,61 @@
+[
+  {
+    "iteration_id": "it02",
+    "parent_run": "runs\\wf-dab-10kw-first",
+    "child_run": "runs\\wf-dab-10kw-first-it02",
+    "reason": "Example A: magnetics design proposes 21:10 actual turns; re-solve phase shift for rated power and re-simulate",
+    "changes": {
+      "converter.turns_ratio_np_ns": 2.1,
+      "converter.phase_shift_deg": null
+    },
+    "created_at": "2026-10-21T05:58:30Z",
+    "status": "accepted",
+    "decision_reasons": [
+      "completed; simulations match their analytical references; ZVS retained; rated power within 2 %"
+    ],
+    "observables_parent": {
+      "p_out_W": 9996.81343609198,
+      "loss_W_level1": 5.176394752410488,
+      "i_L_rms_A": 13.677914459973177,
+      "i_L_peak_A": 14.31515752256699,
+      "i_s_rms_A": 27.928873627976863,
+      "phi_deg": 22.5,
+      "analytic_power_W": 10000.0,
+      "circuit-sim-level1:comparison_pass": true,
+      "circuit-sim-level1:all_zvs": true,
+      "circuit-sim-level1:efficiency": 0.9994824635057669,
+      "circuit-sim-level1-convergence:comparison_pass": true,
+      "circuit-sim-level1-convergence:all_zvs": true,
+      "circuit-sim-level1-convergence:efficiency": 0.9994829052371329,
+      "circuit-sim-level2:comparison_pass": true,
+      "circuit-sim-level2:all_zvs": true,
+      "circuit-sim-level2:efficiency": 0.9910908398356887
+    },
+    "observables_child": {
+      "p_out_W": 9994.129414423905,
+      "loss_W_level1": 5.620425262661229,
+      "i_L_rms_A": 13.378925133302545,
+      "i_L_peak_A": 16.38099795136215,
+      "i_s_rms_A": 28.99791230344908,
+      "phi_deg": 21.261364575662395,
+      "analytic_power_W": 10000.0,
+      "circuit-sim-level1:comparison_pass": true,
+      "circuit-sim-level1:all_zvs": true,
+      "circuit-sim-level1:efficiency": 0.9994379434133087,
+      "circuit-sim-level1-convergence:comparison_pass": true,
+      "circuit-sim-level1-convergence:all_zvs": true,
+      "circuit-sim-level1-convergence:efficiency": 0.9994879454007248,
+      "circuit-sim-level2:comparison_pass": true,
+      "circuit-sim-level2:all_zvs": true,
+      "circuit-sim-level2:efficiency": 0.9922488767138029
+    },
+    "tasks_rerun": [
+      "analytic-sps",
+      "circuit-sim-level1",
+      "circuit-sim-level1-convergence",
+      "circuit-sim-level2",
+      "requirements"
+    ],
+    "tasks_reused": []
+  }
+]

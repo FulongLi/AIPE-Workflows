@@ -1,0 +1,411 @@
+{
+  "approval_required": [],
+  "artifacts": [
+    {
+      "description": "Analytical SPS operating point",
+      "media_type": "application/json",
+      "role": "analysis_summary",
+      "sha256": "d239d93b95cf1600366cf4b0599f5ed008d930284b8ff85823861291ebfd0e33",
+      "uri": "tasks/analytic-sps/analytic-sps.json"
+    },
+    {
+      "description": "Analytical SPS waveform samples, one period",
+      "media_type": "application/json",
+      "role": "analysis_waveform",
+      "sha256": "ef4e1f44f2310bd29629c423d44f00f3135e9441e39a11270f65cc8f009b1a43",
+      "uri": "tasks/analytic-sps/analytic-waveform-one-period.json"
+    }
+  ],
+  "capability_id": "aipe.design-agent",
+  "diagnostics": [],
+  "environment": {
+    "design_agent_checkout": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\repos\\AIPE-Design-Agent"
+  },
+  "evidence_kind": "analytical",
+  "finished_at": "2026-10-21T05:58:30Z",
+  "gate": "analytical",
+  "input_hash": "9786c1adc03a9d40a2167c2518512bdbe49def357e77bff4397bc68c38f8e984",
+  "inputs": {
+    "f_sw_Hz": 100000.0,
+    "l_total_H": 3.5e-05,
+    "n_ratio": 2.1,
+    "phi_rad": 0.37108081531219583,
+    "v1_V": 800.0,
+    "v2_V": 400.0
+  },
+  "model": {
+    "id": "sps-lossless-ideal-transformer",
+    "validity_range": "|phi| <= pi/2, stiff DC ports, L_m >> L; magnetising current and losses not modelled",
+    "version": "0.1.0"
+  },
+  "outputs": {
+    "evidence_id": "evidence.analytic-sps-552799",
+    "i_L_at_centre_origin_A": 14.174243050441598,
+    "i_L_peak_A": 16.356421952801526,
+    "i_L_rms_A": 13.378930022055831,
+    "i_dc1_A": 12.5,
+    "i_dc2_A": 25.0,
+    "l_total_H": 3.5e-05,
+    "n_ratio": 2.1,
+    "phi_deg": 21.261364575662395,
+    "phi_rad": 0.37108081531219583,
+    "power_W": 10000.0,
+    "summary": {
+      "assumptions": [
+        "Ideal switches, zero dead time, stiff DC ports, ideal transformer, magnetising current neglected.",
+        "All series inductance (external plus leakage) lumped and referred to the primary.",
+        "Currents are exact piecewise-linear results of the lossless model, not simulated or measured values."
+      ],
+      "derived": {
+        "dc_current_port1": {
+          "unit": "A",
+          "value": 12.5
+        },
+        "dc_current_port2": {
+          "unit": "A",
+          "value": 25.0
+        },
+        "max_power_sps": {
+          "unit": "W",
+          "value": 24000.000000000004
+        },
+        "period": {
+          "unit": "s",
+          "value": 1e-05
+        },
+        "phase_shift_time": {
+          "unit": "s",
+          "value": 5.905934604350666e-07
+        },
+        "power": {
+          "unit": "W",
+          "value": 10000.0
+        },
+        "power_from_waveform_integral": {
+          "unit": "W",
+          "value": 9999.999999999996
+        },
+        "primary_switching_current": {
+          "unit": "A",
+          "value": -11.317100193298742
+        },
+        "secondary_current_peak": {
+          "unit": "A",
+          "value": 34.34848610088321
+        },
+        "secondary_current_rms": {
+          "unit": "A",
+          "value": 28.095753046317245
+        },
+        "secondary_switching_current": {
+          "unit": "A",
+          "value": 34.34848610088321
+        },
+        "series_current_peak_primary": {
+          "unit": "A",
+          "value": 16.356421952801526
+        },
+        "series_current_rms_primary": {
+          "unit": "A",
+          "value": 13.378930022055831
+        },
+        "v2_primary_referred": {
+          "unit": "V",
+          "value": 840.0
+        },
+        "voltage_ratio_d": {
+          "unit": "1",
+          "value": 1.05
+        }
+      },
+      "inputs": {
+        "phase_shift": {
+          "unit": "rad",
+          "value": 0.37108081531219583
+        },
+        "series_inductance_primary_referred": {
+          "unit": "H",
+          "value": 3.5e-05
+        },
+        "switching_frequency": {
+          "unit": "Hz",
+          "value": 100000.0
+        },
+        "turns_ratio_np_ns": {
+          "unit": "1",
+          "value": 2.1
+        },
+        "v1": {
+          "unit": "V",
+          "value": 800.0
+        },
+        "v2": {
+          "unit": "V",
+          "value": 400.0
+        }
+      },
+      "model": "sps-lossless-ideal-transformer",
+      "phase_shift_for_requested_power_deg": 21.261364575662395,
+      "phase_shift_for_requested_power_rad": 0.37108081531219583,
+      "phase_shift_source": "solved for nominal power",
+      "power_deviation_from_request_W": 0.0,
+      "series_current_at_centre_origin_A": 14.174243050441598,
+      "zvs": {
+        "limits": {
+          "both_bridges_min_phi_rad": 0.07479982508547135,
+          "d": 1.05,
+          "primary_min_phi_rad": 0.07479982508547135,
+          "secondary_min_phi_rad": 0.0
+        },
+        "primary": true,
+        "secondary": true
+      }
+    }
+  },
+  "source_state_id": "aipe.workflow.dab-10kw-benchmark",
+  "source_state_sha256": "29dd6cdf960a0a7261a9ae7359e2ff613933aa7d6fe3fcad8f93ab800af172b3",
+  "started_at": "2026-10-21T05:58:30Z",
+  "state_proposal": {
+    "append": [
+      {
+        "path": "magnetics",
+        "value": {
+          "design_status": "candidate",
+          "evidence_refs": [
+            "evidence.analytic-sps-552799"
+          ],
+          "id": "magnetics.series-inductance",
+          "inductance": {
+            "unit": "H",
+            "value": 3.5e-05
+          },
+          "kind": "inductor",
+          "role": "dab-series-power-transfer-inductance"
+        }
+      },
+      {
+        "path": "magnetics",
+        "value": {
+          "design_status": "candidate",
+          "evidence_refs": [
+            "evidence.analytic-sps-552799"
+          ],
+          "id": "magnetics.transformer",
+          "kind": "transformer",
+          "role": "dab-isolation-transformer",
+          "turns_ratio": {
+            "unit": "1",
+            "value": 2.1
+          }
+        }
+      },
+      {
+        "path": "validation.checks",
+        "value": {
+          "description": "Closed-form SPS power equals the piecewise waveform integral; deviation from requested power 0.000 W.",
+          "evidence_refs": [
+            "evidence.analytic-sps-552799"
+          ],
+          "id": "check.analytic-sps-power-552799",
+          "kind": "analytical",
+          "status": "pass"
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "artifacts": [
+          {
+            "description": "Analytical SPS operating point",
+            "media_type": "application/json",
+            "sha256": "d239d93b95cf1600366cf4b0599f5ed008d930284b8ff85823861291ebfd0e33",
+            "uri": "tasks/analytic-sps/analytic-sps.json"
+          },
+          {
+            "description": "Analytical SPS waveform samples, one period",
+            "media_type": "application/json",
+            "sha256": "ef4e1f44f2310bd29629c423d44f00f3135e9441e39a11270f65cc8f009b1a43",
+            "uri": "tasks/analytic-sps/analytic-waveform-one-period.json"
+          }
+        ],
+        "description": "Lossless SPS analysis: P = 10000.0 W at phi = 21.261 deg, I_L rms = 13.379 A, I_L peak = 16.356 A; ideal switches, stiff ports, magnetising current neglected.",
+        "id": "evidence.analytic-sps-552799",
+        "kind": "analytical",
+        "provenance": {
+          "activity": "Evaluate closed-form SPS power and exact piecewise-linear current waveform.",
+          "agent": {
+            "id": "aipe.workflows",
+            "version": "0.1.0"
+          },
+          "created_at": "2026-10-21T05:58:30Z",
+          "inputs": [
+            "evidence.specification"
+          ],
+          "tool": {
+            "id": "aipe.design-agent.dab-sps",
+            "version": "0.1.0"
+          }
+        },
+        "review_status": "unreviewed",
+        "source": {
+          "locator": "pea/converters/dab_sps.py",
+          "reference": "https://github.com/FulongLi/AIPE-Design-Agent",
+          "type": "repository"
+        }
+      }
+    ],
+    "extensions": {
+      "aipe.workflows.dab": {
+        "analytic_sps": {
+          "assumptions": [
+            "Ideal switches, zero dead time, stiff DC ports, ideal transformer, magnetising current neglected.",
+            "All series inductance (external plus leakage) lumped and referred to the primary.",
+            "Currents are exact piecewise-linear results of the lossless model, not simulated or measured values."
+          ],
+          "derived": {
+            "dc_current_port1": {
+              "unit": "A",
+              "value": 12.5
+            },
+            "dc_current_port2": {
+              "unit": "A",
+              "value": 25.0
+            },
+            "max_power_sps": {
+              "unit": "W",
+              "value": 24000.000000000004
+            },
+            "period": {
+              "unit": "s",
+              "value": 1e-05
+            },
+            "phase_shift_time": {
+              "unit": "s",
+              "value": 5.905934604350666e-07
+            },
+            "power": {
+              "unit": "W",
+              "value": 10000.0
+            },
+            "power_from_waveform_integral": {
+              "unit": "W",
+              "value": 9999.999999999996
+            },
+            "primary_switching_current": {
+              "unit": "A",
+              "value": -11.317100193298742
+            },
+            "secondary_current_peak": {
+              "unit": "A",
+              "value": 34.34848610088321
+            },
+            "secondary_current_rms": {
+              "unit": "A",
+              "value": 28.095753046317245
+            },
+            "secondary_switching_current": {
+              "unit": "A",
+              "value": 34.34848610088321
+            },
+            "series_current_peak_primary": {
+              "unit": "A",
+              "value": 16.356421952801526
+            },
+            "series_current_rms_primary": {
+              "unit": "A",
+              "value": 13.378930022055831
+            },
+            "v2_primary_referred": {
+              "unit": "V",
+              "value": 840.0
+            },
+            "voltage_ratio_d": {
+              "unit": "1",
+              "value": 1.05
+            }
+          },
+          "inputs": {
+            "phase_shift": {
+              "unit": "rad",
+              "value": 0.37108081531219583
+            },
+            "series_inductance_primary_referred": {
+              "unit": "H",
+              "value": 3.5e-05
+            },
+            "switching_frequency": {
+              "unit": "Hz",
+              "value": 100000.0
+            },
+            "turns_ratio_np_ns": {
+              "unit": "1",
+              "value": 2.1
+            },
+            "v1": {
+              "unit": "V",
+              "value": 800.0
+            },
+            "v2": {
+              "unit": "V",
+              "value": 400.0
+            }
+          },
+          "model": "sps-lossless-ideal-transformer",
+          "phase_shift_for_requested_power_deg": 21.261364575662395,
+          "phase_shift_for_requested_power_rad": 0.37108081531219583,
+          "phase_shift_source": "solved for nominal power",
+          "power_deviation_from_request_W": 0.0,
+          "series_current_at_centre_origin_A": 14.174243050441598,
+          "zvs": {
+            "limits": {
+              "both_bridges_min_phi_rad": 0.07479982508547135,
+              "d": 1.05,
+              "primary_min_phi_rad": 0.07479982508547135,
+              "secondary_min_phi_rad": 0.0
+            },
+            "primary": true,
+            "secondary": true
+          }
+        }
+      }
+    },
+    "set": [
+      {
+        "path": "control",
+        "value": {
+          "description": "SPS modulation; phase shift of the secondary bridge relative to the primary.",
+          "evidence_refs": [
+            "evidence.analytic-sps-552799"
+          ],
+          "phase_shift": {
+            "unit": "rad",
+            "value": 0.37108081531219583
+          },
+          "strategy": "single-phase-shift",
+          "switching_frequency": {
+            "unit": "Hz",
+            "value": 100000.0
+          }
+        }
+      }
+    ],
+    "status": {
+      "architecture_stage": "candidate",
+      "converter_design_status": "candidate",
+      "validation": "analytically_checked"
+    },
+    "updated_at": "2026-10-21T05:58:30Z"
+  },
+  "status": "completed",
+  "task_id": "analytic-sps",
+  "task_version": "0.1.0",
+  "tool": {
+    "id": "aipe.design-agent.dab-sps",
+    "name": "pea.converters.dab_sps",
+    "version": "0.1.0"
+  },
+  "verification": {
+    "power_deviation_from_request_W": 0.0,
+    "power_equals_waveform_integral": true
+  }
+}

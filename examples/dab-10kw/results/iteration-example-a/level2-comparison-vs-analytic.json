@@ -1,0 +1,36 @@
+{
+  "tolerance": 0.1,
+  "pass": true,
+  "items": {
+    "ports.port1.current_avg.value": {
+      "expected": 12.5,
+      "actual": 11.919247457974523,
+      "relative_error": 0.04646020336203818,
+      "pass": true
+    },
+    "ports.port2.current_avg.value": {
+      "expected": 25.0,
+      "actual": 24.308406361634393,
+      "relative_error": 0.02766374553462427,
+      "pass": true
+    },
+    "series_path.i_L_rms.value": {
+      "expected": 13.378930022055831,
+      "actual": 12.77942800929814,
+      "relative_error": 0.04480941388955486,
+      "pass": true
+    },
+    "series_path.i_L_peak_abs.value": {
+      "expected": 16.356421952801526,
+      "actual": 15.12917448692637,
+      "relative_error": 0.07503153620128715,
+      "pass": true
+    },
+    "ports.port2.power_avg.value": {
+      "expected": 10000.0,
+      "actual": 9454.438840151985,
+      "relative_error": 0.05455611598480155,
+      "pass": true
+    }
+  }
+}

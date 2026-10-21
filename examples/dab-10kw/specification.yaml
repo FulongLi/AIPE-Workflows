@@ -1,0 +1,72 @@
+# AIPE 10 kW dual-active-bridge benchmark specification.
+# Values marked "assumption" are preliminary engineering limits chosen for this benchmark and
+# must not be read as validated requirements. Values marked "source: TIDUES0" are published
+# TI reference-design figures (see references/tida-010054-fact-sheet.md); they inform ranges
+# but the AIPE operating point (800 V -> 400 V, n = 2) differs from TI's (800 V -> 500 V, n = 1.6).
+schema_version: 0.1.0
+workflow: aipe.workflow.converter-dab
+state_id: aipe.workflow.dab-10kw-benchmark
+source_reference: AIPE task211026 section 4 (initial 10 kW DAB engineering specification)
+
+project:
+  id: project.dab-10kw-benchmark
+  name: AIPE 10 kW DAB simulation-driven benchmark
+  description: First full-system benchmark of the AIPE simulation-driven engineering workflow.
+  purpose: engineering
+
+requirements:
+  nominal_power_W: 10000
+  input_voltage_V: 800
+  output_voltage_V: 400
+  switching_frequency_Hz: 100000
+  power_flow: bidirectional
+
+converter:
+  topology: dual-active-bridge
+  description: Single-phase isolated bidirectional DAB; two full bridges, eight controlled switches.
+  modulation: single-phase-shift
+  turns_ratio_np_ns: 2.0
+  series_inductance_H: 35.0e-6          # total primary-referred power-transfer inductance (initial analytical assumption)
+  external_inductance_H: 35.0e-6        # Level 1: all series inductance external; leakage attributed separately when the transformer is designed
+  leakage_inductance_primary_H: 0.0
+  leakage_inductance_secondary_H: 0.0
+  magnetising_inductance_H: 1.0e-3      # assumption until the transformer design fixes L_m (TI integrated transformer: 720 uH)
+  series_resistance_primary_Ohm: 0.02   # assumption: inductor + winding resistance; also damps start-up offsets
+  phase_shift_deg: 22.5                 # initial nominal SPS phase shift (gives exactly 10 kW with the values above)
+  dead_time_s_level2: 200.0e-9          # source: TIDUES0 Eq. 22 (used by the Level 2 model)
+
+environment:
+  ambient_temperature_K: 313.15         # 40 degC design ambient; source: TIDUES0 section 2.3.5.6 (assumption adopted for AIPE)
+  cooling: forced-air baseline; natural convection and liquid cooling evaluated as alternatives (assumption)
+
+constraints:
+  - id: input-voltage-range
+    description: Operating input DC voltage 700 V to 800 V (nominal 800 V); 800 V also the design point for device stress.
+    basis: "source: TIDUES0 Table 1-1 (700-800 V); adopted as AIPE preliminary range"
+  - id: output-voltage-range
+    description: Operating output DC voltage 350 V to 450 V around the 400 V nominal; wider range requires EPS/DPS modulation study.
+    basis: assumption (AIPE preliminary range; TI covers 250-500 V with EPS)
+  - id: rated-power-envelope
+    description: 10 kW continuous at nominal voltages in both power-flow directions; derated power at the range corners to be established by simulation.
+    basis: assumption
+  - id: efficiency-target
+    description: Full-load efficiency target >= 97.5 % and peak >= 98.5 % at nominal voltages.
+    basis: "assumption informed by source: TIDUES0 Table 1-1 (98.0 % full load, 98.8 % peak measured by TI)"
+  - id: device-voltage-derating
+    description: Semiconductor DC-bus voltage utilisation <= 70 % of VDS rating at the maximum bus voltage (1200 V class on the 800 V bus, >= 650 V class on the 400 V bus with overshoot margin).
+    basis: assumption (common industrial derating practice; not a standard citation)
+  - id: junction-temperature-limit
+    description: Design maximum junction temperature 125 degC at 40 degC ambient and rated power; absolute maximum per datasheet (150-175 degC) never reached under fault-free operation.
+    basis: assumption
+  - id: isolation
+    description: Transformer and all primary-to-secondary barriers rated for reinforced isolation of an 800 V DC system; transformer dielectric test >= 5 kV DC as in the reference design; creepage/clearance per IEC 60664-1 to be verified in the PCB stage.
+    basis: "assumption; source: TIDUES0 BOM (Payton transformer 5000 VDC)"
+  - id: magnetic-saturation-margin
+    description: Peak flux density <= 70 % of the core material's saturation flux density at 100 degC under worst-case volt-seconds.
+    basis: assumption
+  - id: switching-frequency
+    description: Fixed 100 kHz switching frequency for the SPS baseline.
+    basis: "task specification; source: TIDUES0 Table 1-1"
+  - id: zvs-at-rated-load
+    description: All eight switches must satisfy the ZVS current condition at the nominal operating point; light-load ZVS loss is reported, not required for the SPS baseline.
+    basis: assumption

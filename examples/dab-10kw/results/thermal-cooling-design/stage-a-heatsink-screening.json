@@ -1,0 +1,506 @@
+{
+  "schema": "pea-thermal-stage-a/0.1",
+  "label": "stage-A-secondary-bridge-forced",
+  "stage": "A",
+  "method": "analytical screening: HeatSinkOptimisation heatsink_model Pareto (seeded DE, weight sweep + epsilon-constraint) per material, merged non-dominated set, shared-sink network check",
+  "task": {
+    "devices": [
+      {
+        "name": "secondary-1",
+        "power_W": 17.446227058701883,
+        "r_jc": 0.45758000000000004,
+        "r_cs": 0.1,
+        "footprint_area_m2": 0.00032,
+        "tj_max_C": 175.0,
+        "tj_design_C": 125.0,
+        "note": "C3M0025065K: database loss at the evaluation Tj, database Rth(j-c)",
+        "loss_model": null
+      },
+      {
+        "name": "secondary-2",
+        "power_W": 17.446227058701883,
+        "r_jc": 0.45758000000000004,
+        "r_cs": 0.1,
+        "footprint_area_m2": 0.00032,
+        "tj_max_C": 175.0,
+        "tj_design_C": 125.0,
+        "note": "C3M0025065K: database loss at the evaluation Tj, database Rth(j-c)",
+        "loss_model": null
+      },
+      {
+        "name": "secondary-3",
+        "power_W": 17.446227058701883,
+        "r_jc": 0.45758000000000004,
+        "r_cs": 0.1,
+        "footprint_area_m2": 0.00032,
+        "tj_max_C": 175.0,
+        "tj_design_C": 125.0,
+        "note": "C3M0025065K: database loss at the evaluation Tj, database Rth(j-c)",
+        "loss_model": null
+      },
+      {
+        "name": "secondary-4",
+        "power_W": 17.446227058701883,
+        "r_jc": 0.45758000000000004,
+        "r_cs": 0.1,
+        "footprint_area_m2": 0.00032,
+        "tj_max_C": 175.0,
+        "tj_design_C": 125.0,
+        "note": "C3M0025065K: database loss at the evaluation Tj, database Rth(j-c)",
+        "loss_model": null
+      }
+    ],
+    "t_ambient_C": 40.0,
+    "cooling": "forced",
+    "materials": [
+      "Al-6063-T5"
+    ],
+    "bounds": {
+      "length": [
+        0.08,
+        0.16
+      ],
+      "width": [
+        0.06,
+        0.12
+      ],
+      "fin_height": [
+        0.015,
+        0.05
+      ],
+      "fin_thickness": [
+        0.002,
+        0.004
+      ],
+      "fin_gap": [
+        0.004,
+        0.012
+      ],
+      "base_thickness": [
+        0.004,
+        0.01
+      ]
+    },
+    "volumetric_flow": null,
+    "fan_curve": null,
+    "n_fans": 1,
+    "fan_efficiency": 0.25,
+    "flow_bounds": [
+      0.003,
+      0.015
+    ],
+    "objectives": [
+      "r_th",
+      "mass",
+      "fan_power_W"
+    ],
+    "seed": 1,
+    "n_weights": 5,
+    "n_epsilon": 3,
+    "maxiter": 25,
+    "popsize": 10,
+    "n_flag": 3,
+    "tj_limit_C": 125.0,
+    "emissivity": 0.0,
+    "label": "stage-A-secondary-bridge-forced"
+  },
+  "fronts_by_material": {
+    "Al-6063-T5": {
+      "n_points": 8,
+      "n_evaluations": 14560,
+      "utopia": {
+        "r_th": 0.16961535507482098,
+        "mass": 0.0874456161947565,
+        "fan_power_W": 0.0032306302303881716
+      },
+      "nadir": {
+        "r_th": 1.202539081782396,
+        "mass": 1.327960409184956,
+        "fan_power_W": 1.2113278765935378
+      },
+      "scale": {
+        "r_th": 1.032923726707575,
+        "mass": 1.2405147929901994,
+        "fan_power_W": 1.2080972463631496
+      }
+    }
+  },
+  "utopia": {
+    "r_th": 0.16961535507482098,
+    "mass": 0.0874456161947565,
+    "fan_power_W": 0.0032306302303881716
+  },
+  "nadir": {
+    "r_th": 1.202539081782396,
+    "mass": 1.327960409184956,
+    "fan_power_W": 1.2113278765935378
+  },
+  "objectives": [
+    "r_th",
+    "mass",
+    "fan_power_W"
+  ],
+  "n_candidates": 8,
+  "n_feasible": 6,
+  "pareto_set": [
+    {
+      "candidate_id": "A-000",
+      "material": "Al-6063-T5",
+      "variables": {
+        "length": 0.08058377612527234,
+        "width": 0.06081514581108807,
+        "fin_height": 0.015360358867284533,
+        "fin_thickness": 0.0020304049983824735,
+        "fin_gap": 0.010400675869908131,
+        "base_thickness": 0.004044539588888208,
+        "volumetric_flow": 0.009408438108903348
+      },
+      "objectives": {
+        "r_th": 1.202539081782396,
+        "mass": 0.0874456161947565,
+        "fan_power_W": 1.140436134744223
+      },
+      "method": "anchor-min-mass",
+      "junction_check": {
+        "tj_max_C": 133.6467467543452,
+        "t_sink_C": 121.81269685487982,
+        "hottest_device": "secondary-1",
+        "feasible": false,
+        "limit_C": 125.0,
+        "margin_K": -8.646746754345202
+      },
+      "distance_to_utopia": 1.3733471573156,
+      "fem_verification_recommended": false,
+      "flag_reason": null,
+      "performance_summary": {
+        "delta_T_base_K": 83.91907478266647,
+        "h": 54.08399850731337,
+        "fin_efficiency": 0.9799423316776777,
+        "regime": "forced-turbulent",
+        "pressure_drop_Pa": 30.3035456455044,
+        "fan_electrical_power_W": 1.140436134744223,
+        "r_convective": 1.17235515420615,
+        "r_spreading_max": 0.10494057213836633,
+        "mass_kg": 0.0874456161947565,
+        "envelope_volume_m3": 9.509785937750022e-05,
+        "volumetric_flow": 0.009408438108903348
+      },
+      "warnings": []
+    },
+    {
+      "candidate_id": "A-001",
+      "material": "Al-6063-T5",
+      "variables": {
+        "length": 0.08099197532160482,
+        "width": 0.06462391382662835,
+        "fin_height": 0.04517684721720107,
+        "fin_thickness": 0.002025704984332154,
+        "fin_gap": 0.004084806218350192,
+        "base_thickness": 0.004112578190442571,
+        "volumetric_flow": 0.006398004819063193
+      },
+      "objectives": {
+        "r_th": 0.4405345400652951,
+        "mass": 0.2782540764293634,
+        "fan_power_W": 0.29392477468682326
+      },
+      "method": "weight-sweep",
+      "junction_check": {
+        "tj_max_C": 80.47032973611077,
+        "t_sink_C": 68.58784553664665,
+        "hottest_device": "secondary-1",
+        "feasible": true,
+        "limit_C": 125.0,
+        "margin_K": 44.52967026388923
+      },
+      "distance_to_utopia": 0.3877502108940394,
+      "fem_verification_recommended": true,
+      "flag_reason": "knee point (closest to utopia among feasible designs)",
+      "performance_summary": {
+        "delta_T_base_K": 30.74266271247645,
+        "h": 31.134716692341737,
+        "fin_efficiency": 0.9086620360356972,
+        "regime": "forced-laminar",
+        "pressure_drop_Pa": 11.485016931022734,
+        "fan_electrical_power_W": 0.29392477468682326,
+        "r_convective": 0.40965656127906913,
+        "r_spreading_max": 0.10847382702310296,
+        "mass_kg": 0.2782540764293634,
+        "envelope_volume_m3": 0.0002579817611765843,
+        "volumetric_flow": 0.006398004819063193
+      },
+      "warnings": []
+    },
+    {
+      "candidate_id": "A-002",
+      "material": "Al-6063-T5",
+      "variables": {
+        "length": 0.08302153296025067,
+        "width": 0.07579382007160441,
+        "fin_height": 0.03888837384685113,
+        "fin_thickness": 0.00200664633980975,
+        "fin_gap": 0.004069053813392341,
+        "base_thickness": 0.004133798976685307,
+        "volumetric_flow": 0.010360420986987263
+      },
+      "objectives": {
+        "r_th": 0.35279624876142734,
+        "mass": 0.2976313903980268,
+        "fan_power_W": 1.048736890351205
+      },
+      "method": "weight-sweep",
+      "junction_check": {
+        "tj_max_C": 74.34752112879154,
+        "t_sink_C": 62.26565546088223,
+        "hottest_device": "secondary-1",
+        "feasible": true,
+        "limit_C": 125.0,
+        "margin_K": 50.65247887120846
+      },
+      "distance_to_utopia": 0.8995012285869275,
+      "fem_verification_recommended": false,
+      "flag_reason": null,
+      "performance_summary": {
+        "delta_T_base_K": 24.619854026819443,
+        "h": 37.80737318060896,
+        "fin_efficiency": 0.9162569562344676,
+        "regime": "forced-laminar",
+        "pressure_drop_Pa": 25.306329049476453,
+        "fan_electrical_power_W": 1.048736890351205,
+        "r_convective": 0.3190611842028116,
+        "r_spreading_max": 0.12236726985915444,
+        "mass_kg": 0.2976313903980268,
+        "envelope_volume_m3": 0.00027071784556039163,
+        "volumetric_flow": 0.010360420986987263
+      },
+      "warnings": []
+    },
+    {
+      "candidate_id": "A-003",
+      "material": "Al-6063-T5",
+      "variables": {
+        "length": 0.08090750532018653,
+        "width": 0.11738377353141571,
+        "fin_height": 0.04953799403154037,
+        "fin_thickness": 0.0026082011205509274,
+        "fin_gap": 0.0117896551618629,
+        "base_thickness": 0.005368770803942229,
+        "volumetric_flow": 0.003001432856702068
+      },
+      "objectives": {
+        "r_th": 1.1175474029039298,
+        "mass": 0.36346781450761984,
+        "fan_power_W": 0.0032306302303881716
+      },
+      "method": "anchor-min-fan_power_W",
+      "junction_check": {
+        "tj_max_C": 127.71561024308922,
+        "t_sink_C": 115.4983851076149,
+        "hottest_device": "secondary-1",
+        "feasible": false,
+        "limit_C": 125.0,
+        "margin_K": -2.715610243089216
+      },
+      "distance_to_utopia": 0.9443061851867208,
+      "fem_verification_recommended": false,
+      "flag_reason": null,
+      "performance_summary": {
+        "delta_T_base_K": 77.9879436941014,
+        "h": 12.93233705810861,
+        "fin_efficiency": 0.9617727729362835,
+        "regime": "forced-laminar",
+        "pressure_drop_Pa": 0.26909066307899543,
+        "fan_electrical_power_W": 0.0032306302303881716,
+        "r_convective": 1.0818726715751068,
+        "r_spreading_max": 0.13187981143403327,
+        "mass_kg": 0.36346781450761984,
+        "envelope_volume_m3": 0.0005214620798410277,
+        "volumetric_flow": 0.003001432856702068
+      },
+      "warnings": []
+    },
+    {
+      "candidate_id": "A-004",
+      "material": "Al-6063-T5",
+      "variables": {
+        "length": 0.08059754325830204,
+        "width": 0.11701911125675549,
+        "fin_height": 0.04964168320837564,
+        "fin_thickness": 0.0020101645158668736,
+        "fin_gap": 0.004198124308382454,
+        "base_thickness": 0.004965069388500831,
+        "volumetric_flow": 0.003411236796783672
+      },
+      "objectives": {
+        "r_th": 0.43000983287592015,
+        "mass": 0.539023752503657,
+        "fan_power_W": 0.02061056976848246
+      },
+      "method": "weight-sweep",
+      "junction_check": {
+        "tj_max_C": 79.73586401070202,
+        "t_sink_C": 67.43434811905364,
+        "hottest_device": "secondary-1",
+        "feasible": true,
+        "limit_C": 125.0,
+        "margin_K": 45.26413598929798
+      },
+      "distance_to_utopia": 0.44302673724636193,
+      "fem_verification_recommended": true,
+      "flag_reason": "next closest to utopia",
+      "performance_summary": {
+        "delta_T_base_K": 30.0081963051889,
+        "h": 16.675581152114837,
+        "fin_efficiency": 0.9381230125383728,
+        "regime": "forced-laminar",
+        "pressure_drop_Pa": 1.5104909887753468,
+        "fan_electrical_power_W": 0.02061056976848246,
+        "r_convective": 0.3931272364326166,
+        "r_spreading_max": 0.13745502912903204,
+        "mass_kg": 0.539023752503657,
+        "envelope_volume_m3": 0.0005150210141326854,
+        "volumetric_flow": 0.003411236796783672
+      },
+      "warnings": []
+    },
+    {
+      "candidate_id": "A-005",
+      "material": "Al-6063-T5",
+      "variables": {
+        "length": 0.0803423715172773,
+        "width": 0.11860037475839302,
+        "fin_height": 0.049303762815648244,
+        "fin_thickness": 0.002046063672224326,
+        "fin_gap": 0.004062484079452867,
+        "base_thickness": 0.005025031723466775,
+        "volumetric_flow": 0.003512608734689231
+      },
+      "objectives": {
+        "r_th": 0.40595995409339314,
+        "mass": 0.5669413432263598,
+        "fan_power_W": 0.024950644575249363
+      },
+      "method": "weight-sweep",
+      "junction_check": {
+        "tj_max_C": 78.05754542680512,
+        "t_sink_C": 65.76231691658833,
+        "hottest_device": "secondary-1",
+        "feasible": true,
+        "limit_C": 125.0,
+        "margin_K": 46.94245457319488
+      },
+      "distance_to_utopia": 0.44953641869838257,
+      "fem_verification_recommended": false,
+      "flag_reason": null,
+      "performance_summary": {
+        "delta_T_base_K": 28.329877722828304,
+        "h": 17.06416490435893,
+        "fin_efficiency": 0.9385691889420438,
+        "regime": "forced-laminar",
+        "pressure_drop_Pa": 1.7757916167011416,
+        "fan_electrical_power_W": 0.024950644575249363,
+        "r_convective": 0.369167454228141,
+        "r_spreading_max": 0.1370769638680052,
+        "mass_kg": 0.5669413432263598,
+        "envelope_volume_m3": 0.000517679273305244,
+        "volumetric_flow": 0.003512608734689231
+      },
+      "warnings": []
+    },
+    {
+      "candidate_id": "A-006",
+      "material": "Al-6063-T5",
+      "variables": {
+        "length": 0.11825724768097164,
+        "width": 0.11834883232574457,
+        "fin_height": 0.049992695095024194,
+        "fin_thickness": 0.0020191626582163075,
+        "fin_gap": 0.00400214422194548,
+        "base_thickness": 0.006782799143786553,
+        "volumetric_flow": 0.0061104529200645295
+      },
+      "objectives": {
+        "r_th": 0.26756696799824936,
+        "mass": 0.9009228390224799,
+        "fan_power_W": 0.11424893321775101
+      },
+      "method": "weight-sweep",
+      "junction_check": {
+        "tj_max_C": 68.39980359181452,
+        "t_sink_C": 56.1342070416315,
+        "hottest_device": "secondary-1",
+        "feasible": true,
+        "limit_C": 125.0,
+        "margin_K": 56.60019640818548
+      },
+      "distance_to_utopia": 0.6689212310669326,
+      "fem_verification_recommended": false,
+      "flag_reason": null,
+      "performance_summary": {
+        "delta_T_base_K": 18.67213648047647,
+        "h": 18.53966904131419,
+        "fin_efficiency": 0.9316507975306683,
+        "regime": "forced-laminar",
+        "pressure_drop_Pa": 4.6743234385539,
+        "fan_electrical_power_W": 0.11424893321775101,
+        "r_convective": 0.2311990865896708,
+        "r_spreading_max": 0.1361961625837895,
+        "mass_kg": 0.9009228390224799,
+        "envelope_volume_m3": 0.000794607514652063,
+        "volumetric_flow": 0.0061104529200645295
+      },
+      "warnings": []
+    },
+    {
+      "candidate_id": "A-007",
+      "material": "Al-6063-T5",
+      "variables": {
+        "length": 0.1584468120800442,
+        "width": 0.11945426806340814,
+        "fin_height": 0.04862559522675326,
+        "fin_thickness": 0.00208131377152295,
+        "fin_gap": 0.004030710653083383,
+        "base_thickness": 0.009041225501020034,
+        "volumetric_flow": 0.014741168951120577
+      },
+      "objectives": {
+        "r_th": 0.16961535507482098,
+        "mass": 1.327960409184956,
+        "fan_power_W": 1.2113278765935378
+      },
+      "method": "anchor-min-r_th",
+      "junction_check": {
+        "tj_max_C": 61.564259272501666,
+        "t_sink_C": 49.3813920774598,
+        "hottest_device": "secondary-1",
+        "feasible": true,
+        "limit_C": 125.0,
+        "margin_K": 63.435740727498334
+      },
+      "distance_to_utopia": 1.4142135623730951,
+      "fem_verification_recommended": true,
+      "flag_reason": "lowest thermal resistance",
+      "performance_summary": {
+        "delta_T_base_K": 11.836591942844404,
+        "h": 24.891235235585082,
+        "fin_efficiency": 0.9176366347973756,
+        "regime": "forced-laminar",
+        "pressure_drop_Pa": 20.543280533079034,
+        "fan_electrical_power_W": 1.2113278765935378,
+        "r_convective": 0.1344329643007329,
+        "r_spreading_max": 0.13158725549876465,
+        "mass_kg": 1.327960409184956,
+        "envelope_volume_m3": 0.001091468448528146,
+        "volumetric_flow": 0.014741168951120577
+      },
+      "warnings": []
+    }
+  ],
+  "flagged_candidates": [
+    "A-001",
+    "A-007",
+    "A-004"
+  ],
+  "next_stage": "B: FEM/CFD verification of the flagged candidates (not performed; no FEM or CFD result is claimed here)",
+  "disclaimer": "Analytical correlations with the validity notes recorded in each heat-sink evaluation; device powers are the fixed values of the task (no electrothermal closure in the screening)."
+}

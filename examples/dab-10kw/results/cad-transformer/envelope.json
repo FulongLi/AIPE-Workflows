@@ -1,0 +1,399 @@
+{
+  "approval_required": [],
+  "artifacts": [
+    {
+      "description": "transformer CAD parameters derived from the Engineering State",
+      "media_type": "application/json",
+      "role": "cad_parameters",
+      "sha256": "e8dd498618498341dd5c2f0ced5532953f40d5077a8665044274e73e0e7d65b7",
+      "uri": "tasks/cad-transformer/cad/transformer.params.json"
+    },
+    {
+      "description": "dab_transformer fcstd",
+      "media_type": "application/octet-stream",
+      "role": "cad_fcstd",
+      "sha256": "2c62c63cde00630d5a11a2d252c014805e1616934ee2d2b2fc145f8711a8bccb",
+      "uri": "tasks/cad-transformer/cad/dab_transformer.FCStd"
+    },
+    {
+      "description": "dab_transformer step",
+      "media_type": "model/step",
+      "role": "cad_step",
+      "sha256": "68825b8a43c74db8a0c8af7018e9f6cd7d3998480cfdb3980f4f837119c1951b",
+      "uri": "tasks/cad-transformer/cad/dab_transformer.step"
+    },
+    {
+      "description": "dab_transformer step_keepouts",
+      "media_type": "model/step",
+      "role": "cad_step",
+      "sha256": "54e2a9fd59ffb216ee4376a7f24c54ea9a17dcfab66b158c3bee25acf70f0526",
+      "uri": "tasks/cad-transformer/cad/dab_transformer.keepouts.step"
+    },
+    {
+      "description": "dab_transformer metadata",
+      "media_type": "application/json",
+      "role": "cad_metadata",
+      "sha256": "3ece8ee84f2a3f8e262fd6caf40332739ffd051d42b6b435aa75f60ac4ec5bc2",
+      "uri": "tasks/cad-transformer/cad/dab_transformer.metadata.json"
+    },
+    {
+      "description": "dab_transformer checks",
+      "media_type": "application/json",
+      "role": "cad_check_report",
+      "sha256": "7db8aaa588077e1742e0b88afbec306d5ef3fe9beccd01c296564223e0fcfc39",
+      "uri": "tasks/cad-transformer/cad/dab_transformer.checks.json"
+    },
+    {
+      "description": "dab_transformer render",
+      "media_type": "image/png",
+      "role": "figure",
+      "sha256": "a36eb7da6f56feb0cd52e4ec15f5e2ddd2733d87b89897f6f30c51d8c11fe97b",
+      "uri": "tasks/cad-transformer/cad/renders/dab_transformer.png"
+    }
+  ],
+  "capability_id": "aipe.cad-agent",
+  "diagnostics": [],
+  "environment": {},
+  "evidence_kind": "analytical",
+  "finished_at": "2026-10-21T06:41:37Z",
+  "gate": "cad_pcb",
+  "input_hash": "d931444ce3475ac19d7fd5d78b60728f68d7389e5cbc9208712bce23db96e740",
+  "inputs": {
+    "core": "core.tdk-e70-33-32",
+    "params_path": "runs\\wf-dab-10kw-first\\tasks\\cad-transformer\\cad\\transformer.params.json"
+  },
+  "model": {
+    "id": "aipe-cad-parametric-transformer",
+    "validity_range": "illustrative parametric geometry: homogenised concentric windings, plain pin terminals, no DFM, thermal or EM claim; clearance checks use straight/one-bend air paths with caller-supplied required values",
+    "version": "0.1.0"
+  },
+  "outputs": {
+    "analytic_vs_cad": {
+      "analytic_masses": {
+        "bobbin": 0.021545119020180598,
+        "copper": 0.18396368745444475,
+        "core": 0.54978048,
+        "insulation": 0.0063866449207272535,
+        "mounting": 0.05144206684333007,
+        "terminals": 0.0007209955139988575,
+        "total": 0.8637367094466334,
+        "windings": 0.23386140314839649
+      }
+    },
+    "barrier_m": 0.00019999999999999966,
+    "bbox_m": [
+      -0.04725,
+      -0.0345,
+      -0.036,
+      0.04725,
+      0.0345,
+      0.034
+    ],
+    "body_count": 16,
+    "check_status": "review",
+    "check_summary": {
+      "allowed_overlap_count": 0,
+      "bodies_checked": 16,
+      "clearance_pairs": {
+        "fail": 0,
+        "no_bodies": 0,
+        "pass": 2,
+        "review": 1
+      },
+      "contact_count": 22,
+      "envelope_intrusion_count": 0,
+      "fit_failures": 0,
+      "interference_count": 0,
+      "keepout_violation_count": 0,
+      "note": "required clearance/creepage values are caller inputs; no standard compliance is asserted",
+      "status": "review",
+      "unassigned_conductor_count": 0
+    },
+    "clearance": [
+      {
+        "message": "2 conductor pair(s) are separated only by solid insulation thinner than the requirement and no one-bend air path was found; thinnest: 0.200 mm between primary-2 and secondary-1 through bobbin, barrier_secondary-1_primary-2. The air/creepage path along the insulation surfaces is not traced - review manually. Shortest evaluated air path: 48.914 mm (primary-2 - pin_secondary-1_1)",
+        "net_a": "primary",
+        "net_b": "secondary",
+        "required_clearance_m": 0.0055,
+        "required_creepage_m": 0.008,
+        "status": "review"
+      },
+      {
+        "message": "minimum air clearance 16.750 mm between pin_primary-0_1 and clip_neg_y",
+        "net_a": "primary",
+        "net_b": "pe",
+        "required_clearance_m": 0.002,
+        "required_creepage_m": 0.004,
+        "status": "pass"
+      },
+      {
+        "message": "minimum air clearance 16.750 mm between pin_secondary-1_1 and clip_pos_y",
+        "net_a": "secondary",
+        "net_b": "pe",
+        "required_clearance_m": 0.002,
+        "required_creepage_m": 0.004,
+        "status": "pass"
+      }
+    ],
+    "core": "core.tdk-e70-33-32",
+    "core_name": "E 70/33/32",
+    "files": {
+      "checks": "runs\\wf-dab-10kw-first\\tasks\\cad-transformer\\cad\\dab_transformer.checks.json",
+      "fcstd": "runs\\wf-dab-10kw-first\\tasks\\cad-transformer\\cad\\dab_transformer.FCStd",
+      "metadata": "runs\\wf-dab-10kw-first\\tasks\\cad-transformer\\cad\\dab_transformer.metadata.json",
+      "render": "runs\\wf-dab-10kw-first\\tasks\\cad-transformer\\cad\\renders\\dab_transformer.png",
+      "step": "runs\\wf-dab-10kw-first\\tasks\\cad-transformer\\cad\\dab_transformer.step",
+      "step_keepouts": "runs\\wf-dab-10kw-first\\tasks\\cad-transformer\\cad\\dab_transformer.keepouts.step"
+    },
+    "limitations": [
+      "homogenised concentric windings in the radial order of the magnetics layout (interleave represented as separate winding bodies)",
+      "required clearance/creepage values are illustrative inputs; creepage along surfaces and multi-bend paths are not traced (review status)",
+      "no DFM, thermal or electromagnetic claim"
+    ],
+    "magnetics_copper_mass_kg": 0.18213664666192864,
+    "magnetics_mass_kg": 0.6961366466619286,
+    "margin_m": 0.0,
+    "mass_by_material_kg": {
+      "aluminium_6063": 0.015986066843329955,
+      "bobbin_pet_gf": 0.02150455824297392,
+      "brass": 0.0007209955139988577,
+      "copper": 0.2338614031483964,
+      "ferrite_n87": 0.5497804799999999,
+      "kapton": 0.006386644920727292,
+      "stainless_steel": 0.035456000000000015
+    },
+    "mass_kg": 0.8636961486694265,
+    "size_m": [
+      0.0945,
+      0.069,
+      0.07
+    ],
+    "step_reimport": {
+      "expected_volume_m3": 0.00019459435548931496,
+      "path": "dab_transformer.step",
+      "relative_error": 3.0360991550144686e-14,
+      "solids": 16,
+      "valid": true,
+      "volume_m3": 0.00019459435548930905
+    },
+    "volume_m3": 0.00019459435548931496,
+    "warnings": [],
+    "windings": [
+      {
+        "name": "primary-0",
+        "net": "primary",
+        "outer_diameter_m": 0.002610076627227638,
+        "turns": 10
+      },
+      {
+        "name": "secondary-1",
+        "net": "secondary",
+        "outer_diameter_m": 0.0037270128789688934,
+        "turns": 10
+      },
+      {
+        "name": "primary-2",
+        "net": "primary",
+        "outer_diameter_m": 0.0026100766272276373,
+        "turns": 10
+      }
+    ]
+  },
+  "source_state_id": "aipe.workflow.dab-10kw-benchmark",
+  "source_state_sha256": "c713d6b5bba0319c71b1611ecc984645637060810d3ad18c0e95e97fcd9dee96",
+  "started_at": "2026-10-21T06:41:37Z",
+  "state_proposal": {
+    "append": [
+      {
+        "path": "validation.checks",
+        "value": {
+          "description": "Transformer CAD built from the Engineering State; no interference or fit failure; clearance pairs {'pass': 2, 'fail': 0, 'review': 1, 'no_bodies': 0} (review items need an insulation-system design).",
+          "evidence_refs": [
+            "evidence.cad-transformer-a25b59"
+          ],
+          "id": "check.cad-transformer-a25b59",
+          "kind": "analytical",
+          "status": "pass"
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "artifacts": [
+          {
+            "description": "transformer CAD parameters derived from the Engineering State",
+            "media_type": "application/json",
+            "sha256": "e8dd498618498341dd5c2f0ced5532953f40d5077a8665044274e73e0e7d65b7",
+            "uri": "tasks/cad-transformer/cad/transformer.params.json"
+          },
+          {
+            "description": "dab_transformer fcstd",
+            "media_type": "application/octet-stream",
+            "sha256": "2c62c63cde00630d5a11a2d252c014805e1616934ee2d2b2fc145f8711a8bccb",
+            "uri": "tasks/cad-transformer/cad/dab_transformer.FCStd"
+          },
+          {
+            "description": "dab_transformer step",
+            "media_type": "model/step",
+            "sha256": "68825b8a43c74db8a0c8af7018e9f6cd7d3998480cfdb3980f4f837119c1951b",
+            "uri": "tasks/cad-transformer/cad/dab_transformer.step"
+          },
+          {
+            "description": "dab_transformer step_keepouts",
+            "media_type": "model/step",
+            "sha256": "54e2a9fd59ffb216ee4376a7f24c54ea9a17dcfab66b158c3bee25acf70f0526",
+            "uri": "tasks/cad-transformer/cad/dab_transformer.keepouts.step"
+          },
+          {
+            "description": "dab_transformer metadata",
+            "media_type": "application/json",
+            "sha256": "3ece8ee84f2a3f8e262fd6caf40332739ffd051d42b6b435aa75f60ac4ec5bc2",
+            "uri": "tasks/cad-transformer/cad/dab_transformer.metadata.json"
+          },
+          {
+            "description": "dab_transformer checks",
+            "media_type": "application/json",
+            "sha256": "7db8aaa588077e1742e0b88afbec306d5ef3fe9beccd01c296564223e0fcfc39",
+            "uri": "tasks/cad-transformer/cad/dab_transformer.checks.json"
+          },
+          {
+            "description": "dab_transformer render",
+            "media_type": "image/png",
+            "sha256": "a36eb7da6f56feb0cd52e4ec15f5e2ddd2733d87b89897f6f30c51d8c11fe97b",
+            "uri": "tasks/cad-transformer/cad/renders/dab_transformer.png"
+          }
+        ],
+        "description": "Parametric FreeCAD transformer of the selected magnetics candidate (E 70/33/32, {'primary': 20, 'secondary': 10} turns, P-S-P): 16 bodies, 0.8636961486694265 kg (magnetics estimate 0.6961366466619286 kg), geometric checks 'review' (interference 0, clearance pairs {'pass': 2, 'fail': 0, 'review': 1, 'no_bodies': 0}); illustrative geometry, clearance requirements are caller inputs.",
+        "id": "evidence.cad-transformer-a25b59",
+        "kind": "analytical",
+        "provenance": {
+          "activity": "Derive CAD parameters from the magnetics candidate and catalogue core record; build FCStd/STEP in FreeCAD console mode; run interference, fit and clearance checks.",
+          "agent": {
+            "id": "aipe.workflows",
+            "version": "0.1.0"
+          },
+          "created_at": "2026-10-21T06:41:37Z",
+          "inputs": [
+            "evidence.specification"
+          ],
+          "tool": {
+            "id": "tool.freecad",
+            "name": "FreeCAD (console) via aipe-cad",
+            "version": "1.1.4"
+          }
+        },
+        "review_status": "unreviewed",
+        "source": {
+          "locator": "src/aipe_cad/freecad/build_transformer.py",
+          "reference": "https://github.com/FulongLi/AIPE-CAD-Agent",
+          "type": "repository"
+        }
+      }
+    ],
+    "extensions": {
+      "aipe.workflows.dab": {
+        "cad_transformer": {
+          "barrier_m": 0.00019999999999999966,
+          "bbox_m": [
+            -0.04725,
+            -0.0345,
+            -0.036,
+            0.04725,
+            0.0345,
+            0.034
+          ],
+          "body_count": 16,
+          "check_status": "review",
+          "check_summary": {
+            "allowed_overlap_count": 0,
+            "bodies_checked": 16,
+            "clearance_pairs": {
+              "fail": 0,
+              "no_bodies": 0,
+              "pass": 2,
+              "review": 1
+            },
+            "contact_count": 22,
+            "envelope_intrusion_count": 0,
+            "fit_failures": 0,
+            "interference_count": 0,
+            "keepout_violation_count": 0,
+            "note": "required clearance/creepage values are caller inputs; no standard compliance is asserted",
+            "status": "review",
+            "unassigned_conductor_count": 0
+          },
+          "core": "core.tdk-e70-33-32",
+          "core_name": "E 70/33/32",
+          "magnetics_copper_mass_kg": 0.18213664666192864,
+          "magnetics_mass_kg": 0.6961366466619286,
+          "margin_m": 0.0,
+          "mass_by_material_kg": {
+            "aluminium_6063": 0.015986066843329955,
+            "bobbin_pet_gf": 0.02150455824297392,
+            "brass": 0.0007209955139988577,
+            "copper": 0.2338614031483964,
+            "ferrite_n87": 0.5497804799999999,
+            "kapton": 0.006386644920727292,
+            "stainless_steel": 0.035456000000000015
+          },
+          "mass_kg": 0.8636961486694265,
+          "size_m": [
+            0.0945,
+            0.069,
+            0.07
+          ],
+          "step_reimport": {
+            "expected_volume_m3": 0.00019459435548931496,
+            "path": "dab_transformer.step",
+            "relative_error": 3.0360991550144686e-14,
+            "solids": 16,
+            "valid": true,
+            "volume_m3": 0.00019459435548930905
+          },
+          "volume_m3": 0.00019459435548931496,
+          "windings": [
+            {
+              "name": "primary-0",
+              "net": "primary",
+              "outer_diameter_m": 0.002610076627227638,
+              "turns": 10
+            },
+            {
+              "name": "secondary-1",
+              "net": "secondary",
+              "outer_diameter_m": 0.0037270128789688934,
+              "turns": 10
+            },
+            {
+              "name": "primary-2",
+              "net": "primary",
+              "outer_diameter_m": 0.0026100766272276373,
+              "turns": 10
+            }
+          ]
+        }
+      }
+    },
+    "updated_at": "2026-10-21T06:41:57Z"
+  },
+  "status": "completed",
+  "task_id": "cad-transformer",
+  "task_version": "0.1.0",
+  "tool": {
+    "id": "tool.freecad",
+    "name": "FreeCAD (console) via aipe-cad",
+    "version": "1.1.4"
+  },
+  "verification": {
+    "build_ok": true,
+    "check_status": "review",
+    "clearance_pairs": {
+      "fail": 0,
+      "no_bodies": 0,
+      "pass": 2,
+      "review": 1
+    },
+    "interference_count": 0,
+    "no_hard_failures": true
+  }
+}

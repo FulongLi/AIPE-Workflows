@@ -1,0 +1,22 @@
+!------ Skeleton for body section -----
+Body 1
+  Name = heatsink
+End
+
+!------ Skeleton for boundary section -----
+Boundary Condition 1
+  Name = footprint_1
+End
+
+Boundary Condition 2
+  Name = footprint_2
+End
+
+Boundary Condition 3
+  Name = convective
+End
+
+Boundary Condition 4
+  Name = bottom
+End
+

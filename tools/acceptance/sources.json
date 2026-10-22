@@ -1,6 +1,6 @@
 {
   "_comment": "Official repositories for the clean-checkout acceptance test (2026-10-21). 'ref' points at the head of an unmerged stabilisation PR while it awaits maintainer merge; remove the refs once merged to test main. 'requirements', 'install' and 'extras' reproduce each README's install command ({py} = venv python, {today} = ISO date); 'tests' are the README's own contract/test commands, run inside the checkout. Repositories without 'install' are checked out only (the PCB boards are read by the ERC/DRC task through --checkouts).",
-  "tools_dir": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools",
+  "tools_dir": "D:\\EngineeringTools",
   "repositories": [
     {
       "name": "AIPE-Core",

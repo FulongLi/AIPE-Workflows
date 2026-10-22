@@ -9,7 +9,7 @@ step tolerates exit 2 (`completed_with_blocked` / `completed_with_failed_optiona
 the report; every other non-zero exit stops the harness.
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools\acceptance\run_acceptance.ps1 -Workspace D:\aipe-acceptance -ToolsDir D:\aipe-tools
+powershell -ExecutionPolicy Bypass -File tools\acceptance\run_acceptance.ps1 -Workspace D:\aipe-acceptance -ToolsDir D:\EngineeringTools
 ```
 
 Windows PowerShell 5.1, Python 3.10+, git and the engineering tools (ngspice, KiCad 10, FreeCAD 1.1, Gmsh, Elmer) are

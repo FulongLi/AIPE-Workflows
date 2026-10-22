@@ -287,7 +287,17 @@ def _find_executable(spec: ToolSpec, workspace_root: Optional[Path]) -> tuple[Op
         if found:
             return found, "PATH"
     tools_dir = os.environ.get("AIPE_TOOLS_DIR")
-    roots = [Path(tools_dir).parent] if tools_dir else []
+    if tools_dir:
+        # AIPE_TOOLS_DIR is the directory that holds the portable tools (e.g. D:\EngineeringTools or <workspace>\tools);
+        # the workspace-relative patterns start with "tools/", so match them against the directory itself as well.
+        base = Path(tools_dir)
+        for rel in spec.workspace_relative:
+            parts = Path(rel).parts
+            inner = Path(*parts[1:]) if len(parts) > 1 and parts[0] == "tools" else Path(rel)
+            for candidate in (base / inner, base / rel):
+                if candidate.is_file():
+                    return str(candidate), "tools-dir"
+    roots = []
     if workspace_root:
         roots.append(workspace_root)
     here = Path.cwd().resolve()

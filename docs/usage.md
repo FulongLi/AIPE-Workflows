@@ -16,9 +16,13 @@ python -m pip install -e .                                # this engine
 aipe-workflows doctor --qualify                           # detect and numerically qualify ngspice, KiCad, FreeCAD, Gmsh, Elmer
 ```
 
-The doctor searches `PATH`, the `AIPE_*` environment variables, a workspace `tools/` folder (portable installs) and
-the usual per-user Windows locations; missing tools are reported with their official download channel and licence,
-and nothing is installed automatically. Stages whose tool or package is missing are reported as blocked, never faked.
+The doctor searches `PATH`, the per-tool environment variables (`AIPE_NGSPICE`, `AIPE_KICAD_CLI`, `AIPE_FREECADCMD`,
+`AIPE_ELMERSOLVER`), the portable-tools directory named by `AIPE_TOOLS_DIR` (any directory holding the tool folders, e.g.
+`D:\EngineeringTools` with `Spice64\` and `ElmerFEM-nogui-nompi-Windows-AMD64\`), a workspace `tools/` folder with the
+same layout, and the usual per-user Windows locations; missing tools are reported with their official download channel
+and licence, and nothing is installed automatically. Stages whose tool or package is missing are reported as blocked,
+never faked. The CAD stage calls `aipe-cad`, which honours `AIPE_FREECADCMD` itself; the circuit and FEM stages receive
+the ngspice and Elmer paths from the doctor's manifest.
 
 ## Run the DAB benchmark
 

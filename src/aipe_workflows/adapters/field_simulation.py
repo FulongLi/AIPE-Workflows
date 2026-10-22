@@ -45,6 +45,20 @@ def _tool_version(ctx: TaskContext, name: str) -> str:
     return str(ctx.environment.get("tools", {}).get(name, {}).get("version") or "unknown")
 
 
+def _export_elmer_path(ctx: TaskContext) -> None:
+    """Make aipe_fieldsim use the ElmerSolver the doctor found and qualified.
+
+    aipe_fieldsim discovers Elmer on its own (AIPE_ELMERSOLVER, ELMER_HOME, PATH, <workspace>/tools/ElmerFEM*); it does
+    not know the doctor's AIPE_TOOLS_DIR lookup or per-user locations, so the qualified path is exported for this process.
+    An explicitly set AIPE_ELMERSOLVER is left untouched."""
+    import os
+
+    info = ctx.environment.get("tools", {}).get("elmer", {})
+    path = info.get("path") if info.get("found") else None
+    if path and not os.environ.get("AIPE_ELMERSOLVER"):
+        os.environ["AIPE_ELMERSOLVER"] = str(path)
+
+
 def _collect_case_files(ctx: TaskContext, envelope: ExecutionEnvelope, workdir, names=("case.sif", "elmersolver.log", "results.json", "case.json"), max_each=2):
     for name in names:
         for path in sorted(workdir.rglob(name))[:max_each]:
@@ -157,6 +171,7 @@ class TransformerLeakageFemTask(TaskAdapter):
         params.update(p.get("geometry") or {})
         geometry_source = geometry_notes[0] if (geometry_notes and "catalogue record" in geometry_notes[0]) else "aipe_fieldsim package default E-core window"
         workdir = ctx.task_dir / "fem"
+        _export_elmer_path(ctx)
         model = TransformerWindowModel(workdir, params=params, plots=bool(p.get("figures", True)))
         summary = model.run(harmonic=bool(p.get("harmonic", False)), levels=tuple(p.get("levels", (0, 1))))
         envelope = ExecutionEnvelope(task_id=ctx.task.id, task_version=self.version, capability_id="aipe.field-simulation",
@@ -273,6 +288,7 @@ class HeatSinkFemTask(TaskAdapter):
             params["h_W_per_m2_K"] = float(p["h_W_per_m2_K"])
         params.update(p.get("geometry") or {})
         workdir = ctx.task_dir / "fem"
+        _export_elmer_path(ctx)
         model = HeatSinkModel(workdir, params=params, plots=bool(p.get("figures", True)))
         summary = model.run(levels=tuple(p.get("levels", (0, 1))))
         envelope = ExecutionEnvelope(task_id=ctx.task.id, task_version=self.version, capability_id="aipe.field-simulation",

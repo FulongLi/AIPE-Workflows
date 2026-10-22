@@ -114,7 +114,11 @@ def default_decision(child_state: RunState, comparison: dict[str, Any], spec: di
     """Accept when the child run completed, every simulation matched its analytic reference, ZVS held
     and the rated power is met within 2 %; otherwise reject with explicit reasons."""
     reasons: list[str] = []
-    if child_state.status != "completed":
+    notes: list[str] = []
+    if child_state.status == "completed_with_failed_optional":
+        failed_optional = [tid for tid, rec in child_state.tasks.items() if rec.status == "failed"]
+        notes.append(f"optional task(s) failed and are recorded in their gate: {', '.join(failed_optional)}")
+    elif child_state.status != "completed":
         reasons.append(f"child run status {child_state.status}")
     for key, row in comparison.items():
         if key.endswith(":comparison_pass") and row.get("child") is False:
@@ -125,7 +129,9 @@ def default_decision(child_state: RunState, comparison: dict[str, Any], spec: di
     p_out = comparison.get("p_out_W", {}).get("child")
     if isinstance(p_out, (int, float)) and abs(p_out - rated) / rated > 0.02:
         reasons.append(f"rated power not met: {p_out:.1f} W versus {rated:.0f} W")
-    return ("rejected" if reasons else "accepted"), reasons or ["completed; simulations match their analytical references; ZVS retained; rated power within 2 %"]
+    if reasons:
+        return "rejected", reasons + notes
+    return "accepted", ["completed; simulations match their analytical references; ZVS retained; rated power within 2 %"] + notes
 
 
 def iterate_run(parent_run_dir: Path, changes: dict[str, Any], reason: str, run_factory: Callable[[dict, Path, str], Any],

@@ -1,0 +1,65 @@
+{
+  "run": "runs\\wf-dab-10kw-first-it03",
+  "tolerance": 0.02,
+  "prefer": "fem",
+  "proposals": [
+    {
+      "path": "converter.leakage_inductance_primary_H",
+      "quantity": "transformer leakage inductance, primary referred",
+      "current": 1.4831218771540288e-06,
+      "proposed": 1.4776176639058417e-06,
+      "relative_change": -0.0037112346146152228,
+      "source_task": "fem-transformer-window",
+      "evidence_id": "evidence.fem-transformer-window-ccbf0d",
+      "within_tolerance": true,
+      "note": "executed 2-D window FEM of the selected core and layout"
+    },
+    {
+      "path": "(information)",
+      "quantity": "leakage: FEM versus magnetics 1-D",
+      "current": 1.5447186255794153e-06,
+      "proposed": 1.4776176639058417e-06,
+      "relative_change": -0.043438954229223774,
+      "source_task": "fem-transformer-window",
+      "evidence_id": "evidence.fem-transformer-window-ccbf0d",
+      "within_tolerance": true,
+      "note": "agreement check between the 1-D design estimate and the executed FEM"
+    },
+    {
+      "path": "converter.external_inductance_H",
+      "quantity": "external series inductor (total minus transformer leakage)",
+      "current": 3.3516878122845965e-05,
+      "proposed": 3.3522382336094156e-05,
+      "relative_change": 0.0001642221339355331,
+      "source_task": "fem-transformer-window",
+      "evidence_id": "evidence.fem-transformer-window-ccbf0d",
+      "within_tolerance": true,
+      "note": "total primary-referred series inductance 3.5e-05 H kept constant"
+    },
+    {
+      "path": "converter.magnetising_inductance_H",
+      "quantity": "magnetising inductance, primary referred",
+      "current": 0.005180328373919709,
+      "proposed": 0.005180332562392344,
+      "relative_change": 8.085341955896594e-07,
+      "source_task": "fem-transformer-window",
+      "evidence_id": "evidence.fem-transformer-window-ccbf0d",
+      "within_tolerance": true,
+      "note": "executed FEM, secondary open; depends on the assumed core permeability"
+    },
+    {
+      "path": "converter.turns_ratio_np_ns",
+      "quantity": "transformer turns ratio Np/Ns (integer turns of the selected design)",
+      "current": 2.0,
+      "proposed": 2.0,
+      "relative_change": 0.0,
+      "source_task": "magnetics-transformer-design",
+      "evidence_id": "evidence.magnetics-design-ccbf0d",
+      "within_tolerance": true,
+      "note": "turns 20:10"
+    }
+  ],
+  "changes": {},
+  "consistent": true,
+  "reason": "circuit model already consistent with the magnetics and FEM results within tolerance"
+}

@@ -16,7 +16,7 @@ from typing import Any
 
 from ..engine.envelope import ExecutionEnvelope, now_iso
 from ..engine.runner import TaskAdapter, TaskContext
-from .design_agent import run_suffix
+from .common import run_suffix
 
 
 def _q(value: float, unit: str) -> dict[str, Any]:

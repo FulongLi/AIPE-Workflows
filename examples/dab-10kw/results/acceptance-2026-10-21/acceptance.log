@@ -1,0 +1,1403 @@
+
+=== [23:36:21] 0. Sources: D:\Cursor Workspace\AIPE-Full-Ecosystem-Integration\stabilisation\acceptance\sources.json (11 repositories, tools D:\Cursor Workspace\AIPE-Full-Ecosystem-Integration\tools) ===
+
+=== [23:36:21] 1. Clone repositories into D:\aipe-acceptance ===
+(kept existing checkout D:\aipe-acceptance\AIPE-Core)
+AIPE-Core @ 4e664f03df1e294fefc169244bf1223c7352e2be (ref: default branch)
+(kept existing checkout D:\aipe-acceptance\AIPE-Registry)
+AIPE-Registry @ 2b6e35cf5625cf3bc2a0759c37fa345d9f8aeaf2 (ref: refs/pull/3/head)
+(kept existing checkout D:\aipe-acceptance\AIPE-Simulation-Skills)
+AIPE-Simulation-Skills @ 9a5e6c25b1cc71c535c14f2e620ed32c2ec485c6 (ref: refs/pull/3/head)
+(kept existing checkout D:\aipe-acceptance\AIPE-Electrical-Design)
+AIPE-Electrical-Design @ 5d846e3c92308a3ccb517baafc162adb633aec84 (ref: refs/pull/3/head)
+(kept existing checkout D:\aipe-acceptance\AIPE-Thermal-Design)
+AIPE-Thermal-Design @ 2a8f9813f69b0ccce088981c42e9976b609a4dbe (ref: refs/pull/2/head)
+(kept existing checkout D:\aipe-acceptance\AIPE-Semiconductor-Database)
+AIPE-Semiconductor-Database @ 242765f62293eb9a0ebd63588a7b8859a0a4594c (ref: default branch)
+(kept existing checkout D:\aipe-acceptance\AIPE-Magnetics-Database)
+AIPE-Magnetics-Database @ 46c6afc1fb24eba6659b4ad38bc302589a86026e (ref: default branch)
+(kept existing checkout D:\aipe-acceptance\AIPE-Field-Simulation)
+AIPE-Field-Simulation @ afc621ef6131983ac86ac80de1614566b16510e0 (ref: refs/pull/2/head)
+(kept existing checkout D:\aipe-acceptance\AIPE-CAD-Agent)
+AIPE-CAD-Agent @ b544536363ce298dcef74f7c8970d917acc9ce41 (ref: refs/pull/1/head)
+> git clone -q https://github.com/FulongLi/AIPE-PCB-Agent.git "D:\aipe-acceptance\AIPE-PCB-Agent"
+[exit 0]
+> git -C "D:\aipe-acceptance\AIPE-PCB-Agent" fetch -q origin refs/pull/8/head
+[exit 0]
+> git -C "D:\aipe-acceptance\AIPE-PCB-Agent" checkout -q FETCH_HEAD
+[exit 0]
+AIPE-PCB-Agent @ bf9ba9c9193df22fe1c1e0b754df0fb06d3ed1ac (ref: refs/pull/8/head)
+> git clone -q https://github.com/FulongLi/AIPE-Workflows.git "D:\aipe-acceptance\AIPE-Workflows"
+[exit 0]
+> git -C "D:\aipe-acceptance\AIPE-Workflows" fetch -q origin refs/pull/3/head
+[exit 0]
+> git -C "D:\aipe-acceptance\AIPE-Workflows" checkout -q FETCH_HEAD
+[exit 0]
+AIPE-Workflows @ 84d1c2d4b4e9d0ed3449640b5e42d91feaec0f71 (ref: refs/pull/3/head)
+
+=== [23:36:51] 2. Fresh virtual environment and README install commands ===
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m pip install --upgrade pip --quiet
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m pip install --quiet -r "D:\aipe-acceptance\AIPE-Core\requirements-dev.txt"
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m pip install --quiet -r "D:\aipe-acceptance\AIPE-Registry\requirements-dev.txt"
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m pip install --quiet -e "D:\aipe-acceptance\AIPE-Simulation-Skills"
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m pip install --quiet -e "D:\aipe-acceptance\AIPE-Electrical-Design[dev]"
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m pip install --quiet -e "D:\aipe-acceptance\AIPE-Thermal-Design[dev]"
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m pip install --quiet -e "D:\aipe-acceptance\AIPE-Semiconductor-Database[dev]"
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m pip install --quiet -e "D:\aipe-acceptance\AIPE-Magnetics-Database[dev]"
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m pip install --quiet -e "D:\aipe-acceptance\AIPE-Field-Simulation[mesh,plots,dev]"
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m pip install --quiet -e "D:\aipe-acceptance\AIPE-CAD-Agent[dev]"
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m pip install --quiet -e "D:\aipe-acceptance\AIPE-Workflows"
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m pip list --format=freeze
+aipe-cad==0.1.0
+aipe-devices==3.1.0
+aipe-electrical==0.2.0
+aipe-fieldsim==0.1.0
+aipe-magnetics==0.2.0
+aipe-simulation-skills==0.2.0
+aipe-thermal==0.2.0
+aipe-workflows==0.1.0
+annotated-types==0.8.0
+anyio==4.15.1
+arrow==1.4.0
+attrs==26.1.0
+build==1.6.1
+cffi==2.1.1
+click==8.5.0
+colorama==0.4.6
+contourpy==1.3.2
+coverage==7.16.2
+cryptography==50.0.2
+cycler==0.12.1
+et_xmlfile==2.0.0
+exceptiongroup==1.3.1
+fonttools==4.65.0
+fqdn==1.6.0
+gmsh==4.15.2
+h11==0.16.0
+h5py==3.16.0
+httpcore2==2.14.0
+httpx2==2.14.0
+idna==3.20
+iniconfig==2.3.1
+isoduration==20.11.0
+jsonpointer==3.4
+jsonschema==4.25.1
+jsonschema-specifications==2025.9.1
+kiwisolver==1.5.1
+matplotlib==3.10.9
+mcp==2.3.0
+mcp-types==2.3.0
+numpy==2.2.6
+openpyxl==3.1.5
+opentelemetry-api==1.45.1
+packaging==26.3
+pillow==12.3.0
+pip==26.2.2
+pluggy==1.7.0
+pycparser==3.11
+pydantic==2.14.1
+pydantic_core==2.50.1
+Pygments==2.21.0
+PyJWT==2.15.1
+pyparsing==3.3.3
+pyproject_hooks==1.3.3
+pytest==8.4.2
+pytest-cov==7.1.0
+python-dateutil==2.9.0.post0
+python-multipart==0.0.32
+pywin32==312
+PyYAML==6.0.2
+referencing==0.37.0
+rfc3339-validator==0.1.4
+rfc3987==1.3.8
+rpds-py==0.30.0
+ruff==0.17.1
+scipy==1.15.3
+setuptools==65.5.0
+six==1.17.0
+sse-starlette==3.5.0
+starlette==1.7.0
+tomli==2.5.0
+truststore==0.10.5
+typing_extensions==4.16.0
+typing-inspection==0.4.4
+tzdata==2026.5
+uri-template==1.3.0
+uvicorn==0.54.0
+webcolors==25.10.0
+[exit 0]
+
+=== [23:37:53] 3. Tool qualification (ngspice, FreeCAD, KiCad, Elmer known-answer cases) ===
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m aipe_workflows.cli doctor --qualify --workspace "D:\aipe-acceptance" --json --out "D:\aipe-acceptance\doctor.json"
+{
+  "created_at": "2026-10-21T15:37:58Z",
+  "platform": {
+    "system": "Windows",
+    "release": "10",
+    "version": "10.0.26300",
+    "machine": "AMD64",
+    "node": "DESKTOP-BISO8AK"
+  },
+  "python": {
+    "executable": "D:\\aipe-acceptance\\.venv\\Scripts\\python.exe",
+    "version": "3.10.11",
+    "implementation": "CPython"
+  },
+  "tools": {
+    "python": {
+      "id": "python",
+      "name": "Python",
+      "licence": "PSF",
+      "required_for": [],
+      "found": true,
+      "path": "D:\\aipe-acceptance\\.venv\\Scripts\\python.exe",
+      "version": "3.10.11",
+      "source": "interpreter",
+      "qualified": null,
+      "qualification": null,
+      "install_hint": "https://www.python.org/downloads/",
+      "version_output": "Python 3.10.11"
+    },
+    "git": {
+      "id": "git",
+      "name": "Git",
+      "licence": "GPL-2.0",
+      "required_for": [],
+      "found": true,
+      "path": "C:\\Program Files\\Git\\cmd\\git.EXE",
+      "version": "2.53.0.windows.2",
+      "source": "PATH",
+      "qualified": null,
+      "qualification": null,
+      "install_hint": "winget install Git.Git",
+      "version_output": "git version 2.53.0.windows.2"
+    },
+    "ngspice": {
+      "id": "ngspice",
+      "name": "ngspice",
+      "licence": "BSD-3-Clause (with some GPL/LGPL components; see COPYING)",
+      "required_for": [
+        "circuit_simulation"
+      ],
+      "found": true,
+      "path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\Spice64\\bin\\ngspice_con.exe",
+      "version": "47",
+      "source": "workspace-tools",
+      "qualified": true,
+      "qualification": {
+        "test": "RC step response at one time constant",
+        "expected": 0.6321205588285577,
+        "measured": 0.632119,
+        "passed": true,
+        "returncode": 0
+      },
+      "install_hint": "Official release archives: https://sourceforge.net/projects/ngspice/files/ng-spice-rework/ (portable 7z, no admin); not in winget",
+      "version_output": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourcefo",
+      "qualification_dir": "C:\\Users\\ZHONGN~1\\AppData\\Local\\Temp\\aipe-doctor-iq0xolgd\\ngspice"
+    },
+    "kicad-cli": {
+      "id": "kicad-cli",
+      "name": "KiCad command line",
+      "licence": "GPL-3.0-or-later",
+      "required_for": [
+        "cad_pcb"
+      ],
+      "found": true,
+      "path": "C:\\Users\\Zhongnan Qian\\AppData\\Local\\Programs\\KiCad\\10.0\\bin\\kicad-cli.exe",
+      "version": "10.0.6",
+      "source": "per-user-or-program-files",
+      "qualified": true,
+      "qualification": {
+        "test": "kicad-cli version query (no project checks)",
+        "output": "10.0.6",
+        "passed": true,
+        "returncode": 0
+      },
+      "install_hint": "winget install KiCad.KiCad --scope user (per-user, no admin) or https://www.kicad.org/download/",
+      "version_output": "10.0.6",
+      "qualification_dir": "C:\\Users\\ZHONGN~1\\AppData\\Local\\Temp\\aipe-doctor-iq0xolgd\\kicad-cli"
+    },
+    "freecad": {
+      "id": "freecad",
+      "name": "FreeCAD (headless)",
+      "licence": "LGPL-2.1-or-later",
+      "required_for": [
+        "cad_pcb"
+      ],
+      "found": true,
+      "path": "C:\\Users\\Zhongnan Qian\\AppData\\Local\\Programs\\FreeCAD 1.1\\bin\\freecadcmd.exe",
+      "version": "1.1.4",
+      "source": "per-user-or-program-files",
+      "qualified": true,
+      "qualification": {
+        "test": "Part box 10x20x30 mm volume and STEP export",
+        "expected_volume_mm3": 6000.0,
+        "measured_volume_mm3": 6000.0,
+        "step_written": true,
+        "passed": true,
+        "returncode": 0
+      },
+      "install_hint": "winget install FreeCAD.FreeCAD --scope user or portable release from https://github.com/FreeCAD/FreeCAD/releases",
+      "version_output": "FreeCAD 1.1.4 Revision: 20260928 (Git shallow)",
+      "qualification_dir": "C:\\Users\\ZHONGN~1\\AppData\\Local\\Temp\\aipe-doctor-iq0xolgd\\freecad"
+    },
+    "gmsh": {
+      "id": "gmsh",
+      "name": "Gmsh (python SDK)",
+      "licence": "GPL-2.0-or-later",
+      "required_for": [
+        "field_simulation"
+      ],
+      "found": true,
+      "path": "D:\\aipe-acceptance\\.venv\\lib\\site-packages\\gmsh.py",
+      "version": "4.15.2",
+      "source": "python-module",
+      "qualified": true,
+      "qualification": {
+        "test": "gmsh python module unit cube tetrahedral mesh",
+        "tetrahedra": 1125,
+        "passed": true
+      },
+      "install_hint": "python -m pip install gmsh (bundles the Gmsh library; GPL applies to redistribution)",
+      "qualification_dir": "C:\\Users\\ZHONGN~1\\AppData\\Local\\Temp\\aipe-doctor-iq0xolgd\\gmsh"
+    },
+    "elmer": {
+      "id": "elmer",
+      "name": "Elmer FEM (ElmerSolver)",
+      "licence": "GPL-2.0-or-later / LGPL-2.1 (library parts)",
+      "required_for": [
+        "field_simulation"
+      ],
+      "found": true,
+      "path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\tools\\ElmerFEM-nogui-nompi-Windows-AMD64\\bin\\ElmerSolver.exe",
+      "version": "9.0",
+      "source": "workspace-tools",
+      "qualified": true,
+      "qualification": {
+        "test": "2-D slab steady heat conduction, analytic T_max = 305 K",
+        "expected_t_max_K": 305.0,
+        "measured_t_max_K": 305.0,
+        "measured_t_min_K": 300.0,
+        "passed": true,
+        "returncode_grid": 0,
+        "returncode_solver": 0
+      },
+      "install_hint": "Portable Windows zip from https://www.nic.funet.fi/pub/sci/physics/elmer/bin/windows/ (no admin) or Windows installer",
+      "version_output": "ELMER SOLVER (v 9.0) STARTED AT: 2026/10/21 23:37:54\nParCommInit: Initialize #PEs: 1\nMAIN: \nMAIN: =============================================================\nMAIN: ElmerSolver finite element software, Welcome!\nMAIN: This program is free software licensed under (L)GPL\nMAIN: Copyright 1st April 1995",
+      "release_label": "ElmerFEM-nogui-nompi-Windows-AMD64",
+      "note": "ElmerSolver reports the core version; the release label comes from the install folder name",
+      "qualification_dir": "C:\\Users\\ZHONGN~1\\AppData\\Local\\Temp\\aipe-doctor-iq0xolgd\\elmer"
+    },
+    "openfoam": {
+      "id": "openfoam",
+      "name": "OpenFOAM",
+      "licence": "GPL-3.0-or-later",
+      "required_for": [
+        "field_simulation"
+      ],
+      "found": false,
+      "path": null,
+      "version": null,
+      "source": null,
+      "qualified": null,
+      "qualification": null,
+      "install_hint": "Windows: WSL2 + openfoam.com packages or docker; not provided by winget"
+    },
+    "xyce": {
+      "id": "xyce",
+      "name": "Xyce",
+      "licence": "GPL-3.0-or-later",
+      "required_for": [],
+      "found": false,
+      "path": null,
+      "version": null,
+      "source": null,
+      "qualified": null,
+      "qualification": null,
+      "install_hint": "https://xyce.sandia.gov/downloads/"
+    },
+    "ltspice": {
+      "id": "ltspice",
+      "name": "LTspice (optional free proprietary)",
+      "licence": "Analog Devices EULA (free, proprietary)",
+      "required_for": [],
+      "found": false,
+      "path": null,
+      "version": null,
+      "source": null,
+      "qualified": null,
+      "qualification": null,
+      "install_hint": "winget install AnalogDevices.LTspice (optional validation route only)"
+    },
+    "node": {
+      "id": "node",
+      "name": "Node.js",
+      "licence": "MIT",
+      "required_for": [],
+      "found": true,
+      "path": "C:\\Program Files\\nodejs\\node.EXE",
+      "version": "24.14.0",
+      "source": "PATH",
+      "qualified": null,
+      "qualification": null,
+      "install_hint": "https://nodejs.org/",
+      "version_output": "v24.14.0"
+    }
+  },
+  "python_packages": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "h5py": "3.16.0",
+    "matplotlib": "3.10.9",
+    "yaml": "6.0.2",
+    "jsonschema": "4.25.1",
+    "gmsh": "4.15.2",
+    "pydantic": "2.14.1",
+    "aipe_simulation": "0.2.0",
+    "aipe_electrical": "0.2.0",
+    "aipe_thermal": "0.2.0",
+    "cadquery": null
+  },
+  "workspace_root": "D:\\aipe-acceptance",
+  "recommendations": [
+    "OpenFOAM missing: Windows: WSL2 + openfoam.com packages or docker; not provided by winget",
+    "Xyce missing: https://xyce.sandia.gov/downloads/",
+    "LTspice (optional free proprietary) missing: winget install AnalogDevices.LTspice (optional validation route only)"
+  ]
+}
+[exit 0]
+
+=== [23:37:58] 4. Core and Registry contracts (each repository's documented test commands) ===
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m unittest discover -s tests -v
+test_analytical_result_requires_inputs (test_contract.EngineeringStateTests) ... ok
+test_cannot_promote_assumption_to_measured (test_contract.EngineeringStateTests) ... ok
+test_completed_run_requires_matching_evidence_and_operating_point (test_contract.EngineeringStateTests) ... ok
+test_completed_simulation_needs_a_run (test_contract.EngineeringStateTests) ... ok
+test_duplicate_ids_are_rejected (test_contract.EngineeringStateTests) ... ok
+test_example_passes_with_network_disabled (test_contract.EngineeringStateTests) ... ok
+test_failed_check_cannot_have_successful_overall_status (test_contract.EngineeringStateTests) ... ok
+test_invalid_date_and_version_are_rejected (test_contract.EngineeringStateTests) ... ok
+test_json_loader_rejects_duplicate_keys_and_nonstandard_numbers (test_contract.EngineeringStateTests) ... ok
+test_measurement_requires_artifact_and_tool (test_contract.EngineeringStateTests) ... ok
+test_missing_evidence_reference_is_rejected (test_contract.EngineeringStateTests) ... ok
+test_missing_top_level_domain_is_rejected (test_contract.EngineeringStateTests) ... ok
+test_namespaced_extensions_are_allowed (test_contract.EngineeringStateTests) ... ok
+test_negative_frequency_is_rejected (test_contract.EngineeringStateTests) ... ok
+test_non_finite_host_values_are_rejected (test_contract.EngineeringStateTests) ... ok
+test_provenance_cycle_is_rejected (test_contract.EngineeringStateTests) ... ok
+test_quantities_need_evidence (test_contract.EngineeringStateTests) ... ok
+test_quantity_requires_explicit_si_units (test_contract.EngineeringStateTests) ... ok
+test_rejected_evidence_cannot_support_state (test_contract.EngineeringStateTests) ... ok
+test_schema_documents_are_valid (test_contract.EngineeringStateTests) ... ok
+test_unknown_top_level_and_domain_fields_are_rejected (test_contract.EngineeringStateTests) ... ok
+test_validation_status_requires_corresponding_check (test_contract.EngineeringStateTests) ... ok
+test_wrong_physical_dimension_is_rejected (test_contract.EngineeringStateTests) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 1.486s
+
+OK
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" scripts/validate.py examples/dab-10kw/engineering-state.json
+PASS examples\dab-10kw\engineering-state.json (structure and references; no physical validation)
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" scripts/validate.py
+{
+  "diagnostics": [
+    {
+      "code": "duplicate_capability",
+      "id": "aipe.design-agent",
+      "message": "dab-sps-analysis: aipe.design-agent, aipe.electrical-design; may be intentional alternatives",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved_license",
+      "id": "aipe.doc",
+      "message": "rights remain unconfirmed; no open-source licence inferred",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved_license",
+      "id": "aipe.ieee-paper-agent",
+      "message": "rights remain unconfirmed; no open-source licence inferred",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved_license",
+      "id": "aipe.magnetics-database",
+      "message": "rights remain unconfirmed; no open-source licence inferred",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved_license",
+      "id": "aipe.open-source-catalogue",
+      "message": "rights remain unconfirmed; no open-source licence inferred",
+      "severity": "warning"
+    },
+    {
+      "code": "missing_open_alternative",
+      "id": "aipe.semiconductor-database",
+      "message": "matlab: optional-export-consumption; review fidelity and limitations",
+      "severity": "warning"
+    },
+    {
+      "code": "missing_open_alternative",
+      "id": "aipe.semiconductor-database",
+      "message": "plecs: optional-export-consumption; review fidelity and limitations",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved_license",
+      "id": "aipe.semiconductor-database",
+      "message": "rights remain unconfirmed; no open-source licence inferred",
+      "severity": "warning"
+    },
+    {
+      "code": "missing_open_alternative",
+      "id": "aipe.simulation-skills",
+      "message": "ansys: multiphysics-simulation; review fidelity and limitations",
+      "severity": "warning"
+    },
+    {
+      "code": "missing_open_alternative",
+      "id": "aipe.simulation-skills",
+      "message": "comsol: multiphysics-simulation; review fidelity and limitations",
+      "severity": "warning"
+    },
+    {
+      "code": "missing_open_alternative",
+      "id": "aipe.simulation-skills",
+      "message": "matlab-simulink: control-system-simulation; review fidelity and limitations",
+      "severity": "warning"
+    },
+    {
+      "code": "missing_open_alternative",
+      "id": "aipe.simulation-skills",
+      "message": "plecs: power-electronics-simulation; review fidelity and limitations",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved_license",
+      "id": "aipe.simulation-skills",
+      "message": "rights remain unconfirmed; no open-source licence inferred",
+      "severity": "warning"
+    }
+  ],
+  "manifest_count": 18
+}
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" scripts/validate.py --sources sources/repositories.yaml --today 2026-10-21
+{
+  "diagnostics": [
+    {
+      "code": "duplicate_capability",
+      "id": "aipe.design-agent",
+      "message": "dab-sps-analysis: aipe.design-agent, aipe.electrical-design; may be intentional alternatives",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved_license",
+      "id": "aipe.doc",
+      "message": "rights remain unconfirmed; no open-source licence inferred",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved_license",
+      "id": "aipe.ieee-paper-agent",
+      "message": "rights remain unconfirmed; no open-source licence inferred",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved_license",
+      "id": "aipe.magnetics-database",
+      "message": "rights remain unconfirmed; no open-source licence inferred",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved_license",
+      "id": "aipe.open-source-catalogue",
+      "message": "rights remain unconfirmed; no open-source licence inferred",
+      "severity": "warning"
+    },
+    {
+      "code": "missing_open_alternative",
+      "id": "aipe.semiconductor-database",
+      "message": "matlab: optional-export-consumption; review fidelity and limitations",
+      "severity": "warning"
+    },
+    {
+      "code": "missing_open_alternative",
+      "id": "aipe.semiconductor-database",
+      "message": "plecs: optional-export-consumption; review fidelity and limitations",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved_license",
+      "id": "aipe.semiconductor-database",
+      "message": "rights remain unconfirmed; no open-source licence inferred",
+      "severity": "warning"
+    },
+    {
+      "code": "missing_open_alternative",
+      "id": "aipe.simulation-skills",
+      "message": "ansys: multiphysics-simulation; review fidelity and limitations",
+      "severity": "warning"
+    },
+    {
+      "code": "missing_open_alternative",
+      "id": "aipe.simulation-skills",
+      "message": "comsol: multiphysics-simulation; review fidelity and limitations",
+      "severity": "warning"
+    },
+    {
+      "code": "missing_open_alternative",
+      "id": "aipe.simulation-skills",
+      "message": "matlab-simulink: control-system-simulation; review fidelity and limitations",
+      "severity": "warning"
+    },
+    {
+      "code": "missing_open_alternative",
+      "id": "aipe.simulation-skills",
+      "message": "plecs: power-electronics-simulation; review fidelity and limitations",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved_license",
+      "id": "aipe.simulation-skills",
+      "message": "rights remain unconfirmed; no open-source licence inferred",
+      "severity": "warning"
+    }
+  ],
+  "manifest_count": 18
+}
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" scripts/build_registry.py --check
+Verified 18 capabilities
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m pytest -q
+...........................................                              [100%]
+43 passed in 1.10s
+[exit 0]
+
+=== [23:38:02] 5-16. DAB workflow: plan, run, verify, report ===
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m aipe_workflows.cli plan "D:\aipe-acceptance\AIPE-Workflows\examples\dab-10kw\specification.yaml" --checkouts "D:\aipe-acceptance" --workflow "D:\aipe-acceptance\AIPE-Workflows\workflows\converter_dab\workflow.yaml" --run-dir "D:\aipe-acceptance\runs\dab-acceptance" --json
+{
+  "workflow": "aipe.workflow.converter-dab",
+  "run_id": "specification-20261021T153802-25d9a4",
+  "order": [
+    "requirements",
+    "analytic-sps",
+    "circuit-sim-level1",
+    "circuit-sim-level1-convergence",
+    "circuit-sim-level2",
+    "control-baseline",
+    "magnetics-transformer-design",
+    "cad-transformer",
+    "fem-transformer-window",
+    "pcb-erc-drc",
+    "semiconductor-screening",
+    "thermal-cooling-design",
+    "cad-heatsink",
+    "fem-heatsink"
+  ],
+  "levels": [
+    [
+      "requirements"
+    ],
+    [
+      "analytic-sps",
+      "pcb-erc-drc"
+    ],
+    [
+      "circuit-sim-level1",
+      "control-baseline"
+    ],
+    [
+      "circuit-sim-level1-convergence",
+      "circuit-sim-level2",
+      "magnetics-transformer-design"
+    ],
+    [
+      "cad-transformer",
+      "fem-transformer-window",
+      "semiconductor-screening"
+    ],
+    [
+      "thermal-cooling-design"
+    ],
+    [
+      "cad-heatsink",
+      "fem-heatsink"
+    ]
+  ],
+  "tasks": [
+    {
+      "id": "requirements",
+      "capability": "engineering-state-schema",
+      "adapter": "aipe_workflows.adapters.requirements:RequirementsTask",
+      "adapter_info": {
+        "id": "aipe.workflows.requirements",
+        "version": "0.1.0"
+      },
+      "depends_on": [],
+      "gate": "software",
+      "optional": false,
+      "tools": [],
+      "registry": {
+        "id": "aipe.core",
+        "maturity": "prototype",
+        "status": "experimental",
+        "validation": "tested",
+        "repository": "https://github.com/FulongLi/AIPE-Core"
+      },
+      "capability_registered": true,
+      "blockers": [],
+      "runnable": true,
+      "previous": null
+    },
+    {
+      "id": "analytic-sps",
+      "capability": "dab-sps-analysis",
+      "adapter": "aipe_workflows.adapters.electrical_design:AnalyticSpsTask",
+      "adapter_info": {
+        "id": "aipe.electrical-design.dab-sps-analysis",
+        "version": "0.2.0"
+      },
+      "depends_on": [
+        "requirements"
+      ],
+      "gate": "analytical",
+      "optional": false,
+      "tools": [],
+      "registry": {
+        "id": "aipe.design-agent",
+        "maturity": "prototype",
+        "status": "experimental",
+        "validation": "tested",
+        "repository": "https://github.com/FulongLi/AIPE-Design-Agent"
+      },
+      "capability_registered": true,
+      "blockers": [],
+      "runnable": true,
+      "previous": null
+    },
+    {
+      "id": "circuit-sim-level1",
+      "capability": "switching-circuit-simulation",
+      "adapter": "aipe_workflows.adapters.simulation_skills:DabNgspiceTask",
+      "adapter_info": {
+        "id": "aipe.simulation-skills.dab-ngspice",
+        "version": "0.1.1"
+      },
+      "depends_on": [
+        "requirements",
+        "analytic-sps"
+      ],
+      "gate": "circuit_simulation",
+      "optional": false,
+      "tools": [
+        "ngspice"
+      ],
+      "registry": {
+        "id": "aipe.simulation-skills",
+        "maturity": "usable",
+        "status": "active",
+        "validation": "tested",
+        "repository": "https://github.com/FulongLi/AIPE-Simulation-Skills"
+      },
+      "capability_registered": true,
+      "blockers": [],
+      "runnable": true,
+      "previous": null
+    },
+    {
+      "id": "circuit-sim-level1-convergence",
+      "capability": "switching-circuit-simulation",
+      "adapter": "aipe_workflows.adapters.simulation_skills:DabNgspiceTask",
+      "adapter_info": {
+        "id": "aipe.simulation-skills.dab-ngspice",
+        "version": "0.1.1"
+      },
+      "depends_on": [
+        "requirements",
+        "analytic-sps",
+        "circuit-sim-level1"
+      ],
+      "gate": "circuit_simulation",
+      "optional": true,
+      "tools": [
+        "ngspice"
+      ],
+      "registry": {
+        "id": "aipe.simulation-skills",
+        "maturity": "usable",
+        "status": "active",
+        "validation": "tested",
+        "repository": "https://github.com/FulongLi/AIPE-Simulation-Skills"
+      },
+      "capability_registered": true,
+      "blockers": [],
+      "runnable": true,
+      "previous": null
+    },
+    {
+      "id": "circuit-sim-level2",
+      "capability": "switching-circuit-simulation",
+      "adapter": "aipe_workflows.adapters.simulation_skills:DabNgspiceTask",
+      "adapter_info": {
+        "id": "aipe.simulation-skills.dab-ngspice",
+        "version": "0.1.1"
+      },
+      "depends_on": [
+        "requirements",
+        "analytic-sps",
+        "circuit-sim-level1"
+      ],
+      "gate": "circuit_simulation",
+      "optional": false,
+      "tools": [
+        "ngspice"
+      ],
+      "registry": {
+        "id": "aipe.simulation-skills",
+        "maturity": "usable",
+        "status": "active",
+        "validation": "tested",
+        "repository": "https://github.com/FulongLi/AIPE-Simulation-Skills"
+      },
+      "capability_registered": true,
+      "blockers": [],
+      "runnable": true,
+      "previous": null
+    },
+    {
+      "id": "control-baseline",
+      "capability": "averaged-control-analysis",
+      "adapter": "aipe_workflows.adapters.control_baseline:SpsControlBaselineTask",
+      "adapter_info": {
+        "id": "aipe.simulation-skills.sps-control-baseline",
+        "version": "0.1.0"
+      },
+      "depends_on": [
+        "requirements",
+        "analytic-sps"
+      ],
+      "gate": "analytical",
+      "optional": false,
+      "tools": [
+        "ngspice"
+      ],
+      "registry": {
+        "id": "aipe.simulation-skills",
+        "maturity": "usable",
+        "status": "active",
+        "validation": "tested",
+        "repository": "https://github.com/FulongLi/AIPE-Simulation-Skills"
+      },
+      "capability_registered": true,
+      "blockers": [],
+      "runnable": true,
+      "previous": null
+    },
+    {
+      "id": "magnetics-transformer-design",
+      "capability": "magnetics-waveform-informed-transformer-design",
+      "adapter": "aipe_workflows.adapters.magnetics_database:WaveformInformedTransformerTask",
+      "adapter_info": {
+        "id": "aipe.magnetics-database.waveform-informed-transformer-design",
+        "version": "0.1.2"
+      },
+      "depends_on": [
+        "requirements",
+        "analytic-sps",
+        "circuit-sim-level1"
+      ],
+      "gate": "analytical",
+      "optional": false,
+      "tools": [],
+      "registry": {
+        "id": "aipe.magnetics-database",
+        "maturity": "prototype",
+        "status": "experimental",
+        "validation": "tested",
+        "repository": "https://github.com/FulongLi/AIPE-Magnetics-Database"
+      },
+      "capability_registered": true,
+      "blockers": [],
+      "runnable": true,
+      "previous": null
+    },
+    {
+      "id": "cad-transformer",
+      "capability": "parametric-transformer-cad",
+      "adapter": "aipe_workflows.adapters.cad_agent:TransformerCadTask",
+      "adapter_info": {
+        "id": "aipe.cad-agent.transformer",
+        "version": "0.1.0"
+      },
+      "depends_on": [
+        "requirements",
+        "magnetics-transformer-design"
+      ],
+      "gate": "cad_pcb",
+      "optional": false,
+      "tools": [
+        "freecad"
+      ],
+      "registry": {
+        "id": "aipe.cad-agent",
+        "maturity": "prototype",
+        "status": "experimental",
+        "validation": "tested",
+        "repository": "https://github.com/FulongLi/AIPE-CAD-Agent"
+      },
+      "capability_registered": true,
+      "blockers": [],
+      "runnable": true,
+      "previous": null
+    },
+    {
+      "id": "fem-transformer-window",
+      "capability": "fem-magnetostatics-2d",
+      "adapter": "aipe_workflows.adapters.field_simulation:TransformerLeakageFemTask",
+      "adapter_info": {
+        "id": "aipe.field-simulation.transformer-window-2d",
+        "version": "0.1.1"
+      },
+      "depends_on": [
+        "requirements",
+        "circuit-sim-level1",
+        "magnetics-transformer-design"
+      ],
+      "gate": "field_simulation",
+      "optional": false,
+      "tools": [
+        "gmsh",
+        "elmer"
+      ],
+      "registry": {
+        "id": "aipe.field-simulation",
+        "maturity": "prototype",
+        "status": "experimental",
+        "validation": "tested",
+        "repository": "https://github.com/FulongLi/AIPE-Field-Simulation"
+      },
+      "capability_registered": true,
+      "blockers": [],
+      "runnable": true,
+      "previous": null
+    },
+    {
+      "id": "pcb-erc-drc",
+      "capability": "native-erc-drc-verification",
+      "adapter": "aipe_workflows.adapters.pcb_agent:KicadBoardChecksTask",
+      "adapter_info": {
+        "id": "aipe.pcb-agent.kicad-erc-drc",
+        "version": "0.1.0"
+      },
+      "depends_on": [
+        "requirements"
+      ],
+      "gate": "cad_pcb",
+      "optional": true,
+      "tools": [
+        "kicad-cli"
+      ],
+      "registry": {
+        "id": "aipe.pcb-agent",
+        "maturity": "prototype",
+        "status": "experimental",
+        "validation": "tested",
+        "repository": "https://github.com/FulongLi/AIPE-PCB-Agent"
+      },
+      "capability_registered": true,
+      "blockers": [],
+      "runnable": true,
+      "previous": null
+    },
+    {
+      "id": "semiconductor-screening",
+      "capability": "semiconductor-dab-screening",
+      "adapter": "aipe_workflows.adapters.semiconductor_database:DabDeviceScreeningTask",
+      "adapter_info": {
+        "id": "aipe.semiconductor-database.dab-screening",
+        "version": "0.1.0"
+      },
+      "depends_on": [
+        "requirements",
+        "circuit-sim-level2"
+      ],
+      "gate": "analytical",
+      "optional": false,
+      "tools": [],
+      "registry": {
+        "id": "aipe.semiconductor-database",
+        "maturity": "usable",
+        "status": "active",
+        "validation": "tested",
+        "repository": "https://github.com/FulongLi/AIPE-Semiconductor-Database"
+      },
+      "capability_registered": true,
+      "blockers": [],
+      "runnable": true,
+      "previous": null
+    },
+    {
+      "id": "thermal-cooling-design",
+      "capability": "cooling-concept-comparison",
+      "adapter": "aipe_workflows.adapters.thermal_design:CoolingDesignTask",
+      "adapter_info": {
+        "id": "aipe.thermal-design.cooling-screening",
+        "version": "0.2.0"
+      },
+      "depends_on": [
+        "requirements",
+        "semiconductor-screening"
+      ],
+      "gate": "analytical",
+      "optional": false,
+      "tools": [],
+      "registry": {
+        "id": "aipe.thermal-design",
+        "maturity": "prototype",
+        "status": "experimental",
+        "validation": "tested",
+        "repository": "https://github.com/FulongLi/AIPE-Thermal-Design"
+      },
+      "capability_registered": true,
+      "blockers": [],
+      "runnable": true,
+      "previous": null
+    },
+    {
+      "id": "cad-heatsink",
+      "capability": "heat-sink-cad",
+      "adapter": "aipe_workflows.adapters.cad_agent:HeatSinkCadTask",
+      "adapter_info": {
+        "id": "aipe.cad-agent.heatsink",
+        "version": "0.1.0"
+      },
+      "depends_on": [
+        "requirements",
+        "semiconductor-screening",
+        "thermal-cooling-design"
+      ],
+      "gate": "cad_pcb",
+      "optional": false,
+      "tools": [
+        "freecad"
+      ],
+      "registry": {
+        "id": "aipe.cad-agent",
+        "maturity": "prototype",
+        "status": "experimental",
+        "validation": "tested",
+        "repository": "https://github.com/FulongLi/AIPE-CAD-Agent"
+      },
+      "capability_registered": true,
+      "blockers": [],
+      "runnable": true,
+      "previous": null
+    },
+    {
+      "id": "fem-heatsink",
+      "capability": "fem-thermal-conduction",
+      "adapter": "aipe_workflows.adapters.field_simulation:HeatSinkFemTask",
+      "adapter_info": {
+        "id": "aipe.field-simulation.heatsink-3d",
+        "version": "0.1.0"
+      },
+      "depends_on": [
+        "requirements",
+        "semiconductor-screening",
+        "thermal-cooling-design"
+      ],
+      "gate": "field_simulation",
+      "optional": false,
+      "tools": [
+        "gmsh",
+        "elmer"
+      ],
+      "registry": {
+        "id": "aipe.field-simulation",
+        "maturity": "prototype",
+        "status": "experimental",
+        "validation": "tested",
+        "repository": "https://github.com/FulongLi/AIPE-Field-Simulation"
+      },
+      "capability_registered": true,
+      "blockers": [],
+      "runnable": true,
+      "previous": null
+    }
+  ],
+  "created_at": "2026-10-21T15:38:05Z"
+}
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m aipe_workflows.cli run "D:\aipe-acceptance\AIPE-Workflows\examples\dab-10kw\specification.yaml" --checkouts "D:\aipe-acceptance" --workflow "D:\aipe-acceptance\AIPE-Workflows\workflows\converter_dab\workflow.yaml" --run-dir "D:\aipe-acceptance\runs\dab-acceptance"
+[requirements] completed
+[analytic-sps] Engineering State version 1 committed
+[analytic-sps] completed
+[circuit-sim-level1] Engineering State version 2 committed
+[circuit-sim-level1] completed
+[circuit-sim-level1-convergence] Engineering State version 3 committed
+[circuit-sim-level1-convergence] completed
+[circuit-sim-level2] Engineering State version 4 committed
+[circuit-sim-level2] completed
+[control-baseline] Engineering State version 5 committed
+[control-baseline] completed
+[magnetics-transformer-design] Engineering State version 6 committed
+[magnetics-transformer-design] completed
+[cad-transformer] Engineering State version 7 committed
+[cad-transformer] completed
+[fem-transformer-window] Engineering State version 8 committed
+[fem-transformer-window] completed
+[pcb-erc-drc] failed: boards not clean: ERC errors 0, DRC errors 0, unconnected items {'primary-power': 26, 'secondary-power': 23, 'control': 24}, parity errors 0; boards checked 3/3
+[semiconductor-screening] Engineering State version 9 committed
+[semiconductor-screening] completed
+[thermal-cooling-design] Engineering State version 10 committed
+[thermal-cooling-design] completed
+[cad-heatsink] Engineering State version 11 committed
+[cad-heatsink] completed
+[fem-heatsink] Engineering State version 12 committed
+[fem-heatsink] completed
+{
+  "run_id": "specification-20261021T153802-25d9a4",
+  "run_dir": "D:\\aipe-acceptance\\runs\\dab-acceptance",
+  "status": "completed_with_failed_optional",
+  "tasks": {
+    "requirements": "completed",
+    "analytic-sps": "completed",
+    "circuit-sim-level1": "completed",
+    "circuit-sim-level1-convergence": "completed",
+    "circuit-sim-level2": "completed",
+    "control-baseline": "completed",
+    "magnetics-transformer-design": "completed",
+    "cad-transformer": "completed",
+    "fem-transformer-window": "completed",
+    "pcb-erc-drc": "failed",
+    "semiconductor-screening": "completed",
+    "thermal-cooling-design": "completed",
+    "cad-heatsink": "completed",
+    "fem-heatsink": "completed"
+  },
+  "state_versions": 13
+}
+[exit 2]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m aipe_workflows.cli verify "D:\aipe-acceptance\runs\dab-acceptance" --core "D:\aipe-acceptance\AIPE-Core"
+{
+  "run_id": "specification-20261021T153802-25d9a4",
+  "gates": {
+    "analytical": "pass",
+    "software": "pass",
+    "circuit_simulation": "pass",
+    "field_simulation": "pass",
+    "cad_pcb": "fail",
+    "engineering_review": "not_run",
+    "experimental": "not_run",
+    "hardware_qualification": "not_run"
+  },
+  "artifact_problems": [],
+  "engineering_state_errors": [],
+  "core_dir": "D:\\aipe-acceptance\\AIPE-Core"
+}
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m aipe_workflows.cli report "D:\aipe-acceptance\runs\dab-acceptance"
+{
+  "json": "D:\\aipe-acceptance\\runs\\dab-acceptance\\report\\report.json",
+  "markdown": "D:\\aipe-acceptance\\runs\\dab-acceptance\\report\\report.md",
+  "html": "D:\\aipe-acceptance\\runs\\dab-acceptance\\report\\report.html",
+  "figures": [
+    "figures/cad-heatsink-dab_heatsink.png",
+    "figures/cad-transformer-dab_transformer.png",
+    "figures/circuit-sim-level1-figure-overview.png",
+    "figures/circuit-sim-level1-figure-switches.png",
+    "figures/circuit-sim-level1-convergence-figure-overview.png",
+    "figures/circuit-sim-level1-convergence-figure-switches.png",
+    "figures/circuit-sim-level2-figure-overview.png",
+    "figures/circuit-sim-level2-figure-switches.png",
+    "figures/control-baseline-closed_loop_fault.png",
+    "figures/control-baseline-closed_loop_input_sag.png",
+    "figures/control-baseline-closed_loop_nominal.png",
+    "figures/control-baseline-gate_pattern.png",
+    "figures/fem-heatsink-base_bottom_temperature.png",
+    "figures/fem-heatsink-base_bottom_temperature.png",
+    "figures/fem-transformer-window-convergence_L_leakage.png",
+    "figures/fem-transformer-window-B_leakage.png",
+    "figures/fem-transformer-window-B_leakage.png",
+    "figures/fem-transformer-window-B_magnetising.png"
+  ]
+}
+[exit 0]
+> "D:\aipe-acceptance\.venv\Scripts\python.exe" -m aipe_workflows.cli status "D:\aipe-acceptance\runs\dab-acceptance"
+{
+  "run_id": "specification-20261021T153802-25d9a4",
+  "workflow": "aipe.workflow.converter-dab",
+  "status": "completed_with_failed_optional",
+  "created_at": "2026-10-21T15:38:04Z",
+  "updated_at": "2026-10-21T15:39:29Z",
+  "tasks": {
+    "analytic-sps": {
+      "task_id": "analytic-sps",
+      "status": "completed",
+      "input_hash": "664c042a0702a390157cfc73ed5ccbc386d139a925feb61c455af433e419d477",
+      "envelope_path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\tasks\\analytic-sps\\envelope.json",
+      "started_at": "2026-10-21T15:38:06Z",
+      "finished_at": "2026-10-21T15:38:06Z",
+      "attempts": 1,
+      "message": "",
+      "state_version_after": 1
+    },
+    "cad-heatsink": {
+      "task_id": "cad-heatsink",
+      "status": "completed",
+      "input_hash": "f6aaa4fc1fde658976f90e8d7cd5ba39e455b74f101dc55c25fb306dda14e888",
+      "envelope_path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\tasks\\cad-heatsink\\envelope.json",
+      "started_at": "2026-10-21T15:39:17Z",
+      "finished_at": "2026-10-21T15:39:20Z",
+      "attempts": 1,
+      "message": "",
+      "state_version_after": 11
+    },
+    "cad-transformer": {
+      "task_id": "cad-transformer",
+      "status": "completed",
+      "input_hash": "878ed4474bea7c2f1e19625e54ffe9070a6d1b2a0c781b5f9d394e0971963e83",
+      "envelope_path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\tasks\\cad-transformer\\envelope.json",
+      "started_at": "2026-10-21T15:38:22Z",
+      "finished_at": "2026-10-21T15:38:44Z",
+      "attempts": 1,
+      "message": "",
+      "state_version_after": 7
+    },
+    "circuit-sim-level1": {
+      "task_id": "circuit-sim-level1",
+      "status": "completed",
+      "input_hash": "afe7c22f527fdf44296d1ed71b3c47c09c351bb79afbdf8beb437b08dc15c1ad",
+      "envelope_path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\tasks\\circuit-sim-level1\\envelope.json",
+      "started_at": "2026-10-21T15:38:06Z",
+      "finished_at": "2026-10-21T15:38:07Z",
+      "attempts": 1,
+      "message": "",
+      "state_version_after": 2
+    },
+    "circuit-sim-level1-convergence": {
+      "task_id": "circuit-sim-level1-convergence",
+      "status": "completed",
+      "input_hash": "b6db09a0fba06a1fdef9daca50a762cd4f6739febbf5afa6a3c9af4982108f06",
+      "envelope_path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\tasks\\circuit-sim-level1-convergence\\envelope.json",
+      "started_at": "2026-10-21T15:38:07Z",
+      "finished_at": "2026-10-21T15:38:09Z",
+      "attempts": 1,
+      "message": "",
+      "state_version_after": 3
+    },
+    "circuit-sim-level2": {
+      "task_id": "circuit-sim-level2",
+      "status": "completed",
+      "input_hash": "95d01957a30bfaa09010fd5a3971cc0f3191b61e742feadade0253df506e017d",
+      "envelope_path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\tasks\\circuit-sim-level2\\envelope.json",
+      "started_at": "2026-10-21T15:38:09Z",
+      "finished_at": "2026-10-21T15:38:18Z",
+      "attempts": 1,
+      "message": "",
+      "state_version_after": 4
+    },
+    "control-baseline": {
+      "task_id": "control-baseline",
+      "status": "completed",
+      "input_hash": "22dc57b74163e3b50848365f85068bea6ec829a854a7de9ff11bb18866aab99f",
+      "envelope_path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\tasks\\control-baseline\\envelope.json",
+      "started_at": "2026-10-21T15:38:18Z",
+      "finished_at": "2026-10-21T15:38:20Z",
+      "attempts": 1,
+      "message": "",
+      "state_version_after": 5
+    },
+    "fem-heatsink": {
+      "task_id": "fem-heatsink",
+      "status": "completed",
+      "input_hash": "9e31504fc15322c892895bc068c386b946f42abf360d1842afc913059ffb98b9",
+      "envelope_path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\tasks\\fem-heatsink\\envelope.json",
+      "started_at": "2026-10-21T15:39:20Z",
+      "finished_at": "2026-10-21T15:39:29Z",
+      "attempts": 1,
+      "message": "",
+      "state_version_after": 12
+    },
+    "fem-transformer-window": {
+      "task_id": "fem-transformer-window",
+      "status": "completed",
+      "input_hash": "b9aa82a9502621b3a3c72f6d362a213f3d22ca58a91e4a61d29b7fb4eb8fc0ea",
+      "envelope_path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\tasks\\fem-transformer-window\\envelope.json",
+      "started_at": "2026-10-21T15:38:44Z",
+      "finished_at": "2026-10-21T15:38:47Z",
+      "attempts": 1,
+      "message": "",
+      "state_version_after": 8
+    },
+    "magnetics-transformer-design": {
+      "task_id": "magnetics-transformer-design",
+      "status": "completed",
+      "input_hash": "e0c5dd96b9d7c7d4c9f87c876be0b48d614e18ed1150c2c277c1cf11f09ebb02",
+      "envelope_path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\tasks\\magnetics-transformer-design\\envelope.json",
+      "started_at": "2026-10-21T15:38:20Z",
+      "finished_at": "2026-10-21T15:38:22Z",
+      "attempts": 1,
+      "message": "",
+      "state_version_after": 6
+    },
+    "pcb-erc-drc": {
+      "task_id": "pcb-erc-drc",
+      "status": "failed",
+      "input_hash": "3f54fc9dc6dae5209f4a83c2ccfdcebb3a647b6b8a174fc266ac95979b0e9dc5",
+      "envelope_path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\tasks\\pcb-erc-drc\\envelope.json",
+      "started_at": "2026-10-21T15:38:48Z",
+      "finished_at": "2026-10-21T15:38:56Z",
+      "attempts": 1,
+      "message": "boards not clean: ERC errors 0, DRC errors 0, unconnected items {'primary-power': 26, 'secondary-power': 23, 'control': 24}, parity errors 0; boards checked 3/3",
+      "state_version_after": null
+    },
+    "requirements": {
+      "task_id": "requirements",
+      "status": "completed",
+      "input_hash": "b22cfe871987fb05f118f2a8994ef95e1a5bce69779c0cab11bb2b103dae8620",
+      "envelope_path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\tasks\\requirements\\envelope.json",
+      "started_at": "2026-10-21T15:38:06Z",
+      "finished_at": "2026-10-21T15:38:06Z",
+      "attempts": 1,
+      "message": "",
+      "state_version_after": null
+    },
+    "semiconductor-screening": {
+      "task_id": "semiconductor-screening",
+      "status": "completed",
+      "input_hash": "1575ffc39b859ab17dcaac8c391c64207044233f988ce13a5e95fd7fdd671e84",
+      "envelope_path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\tasks\\semiconductor-screening\\envelope.json",
+      "started_at": "2026-10-21T15:38:56Z",
+      "finished_at": "2026-10-21T15:38:58Z",
+      "attempts": 1,
+      "message": "",
+      "state_version_after": 9
+    },
+    "thermal-cooling-design": {
+      "task_id": "thermal-cooling-design",
+      "status": "completed",
+      "input_hash": "716c378ffef78864e58272023393ce4305f9d2008c7507bf6b5d7d3efcdfd03f",
+      "envelope_path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\tasks\\thermal-cooling-design\\envelope.json",
+      "started_at": "2026-10-21T15:38:58Z",
+      "finished_at": "2026-10-21T15:39:17Z",
+      "attempts": 1,
+      "message": "",
+      "state_version_after": 10
+    }
+  },
+  "state_versions": [
+    {
+      "created_at": "2026-10-21T15:38:04Z",
+      "path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\state\\state-000.json",
+      "sha256": "3e4a777b0a71818b2f34c2a17badffe6dd94c6b3b75d57849cc55e4609595b98",
+      "task_id": "initial",
+      "version": 0
+    },
+    {
+      "created_at": "2026-10-21T15:38:06Z",
+      "path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\state\\state-001.json",
+      "sha256": "5067b7b53bc3b3bb8fc931817805356a97d70e7075c6aca3caa846eaa2af2166",
+      "task_id": "analytic-sps",
+      "version": 1
+    },
+    {
+      "created_at": "2026-10-21T15:38:07Z",
+      "path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\state\\state-002.json",
+      "sha256": "e86d4dfda5c07c3f99c3bfa12db31fd15b168688cc4ae6e1b83afb1a7b77ece0",
+      "task_id": "circuit-sim-level1",
+      "version": 2
+    },
+    {
+      "created_at": "2026-10-21T15:38:09Z",
+      "path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\state\\state-003.json",
+      "sha256": "5e6071dd00f069812f3cf31f53a1d7519ad64c93ea0330642986a37687d16ddf",
+      "task_id": "circuit-sim-level1-convergence",
+      "version": 3
+    },
+    {
+      "created_at": "2026-10-21T15:38:18Z",
+      "path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\state\\state-004.json",
+      "sha256": "cf2d5bfdf14360818c1bfc1e9eb960194024ed94582f31eb263e8a08d83f6e2f",
+      "task_id": "circuit-sim-level2",
+      "version": 4
+    },
+    {
+      "created_at": "2026-10-21T15:38:20Z",
+      "path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\state\\state-005.json",
+      "sha256": "e2d8878e43e846da496869a4ebe9fd3ec087b5916ff3b5067404819a578d8e07",
+      "task_id": "control-baseline",
+      "version": 5
+    },
+    {
+      "created_at": "2026-10-21T15:38:22Z",
+      "path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\state\\state-006.json",
+      "sha256": "11e454ba737b4b7053545819cac90075ecdf77203d58d57b4ad6febccbb5a143",
+      "task_id": "magnetics-transformer-design",
+      "version": 6
+    },
+    {
+      "created_at": "2026-10-21T15:38:44Z",
+      "path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\state\\state-007.json",
+      "sha256": "4111dfc6fc7eeff82ada88dfc56b705b130f667b8f2c43e3badc3901eea5626f",
+      "task_id": "cad-transformer",
+      "version": 7
+    },
+    {
+      "created_at": "2026-10-21T15:38:48Z",
+      "path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\state\\state-008.json",
+      "sha256": "a1143224a7aba4b6c8e690fcafbffd4d1a3c79fc5cc7fdb38b08f540ca104039",
+      "task_id": "fem-transformer-window",
+      "version": 8
+    },
+    {
+      "created_at": "2026-10-21T15:38:58Z",
+      "path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\state\\state-009.json",
+      "sha256": "ff16d10994d56c19c2754215b617baf6e18f2be13e71688e2ceaacb17fc7107a",
+      "task_id": "semiconductor-screening",
+      "version": 9
+    },
+    {
+      "created_at": "2026-10-21T15:39:17Z",
+      "path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\state\\state-010.json",
+      "sha256": "fd5efa50c16ebde15e8e7c84a69d90110c83e8327bb22770dfc865c3e824f3cf",
+      "task_id": "thermal-cooling-design",
+      "version": 10
+    },
+    {
+      "created_at": "2026-10-21T15:39:20Z",
+      "path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\state\\state-011.json",
+      "sha256": "029c0ed2ac6a5bbfd28c0db85a9050c66f663a9e16383871d120f575878049db",
+      "task_id": "cad-heatsink",
+      "version": 11
+    },
+    {
+      "created_at": "2026-10-21T15:39:29Z",
+      "path": "D:\\aipe-acceptance\\runs\\dab-acceptance\\state\\state-012.json",
+      "sha256": "2e73eb5e9b5662fd335c53598491cadda17329ab1643422ca6d0f9e1f53711e6",
+      "task_id": "fem-heatsink",
+      "version": 12
+    }
+  ],
+  "messages": []
+}
+[exit 0]
+
+=== [23:39:30] done: workflow run exit 2 (0 = completed, 2 = completed with blocked or failed optional tasks); see D:\aipe-acceptance\acceptance.log, D:\aipe-acceptance\runs\dab-acceptance\report\report.md and D:\aipe-acceptance\runs\dab-acceptance\verification.json ===

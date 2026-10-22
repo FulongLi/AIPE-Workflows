@@ -1,0 +1,368 @@
+{
+  "date": "2026-10-21",
+  "purpose": "Verify that migrating the analytical adapter to aipe_electrical 0.2.0 and the thermal adapter to aipe_thermal 0.2.0 does not change any executed result of the 10 kW DAB workflow",
+  "baseline_run": "runs/wf-dab-10kw-first (legacy pea.converters.dab_sps / pea.thermal via sibling checkout)",
+  "migrated_run": "runs/wf-dab-10kw-stab (installed aipe_electrical / aipe_thermal)",
+  "all_compared_values_identical": true,
+  "tasks": {
+    "analytic-sps": {
+      "tool_baseline": {
+        "id": "aipe.design-agent.dab-sps",
+        "name": "pea.converters.dab_sps",
+        "version": "0.1.0"
+      },
+      "tool_migrated": {
+        "id": "aipe.electrical-design.dab-sps",
+        "name": "aipe_electrical.converters.dab_sps",
+        "version": "0.2.0"
+      },
+      "values": {
+        "phi_deg": {
+          "baseline": 22.5,
+          "migrated": 22.5,
+          "identical": true
+        },
+        "power_W": {
+          "baseline": 10000.0,
+          "migrated": 10000.0,
+          "identical": true
+        },
+        "i_L_rms_A": {
+          "baseline": 13.677530110804833,
+          "migrated": 13.677530110804833,
+          "identical": true
+        },
+        "i_L_peak_A": {
+          "baseline": 14.285714285714288,
+          "migrated": 14.285714285714288,
+          "identical": true
+        },
+        "i_dc1_A": {
+          "baseline": 12.5,
+          "migrated": 12.5,
+          "identical": true
+        },
+        "i_dc2_A": {
+          "baseline": 25.0,
+          "migrated": 25.0,
+          "identical": true
+        }
+      }
+    },
+    "circuit-sim-level1": {
+      "tool_baseline": {
+        "id": "tool.ngspice",
+        "name": "ngspice",
+        "version": "47"
+      },
+      "tool_migrated": {
+        "id": "tool.ngspice",
+        "name": "ngspice",
+        "version": "47"
+      },
+      "values": {
+        "p_out_W": {
+          "baseline": 9996.81343609198,
+          "migrated": 9996.81343609198,
+          "identical": true
+        },
+        "i_L_rms_A": {
+          "baseline": 13.677914459973177,
+          "migrated": 13.677914459973177,
+          "identical": true
+        },
+        "i_L_peak_A": {
+          "baseline": 14.31515752256699,
+          "migrated": 14.31515752256699,
+          "identical": true
+        }
+      }
+    },
+    "circuit-sim-level1-convergence": {
+      "tool_baseline": {
+        "id": "tool.ngspice",
+        "name": "ngspice",
+        "version": "47"
+      },
+      "tool_migrated": {
+        "id": "tool.ngspice",
+        "name": "ngspice",
+        "version": "47"
+      },
+      "values": {
+        "p_out_W": {
+          "baseline": 9996.917092757778,
+          "migrated": 9996.917092757778,
+          "identical": true
+        },
+        "i_L_rms_A": {
+          "baseline": 13.677098515780825,
+          "migrated": 13.677098515780825,
+          "identical": true
+        }
+      }
+    },
+    "circuit-sim-level2": {
+      "tool_baseline": {
+        "id": "tool.ngspice",
+        "name": "ngspice",
+        "version": "47"
+      },
+      "tool_migrated": {
+        "id": "tool.ngspice",
+        "name": "ngspice",
+        "version": "47"
+      },
+      "values": {
+        "p_in_W": {
+          "baseline": 9694.201837231883,
+          "migrated": 9694.201837231883,
+          "identical": true
+        },
+        "p_out_W": {
+          "baseline": 9607.834640398823,
+          "migrated": 9607.834640398823,
+          "identical": true
+        },
+        "loss_W": {
+          "baseline": 131.657989873343,
+          "migrated": 131.657989873343,
+          "identical": true
+        },
+        "i_L_rms_A": {
+          "baseline": 13.29969726550158,
+          "migrated": 13.29969726550158,
+          "identical": true
+        },
+        "i_m_peak_A": {
+          "baseline": 2.026750746713388,
+          "migrated": 2.026750746713388,
+          "identical": true
+        }
+      }
+    },
+    "control-baseline": {
+      "tool_baseline": {
+        "id": "aipe.simulation-skills.control",
+        "name": "aipe_simulation.control",
+        "version": "0.2.0"
+      },
+      "tool_migrated": {
+        "id": "aipe.simulation-skills.control",
+        "name": "aipe_simulation.control",
+        "version": "0.2.0"
+      },
+      "values": {
+        "worst_phase_margin_deg": {
+          "baseline": 55.360861706966205,
+          "migrated": 55.360861706966205,
+          "identical": true
+        },
+        "plant_verification_max_abs_rel_err_p2": {
+          "baseline": 0.0006836262967396595,
+          "migrated": 0.0006836262967396595,
+          "identical": true
+        }
+      }
+    },
+    "magnetics-transformer-design": {
+      "tool_baseline": {
+        "id": "aipe.magnetics-database.waveform-informed-design",
+        "name": "aipe_magnetics",
+        "version": "0.2.0"
+      },
+      "tool_migrated": {
+        "id": "aipe.magnetics-database.waveform-informed-design",
+        "name": "aipe_magnetics",
+        "version": "0.2.0"
+      },
+      "values": {
+        "selected_core": {
+          "baseline": "core.tdk-e70-33-32",
+          "migrated": "core.tdk-e70-33-32",
+          "identical": true
+        },
+        "turns_primary": {
+          "baseline": 20,
+          "migrated": 20,
+          "identical": true
+        },
+        "turns_secondary": {
+          "baseline": 10,
+          "migrated": 10,
+          "identical": true
+        },
+        "leakage_inductance_H": {
+          "baseline": 1.5505839886183287e-06,
+          "migrated": 1.5505839886183287e-06,
+          "identical": true
+        },
+        "total_loss_W": {
+          "baseline": 35.04565845644552,
+          "migrated": 35.04565845644552,
+          "identical": true
+        }
+      }
+    },
+    "semiconductor-screening": {
+      "tool_baseline": {
+        "id": "aipe.semiconductor-database.dab-screening",
+        "name": "aipe_devices",
+        "version": "3.1.0"
+      },
+      "tool_migrated": {
+        "id": "aipe.semiconductor-database.dab-screening",
+        "name": "aipe_devices",
+        "version": "3.1.0"
+      },
+      "values": {
+        "primary_part_number": {
+          "baseline": "C4MS047120K",
+          "migrated": "C4MS047120K",
+          "identical": true
+        },
+        "primary_loss_W": {
+          "baseline": 9.041852876016772,
+          "migrated": 9.041852876016772,
+          "identical": true
+        },
+        "secondary_part_number": {
+          "baseline": "C3M0025065K",
+          "migrated": "C3M0025065K",
+          "identical": true
+        },
+        "secondary_loss_W": {
+          "baseline": 17.446227058701883,
+          "migrated": 17.446227058701883,
+          "identical": true
+        }
+      }
+    },
+    "thermal-cooling-design": {
+      "tool_baseline": {
+        "id": "aipe.design-agent.thermal",
+        "name": "pea.thermal + HeatSinkOptimisation heatsink_model",
+        "version": "1.0.0"
+      },
+      "tool_migrated": {
+        "id": "aipe.thermal-design.cooling-screening",
+        "name": "aipe_thermal 0.2.0 (heat-sink model 1.0.0)",
+        "version": "0.2.0"
+      },
+      "values": {
+        "worst_bridge": {
+          "baseline": "secondary",
+          "migrated": "secondary",
+          "identical": true
+        },
+        "best_option": {
+          "baseline": "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm",
+          "migrated": "liquid-cold-plate-Al-100x100-16-minichannels-water-2lpm",
+          "identical": true
+        },
+        "tj_max_best_option_C": {
+          "baseline": 63.040292612666306,
+          "migrated": 63.040292612666306,
+          "identical": true
+        }
+      }
+    },
+    "fem-transformer-window": {
+      "tool_baseline": {
+        "id": "tool.elmer",
+        "name": "Elmer FEM (ElmerGrid/ElmerSolver) with Gmsh meshing",
+        "version": "9.0"
+      },
+      "tool_migrated": {
+        "id": "tool.elmer",
+        "name": "Elmer FEM (ElmerGrid/ElmerSolver) with Gmsh meshing",
+        "version": "9.0"
+      },
+      "values": {
+        "L_leakage_primary_H_fem": {
+          "baseline": 1.4831218771540288e-06,
+          "migrated": 1.4831218771540288e-06,
+          "identical": true
+        },
+        "L_magnetising_primary_H_fem": {
+          "baseline": 0.005180328373919709,
+          "migrated": 0.005180328373919709,
+          "identical": true
+        }
+      }
+    },
+    "fem-heatsink": {
+      "tool_baseline": {
+        "id": "tool.elmer",
+        "name": "Elmer FEM (ElmerGrid/ElmerSolver) with Gmsh meshing",
+        "version": "9.0"
+      },
+      "tool_migrated": {
+        "id": "tool.elmer",
+        "name": "Elmer FEM (ElmerGrid/ElmerSolver) with Gmsh meshing",
+        "version": "9.0"
+      },
+      "values": {
+        "T_max_K": {
+          "baseline": 332.774631855,
+          "migrated": 332.774631855,
+          "identical": true
+        },
+        "R_th_hotspot_K_per_W": {
+          "baseline": 0.5624319742305424,
+          "migrated": 0.5624319742305424,
+          "identical": true
+        }
+      }
+    },
+    "cad-transformer": {
+      "tool_baseline": {
+        "id": "tool.freecad",
+        "name": "FreeCAD (console) via aipe-cad",
+        "version": "1.1.4"
+      },
+      "tool_migrated": {
+        "id": "tool.freecad",
+        "name": "FreeCAD (console) via aipe-cad",
+        "version": "1.1.4"
+      },
+      "values": {
+        "mass_kg": {
+          "baseline": 0.8636961486694265,
+          "migrated": 0.8636961486694265,
+          "identical": true
+        },
+        "check_status": {
+          "baseline": "review",
+          "migrated": "review",
+          "identical": true
+        }
+      }
+    },
+    "cad-heatsink": {
+      "tool_baseline": {
+        "id": "tool.freecad",
+        "name": "FreeCAD (console) via aipe-cad",
+        "version": "1.1.4"
+      },
+      "tool_migrated": {
+        "id": "tool.freecad",
+        "name": "FreeCAD (console) via aipe-cad",
+        "version": "1.1.4"
+      },
+      "values": {
+        "sink_mass_cad_kg": {
+          "baseline": 0.274753254115767,
+          "migrated": 0.274753254115767,
+          "identical": true
+        },
+        "check_status": {
+          "baseline": "review",
+          "migrated": "review",
+          "identical": true
+        }
+      }
+    }
+  },
+  "note": "The optional PCB check of the migrated run saw the boards in the middle of the PCB remediation (placed-only state) and is not compared here."
+}

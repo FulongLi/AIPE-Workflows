@@ -8,14 +8,14 @@ external tools it depends on and the verification gate its result belongs to.
 | Task | Capability (Registry) | Specialist | Gate | Status 2026-10-21 |
 | --- | --- | --- | --- | --- |
 | `requirements` | engineering-state-schema (aipe.core) | Core validator | software | executed |
-| `analytic-sps` | converter-concept-calculation (aipe.design-agent) | `pea.converters.dab_sps` | analytical | executed |
+| `analytic-sps` | dab-sps-analysis (aipe.electrical-design) | `aipe_electrical.converters.dab_sps` | analytical | executed |
 | `circuit-sim-level1` | switching-circuit-simulation (aipe.simulation-skills) | `aipe_simulation.dab` Level 1 + ngspice | circuit_simulation | executed, matches analytic |
 | `circuit-sim-level1-convergence` | switching-circuit-simulation | same, t_max = T/1600 | circuit_simulation | executed |
 | `circuit-sim-level2` | switching-circuit-simulation | `aipe_simulation.dab` Level 2 behavioural | circuit_simulation | executed |
 | `control-baseline` | averaged-control-analysis (aipe.simulation-skills) | `aipe_simulation.control` + ngspice plant cross-check | analytical | executed |
 | `magnetics-transformer-design` | magnetics-waveform-informed-transformer-design (aipe.magnetics-database) | `aipe_magnetics.api.design_transformer_from_waveforms` on the Level 1 HDF5 dataset | analytical | executed |
 | `semiconductor-screening` | semiconductor-dab-screening (aipe.semiconductor-database) | `aipe_devices dab-screen` / `dab-losses` on the Level 2 summary and HDF5 dataset | analytical | executed |
-| `thermal-cooling-design` | thermal-cooling-screening (aipe.design-agent) | `pea.thermal` cooling comparison + Stage A Pareto (HeatSinkOptimisation correlations) | analytical | executed |
+| `thermal-cooling-design` | cooling-concept-comparison (aipe.thermal-design) | `aipe_thermal` cooling comparison + Stage A Pareto screening | analytical | executed |
 | `fem-transformer-window` | fem-magnetostatics-2d (aipe.field-simulation) | `aipe_fieldsim` TransformerWindowModel, Gmsh + Elmer, selected core window and layout | field_simulation | executed, two mesh levels |
 | `fem-heatsink` | fem-thermal-conduction (aipe.field-simulation) | `aipe_fieldsim` HeatSinkModel on the Stage A knee candidate, Gmsh + Elmer | field_simulation | executed, two mesh levels |
 | `cad-transformer` | parametric-transformer-cad (aipe.cad-agent) | `aipe-cad build transformer` (FreeCAD console) from the core record and winding layout | cad_pcb | executed |

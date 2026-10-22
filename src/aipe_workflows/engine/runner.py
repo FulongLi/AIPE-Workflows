@@ -58,7 +58,7 @@ class RunState:
     run_dir: str
     spec_sha256: str
     created_at: str
-    status: str = "created"  # created | running | completed | completed_with_blocked | failed
+    status: str = "created"  # created | running | completed | completed_with_blocked | completed_with_failed_optional | failed
     tasks: dict[str, TaskRecord] = field(default_factory=dict)
     state_versions: list[dict] = field(default_factory=list)  # [{version, path, sha256, task_id}]
     updated_at: str = ""
@@ -302,6 +302,7 @@ class WorkflowRunner:
         rerun_this_invocation: set[str] = set()
         blocked: set[str] = set()
         any_failed = False
+        failed_optional: set[str] = set()
         for task_id in self.graph.order:
             task = self.graph.tasks[task_id]
             record = self.state.tasks.get(task_id) or TaskRecord(task_id=task_id)
@@ -375,8 +376,10 @@ class WorkflowRunner:
             except Exception as exc:
                 task_log("adapter raised " + traceback.format_exc())
                 record.status, record.finished_at, record.message = "failed", now_iso(), f"{type(exc).__name__}: {exc}"
-                any_failed = True
-                if not task.optional:
+                if task.optional:
+                    failed_optional.add(task_id)
+                else:
+                    any_failed = True
                     blocked.add(task_id)
                 self.state.save()
                 continue
@@ -410,14 +413,21 @@ class WorkflowRunner:
             else:
                 record.status = "failed"
                 record.message = "; ".join(d.message for d in envelope.diagnostics if d.severity == "error") or envelope.status
-                any_failed = True
-                blocked.add(task_id)
+                if task.optional:
+                    # An optional task that executed and failed its own checks (for example ERC/DRC on unfinished boards)
+                    # is recorded as failed and shows in its gate, but does not invalidate the required tasks of the run.
+                    failed_optional.add(task_id)
+                else:
+                    any_failed = True
+                    blocked.add(task_id)
                 task_log("failed: " + record.message)
             self.state.save()
         if any_failed:
             self.state.status = "failed"
         elif blocked:
             self.state.status = "completed_with_blocked"
+        elif failed_optional:
+            self.state.status = "completed_with_failed_optional"
         else:
             self.state.status = "completed"
         self.state.save()

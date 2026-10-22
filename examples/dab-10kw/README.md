@@ -16,9 +16,9 @@ aipe-workflows verify runs/dab-10kw
 aipe-workflows report runs/dab-10kw
 ```
 
-Requires sibling checkouts of AIPE-Core, AIPE-Registry, AIPE-Design-Agent,
-AIPE-Simulation-Skills, AIPE-Semiconductor-Database, AIPE-Magnetics-Database,
-AIPE-Field-Simulation, AIPE-CAD-Agent and HeatSinkOptimisation (the Python
+Requires sibling checkouts of AIPE-Core, AIPE-Registry, AIPE-Electrical-Design,
+AIPE-Thermal-Design, AIPE-Simulation-Skills, AIPE-Semiconductor-Database,
+AIPE-Magnetics-Database, AIPE-Field-Simulation and AIPE-CAD-Agent (the Python
 packages installed with `pip install -e`), plus ngspice, Gmsh, Elmer and
 FreeCAD found by `aipe-workflows doctor` (portable builds through
 `AIPE_TOOLS_DIR`, `AIPE_NGSPICE`, or the per-user Windows locations). Without a
@@ -39,7 +39,7 @@ Engineering State and the environment manifest). Large raw data (HDF5
 datasets, raw solver output, meshes, STEP/FCStd) stays in the run directory and
 is referenced by path and SHA-256.
 
-### Analytical SPS operating point (AIPE-Design-Agent)
+### Analytical SPS operating point (AIPE-Electrical-Design)
 
 | Quantity | Value |
 | --- | --- |
@@ -170,7 +170,7 @@ meets the ZVS current condition; a charge-based ZVS check needs Coss/Eoss data
 the records do not contain (coverage gaps are listed per evaluation). No
 laboratory measurement backs any value.
 
-### Cooling comparison and Stage A heat-sink screening (AIPE-Design-Agent `pea.thermal`)
+### Cooling comparison and Stage A heat-sink screening (AIPE-Thermal-Design `aipe_thermal`)
 
 Four devices per bridge on one shared sink at 40 °C ambient, device losses and
 Rth(j-c) from the screening, 0.1 K/W pads, generic TO-247 footprint, 125 °C
@@ -245,6 +245,36 @@ generator fixes (0.3 mm stubs, via keep-outs at net-tie pads) are in place but
 not re-run. Reports: `results/pcb-erc-drc/` (ERC/DRC JSON per board, source
 file SHA-256, the agent's verification summaries). Nothing has been fabricated.
 
+Remediation (AIPE-PCB-Agent PR #8, branch `fix/dab-v1-routing`, 2026-10-21): the
+generator and router were repaired (0.3 mm capacitor stubs, net-tie copper as via
+exclusion, fine-pitch row escapes with exit lanes, plane continuity, time-boxed
+routing with checkpoints) and the boards regenerated. The clean-checkout
+acceptance run below checked those boards with the same task: ERC 0 / 0 / 0, DRC
+errors **0 / 0 / 0** (18 / 18 / 28 `track_dangling` warnings), unconnected items
+**26 / 23 / 24**, parity 0. The task still fails and the gate still reads `fail`
+because open connections remain; no clearance or rule was relaxed and no Gerber
+set is manufacturing-ready.
+
+## Adapter migration check (2026-10-21)
+
+The analytical and thermal stages moved from the legacy `pea` modules (sibling checkout) to the installed
+`aipe_electrical` 0.2.0 and `aipe_thermal` 0.2.0 packages. A complete re-run (`runs/wf-dab-10kw-stab`) reproduces
+every compared value of the reference run exactly — analytic operating point, Level 1 and Level 2 ngspice results,
+control margins, magnetics, device losses, cooling, FEM and CAD — see `results/migration-check-2026-10-21.json`.
+The analytical envelope now also records the power-flow direction and the ZVS current-direction evidence label.
+
+## Clean-checkout acceptance (2026-10-21)
+
+`tools/acceptance/run_acceptance.ps1` cloned the eleven official repositories into an empty workspace (PR heads where
+the stabilisation PRs are still open), created a fresh virtual environment, installed every package with its README's
+command, qualified ngspice 47, KiCad 10.0.6, FreeCAD 1.1.4, Gmsh 4.15.2 and Elmer 9.0, ran the Core and Registry
+contract tests (Core `unittest` 23 OK, Registry validate 18 manifests / 0 errors, pytest 43 passed) and executed this
+workflow end to end: 13 tasks completed, `pcb-erc-drc` failed by design, status `completed_with_failed_optional`,
+gates analytical / software / circuit_simulation / field_simulation pass, `cad_pcb` fail, `verify` clean. A leaf-by-leaf
+comparison with `runs/wf-dab-10kw-stab` found every engineering value identical (only run-specific evidence ids and the
+PCB counts differ, because the acceptance checked the remediated boards). Evidence: `results/acceptance-2026-10-21/`
+(log with commits and exit codes, doctor manifest, plan/run/verification, generated report, comparison).
+
 ## Cross-module feedback example A (executed)
 
 The magnetics design proposes 21:10 actual turns instead of the nominal 2:1.
@@ -275,11 +305,38 @@ were run on the six-task graph of the time; the parent run has since been
 extended in place (checkpoints reused, new stages appended), so the ledger
 remains valid for the tasks it names.
 
+## Cross-module feedback example D (executed): magnetics and FEM parameters back into the circuit model
+
+```sh
+aipe-workflows reconcile runs/wf-dab-10kw-first                        # exit 3: circuit model inconsistent
+aipe-workflows reconcile runs/wf-dab-10kw-first --apply --checkouts ..  # child run wf-dab-10kw-first-it03
+aipe-workflows reconcile runs/wf-dab-10kw-first-it03                    # exit 0: consistent
+```
+
+`reconcile` compared the converter parameters of the reference run (all 35 µH external, L_m = 1 mH placeholder,
+2:1) with the magnetics design and the executed window FEM, proposed `leakage_inductance_primary_H = 1.483e-6`
+(FEM), `external_inductance_H = 33.517e-6` (total kept) and `magnetising_inductance_H = 5.18e-3` (FEM), found the
+20:10 turns ratio consistent, and derived the child run. Decision: accepted (simulations match their analytical
+references, ZVS retained, rated power within 2 %; the optional PCB check fails on the unfinished boards and is recorded
+in its gate).
+
+| Quantity | parent (leakage 0, L_m 1 mH) | child it03 (leakage 1.48 µH, L_m 5.18 mH) |
+| --- | --- | --- |
+| Level 2 total loss | 131.7 W | 127.2 W |
+| Level 2 magnetising current peak | 2.03 A | 0.40 A |
+| Level 2 secondary RMS current | 27.11 A | 26.76 A |
+| Secondary device loss (C3M0025065K) | 17.45 W | 16.18 W |
+| Hottest junction, best cooling option | 63.0 °C | 61.7 °C |
+| Heat-sink FEM hotspot | 332.8 K | 331.2 K |
+| Level 1 power, ZVS, control margins | unchanged |  |
+
+Evidence: `results/iteration-reconcile-it03/` (iteration record, both reconciliation reports, child envelopes, Level 2
+summary, child verification ledger).
+
 ## Open feedback items recorded by the run
 
-- The circuit Level 2 model assumed 2 µH leakage; the magnetics design and the
-  window FEM give 1.5 µH for the interleaved layout (external inductor 33.4 µH).
-  Re-running with the FEM value is a `--set` iteration away.
+- The circuit model started with all 35 µH external and a 1 mH magnetising placeholder; the magnetics design
+  and the window FEM give 1.5 µH leakage and 5.2 mH; example D above feeds them back (loss 131.7 → 127.2 W).
 - The screening ranks a half-bridge module above the discrete devices for both
   bridges; the module route changes the thermal, CAD and PCB layout and was not
   followed here.

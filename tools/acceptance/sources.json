@@ -1,0 +1,84 @@
+{
+  "_comment": "Official repositories for the clean-checkout acceptance test (2026-10-21). 'ref' points at the head of an unmerged stabilisation PR while it awaits maintainer merge; remove the refs once merged to test main. 'requirements', 'install' and 'extras' reproduce each README's install command ({py} = venv python, {today} = ISO date); 'tests' are the README's own contract/test commands, run inside the checkout. Repositories without 'install' are checked out only (the PCB boards are read by the ERC/DRC task through --checkouts).",
+  "tools_dir": "D:\\EngineeringTools",
+  "repositories": [
+    {
+      "name": "AIPE-Core",
+      "url": "https://github.com/FulongLi/AIPE-Core.git",
+      "requirements": "requirements-dev.txt",
+      "tests": [
+        "{py} -m unittest discover -s tests -v",
+        "{py} scripts/validate.py examples/dab-10kw/engineering-state.json"
+      ]
+    },
+    {
+      "name": "AIPE-Registry",
+      "url": "https://github.com/FulongLi/AIPE-Registry.git",
+      "ref": "refs/pull/3/head",
+      "requirements": "requirements-dev.txt",
+      "tests": [
+        "{py} scripts/validate.py",
+        "{py} scripts/validate.py --sources sources/repositories.yaml --today {today}",
+        "{py} scripts/build_registry.py --check",
+        "{py} -m pytest -q"
+      ]
+    },
+    {
+      "name": "AIPE-Simulation-Skills",
+      "url": "https://github.com/FulongLi/AIPE-Simulation-Skills.git",
+      "ref": "refs/pull/3/head",
+      "install": "-e"
+    },
+    {
+      "name": "AIPE-Electrical-Design",
+      "url": "https://github.com/FulongLi/AIPE-Electrical-Design.git",
+      "ref": "refs/pull/3/head",
+      "install": "-e",
+      "extras": "[dev]"
+    },
+    {
+      "name": "AIPE-Thermal-Design",
+      "url": "https://github.com/FulongLi/AIPE-Thermal-Design.git",
+      "ref": "refs/pull/2/head",
+      "install": "-e",
+      "extras": "[dev]"
+    },
+    {
+      "name": "AIPE-Semiconductor-Database",
+      "url": "https://github.com/FulongLi/AIPE-Semiconductor-Database.git",
+      "install": "-e",
+      "extras": "[dev]"
+    },
+    {
+      "name": "AIPE-Magnetics-Database",
+      "url": "https://github.com/FulongLi/AIPE-Magnetics-Database.git",
+      "install": "-e",
+      "extras": "[dev]"
+    },
+    {
+      "name": "AIPE-Field-Simulation",
+      "url": "https://github.com/FulongLi/AIPE-Field-Simulation.git",
+      "ref": "refs/pull/2/head",
+      "install": "-e",
+      "extras": "[mesh,plots,dev]"
+    },
+    {
+      "name": "AIPE-CAD-Agent",
+      "url": "https://github.com/FulongLi/AIPE-CAD-Agent.git",
+      "ref": "refs/pull/1/head",
+      "install": "-e",
+      "extras": "[dev]"
+    },
+    {
+      "name": "AIPE-PCB-Agent",
+      "url": "https://github.com/FulongLi/AIPE-PCB-Agent.git",
+      "ref": "refs/pull/8/head"
+    },
+    {
+      "name": "AIPE-Workflows",
+      "url": "https://github.com/FulongLi/AIPE-Workflows.git",
+      "ref": "refs/pull/3/head",
+      "install": "-e"
+    }
+  ]
+}

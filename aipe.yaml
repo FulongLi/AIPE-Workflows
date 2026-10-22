@@ -3,7 +3,7 @@ id: aipe.workflows
 name: AIPE Workflows
 type: agent
 domains: [power-engineering, power-electronics]
-description: System-level engineering workflow engine executing typed, checkpointed task graphs over AIPE specialist capabilities (design agent, simulation skills, semiconductor and magnetics databases, field simulation, CAD agent), with local tool qualification, Engineering State provenance, cross-module feedback iterations, verification gates and report assembly; first benchmark is the simulation-driven 10 kW dual-active-bridge converter.
+description: System-level engineering workflow engine executing typed, checkpointed task graphs over AIPE specialist capabilities (electrical and thermal design, simulation skills, semiconductor and magnetics databases, field simulation, CAD and PCB agents), with local tool qualification, Engineering State provenance, cross-module feedback iterations, verification gates and report assembly; first benchmark is the simulation-driven 10 kW dual-active-bridge converter.
 status: experimental
 maturity: prototype
 repository: https://github.com/FulongLi/AIPE-Workflows
@@ -32,7 +32,8 @@ outputs:
 dependencies:
   - {id: aipe.core, version: 0.1.x, optional: false}
   - {id: aipe.registry, version: 0.1.x, optional: false}
-  - {id: aipe.design-agent, version: 0.1.x, optional: true}
+  - {id: aipe.electrical-design, version: 0.1.x, optional: true}
+  - {id: aipe.thermal-design, version: 0.1.x, optional: true}
   - {id: aipe.simulation-skills, version: 0.1.x, optional: true}
   - {id: aipe.semiconductor-database, version: 0.1.x, optional: true}
   - {id: aipe.magnetics-database, version: 0.1.x, optional: true}

@@ -1,0 +1,2104 @@
+{
+  "approval_required": [],
+  "artifacts": [
+    {
+      "description": "device screening report (aipe_devices dab-screen)",
+      "media_type": "application/json",
+      "role": "analysis_summary",
+      "sha256": "f07e5366f498d4ed9ac40846ddf8063aa8769d1c061b604e96bdb5a75b975c67",
+      "uri": "tasks/semiconductor-screening/screening.json"
+    },
+    {
+      "description": "primary device loss evaluation (wolfspeed_c4ms047120k, S3)",
+      "media_type": "application/json",
+      "role": "analysis_summary",
+      "sha256": "c14072e0eb797daba4369ced283486a8d976024c5353a7c97af911e2de293ae6",
+      "uri": "tasks/semiconductor-screening/losses-primary-S3.json"
+    },
+    {
+      "description": "secondary device loss evaluation (wolfspeed_c3m0025065k, S8)",
+      "media_type": "application/json",
+      "role": "analysis_summary",
+      "sha256": "c9ed26e39baa7a7e69c0a14b7f0bcf7b2a161dfd724db784dbb179f035b837f4",
+      "uri": "tasks/semiconductor-screening/losses-secondary-S8.json"
+    }
+  ],
+  "capability_id": "aipe.semiconductor-database",
+  "diagnostics": [],
+  "environment": {},
+  "evidence_kind": "analytical",
+  "finished_at": "2026-10-21T09:54:25Z",
+  "gate": "analytical",
+  "input_hash": "44f4f1da97827135b82d92827e504f81e502260c44e450ae9767023e84a83d96",
+  "inputs": {
+    "ambient_K": 313.15,
+    "dataset_sha256": "b25972315a0afe00cd69f7c93a465597cbd1af30729bc88ad6aa78b0f87fc112",
+    "derating": 0.7,
+    "gate_resistance_Ohm": [
+      2.5,
+      2.5
+    ],
+    "junction_temperature_K": 398.15,
+    "preferred_integration": "discrete",
+    "rth_case_sink_K_per_W": 0.1,
+    "rth_sink_ambient_K_per_W": 0.5,
+    "summary": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\runs\\wf-dab-10kw-first-it03\\tasks\\circuit-sim-level2\\ngspice\\summary.json"
+  },
+  "model": {
+    "id": "aipe-devices-dab-screening",
+    "validity_range": "manufacturer PLECS loss tensors (tier A) and datasheet points scaled linearly in V and I (tier B); no Coss/Eoss data, ZVS by current condition only; no measured evidence",
+    "version": "3.1.0"
+  },
+  "outputs": {
+    "dataset_sha256": "b25972315a0afe00cd69f7c93a465597cbd1af30729bc88ad6aa78b0f87fc112",
+    "junction_temperature_K": 398.15,
+    "notes": [
+      "Confidence tiers are never interleaved in the ranking; datasheet-point estimates (tier B) are flagged and not comparable with canonical tensor evaluations (tier A).",
+      "Turn-on loss is zero where the waveform satisfies the ZVS current condition; a charge-based verification needs Coss/Eoss evidence.",
+      "All evidence is manufacturer model or datasheet data; no laboratory measurement backs any ranking."
+    ],
+    "pool": [
+      "Infineon FF45MR12W1M1_B11",
+      "Infineon IMBG120R040M2H",
+      "Infineon IMZA120R040M2H",
+      "Infineon IMZA65R027M1H",
+      "Microchip MSC035SMA070B4",
+      "Microchip MSC040SMA120B4",
+      "onsemi NTH4L022N120M3S",
+      "onsemi NTH4L023N065M3S",
+      "onsemi NXH020P120MNF1",
+      "ROHM SCT4036KR",
+      "ROHM SCT4045DR",
+      "STMicroelectronics SCT040W120G3-4",
+      "STMicroelectronics SCT040W65G3-4",
+      "Wolfspeed C3M0025065K",
+      "Wolfspeed C3M0030090K",
+      "Wolfspeed C3M0040120K",
+      "Wolfspeed C3M0075120K",
+      "Wolfspeed C4MS047120K",
+      "Wolfspeed CBB021M12FM3"
+    ],
+    "preferred_integration": "discrete",
+    "primary_device_id": "wolfspeed_c4ms047120k",
+    "primary_excluded_count": 8,
+    "primary_loss_W": 9.05218223290222,
+    "primary_loss_evaluation": {
+      "complete": true,
+      "components": [
+        {
+          "evidence": [
+            "wolfspeed_c4ms047120k:voltage_drop:2"
+          ],
+          "kind": null,
+          "method": "waveform_integral: mean(v(Tj, i(t)) * i(t)); reverse policy gate_aware",
+          "name": "conduction_loss_forward",
+          "unit": "W",
+          "value": 6.061328394904313
+        },
+        {
+          "evidence": [
+            "wolfspeed_c4ms047120k:voltage_drop:2",
+            "wolfspeed_c4ms047120k:voltage_drop:3"
+          ],
+          "kind": null,
+          "method": "waveform_integral: mean(v(Tj, i(t)) * i(t)); reverse policy gate_aware",
+          "name": "conduction_loss_reverse",
+          "unit": "W",
+          "value": 0.8795648097274439
+        },
+        {
+          "evidence": [
+            "wolfspeed_c4ms047120k:voltage_drop:2",
+            "wolfspeed_c4ms047120k:voltage_drop:3"
+          ],
+          "kind": null,
+          "method": "waveform_integral: mean(v(Tj, i(t)) * i(t)); reverse policy gate_aware",
+          "name": "conduction_loss",
+          "unit": "W",
+          "value": 6.940893204631757
+        },
+        {
+          "evidence": [
+            "wolfspeed_c4ms047120k:Eoff:gate_resistance"
+          ],
+          "kind": null,
+          "method": "f_sw * sum(Eoff(Tj, Vdc, I_off) * k_rg) / periods; Rg: tensor_axis",
+          "name": "turn_off_loss",
+          "unit": "W",
+          "value": 2.111289028270464
+        },
+        {
+          "evidence": [],
+          "kind": null,
+          "method": "ZVS on every event (waveform current condition): 0 W",
+          "name": "turn_on_loss",
+          "unit": "W",
+          "value": 0.0
+        },
+        {
+          "evidence": [
+            "wolfspeed_c4ms047120k:Eoff:gate_resistance"
+          ],
+          "kind": null,
+          "method": "turn_off_loss + turn_on_loss",
+          "name": "switching_loss",
+          "unit": "W",
+          "value": 2.111289028270464
+        },
+        {
+          "evidence": [
+            "wolfspeed_c4ms047120k:Eoff:gate_resistance",
+            "wolfspeed_c4ms047120k:voltage_drop:2",
+            "wolfspeed_c4ms047120k:voltage_drop:3"
+          ],
+          "kind": null,
+          "method": "conduction_loss + turn_off_loss + turn_on_loss",
+          "name": "total_loss",
+          "unit": "W",
+          "value": 9.05218223290222
+        }
+      ],
+      "coverage_gaps": [
+        {
+          "affects": [
+            "conduction_loss"
+          ],
+          "detail": "All coordinates coincide with source points",
+          "quantity": "conduction_voltage_drop_at_tj",
+          "status": "exact"
+        },
+        {
+          "affects": [
+            "turn_off_loss"
+          ],
+          "detail": "gate_resistance_off 2.5 Ohm between source points 2 and 6; dc_bus_voltage 799.391 V between source points 600 and 800; current 14.1192 A between source points 5 and 25",
+          "quantity": "Eoff_at_operating_point",
+          "status": "interpolated"
+        },
+        {
+          "affects": [
+            "turn_off_loss"
+          ],
+          "detail": "gate_resistance_off 2.5 Ohm between source points 2 and 6; dc_bus_voltage 799.391 V between source points 600 and 800; current 14.1209 A between source points 5 and 25",
+          "quantity": "Eoff_at_operating_point",
+          "status": "interpolated"
+        },
+        {
+          "affects": [
+            "turn_off_loss"
+          ],
+          "detail": "gate_resistance_off 2.5 Ohm between source points 2 and 6; dc_bus_voltage 799.391 V between source points 600 and 800; current 14.1225 A between source points 5 and 25",
+          "quantity": "Eoff_at_operating_point",
+          "status": "interpolated"
+        },
+        {
+          "affects": [
+            "turn_off_loss"
+          ],
+          "detail": "gate_resistance_off 2.5 Ohm between source points 2 and 6; dc_bus_voltage 799.391 V between source points 600 and 800; current 14.1242 A between source points 5 and 25",
+          "quantity": "Eoff_at_operating_point",
+          "status": "interpolated"
+        },
+        {
+          "affects": [
+            "turn_on_loss"
+          ],
+          "detail": "All turn-on events satisfy the ZVS condition (waveform current condition); turn-on loss set to zero. Residual loss from incomplete Coss charge transfer needs Coss/Eoss/Qoss, which are unavailable",
+          "quantity": "turn_on_loss_under_zvs",
+          "status": "approximated"
+        },
+        {
+          "affects": [
+            "turn_on_loss"
+          ],
+          "detail": "Not in the record; charge-based ZVS verification and Coss-related turn-on residuals cannot be evaluated",
+          "quantity": "coss",
+          "status": "unavailable"
+        },
+        {
+          "affects": [
+            "turn_on_loss"
+          ],
+          "detail": "Not in the record; charge-based ZVS verification and Coss-related turn-on residuals cannot be evaluated",
+          "quantity": "Eoss",
+          "status": "unavailable"
+        },
+        {
+          "affects": [
+            "turn_on_loss"
+          ],
+          "detail": "Not in the record; charge-based ZVS verification and Coss-related turn-on residuals cannot be evaluated",
+          "quantity": "qoss",
+          "status": "unavailable"
+        },
+        {
+          "affects": [
+            "suitability"
+          ],
+          "detail": "No rating record; voltage/current derating and junction limit checks need a datasheet or candidate record",
+          "quantity": "vds_max",
+          "status": "unavailable"
+        },
+        {
+          "affects": [
+            "suitability"
+          ],
+          "detail": "No rating record; voltage/current derating and junction limit checks need a datasheet or candidate record",
+          "quantity": "id_max",
+          "status": "unavailable"
+        },
+        {
+          "affects": [
+            "suitability"
+          ],
+          "detail": "No rating record; voltage/current derating and junction limit checks need a datasheet or candidate record",
+          "quantity": "tj_max",
+          "status": "unavailable"
+        },
+        {
+          "affects": [
+            "conduction_loss"
+          ],
+          "detail": "No Rds(on) scalar records; on-resistance follows the voltage_drop tensor at the evaluated temperature",
+          "quantity": "rds_on_vs_tj",
+          "status": "approximated"
+        },
+        {
+          "affects": [
+            "turn_on_loss"
+          ],
+          "detail": "No Qrr/Err evidence; diode recovery energy during hard commutation is not evaluated",
+          "quantity": "reverse_recovery",
+          "status": "unavailable"
+        },
+        {
+          "affects": [
+            "conduction_loss",
+            "turn_off_loss",
+            "turn_on_loss"
+          ],
+          "detail": "All tensors originate from manufacturer_model; no laboratory measurement backs the evaluated losses",
+          "quantity": "measured_evidence",
+          "status": "unavailable"
+        }
+      ],
+      "dc_bus_voltage_V": 799.391,
+      "device_id": "wolfspeed_c4ms047120k",
+      "evidence_origins": {
+        "wolfspeed_c4ms047120k:Eoff:gate_resistance": "manufacturer_model",
+        "wolfspeed_c4ms047120k:voltage_drop:2": "manufacturer_model",
+        "wolfspeed_c4ms047120k:voltage_drop:3": "manufacturer_model"
+      },
+      "fixed_point_converged": true,
+      "fixed_point_loss_W": 6.612621639947616,
+      "fixed_point_tj_K": 321.31512633595287,
+      "path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\runs\\wf-dab-10kw-first-it03\\tasks\\semiconductor-screening\\losses-primary-S3.json",
+      "rth_junction_to_case_K_per_W": 0.634779,
+      "stress_source": "sampled_waveform",
+      "switch": "S3",
+      "total_loss_W_at_tj": 9.05218223290222,
+      "warnings": [
+        "Switching instants taken from gate threshold crossings"
+      ]
+    },
+    "primary_part_number": "C4MS047120K",
+    "primary_ranked": [
+      {
+        "candidate_id": "candidate_wolfspeed_cbb021m12fm3",
+        "canonical_id": "wolfspeed_cbb021m12fm3",
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 320.4190115567305,
+          "loss": 4.0941844293555905
+        },
+        "id_rating_A": 50.0,
+        "integration": "module",
+        "loss_complete": true,
+        "loss_conduction_W": 2.4876526678473248,
+        "loss_evidence": "canonical_tensor",
+        "loss_flags": [
+          "guard_rows_dropped:junction_temperature",
+          "method:rms_equivalent_resistance",
+          "rg_dependence_unavailable",
+          "interpolated:dc_bus_voltage",
+          "interpolated:current",
+          "zvs_turn_on_assumed_lossless"
+        ],
+        "loss_total_W_at_tj": 6.86670670234678,
+        "loss_turn_off_W": 4.379054034499455,
+        "manufacturer": "Wolfspeed",
+        "package": "WolfPACK FM (62.8 x 33.8 mm, press-fit, NTC, optional pre-applied TIM)",
+        "part_number": "CBB021M12FM3",
+        "rth_junction_to_case_K_per_W": 1.175448,
+        "tj_at_fixed_loss_K": 325.34148068126814,
+        "tj_max_rating_K": 423.15,
+        "vds_rating_V": 1200.0
+      },
+      {
+        "candidate_id": "candidate_wolfspeed_c4ms047120k",
+        "canonical_id": "wolfspeed_c4ms047120k",
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 320.2509084553739,
+          "loss": 5.750752527678186
+        },
+        "id_rating_A": 37.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 6.201362721990832,
+        "loss_evidence": "canonical_tensor",
+        "loss_flags": [
+          "guard_rows_dropped:junction_temperature",
+          "method:rms_equivalent_resistance",
+          "interpolated:gate_resistance_off",
+          "interpolated:dc_bus_voltage",
+          "interpolated:current",
+          "zvs_turn_on_assumed_lossless"
+        ],
+        "loss_total_W_at_tj": 8.312955825331937,
+        "loss_turn_off_W": 2.111593103341105,
+        "manufacturer": "Wolfspeed",
+        "package": "TO-247-4",
+        "part_number": "C4MS047120K",
+        "rth_junction_to_case_K_per_W": 0.634779,
+        "tj_at_fixed_loss_K": 323.4146632810475,
+        "tj_max_rating_K": 448.15,
+        "vds_rating_V": 1200.0
+      },
+      {
+        "candidate_id": "candidate_wolfspeed_c3m0040120k",
+        "canonical_id": "wolfspeed_c3m0040120k",
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 323.08423109325594,
+          "loss": 9.370148173227662
+        },
+        "id_rating_A": 48.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 5.321663040509626,
+        "loss_evidence": "canonical_tensor",
+        "loss_flags": [
+          "guard_rows_dropped:junction_temperature",
+          "method:rms_equivalent_resistance",
+          "rg_scaling:plecs_formula",
+          "interpolated:dc_bus_voltage",
+          "interpolated:current",
+          "zvs_turn_on_assumed_lossless"
+        ],
+        "loss_total_W_at_tj": 10.751729953458414,
+        "loss_turn_off_W": 5.430066912948788,
+        "manufacturer": "Wolfspeed",
+        "package": "TO-247-4",
+        "part_number": "C3M0040120K",
+        "rth_junction_to_case_K_per_W": 0.4602,
+        "tj_at_fixed_loss_K": 324.54898409665657,
+        "tj_max_rating_K": 448.15,
+        "vds_rating_V": 1200.0
+      },
+      {
+        "candidate_id": "candidate_wolfspeed_c3m0075120k",
+        "canonical_id": "wolfspeed_c3m0075120k",
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 335.4500540801584,
+          "loss": 13.50536220939826
+        },
+        "id_rating_A": 30.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 9.884865565167617,
+        "loss_evidence": "canonical_tensor",
+        "loss_flags": [
+          "guard_rows_dropped:junction_temperature",
+          "method:rms_equivalent_resistance",
+          "rg_scaling:plecs_formula",
+          "interpolated:dc_bus_voltage",
+          "interpolated:current",
+          "zvs_turn_on_assumed_lossless"
+        ],
+        "loss_total_W_at_tj": 15.955425438194283,
+        "loss_turn_off_W": 6.070559873026665,
+        "manufacturer": "Wolfspeed",
+        "package": "TO-247-4 (Kelvin source)",
+        "part_number": "C3M0075120K",
+        "rth_junction_to_case_K_per_W": 1.0512000000000001,
+        "tj_at_fixed_loss_K": 339.49559848354636,
+        "tj_max_rating_K": null,
+        "vds_rating_V": 1200.0
+      },
+      {
+        "candidate_id": "candidate_rohm_sct4036kr",
+        "canonical_id": null,
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 320.0339548054986,
+          "loss": 5.507163844398873
+        },
+        "id_rating_A": 30.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 5.757139031303809,
+        "loss_evidence": "datasheet_point",
+        "loss_flags": [
+          "rds_on:linear_in_tj_between_25_and_150degC",
+          "conduction:rds_on_times_irms_squared",
+          "rds_on_at_vgs_18V_not_15V",
+          "Eoff:nearest_datasheet_temperature_25degC_used",
+          "Eoff:datasheet_point_linear_scaling_from_800V_21A_to_799.391V_14.1A",
+          "turn_on:zvs_assumed_lossless_from_current_condition"
+        ],
+        "loss_total_W_at_tj": 7.5052409779322495,
+        "loss_turn_off_W": 1.748101946628441,
+        "manufacturer": "ROHM",
+        "package": "TO-247-4L",
+        "part_number": "SCT4036KR",
+        "rth_junction_to_case_K_per_W": 0.65,
+        "tj_at_fixed_loss_K": 322.53155122241526,
+        "tj_max_rating_K": 448.15,
+        "vds_rating_V": 1200.0
+      },
+      {
+        "candidate_id": "candidate_onsemi_nxh020p120mnf1",
+        "canonical_id": null,
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 321.5116828592226,
+          "loss": 7.967301438039649
+        },
+        "id_rating_A": 51.0,
+        "integration": "module",
+        "loss_complete": true,
+        "loss_conduction_W": 2.4876526678473248,
+        "loss_evidence": "datasheet_point",
+        "loss_flags": [
+          "rds_on:linear_in_tj_between_25_and_125degC",
+          "conduction:rds_on_times_irms_squared",
+          "rds_on_at_vgs_20V_not_15V",
+          "Eoff:linear_in_tj_between_25_and_150degC",
+          "Eoff:datasheet_point_linear_scaling_from_600V_50A_to_799.391V_14.1A",
+          "Eoff:test_voltage_differs_by_more_than_20_percent",
+          "turn_on:zvs_assumed_lossless_from_current_condition"
+        ],
+        "loss_total_W_at_tj": 8.511880914689954,
+        "loss_turn_off_W": 6.024228246842629,
+        "manufacturer": "onsemi",
+        "package": "F1 PIM18 (33.8 x 42.5 mm, press-fit, NTC, optional TIM)",
+        "part_number": "NXH020P120MNF1",
+        "rth_junction_to_case_K_per_W": 0.4495,
+        "tj_at_fixed_loss_K": 322.0832190199671,
+        "tj_max_rating_K": 423.15,
+        "vds_rating_V": 1200.0
+      },
+      {
+        "candidate_id": "candidate_infineon_imbg120r040m2h",
+        "canonical_id": null,
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 319.74188621905205,
+          "loss": 6.218760584011376
+        },
+        "id_rating_A": 36.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 6.460789357352052,
+        "loss_evidence": "datasheet_point",
+        "loss_flags": [
+          "rds_on:linear_in_tj_between_25_and_150degC",
+          "conduction:rds_on_times_irms_squared",
+          "rds_on_at_vgs_18V_not_15V",
+          "Eoff:linear_in_tj_between_25_and_175degC",
+          "Eoff:datasheet_point_linear_scaling_from_800V_17.5A_to_799.391V_14.1A",
+          "turn_on:zvs_assumed_lossless_from_current_condition"
+        ],
+        "loss_total_W_at_tj": 8.988813710937798,
+        "loss_turn_off_W": 2.528024353585746,
+        "manufacturer": "Infineon",
+        "package": "PG-TO263-7-U01 (D2PAK-7)",
+        "part_number": "IMBG120R040M2H",
+        "rth_junction_to_case_K_per_W": 0.46,
+        "tj_at_fixed_loss_K": 322.67814253359404,
+        "tj_max_rating_K": 448.15,
+        "vds_rating_V": 1200.0
+      },
+      {
+        "candidate_id": "candidate_microchip_msc040sma120b4",
+        "canonical_id": null,
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 322.76539462436864,
+          "loss": 10.566367719086426
+        },
+        "id_rating_A": 50.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 3.553789525496178,
+        "loss_evidence": "datasheet_point",
+        "loss_flags": [
+          "rds_on:nearest_datasheet_temperature_25degC_used",
+          "conduction:rds_on_times_irms_squared",
+          "rds_on_at_vgs_20V_not_15V",
+          "Eoff:nearest_datasheet_temperature_25degC_used",
+          "Eoff:datasheet_point_linear_scaling_from_800V_30A_to_799.391V_14.1A",
+          "Eoff:datasheet_rg_8Ohm_differs_from_requested_2.5Ohm_no_scaling",
+          "turn_on:zvs_assumed_lossless_from_current_condition"
+        ],
+        "loss_total_W_at_tj": 10.566367719086426,
+        "loss_turn_off_W": 7.012578193590247,
+        "manufacturer": "Microchip",
+        "package": "TO-247-4 (source sense)",
+        "part_number": "MSC040SMA120B4",
+        "rth_junction_to_case_K_per_W": 0.31,
+        "tj_at_fixed_loss_K": 322.76539462436864,
+        "tj_max_rating_K": 448.15,
+        "vds_rating_V": 1200.0
+      },
+      {
+        "candidate_id": "candidate_onsemi_nth4l022n120m3s",
+        "canonical_id": null,
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 323.5391823341997,
+          "loss": 10.08658479048521
+        },
+        "id_rating_A": 62.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 3.2576403983714965,
+        "loss_evidence": "datasheet_point",
+        "loss_flags": [
+          "rds_on:linear_in_tj_between_25_and_175degC",
+          "conduction:rds_on_times_irms_squared",
+          "rds_on_at_vgs_18V_not_15V",
+          "Eoff:nearest_datasheet_temperature_25degC_used",
+          "Eoff:datasheet_point_linear_scaling_from_800V_40A_to_799.391V_14.1A",
+          "Eoff:datasheet_rg_4.5Ohm_differs_from_requested_2.5Ohm_no_scaling",
+          "turn_on:zvs_assumed_lossless_from_current_condition"
+        ],
+        "loss_total_W_at_tj": 11.058545335200915,
+        "loss_turn_off_W": 7.800904936829418,
+        "manufacturer": "onsemi",
+        "package": "TO-247-4L",
+        "part_number": "NTH4L022N120M3S",
+        "rth_junction_to_case_K_per_W": 0.43,
+        "tj_at_fixed_loss_K": 324.5403016952569,
+        "tj_max_rating_K": 448.15,
+        "vds_rating_V": 1200.0
+      },
+      {
+        "candidate_id": "candidate_infineon_imza120r040m2h",
+        "canonical_id": null,
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 322.26348648243857,
+          "loss": 8.065032285343865
+        },
+        "id_rating_A": 34.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 6.4678969364030445,
+        "loss_evidence": "datasheet_point",
+        "loss_flags": [
+          "rds_on:linear_in_tj_between_25_and_150degC",
+          "conduction:rds_on_times_irms_squared",
+          "rds_on_at_vgs_18V_not_15V",
+          "Eoff:linear_in_tj_between_25_and_175degC",
+          "Eoff:datasheet_point_linear_scaling_from_800V_18A_to_799.391V_14.1A",
+          "turn_on:zvs_assumed_lossless_from_current_condition"
+        ],
+        "loss_total_W_at_tj": 11.148178430260815,
+        "loss_turn_off_W": 4.680281493857771,
+        "manufacturer": "Infineon",
+        "package": "PG-TO247-4-U02",
+        "part_number": "IMZA120R040M2H",
+        "rth_junction_to_case_K_per_W": 0.53,
+        "tj_at_fixed_loss_K": 325.7474416261947,
+        "tj_max_rating_K": 448.15,
+        "vds_rating_V": 1200.0
+      }
+    ],
+    "primary_rth_jc_K_per_W": 0.634779,
+    "primary_selected": {
+      "candidate_id": "candidate_wolfspeed_c4ms047120k",
+      "canonical_id": "wolfspeed_c4ms047120k",
+      "fixed_point": {
+        "converged": true,
+        "junction_temperature": 320.2509084553739,
+        "loss": 5.750752527678186
+      },
+      "id_rating_A": 37.0,
+      "integration": "discrete",
+      "loss_complete": true,
+      "loss_conduction_W": 6.201362721990832,
+      "loss_evidence": "canonical_tensor",
+      "loss_flags": [
+        "guard_rows_dropped:junction_temperature",
+        "method:rms_equivalent_resistance",
+        "interpolated:gate_resistance_off",
+        "interpolated:dc_bus_voltage",
+        "interpolated:current",
+        "zvs_turn_on_assumed_lossless"
+      ],
+      "loss_total_W_at_tj": 8.312955825331937,
+      "loss_turn_off_W": 2.111593103341105,
+      "manufacturer": "Wolfspeed",
+      "package": "TO-247-4",
+      "part_number": "C4MS047120K",
+      "rth_junction_to_case_K_per_W": 0.634779,
+      "tj_at_fixed_loss_K": 323.4146632810475,
+      "tj_max_rating_K": 448.15,
+      "vds_rating_V": 1200.0
+    },
+    "primary_stress": {
+      "conduction_fraction": 0.5002771550307805,
+      "current_avg": 6.091828251063909,
+      "current_peak_forward": 14.25852721448973,
+      "current_peak_reverse": -14.86883598520149,
+      "current_rms": 9.425748677818884,
+      "switch_id": "S3"
+    },
+    "primary_tj_max_rating_K": 448.15,
+    "primary_top_ranked_overall": {
+      "candidate_id": "candidate_wolfspeed_cbb021m12fm3",
+      "canonical_id": "wolfspeed_cbb021m12fm3",
+      "fixed_point": {
+        "converged": true,
+        "junction_temperature": 320.4190115567305,
+        "loss": 4.0941844293555905
+      },
+      "id_rating_A": 50.0,
+      "integration": "module",
+      "loss_complete": true,
+      "loss_conduction_W": 2.4876526678473248,
+      "loss_evidence": "canonical_tensor",
+      "loss_flags": [
+        "guard_rows_dropped:junction_temperature",
+        "method:rms_equivalent_resistance",
+        "rg_dependence_unavailable",
+        "interpolated:dc_bus_voltage",
+        "interpolated:current",
+        "zvs_turn_on_assumed_lossless"
+      ],
+      "loss_total_W_at_tj": 6.86670670234678,
+      "loss_turn_off_W": 4.379054034499455,
+      "manufacturer": "Wolfspeed",
+      "package": "WolfPACK FM (62.8 x 33.8 mm, press-fit, NTC, optional pre-applied TIM)",
+      "part_number": "CBB021M12FM3",
+      "rth_junction_to_case_K_per_W": 1.175448,
+      "tj_at_fixed_loss_K": 325.34148068126814,
+      "tj_max_rating_K": 423.15,
+      "vds_rating_V": 1200.0
+    },
+    "primary_worst_case_switch": "S3",
+    "screening_path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\runs\\wf-dab-10kw-first-it03\\tasks\\semiconductor-screening\\screening.json",
+    "secondary_device_id": "wolfspeed_c3m0025065k",
+    "secondary_excluded_count": 2,
+    "secondary_loss_W": 16.177901126554858,
+    "secondary_loss_evaluation": {
+      "complete": true,
+      "components": [
+        {
+          "evidence": [
+            "wolfspeed_c3m0025065k:voltage_drop:2"
+          ],
+          "kind": null,
+          "method": "waveform_integral: mean(v(Tj, i(t)) * i(t)); reverse policy gate_aware",
+          "name": "conduction_loss_forward",
+          "unit": "W",
+          "value": 0.23834128821166534
+        },
+        {
+          "evidence": [
+            "wolfspeed_c3m0025065k:voltage_drop:2",
+            "wolfspeed_c3m0025065k:voltage_drop:3"
+          ],
+          "kind": null,
+          "method": "waveform_integral: mean(v(Tj, i(t)) * i(t)); reverse policy gate_aware",
+          "name": "conduction_loss_reverse",
+          "unit": "W",
+          "value": 12.364173622801355
+        },
+        {
+          "evidence": [
+            "wolfspeed_c3m0025065k:voltage_drop:2",
+            "wolfspeed_c3m0025065k:voltage_drop:3"
+          ],
+          "kind": null,
+          "method": "waveform_integral: mean(v(Tj, i(t)) * i(t)); reverse policy gate_aware",
+          "name": "conduction_loss",
+          "unit": "W",
+          "value": 12.60251491101302
+        },
+        {
+          "evidence": [
+            "wolfspeed_c3m0025065k:Eoff:1"
+          ],
+          "kind": null,
+          "method": "f_sw * sum(Eoff(Tj, Vdc, I_off) * k_rg) / periods; Rg: plecs_formula",
+          "name": "turn_off_loss",
+          "unit": "W",
+          "value": 3.5753862155418363
+        },
+        {
+          "evidence": [],
+          "kind": null,
+          "method": "ZVS on every event (waveform current condition): 0 W",
+          "name": "turn_on_loss",
+          "unit": "W",
+          "value": 0.0
+        },
+        {
+          "evidence": [
+            "wolfspeed_c3m0025065k:Eoff:1"
+          ],
+          "kind": null,
+          "method": "turn_off_loss + turn_on_loss",
+          "name": "switching_loss",
+          "unit": "W",
+          "value": 3.5753862155418363
+        },
+        {
+          "evidence": [
+            "wolfspeed_c3m0025065k:Eoff:1",
+            "wolfspeed_c3m0025065k:voltage_drop:2",
+            "wolfspeed_c3m0025065k:voltage_drop:3"
+          ],
+          "kind": null,
+          "method": "conduction_loss + turn_off_loss + turn_on_loss",
+          "name": "total_loss",
+          "unit": "W",
+          "value": 16.177901126554858
+        }
+      ],
+      "coverage_gaps": [
+        {
+          "affects": [
+            "conduction_loss"
+          ],
+          "detail": "junction_temperature 398.15 K between source points 298.15 and 448.15",
+          "quantity": "conduction_voltage_drop_at_tj",
+          "status": "interpolated"
+        },
+        {
+          "affects": [
+            "Eoff"
+          ],
+          "detail": "Manufacturer PLECS formula 'E/(0.0148*2.5+0.0192)*(0.0148*Rgoff+0.0192)' scales the table by 1.0000 at 2.5 Ohm",
+          "quantity": "rg_dependence_Eoff",
+          "status": "approximated"
+        },
+        {
+          "affects": [
+            "turn_off_loss"
+          ],
+          "detail": "dc_bus_voltage 392.81 V between source points 0 and 400; current 27.5712 A between source points 25.7 and 33.77",
+          "quantity": "Eoff_at_operating_point",
+          "status": "interpolated"
+        },
+        {
+          "affects": [
+            "turn_off_loss"
+          ],
+          "detail": "dc_bus_voltage 392.81 V between source points 0 and 400; current 27.5669 A between source points 25.7 and 33.77",
+          "quantity": "Eoff_at_operating_point",
+          "status": "interpolated"
+        },
+        {
+          "affects": [
+            "turn_off_loss"
+          ],
+          "detail": "dc_bus_voltage 392.81 V between source points 0 and 400; current 27.5627 A between source points 25.7 and 33.77",
+          "quantity": "Eoff_at_operating_point",
+          "status": "interpolated"
+        },
+        {
+          "affects": [
+            "turn_off_loss"
+          ],
+          "detail": "dc_bus_voltage 392.81 V between source points 0 and 400; current 27.5586 A between source points 25.7 and 33.77",
+          "quantity": "Eoff_at_operating_point",
+          "status": "interpolated"
+        },
+        {
+          "affects": [
+            "turn_on_loss"
+          ],
+          "detail": "All turn-on events satisfy the ZVS condition (waveform current condition); turn-on loss set to zero. Residual loss from incomplete Coss charge transfer needs Coss/Eoss/Qoss, which are unavailable",
+          "quantity": "turn_on_loss_under_zvs",
+          "status": "approximated"
+        },
+        {
+          "affects": [
+            "turn_on_loss"
+          ],
+          "detail": "Not in the record; charge-based ZVS verification and Coss-related turn-on residuals cannot be evaluated",
+          "quantity": "coss",
+          "status": "unavailable"
+        },
+        {
+          "affects": [
+            "turn_on_loss"
+          ],
+          "detail": "Not in the record; charge-based ZVS verification and Coss-related turn-on residuals cannot be evaluated",
+          "quantity": "Eoss",
+          "status": "unavailable"
+        },
+        {
+          "affects": [
+            "turn_on_loss"
+          ],
+          "detail": "Not in the record; charge-based ZVS verification and Coss-related turn-on residuals cannot be evaluated",
+          "quantity": "qoss",
+          "status": "unavailable"
+        },
+        {
+          "affects": [
+            "suitability"
+          ],
+          "detail": "No rating record; voltage/current derating and junction limit checks need a datasheet or candidate record",
+          "quantity": "vds_max",
+          "status": "unavailable"
+        },
+        {
+          "affects": [
+            "suitability"
+          ],
+          "detail": "No rating record; voltage/current derating and junction limit checks need a datasheet or candidate record",
+          "quantity": "id_max",
+          "status": "unavailable"
+        },
+        {
+          "affects": [
+            "suitability"
+          ],
+          "detail": "No rating record; voltage/current derating and junction limit checks need a datasheet or candidate record",
+          "quantity": "tj_max",
+          "status": "unavailable"
+        },
+        {
+          "affects": [
+            "conduction_loss"
+          ],
+          "detail": "No Rds(on) scalar records; on-resistance follows the voltage_drop tensor at the evaluated temperature",
+          "quantity": "rds_on_vs_tj",
+          "status": "approximated"
+        },
+        {
+          "affects": [
+            "turn_on_loss"
+          ],
+          "detail": "No Qrr/Err evidence; diode recovery energy during hard commutation is not evaluated",
+          "quantity": "reverse_recovery",
+          "status": "unavailable"
+        },
+        {
+          "affects": [
+            "conduction_loss",
+            "turn_off_loss",
+            "turn_on_loss"
+          ],
+          "detail": "All tensors originate from manufacturer_model; no laboratory measurement backs the evaluated losses",
+          "quantity": "measured_evidence",
+          "status": "unavailable"
+        }
+      ],
+      "dc_bus_voltage_V": 392.81,
+      "device_id": "wolfspeed_c3m0025065k",
+      "evidence_origins": {
+        "wolfspeed_c3m0025065k:Eoff:1": "manufacturer_model",
+        "wolfspeed_c3m0025065k:voltage_drop:2": "manufacturer_model",
+        "wolfspeed_c3m0025065k:voltage_drop:3": "manufacturer_model"
+      },
+      "fixed_point_converged": true,
+      "fixed_point_loss_W": 14.907590744150973,
+      "fixed_point_tj_K": 328.9159698191992,
+      "path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\runs\\wf-dab-10kw-first-it03\\tasks\\semiconductor-screening\\losses-secondary-S8.json",
+      "rth_junction_to_case_K_per_W": 0.45758000000000004,
+      "stress_source": "sampled_waveform",
+      "switch": "S8",
+      "total_loss_W_at_tj": 16.177901126554858,
+      "warnings": [
+        "Switching instants taken from gate threshold crossings"
+      ]
+    },
+    "secondary_part_number": "C3M0025065K",
+    "secondary_ranked": [
+      {
+        "candidate_id": "candidate_wolfspeed_cbb021m12fm3",
+        "canonical_id": "wolfspeed_cbb021m12fm3",
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 332.0024824068469,
+          "loss": 10.618436815297857
+        },
+        "id_rating_A": 50.0,
+        "integration": "module",
+        "loss_complete": true,
+        "loss_conduction_W": 10.073253950206427,
+        "loss_evidence": "canonical_tensor",
+        "loss_flags": [
+          "guard_rows_dropped:junction_temperature",
+          "method:rms_equivalent_resistance",
+          "rg_dependence_unavailable",
+          "interpolated:dc_bus_voltage",
+          "interpolated:current",
+          "zvs_turn_on_assumed_lossless"
+        ],
+        "loss_total_W_at_tj": 13.9124055926257,
+        "loss_turn_off_W": 3.8391516424192726,
+        "manufacturer": "Wolfspeed",
+        "package": "WolfPACK FM (62.8 x 33.8 mm, press-fit, NTC, optional pre-applied TIM)",
+        "part_number": "CBB021M12FM3",
+        "rth_junction_to_case_K_per_W": 1.175448,
+        "tj_at_fixed_loss_K": 337.8507526846161,
+        "tj_max_rating_K": 423.15,
+        "vds_rating_V": 1200.0
+      },
+      {
+        "candidate_id": "candidate_wolfspeed_c3m0025065k",
+        "canonical_id": "wolfspeed_c3m0025065k",
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 326.37062455684685,
+          "loss": 12.500826941552289
+        },
+        "id_rating_A": 70.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 10.412111067643492,
+        "loss_evidence": "canonical_tensor",
+        "loss_flags": [
+          "guard_rows_dropped:junction_temperature",
+          "method:rms_equivalent_resistance",
+          "rg_scaling:plecs_formula",
+          "interpolated:dc_bus_voltage",
+          "interpolated:current",
+          "zvs_turn_on_assumed_lossless"
+        ],
+        "loss_total_W_at_tj": 13.990456767693118,
+        "loss_turn_off_W": 3.578345700049625,
+        "manufacturer": "Wolfspeed",
+        "package": "TO-247-4",
+        "part_number": "C3M0025065K",
+        "rth_junction_to_case_K_per_W": 0.45758000000000004,
+        "tj_at_fixed_loss_K": 327.9460272683769,
+        "tj_max_rating_K": 448.15,
+        "vds_rating_V": 650.0
+      },
+      {
+        "candidate_id": "candidate_wolfspeed_c3m0030090k",
+        "canonical_id": "wolfspeed_c3m0030090k",
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 331.6553810289383,
+          "loss": 15.164616101727674
+        },
+        "id_rating_A": 63.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 12.788048369462206,
+        "loss_evidence": "canonical_tensor",
+        "loss_flags": [
+          "guard_rows_dropped:junction_temperature",
+          "method:rms_equivalent_resistance",
+          "rg_scaling:plecs_formula",
+          "interpolated:dc_bus_voltage",
+          "interpolated:current",
+          "zvs_turn_on_assumed_lossless"
+        ],
+        "loss_total_W_at_tj": 16.99275256311202,
+        "loss_turn_off_W": 4.204704193649812,
+        "manufacturer": "Wolfspeed",
+        "package": "TO-247-4",
+        "part_number": "C3M0030090K",
+        "rth_junction_to_case_K_per_W": 0.6203,
+        "tj_at_fixed_loss_K": 333.88625595276557,
+        "tj_max_rating_K": null,
+        "vds_rating_V": 900.0
+      },
+      {
+        "candidate_id": "candidate_wolfspeed_c3m0040120k",
+        "canonical_id": "wolfspeed_c3m0040120k",
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 334.50468547534905,
+          "loss": 20.14212929197234
+        },
+        "id_rating_A": 48.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 21.192155490553407,
+        "loss_evidence": "canonical_tensor",
+        "loss_flags": [
+          "guard_rows_dropped:junction_temperature",
+          "method:rms_equivalent_resistance",
+          "rg_scaling:plecs_formula",
+          "interpolated:dc_bus_voltage",
+          "interpolated:current",
+          "zvs_turn_on_assumed_lossless"
+        ],
+        "loss_total_W_at_tj": 24.6244770441265,
+        "loss_turn_off_W": 3.432321553573095,
+        "manufacturer": "Wolfspeed",
+        "package": "TO-247-4",
+        "part_number": "C3M0040120K",
+        "rth_junction_to_case_K_per_W": 0.4602,
+        "tj_at_fixed_loss_K": 339.2568705621829,
+        "tj_max_rating_K": 448.15,
+        "vds_rating_V": 1200.0
+      },
+      {
+        "candidate_id": "candidate_wolfspeed_c4ms047120k",
+        "canonical_id": "wolfspeed_c4ms047120k",
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 337.62295813684716,
+          "loss": 19.819707119125923
+        },
+        "id_rating_A": 37.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 24.984978388361952,
+        "loss_evidence": "canonical_tensor",
+        "loss_flags": [
+          "guard_rows_dropped:junction_temperature",
+          "method:rms_equivalent_resistance",
+          "interpolated:gate_resistance_off",
+          "interpolated:dc_bus_voltage",
+          "interpolated:current",
+          "zvs_turn_on_assumed_lossless"
+        ],
+        "loss_total_W_at_tj": 25.595988551254298,
+        "loss_turn_off_W": 0.6110101628923448,
+        "manufacturer": "Wolfspeed",
+        "package": "TO-247-4",
+        "part_number": "C4MS047120K",
+        "rth_junction_to_case_K_per_W": 0.634779,
+        "tj_at_fixed_loss_K": 344.7553891473292,
+        "tj_max_rating_K": 448.15,
+        "vds_rating_V": 1200.0
+      },
+      {
+        "candidate_id": "candidate_wolfspeed_c3m0075120k",
+        "canonical_id": "wolfspeed_c3m0075120k",
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 391.53347181896083,
+          "loss": 47.4706103554753
+        },
+        "id_rating_A": 30.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 40.9022832603388,
+        "loss_evidence": "canonical_tensor",
+        "loss_flags": [
+          "guard_rows_dropped:junction_temperature",
+          "method:rms_equivalent_resistance",
+          "rg_scaling:plecs_formula",
+          "interpolated:dc_bus_voltage",
+          "interpolated:current",
+          "zvs_turn_on_assumed_lossless"
+        ],
+        "loss_total_W_at_tj": 48.44220368004307,
+        "loss_turn_off_W": 7.539920419704273,
+        "manufacturer": "Wolfspeed",
+        "package": "TO-247-4 (Kelvin source)",
+        "part_number": "C3M0075120K",
+        "rth_junction_to_case_K_per_W": 1.0512000000000001,
+        "tj_at_fixed_loss_K": 393.13776671648714,
+        "tj_max_rating_K": null,
+        "vds_rating_V": 1200.0
+      },
+      {
+        "candidate_id": "candidate_microchip_msc035sma070b4",
+        "canonical_id": null,
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 328.476988685565,
+          "loss": 15.639784373025543
+        },
+        "id_rating_A": 53.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 12.528284292158572,
+        "loss_evidence": "datasheet_point",
+        "loss_flags": [
+          "rds_on:nearest_datasheet_temperature_25degC_used",
+          "conduction:rds_on_times_irms_squared",
+          "rds_on_at_vgs_20V_not_15V",
+          "Eoff:datasheet_point_without_junction_temperature",
+          "Eoff:datasheet_point_linear_scaling_from_470V_40A_to_392.81V_27.6A",
+          "Eoff:datasheet_rg_4Ohm_differs_from_requested_2.5Ohm_no_scaling",
+          "turn_on:zvs_assumed_lossless_from_current_condition"
+        ],
+        "loss_total_W_at_tj": 15.639784373025543,
+        "loss_turn_off_W": 3.1115000808669717,
+        "manufacturer": "Microchip",
+        "package": "TO-247-4",
+        "part_number": "MSC035SMA070B4",
+        "rth_junction_to_case_K_per_W": 0.38,
+        "tj_at_fixed_loss_K": 328.476988685565,
+        "tj_max_rating_K": 448.15,
+        "vds_rating_V": 700.0
+      },
+      {
+        "candidate_id": "candidate_onsemi_nxh020p120mnf1",
+        "canonical_id": null,
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 327.6129649203223,
+          "loss": 13.780814597734473
+        },
+        "id_rating_A": 51.0,
+        "integration": "module",
+        "loss_complete": true,
+        "loss_conduction_W": 10.022627433726857,
+        "loss_evidence": "datasheet_point",
+        "loss_flags": [
+          "rds_on:linear_in_tj_between_25_and_125degC",
+          "conduction:rds_on_times_irms_squared",
+          "rds_on_at_vgs_20V_not_15V",
+          "Eoff:linear_in_tj_between_25_and_150degC",
+          "Eoff:datasheet_point_linear_scaling_from_600V_50A_to_392.81V_27.6A",
+          "Eoff:test_voltage_differs_by_more_than_20_percent",
+          "turn_on:zvs_assumed_lossless_from_current_condition"
+        ],
+        "loss_total_W_at_tj": 15.800030053015654,
+        "loss_turn_off_W": 5.7774026192887975,
+        "manufacturer": "onsemi",
+        "package": "F1 PIM18 (33.8 x 42.5 mm, press-fit, NTC, optional TIM)",
+        "part_number": "NXH020P120MNF1",
+        "rth_junction_to_case_K_per_W": 0.4495,
+        "tj_at_fixed_loss_K": 329.7321315406399,
+        "tj_max_rating_K": 423.15,
+        "vds_rating_V": 1200.0
+      },
+      {
+        "candidate_id": "candidate_onsemi_nth4l023n065m3s",
+        "canonical_id": null,
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 329.4036374976588,
+          "loss": 13.43275826252793
+        },
+        "id_rating_A": 47.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 10.85784638653743,
+        "loss_evidence": "datasheet_point",
+        "loss_flags": [
+          "rds_on:linear_in_tj_between_25_and_175degC",
+          "conduction:rds_on_times_irms_squared",
+          "rds_on_at_vgs_18V_not_15V",
+          "Eoff:linear_in_tj_between_25_and_175degC",
+          "Eoff:datasheet_point_linear_scaling_from_400V_20A_to_392.81V_27.6A",
+          "Eoff:datasheet_rg_4.7Ohm_differs_from_requested_2.5Ohm_no_scaling",
+          "turn_on:zvs_assumed_lossless_from_current_condition"
+        ],
+        "loss_total_W_at_tj": 16.229025384157485,
+        "loss_turn_off_W": 5.371178997620054,
+        "manufacturer": "onsemi",
+        "package": "TO-247-4L",
+        "part_number": "NTH4L023N065M3S",
+        "rth_junction_to_case_K_per_W": 0.61,
+        "tj_at_fixed_loss_K": 332.7871207148305,
+        "tj_max_rating_K": 448.15,
+        "vds_rating_V": 650.0
+      },
+      {
+        "candidate_id": "candidate_onsemi_nth4l022n120m3s",
+        "canonical_id": null,
+        "fixed_point": {
+          "converged": true,
+          "junction_temperature": 330.7303927127793,
+          "loss": 17.06834243959155
+        },
+        "id_rating_A": 62.0,
+        "integration": "discrete",
+        "loss_complete": true,
+        "loss_conduction_W": 13.124869258451836,
+        "loss_evidence": "datasheet_point",
+        "loss_flags": [
+          "rds_on:linear_in_tj_between_25_and_175degC",
+          "conduction:rds_on_times_irms_squared",
+          "rds_on_at_vgs_18V_not_15V",
+          "Eoff:nearest_datasheet_temperature_25degC_used",
+          "Eoff:datasheet_point_linear_scaling_from_800V_40A_to_392.81V_27.6A",
+          "Eoff:datasheet_rg_4.5Ohm_differs_from_requested_2.5Ohm_no_scaling",
+          "Eoff:test_voltage_differs_by_more_than_20_percent",
+          "turn_on:zvs_assumed_lossless_from_current_condition"
+        ],
+        "loss_total_W_at_tj": 20.606154290851197,
+        "loss_turn_off_W": 7.48128503239936,
+        "manufacturer": "onsemi",
+        "package": "TO-247-4L",
+        "part_number": "NTH4L022N120M3S",
+        "rth_junction_to_case_K_per_W": 0.43,
+        "tj_at_fixed_loss_K": 334.3743389195767,
+        "tj_max_rating_K": 448.15,
+        "vds_rating_V": 1200.0
+      }
+    ],
+    "secondary_rth_jc_K_per_W": 0.45758000000000004,
+    "secondary_selected": {
+      "candidate_id": "candidate_wolfspeed_c3m0025065k",
+      "canonical_id": "wolfspeed_c3m0025065k",
+      "fixed_point": {
+        "converged": true,
+        "junction_temperature": 326.37062455684685,
+        "loss": 12.500826941552289
+      },
+      "id_rating_A": 70.0,
+      "integration": "discrete",
+      "loss_complete": true,
+      "loss_conduction_W": 10.412111067643492,
+      "loss_evidence": "canonical_tensor",
+      "loss_flags": [
+        "guard_rows_dropped:junction_temperature",
+        "method:rms_equivalent_resistance",
+        "rg_scaling:plecs_formula",
+        "interpolated:dc_bus_voltage",
+        "interpolated:current",
+        "zvs_turn_on_assumed_lossless"
+      ],
+      "loss_total_W_at_tj": 13.990456767693118,
+      "loss_turn_off_W": 3.578345700049625,
+      "manufacturer": "Wolfspeed",
+      "package": "TO-247-4",
+      "part_number": "C3M0025065K",
+      "rth_junction_to_case_K_per_W": 0.45758000000000004,
+      "tj_at_fixed_loss_K": 327.9460272683769,
+      "tj_max_rating_K": 448.15,
+      "vds_rating_V": 650.0
+    },
+    "secondary_stress": {
+      "conduction_fraction": 0.5008588281248141,
+      "current_avg": -12.226016889558506,
+      "current_peak_forward": 27.6899020581486,
+      "current_peak_reverse": -30.56023519599092,
+      "current_rms": 18.919592484405133,
+      "switch_id": "S8"
+    },
+    "secondary_tj_max_rating_K": 448.15,
+    "secondary_top_ranked_overall": {
+      "candidate_id": "candidate_wolfspeed_cbb021m12fm3",
+      "canonical_id": "wolfspeed_cbb021m12fm3",
+      "fixed_point": {
+        "converged": true,
+        "junction_temperature": 332.0024824068469,
+        "loss": 10.618436815297857
+      },
+      "id_rating_A": 50.0,
+      "integration": "module",
+      "loss_complete": true,
+      "loss_conduction_W": 10.073253950206427,
+      "loss_evidence": "canonical_tensor",
+      "loss_flags": [
+        "guard_rows_dropped:junction_temperature",
+        "method:rms_equivalent_resistance",
+        "rg_dependence_unavailable",
+        "interpolated:dc_bus_voltage",
+        "interpolated:current",
+        "zvs_turn_on_assumed_lossless"
+      ],
+      "loss_total_W_at_tj": 13.9124055926257,
+      "loss_turn_off_W": 3.8391516424192726,
+      "manufacturer": "Wolfspeed",
+      "package": "WolfPACK FM (62.8 x 33.8 mm, press-fit, NTC, optional pre-applied TIM)",
+      "part_number": "CBB021M12FM3",
+      "rth_junction_to_case_K_per_W": 1.175448,
+      "tj_at_fixed_loss_K": 337.8507526846161,
+      "tj_max_rating_K": 423.15,
+      "vds_rating_V": 1200.0
+    },
+    "secondary_worst_case_switch": "S8",
+    "semiconductor_loss_total_W_at_tj": 100.9203334378283,
+    "settings": {
+      "allow_extrapolation": false,
+      "ambient_temperature": 313.15,
+      "derating_limit": 0.7,
+      "design_tj_limit": 398.15,
+      "gate_resistance_off": 2.5,
+      "gate_resistance_on": 2.5,
+      "gate_voltage_off": -4.0,
+      "gate_voltage_on": 15.0,
+      "junction_temperature": 398.15,
+      "rth_case_to_sink": 0.1,
+      "rth_sink_to_ambient": 0.5
+    }
+  },
+  "source_state_id": "aipe.workflow.dab-10kw-benchmark",
+  "source_state_sha256": "22e124002b811da9fa735f43f32aa861bf09a74df4af648824caf4b275328487",
+  "started_at": "2026-10-21T09:54:25Z",
+  "state_proposal": {
+    "append": [
+      {
+        "path": "semiconductors",
+        "value": {
+          "database_ref": "urn:aipe:semiconductor:wolfspeed_c4ms047120k",
+          "evidence_refs": [
+            "evidence.semiconductor-screening-ccbf0d"
+          ],
+          "extensions": {
+            "aipe.workflows.dab": {
+              "estimated_loss_W_at_tj": 9.05218223290222,
+              "evaluation_tj_K": 398.15,
+              "rth_junction_to_case_K_per_W": 0.634779
+            }
+          },
+          "id": "semiconductor.primary-bridge-switch",
+          "manufacturer": "Wolfspeed",
+          "part_number": "C4MS047120K",
+          "ratings": {
+            "current": {
+              "unit": "A",
+              "value": 37.0
+            },
+            "voltage": {
+              "unit": "V",
+              "value": 1200.0
+            }
+          },
+          "role": "primary-bridge-switch",
+          "selection_status": "candidate",
+          "technology": "SiC"
+        }
+      },
+      {
+        "path": "semiconductors",
+        "value": {
+          "database_ref": "urn:aipe:semiconductor:wolfspeed_c3m0025065k",
+          "evidence_refs": [
+            "evidence.semiconductor-screening-ccbf0d"
+          ],
+          "extensions": {
+            "aipe.workflows.dab": {
+              "estimated_loss_W_at_tj": 16.177901126554858,
+              "evaluation_tj_K": 398.15,
+              "rth_junction_to_case_K_per_W": 0.45758000000000004
+            }
+          },
+          "id": "semiconductor.secondary-bridge-switch",
+          "manufacturer": "Wolfspeed",
+          "part_number": "C3M0025065K",
+          "ratings": {
+            "current": {
+              "unit": "A",
+              "value": 70.0
+            },
+            "voltage": {
+              "unit": "V",
+              "value": 650.0
+            }
+          },
+          "role": "secondary-bridge-switch",
+          "selection_status": "candidate",
+          "technology": "SiC"
+        }
+      },
+      {
+        "path": "validation.checks",
+        "value": {
+          "description": "Devices found for both bridges within derating, current margin and junction-temperature headroom; losses evaluated from manufacturer data on the executed waveforms.",
+          "evidence_refs": [
+            "evidence.semiconductor-screening-ccbf0d"
+          ],
+          "id": "check.semiconductor-screening-ccbf0d",
+          "kind": "analytical",
+          "status": "pass"
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "artifacts": [
+          {
+            "description": "device screening report (aipe_devices dab-screen)",
+            "media_type": "application/json",
+            "sha256": "f07e5366f498d4ed9ac40846ddf8063aa8769d1c061b604e96bdb5a75b975c67",
+            "uri": "tasks/semiconductor-screening/screening.json"
+          },
+          {
+            "description": "primary device loss evaluation (wolfspeed_c4ms047120k, S3)",
+            "media_type": "application/json",
+            "sha256": "c14072e0eb797daba4369ced283486a8d976024c5353a7c97af911e2de293ae6",
+            "uri": "tasks/semiconductor-screening/losses-primary-S3.json"
+          },
+          {
+            "description": "secondary device loss evaluation (wolfspeed_c3m0025065k, S8)",
+            "media_type": "application/json",
+            "sha256": "c9ed26e39baa7a7e69c0a14b7f0bcf7b2a161dfd724db784dbb179f035b837f4",
+            "uri": "tasks/semiconductor-screening/losses-secondary-S8.json"
+          }
+        ],
+        "description": "Device screening on the executed Level 2 waveform stresses (dataset sha256 b25972315a0a...): primary C4MS047120K (9.05 W per device at Tj = 398 K); secondary C3M0025065K (16.18 W per device at Tj = 398 K). Ranking by confidence tier then estimated loss; package preference 'discrete'. Manufacturer PLECS/datasheet data only; no laboratory measurement.",
+        "id": "evidence.semiconductor-screening-ccbf0d",
+        "kind": "analytical",
+        "provenance": {
+          "activity": "Screen canonical and candidate SiC devices against derating, current margin, ZVS condition and junction headroom; evaluate losses of the selected devices on the sampled waveforms.",
+          "agent": {
+            "id": "aipe.workflows",
+            "version": "0.1.0"
+          },
+          "created_at": "2026-10-21T09:54:25Z",
+          "inputs": [
+            "evidence.specification"
+          ],
+          "tool": {
+            "id": "aipe.semiconductor-database.dab-screening",
+            "version": "3.1.0"
+          }
+        },
+        "review_status": "unreviewed",
+        "source": {
+          "locator": "src/aipe_devices/services/selection/dab.py",
+          "reference": "https://github.com/FulongLi/AIPE-Semiconductor-Database",
+          "type": "repository"
+        }
+      }
+    ],
+    "extensions": {
+      "aipe.workflows.dab": {
+        "semiconductor_screening": {
+          "dataset_sha256": "b25972315a0afe00cd69f7c93a465597cbd1af30729bc88ad6aa78b0f87fc112",
+          "junction_temperature_K": 398.15,
+          "preferred_integration": "discrete",
+          "primary_device_id": "wolfspeed_c4ms047120k",
+          "primary_excluded_count": 8,
+          "primary_loss_W": 9.05218223290222,
+          "primary_loss_evaluation": {
+            "complete": true,
+            "components": [
+              {
+                "evidence": [
+                  "wolfspeed_c4ms047120k:voltage_drop:2"
+                ],
+                "kind": null,
+                "method": "waveform_integral: mean(v(Tj, i(t)) * i(t)); reverse policy gate_aware",
+                "name": "conduction_loss_forward",
+                "unit": "W",
+                "value": 6.061328394904313
+              },
+              {
+                "evidence": [
+                  "wolfspeed_c4ms047120k:voltage_drop:2",
+                  "wolfspeed_c4ms047120k:voltage_drop:3"
+                ],
+                "kind": null,
+                "method": "waveform_integral: mean(v(Tj, i(t)) * i(t)); reverse policy gate_aware",
+                "name": "conduction_loss_reverse",
+                "unit": "W",
+                "value": 0.8795648097274439
+              },
+              {
+                "evidence": [
+                  "wolfspeed_c4ms047120k:voltage_drop:2",
+                  "wolfspeed_c4ms047120k:voltage_drop:3"
+                ],
+                "kind": null,
+                "method": "waveform_integral: mean(v(Tj, i(t)) * i(t)); reverse policy gate_aware",
+                "name": "conduction_loss",
+                "unit": "W",
+                "value": 6.940893204631757
+              },
+              {
+                "evidence": [
+                  "wolfspeed_c4ms047120k:Eoff:gate_resistance"
+                ],
+                "kind": null,
+                "method": "f_sw * sum(Eoff(Tj, Vdc, I_off) * k_rg) / periods; Rg: tensor_axis",
+                "name": "turn_off_loss",
+                "unit": "W",
+                "value": 2.111289028270464
+              },
+              {
+                "evidence": [],
+                "kind": null,
+                "method": "ZVS on every event (waveform current condition): 0 W",
+                "name": "turn_on_loss",
+                "unit": "W",
+                "value": 0.0
+              },
+              {
+                "evidence": [
+                  "wolfspeed_c4ms047120k:Eoff:gate_resistance"
+                ],
+                "kind": null,
+                "method": "turn_off_loss + turn_on_loss",
+                "name": "switching_loss",
+                "unit": "W",
+                "value": 2.111289028270464
+              },
+              {
+                "evidence": [
+                  "wolfspeed_c4ms047120k:Eoff:gate_resistance",
+                  "wolfspeed_c4ms047120k:voltage_drop:2",
+                  "wolfspeed_c4ms047120k:voltage_drop:3"
+                ],
+                "kind": null,
+                "method": "conduction_loss + turn_off_loss + turn_on_loss",
+                "name": "total_loss",
+                "unit": "W",
+                "value": 9.05218223290222
+              }
+            ],
+            "coverage_gaps": [
+              {
+                "affects": [
+                  "conduction_loss"
+                ],
+                "detail": "All coordinates coincide with source points",
+                "quantity": "conduction_voltage_drop_at_tj",
+                "status": "exact"
+              },
+              {
+                "affects": [
+                  "turn_off_loss"
+                ],
+                "detail": "gate_resistance_off 2.5 Ohm between source points 2 and 6; dc_bus_voltage 799.391 V between source points 600 and 800; current 14.1192 A between source points 5 and 25",
+                "quantity": "Eoff_at_operating_point",
+                "status": "interpolated"
+              },
+              {
+                "affects": [
+                  "turn_off_loss"
+                ],
+                "detail": "gate_resistance_off 2.5 Ohm between source points 2 and 6; dc_bus_voltage 799.391 V between source points 600 and 800; current 14.1209 A between source points 5 and 25",
+                "quantity": "Eoff_at_operating_point",
+                "status": "interpolated"
+              },
+              {
+                "affects": [
+                  "turn_off_loss"
+                ],
+                "detail": "gate_resistance_off 2.5 Ohm between source points 2 and 6; dc_bus_voltage 799.391 V between source points 600 and 800; current 14.1225 A between source points 5 and 25",
+                "quantity": "Eoff_at_operating_point",
+                "status": "interpolated"
+              },
+              {
+                "affects": [
+                  "turn_off_loss"
+                ],
+                "detail": "gate_resistance_off 2.5 Ohm between source points 2 and 6; dc_bus_voltage 799.391 V between source points 600 and 800; current 14.1242 A between source points 5 and 25",
+                "quantity": "Eoff_at_operating_point",
+                "status": "interpolated"
+              },
+              {
+                "affects": [
+                  "turn_on_loss"
+                ],
+                "detail": "All turn-on events satisfy the ZVS condition (waveform current condition); turn-on loss set to zero. Residual loss from incomplete Coss charge transfer needs Coss/Eoss/Qoss, which are unavailable",
+                "quantity": "turn_on_loss_under_zvs",
+                "status": "approximated"
+              },
+              {
+                "affects": [
+                  "turn_on_loss"
+                ],
+                "detail": "Not in the record; charge-based ZVS verification and Coss-related turn-on residuals cannot be evaluated",
+                "quantity": "coss",
+                "status": "unavailable"
+              },
+              {
+                "affects": [
+                  "turn_on_loss"
+                ],
+                "detail": "Not in the record; charge-based ZVS verification and Coss-related turn-on residuals cannot be evaluated",
+                "quantity": "Eoss",
+                "status": "unavailable"
+              },
+              {
+                "affects": [
+                  "turn_on_loss"
+                ],
+                "detail": "Not in the record; charge-based ZVS verification and Coss-related turn-on residuals cannot be evaluated",
+                "quantity": "qoss",
+                "status": "unavailable"
+              },
+              {
+                "affects": [
+                  "suitability"
+                ],
+                "detail": "No rating record; voltage/current derating and junction limit checks need a datasheet or candidate record",
+                "quantity": "vds_max",
+                "status": "unavailable"
+              },
+              {
+                "affects": [
+                  "suitability"
+                ],
+                "detail": "No rating record; voltage/current derating and junction limit checks need a datasheet or candidate record",
+                "quantity": "id_max",
+                "status": "unavailable"
+              },
+              {
+                "affects": [
+                  "suitability"
+                ],
+                "detail": "No rating record; voltage/current derating and junction limit checks need a datasheet or candidate record",
+                "quantity": "tj_max",
+                "status": "unavailable"
+              },
+              {
+                "affects": [
+                  "conduction_loss"
+                ],
+                "detail": "No Rds(on) scalar records; on-resistance follows the voltage_drop tensor at the evaluated temperature",
+                "quantity": "rds_on_vs_tj",
+                "status": "approximated"
+              },
+              {
+                "affects": [
+                  "turn_on_loss"
+                ],
+                "detail": "No Qrr/Err evidence; diode recovery energy during hard commutation is not evaluated",
+                "quantity": "reverse_recovery",
+                "status": "unavailable"
+              },
+              {
+                "affects": [
+                  "conduction_loss",
+                  "turn_off_loss",
+                  "turn_on_loss"
+                ],
+                "detail": "All tensors originate from manufacturer_model; no laboratory measurement backs the evaluated losses",
+                "quantity": "measured_evidence",
+                "status": "unavailable"
+              }
+            ],
+            "dc_bus_voltage_V": 799.391,
+            "device_id": "wolfspeed_c4ms047120k",
+            "evidence_origins": {
+              "wolfspeed_c4ms047120k:Eoff:gate_resistance": "manufacturer_model",
+              "wolfspeed_c4ms047120k:voltage_drop:2": "manufacturer_model",
+              "wolfspeed_c4ms047120k:voltage_drop:3": "manufacturer_model"
+            },
+            "fixed_point_converged": true,
+            "fixed_point_loss_W": 6.612621639947616,
+            "fixed_point_tj_K": 321.31512633595287,
+            "path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\runs\\wf-dab-10kw-first-it03\\tasks\\semiconductor-screening\\losses-primary-S3.json",
+            "rth_junction_to_case_K_per_W": 0.634779,
+            "stress_source": "sampled_waveform",
+            "switch": "S3",
+            "total_loss_W_at_tj": 9.05218223290222,
+            "warnings": [
+              "Switching instants taken from gate threshold crossings"
+            ]
+          },
+          "primary_part_number": "C4MS047120K",
+          "primary_rth_jc_K_per_W": 0.634779,
+          "primary_selected": {
+            "candidate_id": "candidate_wolfspeed_c4ms047120k",
+            "canonical_id": "wolfspeed_c4ms047120k",
+            "fixed_point": {
+              "converged": true,
+              "junction_temperature": 320.2509084553739,
+              "loss": 5.750752527678186
+            },
+            "id_rating_A": 37.0,
+            "integration": "discrete",
+            "loss_complete": true,
+            "loss_conduction_W": 6.201362721990832,
+            "loss_evidence": "canonical_tensor",
+            "loss_flags": [
+              "guard_rows_dropped:junction_temperature",
+              "method:rms_equivalent_resistance",
+              "interpolated:gate_resistance_off",
+              "interpolated:dc_bus_voltage",
+              "interpolated:current",
+              "zvs_turn_on_assumed_lossless"
+            ],
+            "loss_total_W_at_tj": 8.312955825331937,
+            "loss_turn_off_W": 2.111593103341105,
+            "manufacturer": "Wolfspeed",
+            "package": "TO-247-4",
+            "part_number": "C4MS047120K",
+            "rth_junction_to_case_K_per_W": 0.634779,
+            "tj_at_fixed_loss_K": 323.4146632810475,
+            "tj_max_rating_K": 448.15,
+            "vds_rating_V": 1200.0
+          },
+          "primary_stress": {
+            "conduction_fraction": 0.5002771550307805,
+            "current_avg": 6.091828251063909,
+            "current_peak_forward": 14.25852721448973,
+            "current_peak_reverse": -14.86883598520149,
+            "current_rms": 9.425748677818884,
+            "switch_id": "S3"
+          },
+          "primary_tj_max_rating_K": 448.15,
+          "primary_top_ranked_overall": {
+            "candidate_id": "candidate_wolfspeed_cbb021m12fm3",
+            "canonical_id": "wolfspeed_cbb021m12fm3",
+            "fixed_point": {
+              "converged": true,
+              "junction_temperature": 320.4190115567305,
+              "loss": 4.0941844293555905
+            },
+            "id_rating_A": 50.0,
+            "integration": "module",
+            "loss_complete": true,
+            "loss_conduction_W": 2.4876526678473248,
+            "loss_evidence": "canonical_tensor",
+            "loss_flags": [
+              "guard_rows_dropped:junction_temperature",
+              "method:rms_equivalent_resistance",
+              "rg_dependence_unavailable",
+              "interpolated:dc_bus_voltage",
+              "interpolated:current",
+              "zvs_turn_on_assumed_lossless"
+            ],
+            "loss_total_W_at_tj": 6.86670670234678,
+            "loss_turn_off_W": 4.379054034499455,
+            "manufacturer": "Wolfspeed",
+            "package": "WolfPACK FM (62.8 x 33.8 mm, press-fit, NTC, optional pre-applied TIM)",
+            "part_number": "CBB021M12FM3",
+            "rth_junction_to_case_K_per_W": 1.175448,
+            "tj_at_fixed_loss_K": 325.34148068126814,
+            "tj_max_rating_K": 423.15,
+            "vds_rating_V": 1200.0
+          },
+          "primary_worst_case_switch": "S3",
+          "screening_path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\runs\\wf-dab-10kw-first-it03\\tasks\\semiconductor-screening\\screening.json",
+          "secondary_device_id": "wolfspeed_c3m0025065k",
+          "secondary_excluded_count": 2,
+          "secondary_loss_W": 16.177901126554858,
+          "secondary_loss_evaluation": {
+            "complete": true,
+            "components": [
+              {
+                "evidence": [
+                  "wolfspeed_c3m0025065k:voltage_drop:2"
+                ],
+                "kind": null,
+                "method": "waveform_integral: mean(v(Tj, i(t)) * i(t)); reverse policy gate_aware",
+                "name": "conduction_loss_forward",
+                "unit": "W",
+                "value": 0.23834128821166534
+              },
+              {
+                "evidence": [
+                  "wolfspeed_c3m0025065k:voltage_drop:2",
+                  "wolfspeed_c3m0025065k:voltage_drop:3"
+                ],
+                "kind": null,
+                "method": "waveform_integral: mean(v(Tj, i(t)) * i(t)); reverse policy gate_aware",
+                "name": "conduction_loss_reverse",
+                "unit": "W",
+                "value": 12.364173622801355
+              },
+              {
+                "evidence": [
+                  "wolfspeed_c3m0025065k:voltage_drop:2",
+                  "wolfspeed_c3m0025065k:voltage_drop:3"
+                ],
+                "kind": null,
+                "method": "waveform_integral: mean(v(Tj, i(t)) * i(t)); reverse policy gate_aware",
+                "name": "conduction_loss",
+                "unit": "W",
+                "value": 12.60251491101302
+              },
+              {
+                "evidence": [
+                  "wolfspeed_c3m0025065k:Eoff:1"
+                ],
+                "kind": null,
+                "method": "f_sw * sum(Eoff(Tj, Vdc, I_off) * k_rg) / periods; Rg: plecs_formula",
+                "name": "turn_off_loss",
+                "unit": "W",
+                "value": 3.5753862155418363
+              },
+              {
+                "evidence": [],
+                "kind": null,
+                "method": "ZVS on every event (waveform current condition): 0 W",
+                "name": "turn_on_loss",
+                "unit": "W",
+                "value": 0.0
+              },
+              {
+                "evidence": [
+                  "wolfspeed_c3m0025065k:Eoff:1"
+                ],
+                "kind": null,
+                "method": "turn_off_loss + turn_on_loss",
+                "name": "switching_loss",
+                "unit": "W",
+                "value": 3.5753862155418363
+              },
+              {
+                "evidence": [
+                  "wolfspeed_c3m0025065k:Eoff:1",
+                  "wolfspeed_c3m0025065k:voltage_drop:2",
+                  "wolfspeed_c3m0025065k:voltage_drop:3"
+                ],
+                "kind": null,
+                "method": "conduction_loss + turn_off_loss + turn_on_loss",
+                "name": "total_loss",
+                "unit": "W",
+                "value": 16.177901126554858
+              }
+            ],
+            "coverage_gaps": [
+              {
+                "affects": [
+                  "conduction_loss"
+                ],
+                "detail": "junction_temperature 398.15 K between source points 298.15 and 448.15",
+                "quantity": "conduction_voltage_drop_at_tj",
+                "status": "interpolated"
+              },
+              {
+                "affects": [
+                  "Eoff"
+                ],
+                "detail": "Manufacturer PLECS formula 'E/(0.0148*2.5+0.0192)*(0.0148*Rgoff+0.0192)' scales the table by 1.0000 at 2.5 Ohm",
+                "quantity": "rg_dependence_Eoff",
+                "status": "approximated"
+              },
+              {
+                "affects": [
+                  "turn_off_loss"
+                ],
+                "detail": "dc_bus_voltage 392.81 V between source points 0 and 400; current 27.5712 A between source points 25.7 and 33.77",
+                "quantity": "Eoff_at_operating_point",
+                "status": "interpolated"
+              },
+              {
+                "affects": [
+                  "turn_off_loss"
+                ],
+                "detail": "dc_bus_voltage 392.81 V between source points 0 and 400; current 27.5669 A between source points 25.7 and 33.77",
+                "quantity": "Eoff_at_operating_point",
+                "status": "interpolated"
+              },
+              {
+                "affects": [
+                  "turn_off_loss"
+                ],
+                "detail": "dc_bus_voltage 392.81 V between source points 0 and 400; current 27.5627 A between source points 25.7 and 33.77",
+                "quantity": "Eoff_at_operating_point",
+                "status": "interpolated"
+              },
+              {
+                "affects": [
+                  "turn_off_loss"
+                ],
+                "detail": "dc_bus_voltage 392.81 V between source points 0 and 400; current 27.5586 A between source points 25.7 and 33.77",
+                "quantity": "Eoff_at_operating_point",
+                "status": "interpolated"
+              },
+              {
+                "affects": [
+                  "turn_on_loss"
+                ],
+                "detail": "All turn-on events satisfy the ZVS condition (waveform current condition); turn-on loss set to zero. Residual loss from incomplete Coss charge transfer needs Coss/Eoss/Qoss, which are unavailable",
+                "quantity": "turn_on_loss_under_zvs",
+                "status": "approximated"
+              },
+              {
+                "affects": [
+                  "turn_on_loss"
+                ],
+                "detail": "Not in the record; charge-based ZVS verification and Coss-related turn-on residuals cannot be evaluated",
+                "quantity": "coss",
+                "status": "unavailable"
+              },
+              {
+                "affects": [
+                  "turn_on_loss"
+                ],
+                "detail": "Not in the record; charge-based ZVS verification and Coss-related turn-on residuals cannot be evaluated",
+                "quantity": "Eoss",
+                "status": "unavailable"
+              },
+              {
+                "affects": [
+                  "turn_on_loss"
+                ],
+                "detail": "Not in the record; charge-based ZVS verification and Coss-related turn-on residuals cannot be evaluated",
+                "quantity": "qoss",
+                "status": "unavailable"
+              },
+              {
+                "affects": [
+                  "suitability"
+                ],
+                "detail": "No rating record; voltage/current derating and junction limit checks need a datasheet or candidate record",
+                "quantity": "vds_max",
+                "status": "unavailable"
+              },
+              {
+                "affects": [
+                  "suitability"
+                ],
+                "detail": "No rating record; voltage/current derating and junction limit checks need a datasheet or candidate record",
+                "quantity": "id_max",
+                "status": "unavailable"
+              },
+              {
+                "affects": [
+                  "suitability"
+                ],
+                "detail": "No rating record; voltage/current derating and junction limit checks need a datasheet or candidate record",
+                "quantity": "tj_max",
+                "status": "unavailable"
+              },
+              {
+                "affects": [
+                  "conduction_loss"
+                ],
+                "detail": "No Rds(on) scalar records; on-resistance follows the voltage_drop tensor at the evaluated temperature",
+                "quantity": "rds_on_vs_tj",
+                "status": "approximated"
+              },
+              {
+                "affects": [
+                  "turn_on_loss"
+                ],
+                "detail": "No Qrr/Err evidence; diode recovery energy during hard commutation is not evaluated",
+                "quantity": "reverse_recovery",
+                "status": "unavailable"
+              },
+              {
+                "affects": [
+                  "conduction_loss",
+                  "turn_off_loss",
+                  "turn_on_loss"
+                ],
+                "detail": "All tensors originate from manufacturer_model; no laboratory measurement backs the evaluated losses",
+                "quantity": "measured_evidence",
+                "status": "unavailable"
+              }
+            ],
+            "dc_bus_voltage_V": 392.81,
+            "device_id": "wolfspeed_c3m0025065k",
+            "evidence_origins": {
+              "wolfspeed_c3m0025065k:Eoff:1": "manufacturer_model",
+              "wolfspeed_c3m0025065k:voltage_drop:2": "manufacturer_model",
+              "wolfspeed_c3m0025065k:voltage_drop:3": "manufacturer_model"
+            },
+            "fixed_point_converged": true,
+            "fixed_point_loss_W": 14.907590744150973,
+            "fixed_point_tj_K": 328.9159698191992,
+            "path": "D:\\Cursor Workspace\\AIPE-Full-Ecosystem-Integration\\runs\\wf-dab-10kw-first-it03\\tasks\\semiconductor-screening\\losses-secondary-S8.json",
+            "rth_junction_to_case_K_per_W": 0.45758000000000004,
+            "stress_source": "sampled_waveform",
+            "switch": "S8",
+            "total_loss_W_at_tj": 16.177901126554858,
+            "warnings": [
+              "Switching instants taken from gate threshold crossings"
+            ]
+          },
+          "secondary_part_number": "C3M0025065K",
+          "secondary_rth_jc_K_per_W": 0.45758000000000004,
+          "secondary_selected": {
+            "candidate_id": "candidate_wolfspeed_c3m0025065k",
+            "canonical_id": "wolfspeed_c3m0025065k",
+            "fixed_point": {
+              "converged": true,
+              "junction_temperature": 326.37062455684685,
+              "loss": 12.500826941552289
+            },
+            "id_rating_A": 70.0,
+            "integration": "discrete",
+            "loss_complete": true,
+            "loss_conduction_W": 10.412111067643492,
+            "loss_evidence": "canonical_tensor",
+            "loss_flags": [
+              "guard_rows_dropped:junction_temperature",
+              "method:rms_equivalent_resistance",
+              "rg_scaling:plecs_formula",
+              "interpolated:dc_bus_voltage",
+              "interpolated:current",
+              "zvs_turn_on_assumed_lossless"
+            ],
+            "loss_total_W_at_tj": 13.990456767693118,
+            "loss_turn_off_W": 3.578345700049625,
+            "manufacturer": "Wolfspeed",
+            "package": "TO-247-4",
+            "part_number": "C3M0025065K",
+            "rth_junction_to_case_K_per_W": 0.45758000000000004,
+            "tj_at_fixed_loss_K": 327.9460272683769,
+            "tj_max_rating_K": 448.15,
+            "vds_rating_V": 650.0
+          },
+          "secondary_stress": {
+            "conduction_fraction": 0.5008588281248141,
+            "current_avg": -12.226016889558506,
+            "current_peak_forward": 27.6899020581486,
+            "current_peak_reverse": -30.56023519599092,
+            "current_rms": 18.919592484405133,
+            "switch_id": "S8"
+          },
+          "secondary_tj_max_rating_K": 448.15,
+          "secondary_top_ranked_overall": {
+            "candidate_id": "candidate_wolfspeed_cbb021m12fm3",
+            "canonical_id": "wolfspeed_cbb021m12fm3",
+            "fixed_point": {
+              "converged": true,
+              "junction_temperature": 332.0024824068469,
+              "loss": 10.618436815297857
+            },
+            "id_rating_A": 50.0,
+            "integration": "module",
+            "loss_complete": true,
+            "loss_conduction_W": 10.073253950206427,
+            "loss_evidence": "canonical_tensor",
+            "loss_flags": [
+              "guard_rows_dropped:junction_temperature",
+              "method:rms_equivalent_resistance",
+              "rg_dependence_unavailable",
+              "interpolated:dc_bus_voltage",
+              "interpolated:current",
+              "zvs_turn_on_assumed_lossless"
+            ],
+            "loss_total_W_at_tj": 13.9124055926257,
+            "loss_turn_off_W": 3.8391516424192726,
+            "manufacturer": "Wolfspeed",
+            "package": "WolfPACK FM (62.8 x 33.8 mm, press-fit, NTC, optional pre-applied TIM)",
+            "part_number": "CBB021M12FM3",
+            "rth_junction_to_case_K_per_W": 1.175448,
+            "tj_at_fixed_loss_K": 337.8507526846161,
+            "tj_max_rating_K": 423.15,
+            "vds_rating_V": 1200.0
+          },
+          "secondary_worst_case_switch": "S8",
+          "semiconductor_loss_total_W_at_tj": 100.9203334378283,
+          "settings": {
+            "allow_extrapolation": false,
+            "ambient_temperature": 313.15,
+            "derating_limit": 0.7,
+            "design_tj_limit": 398.15,
+            "gate_resistance_off": 2.5,
+            "gate_resistance_on": 2.5,
+            "gate_voltage_off": -4.0,
+            "gate_voltage_on": 15.0,
+            "junction_temperature": 398.15,
+            "rth_case_to_sink": 0.1,
+            "rth_sink_to_ambient": 0.5
+          }
+        }
+      }
+    },
+    "updated_at": "2026-10-21T09:54:26Z"
+  },
+  "status": "completed",
+  "task_id": "semiconductor-screening",
+  "task_version": "0.1.0",
+  "tool": {
+    "id": "aipe.semiconductor-database.dab-screening",
+    "name": "aipe_devices",
+    "version": "3.1.0"
+  },
+  "verification": {
+    "loss_evaluation_complete": true,
+    "loss_evaluations": [
+      "primary",
+      "secondary"
+    ],
+    "primary_candidates": 11,
+    "secondary_candidates": 17,
+    "selection_complete": true
+  }
+}

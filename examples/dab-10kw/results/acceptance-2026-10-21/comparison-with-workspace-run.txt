@@ -1,0 +1,289 @@
+# Acceptance run (D:\aipe-acceptance\runs\dab-acceptance) compared with the developer-workspace migrated run
+# (runs/wf-dab-10kw-stab): every numeric/string leaf of report.json and of the final Engineering State, volatile
+# keys (timestamps, hashes, paths, run ids, durations, environment) excluded. Generated 2026-10-21.
+
+report.json keys: ['blocked_items', 'engineering_state', 'environment', 'failed_items', 'figures', 'run', 'schema', 'specification', 'tasks', 'verification_gates']
+
+### tasks: 3415 leaves compared, 26 differ, 12 only in acceptance, 0 only in migrated run
+  DIFF analytic-sps.outputs.evidence_id: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF pcb-erc-drc.artifacts[6].description: acceptance='AIPE-PCB-Agent verification record pipeline_control.json' migrated='AIPE-PCB-Agent verification record summary_control.json'
+  DIFF pcb-erc-drc.artifacts[7].description: acceptance='AIPE-PCB-Agent verification record pipeline_primary-power.json' migrated='AIPE-PCB-Agent verification record summary_primary-power.json'
+  DIFF pcb-erc-drc.artifacts[8].description: acceptance='AIPE-PCB-Agent verification record pipeline_secondary-power.json' migrated='AIPE-PCB-Agent verification record summary_secondary-power.json'
+  DIFF pcb-erc-drc.outputs.boards.control.drc.unconnected_items.errors: acceptance=24 migrated=499
+  DIFF pcb-erc-drc.outputs.boards.control.drc.unconnected_items.total: acceptance=24 migrated=499
+  DIFF pcb-erc-drc.outputs.boards.control.drc.unconnected_items.types.unconnected_items: acceptance=24 migrated=499
+  DIFF pcb-erc-drc.outputs.boards.control.drc.violations.total: acceptance=28 migrated=0
+  DIFF pcb-erc-drc.outputs.boards.control.drc.violations.warnings: acceptance=28 migrated=0
+  DIFF pcb-erc-drc.outputs.boards.primary-power.drc.unconnected_items.errors: acceptance=26 migrated=499
+  DIFF pcb-erc-drc.outputs.boards.primary-power.drc.unconnected_items.total: acceptance=26 migrated=499
+  DIFF pcb-erc-drc.outputs.boards.primary-power.drc.unconnected_items.types.unconnected_items: acceptance=26 migrated=499
+  DIFF pcb-erc-drc.outputs.boards.primary-power.drc.violations.total: acceptance=18 migrated=0
+  DIFF pcb-erc-drc.outputs.boards.primary-power.drc.violations.warnings: acceptance=18 migrated=0
+  DIFF pcb-erc-drc.outputs.boards.secondary-power.drc.unconnected_items.errors: acceptance=23 migrated=499
+  DIFF pcb-erc-drc.outputs.boards.secondary-power.drc.unconnected_items.total: acceptance=23 migrated=499
+  DIFF pcb-erc-drc.outputs.boards.secondary-power.drc.unconnected_items.types.unconnected_items: acceptance=23 migrated=499
+  DIFF pcb-erc-drc.outputs.boards.secondary-power.drc.violations.total: acceptance=18 migrated=0
+  DIFF pcb-erc-drc.outputs.boards.secondary-power.drc.violations.warnings: acceptance=18 migrated=0
+  DIFF pcb-erc-drc.outputs.pcb_agent_verification_records[0]: acceptance='pipeline_control.json' migrated='summary_control.json'
+  DIFF pcb-erc-drc.outputs.pcb_agent_verification_records[1]: acceptance='pipeline_primary-power.json' migrated='summary_primary-power.json'
+  DIFF pcb-erc-drc.outputs.pcb_agent_verification_records[2]: acceptance='pipeline_secondary-power.json' migrated='summary_secondary-power.json'
+  DIFF pcb-erc-drc.outputs.totals.drc_warnings: acceptance=64 migrated=0
+  DIFF pcb-erc-drc.outputs.totals.unconnected_items: acceptance=73 migrated=1497
+  DIFF pcb-erc-drc.verification.drc_warnings: acceptance=64 migrated=0
+  DIFF pcb-erc-drc.verification.unconnected_items: acceptance=73 migrated=1497
+  only-acceptance pcb-erc-drc.artifacts[10].description = 'AIPE-PCB-Agent verification record summary_primary-power.json'
+  only-acceptance pcb-erc-drc.artifacts[10].role = 'pcb_verification_record'
+  only-acceptance pcb-erc-drc.artifacts[11].description = 'AIPE-PCB-Agent verification record summary_secondary-power.json'
+  only-acceptance pcb-erc-drc.artifacts[11].role = 'pcb_verification_record'
+  only-acceptance pcb-erc-drc.artifacts[9].description = 'AIPE-PCB-Agent verification record summary_control.json'
+  only-acceptance pcb-erc-drc.artifacts[9].role = 'pcb_verification_record'
+  only-acceptance pcb-erc-drc.outputs.boards.control.drc.violations.types.track_dangling = 28
+  only-acceptance pcb-erc-drc.outputs.boards.primary-power.drc.violations.types.track_dangling = 18
+  only-acceptance pcb-erc-drc.outputs.boards.secondary-power.drc.violations.types.track_dangling = 18
+  only-acceptance pcb-erc-drc.outputs.pcb_agent_verification_records[3] = 'summary_control.json'
+  only-acceptance pcb-erc-drc.outputs.pcb_agent_verification_records[4] = 'summary_primary-power.json'
+  only-acceptance pcb-erc-drc.outputs.pcb_agent_verification_records[5] = 'summary_secondary-power.json'
+
+### engineering_state: 1798 leaves compared, 31 differ, 0 only in acceptance, 0 only in migrated run
+  DIFF final.control.evidence_refs[0]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF final.evidence[3].provenance.inputs[1]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF final.evidence[4].provenance.inputs[1]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF final.evidence[5].provenance.inputs[1]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF final.evidence[6].provenance.inputs[1]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF final.evidence[7].provenance.inputs[1]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF final.magnetics[0].evidence_refs[0]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF final.magnetics[1].evidence_refs[0]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF final.magnetics[2].evidence_refs[0]: acceptance='evidence.magnetics-design-48bad7' migrated='evidence.magnetics-design-5c640c'
+  DIFF final.magnetics[3].evidence_refs[0]: acceptance='evidence.magnetics-design-48bad7' migrated='evidence.magnetics-design-5c640c'
+  DIFF final.semiconductors[0].evidence_refs[0]: acceptance='evidence.semiconductor-screening-48bad7' migrated='evidence.semiconductor-screening-5c640c'
+  DIFF final.semiconductors[1].evidence_refs[0]: acceptance='evidence.semiconductor-screening-48bad7' migrated='evidence.semiconductor-screening-5c640c'
+  DIFF final.simulation.runs[0].evidence_refs[0]: acceptance='evidence.sim-circuit-sim-level1-48bad7' migrated='evidence.sim-circuit-sim-level1-5c640c'
+  DIFF final.simulation.runs[1].evidence_refs[0]: acceptance='evidence.sim-circuit-sim-level1-convergence-48bad7' migrated='evidence.sim-circuit-sim-level1-convergence-5c640c'
+  DIFF final.simulation.runs[2].evidence_refs[0]: acceptance='evidence.sim-circuit-sim-level2-48bad7' migrated='evidence.sim-circuit-sim-level2-5c640c'
+  DIFF final.simulation.runs[3].evidence_refs[0]: acceptance='evidence.fem-transformer-window-48bad7' migrated='evidence.fem-transformer-window-5c640c'
+  DIFF final.simulation.runs[4].evidence_refs[0]: acceptance='evidence.fem-heatsink-48bad7' migrated='evidence.fem-heatsink-5c640c'
+  DIFF final.thermal.evidence_refs[0]: acceptance='evidence.fem-heatsink-48bad7' migrated='evidence.fem-heatsink-5c640c'
+  DIFF final.thermal.evidence_refs[3]: acceptance='evidence.thermal-cooling-48bad7' migrated='evidence.thermal-cooling-5c640c'
+  DIFF final.validation.checks[0].evidence_refs[0]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF final.validation.checks[10].evidence_refs[0]: acceptance='evidence.cad-heatsink-48bad7' migrated='evidence.cad-heatsink-5c640c'
+  DIFF final.validation.checks[11].evidence_refs[0]: acceptance='evidence.fem-heatsink-48bad7' migrated='evidence.fem-heatsink-5c640c'
+  DIFF final.validation.checks[1].evidence_refs[0]: acceptance='evidence.sim-circuit-sim-level1-48bad7' migrated='evidence.sim-circuit-sim-level1-5c640c'
+  DIFF final.validation.checks[2].evidence_refs[0]: acceptance='evidence.sim-circuit-sim-level1-convergence-48bad7' migrated='evidence.sim-circuit-sim-level1-convergence-5c640c'
+  DIFF final.validation.checks[3].evidence_refs[0]: acceptance='evidence.sim-circuit-sim-level2-48bad7' migrated='evidence.sim-circuit-sim-level2-5c640c'
+  DIFF final.validation.checks[4].evidence_refs[0]: acceptance='evidence.control-baseline-48bad7' migrated='evidence.control-baseline-5c640c'
+  DIFF final.validation.checks[5].evidence_refs[0]: acceptance='evidence.magnetics-design-48bad7' migrated='evidence.magnetics-design-5c640c'
+  DIFF final.validation.checks[6].evidence_refs[0]: acceptance='evidence.cad-transformer-48bad7' migrated='evidence.cad-transformer-5c640c'
+  DIFF final.validation.checks[7].evidence_refs[0]: acceptance='evidence.fem-transformer-window-48bad7' migrated='evidence.fem-transformer-window-5c640c'
+  DIFF final.validation.checks[8].evidence_refs[0]: acceptance='evidence.semiconductor-screening-48bad7' migrated='evidence.semiconductor-screening-5c640c'
+  DIFF final.validation.checks[9].evidence_refs[0]: acceptance='evidence.thermal-cooling-48bad7' migrated='evidence.thermal-cooling-5c640c'
+
+### verification_gates: 165 leaves compared, 2 differ, 0 only in acceptance, 0 only in migrated run
+  DIFF gates.cad_pcb.checks[2].verification.drc_warnings: acceptance=64 migrated=0
+  DIFF gates.cad_pcb.checks[2].verification.unconnected_items: acceptance=73 migrated=1497
+
+### specification: 42 leaves compared, 0 differ, 0 only in acceptance, 0 only in migrated run
+
+### failed_items: 1 leaves compared, 0 differ, 0 only in acceptance, 0 only in migrated run
+
+### blocked_items: 0 leaves compared, 0 differ, 0 only in acceptance, 0 only in migrated run
+
+final states: acceptance state-012.json, migrated state-012.json
+
+### final engineering state: 1772 leaves compared, 31 differ, 0 only in acceptance, 0 only in migrated run
+  DIFF control.evidence_refs[0]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF evidence[3].provenance.inputs[1]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF evidence[4].provenance.inputs[1]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF evidence[5].provenance.inputs[1]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF evidence[6].provenance.inputs[1]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF evidence[7].provenance.inputs[1]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF magnetics[0].evidence_refs[0]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF magnetics[1].evidence_refs[0]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF magnetics[2].evidence_refs[0]: acceptance='evidence.magnetics-design-48bad7' migrated='evidence.magnetics-design-5c640c'
+  DIFF magnetics[3].evidence_refs[0]: acceptance='evidence.magnetics-design-48bad7' migrated='evidence.magnetics-design-5c640c'
+  DIFF semiconductors[0].evidence_refs[0]: acceptance='evidence.semiconductor-screening-48bad7' migrated='evidence.semiconductor-screening-5c640c'
+  DIFF semiconductors[1].evidence_refs[0]: acceptance='evidence.semiconductor-screening-48bad7' migrated='evidence.semiconductor-screening-5c640c'
+  DIFF simulation.runs[0].evidence_refs[0]: acceptance='evidence.sim-circuit-sim-level1-48bad7' migrated='evidence.sim-circuit-sim-level1-5c640c'
+  DIFF simulation.runs[1].evidence_refs[0]: acceptance='evidence.sim-circuit-sim-level1-convergence-48bad7' migrated='evidence.sim-circuit-sim-level1-convergence-5c640c'
+  DIFF simulation.runs[2].evidence_refs[0]: acceptance='evidence.sim-circuit-sim-level2-48bad7' migrated='evidence.sim-circuit-sim-level2-5c640c'
+  DIFF simulation.runs[3].evidence_refs[0]: acceptance='evidence.fem-transformer-window-48bad7' migrated='evidence.fem-transformer-window-5c640c'
+  DIFF simulation.runs[4].evidence_refs[0]: acceptance='evidence.fem-heatsink-48bad7' migrated='evidence.fem-heatsink-5c640c'
+  DIFF thermal.evidence_refs[0]: acceptance='evidence.fem-heatsink-48bad7' migrated='evidence.fem-heatsink-5c640c'
+  DIFF thermal.evidence_refs[3]: acceptance='evidence.thermal-cooling-48bad7' migrated='evidence.thermal-cooling-5c640c'
+  DIFF validation.checks[0].evidence_refs[0]: acceptance='evidence.analytic-sps-48bad7' migrated='evidence.analytic-sps-5c640c'
+  DIFF validation.checks[10].evidence_refs[0]: acceptance='evidence.cad-heatsink-48bad7' migrated='evidence.cad-heatsink-5c640c'
+  DIFF validation.checks[11].evidence_refs[0]: acceptance='evidence.fem-heatsink-48bad7' migrated='evidence.fem-heatsink-5c640c'
+  DIFF validation.checks[1].evidence_refs[0]: acceptance='evidence.sim-circuit-sim-level1-48bad7' migrated='evidence.sim-circuit-sim-level1-5c640c'
+  DIFF validation.checks[2].evidence_refs[0]: acceptance='evidence.sim-circuit-sim-level1-convergence-48bad7' migrated='evidence.sim-circuit-sim-level1-convergence-5c640c'
+  DIFF validation.checks[3].evidence_refs[0]: acceptance='evidence.sim-circuit-sim-level2-48bad7' migrated='evidence.sim-circuit-sim-level2-5c640c'
+  DIFF validation.checks[4].evidence_refs[0]: acceptance='evidence.control-baseline-48bad7' migrated='evidence.control-baseline-5c640c'
+  DIFF validation.checks[5].evidence_refs[0]: acceptance='evidence.magnetics-design-48bad7' migrated='evidence.magnetics-design-5c640c'
+  DIFF validation.checks[6].evidence_refs[0]: acceptance='evidence.cad-transformer-48bad7' migrated='evidence.cad-transformer-5c640c'
+  DIFF validation.checks[7].evidence_refs[0]: acceptance='evidence.fem-transformer-window-48bad7' migrated='evidence.fem-transformer-window-5c640c'
+  DIFF validation.checks[8].evidence_refs[0]: acceptance='evidence.semiconductor-screening-48bad7' migrated='evidence.semiconductor-screening-5c640c'
+  DIFF validation.checks[9].evidence_refs[0]: acceptance='evidence.thermal-cooling-48bad7' migrated='evidence.thermal-cooling-5c640c'
+
+### key values (acceptance run)
+  analytic-sps.outputs.i_L_peak_A = 14.285714285714288
+  analytic-sps.outputs.i_L_rms_A = 13.677530110804833
+  analytic-sps.outputs.phi_deg = 22.5
+  analytic-sps.outputs.phi_rad = 0.39269908169872414
+  analytic-sps.outputs.power_W = 10000.0
+  analytic-sps.outputs.power_flow_direction = 'port1_to_port2'
+  analytic-sps.outputs.summary.derived.max_power_sps.unit = 'W'
+  analytic-sps.outputs.summary.derived.max_power_sps.value = 22857.14285714286
+  analytic-sps.outputs.summary.derived.phase_shift_time.unit = 's'
+  analytic-sps.outputs.summary.derived.phase_shift_time.value = 6.25e-07
+  analytic-sps.outputs.summary.derived.power.unit = 'W'
+  analytic-sps.outputs.summary.derived.power.value = 10000.0
+  analytic-sps.outputs.summary.derived.power_flow_direction = 'port1_to_port2'
+  analytic-sps.outputs.summary.derived.power_from_waveform_integral.unit = 'W'
+  analytic-sps.outputs.summary.derived.power_from_waveform_integral.value = 10000.000000000002
+  analytic-sps.outputs.summary.derived.secondary_current_peak.unit = 'A'
+  analytic-sps.outputs.summary.derived.secondary_current_peak.value = 28.571428571428577
+  analytic-sps.outputs.summary.derived.secondary_current_rms.unit = 'A'
+  analytic-sps.outputs.summary.derived.secondary_current_rms.value = 27.355060221609666
+  analytic-sps.outputs.summary.derived.series_current_peak_primary.unit = 'A'
+  analytic-sps.outputs.summary.derived.series_current_peak_primary.value = 14.285714285714288
+  analytic-sps.outputs.summary.derived.series_current_rms_primary.unit = 'A'
+  analytic-sps.outputs.summary.derived.series_current_rms_primary.value = 13.677530110804833
+  analytic-sps.outputs.summary.inputs.phase_shift.unit = 'rad'
+  analytic-sps.outputs.summary.inputs.phase_shift.value = 0.39269908169872414
+  analytic-sps.outputs.summary.inputs.phase_shift_deg.unit = 'deg'
+  analytic-sps.outputs.summary.inputs.phase_shift_deg.value = 22.5
+  analytic-sps.outputs.summary.inputs.series_inductance_total_primary_referred.unit = 'H'
+  analytic-sps.outputs.summary.inputs.series_inductance_total_primary_referred.value = 3.5e-05
+  analytic-sps.outputs.summary.inputs.turns_ratio_np_ns.unit = '1'
+  analytic-sps.outputs.summary.inputs.turns_ratio_np_ns.value = 2.0
+  analytic-sps.outputs.summary.inputs.turns_ratio_ns_np.unit = '1'
+  analytic-sps.outputs.summary.inputs.turns_ratio_ns_np.value = 0.5
+  analytic-sps.outputs.summary.phase_shift_for_requested_power_deg = 22.5
+  analytic-sps.outputs.summary.phase_shift_for_requested_power_rad = 0.39269908169872414
+  analytic-sps.outputs.summary.power_deviation_from_request_W = 0.0
+  analytic-sps.outputs.summary.series_inductance_from_split_H = 3.5e-05
+  analytic-sps.outputs.summary.series_inductance_split_consistent = True
+  analytic-sps.outputs.summary.zvs_current_direction_conditions.evidence = 'necessary current-direction condition of the lossless SPS model at the switching instant; not a charge-based ZVS verification (needs Coss, dead time and magnetising current)'
+  analytic-sps.outputs.summary.zvs_current_direction_conditions.limits.both_bridges_min_abs_phi_rad = 0.0
+  analytic-sps.outputs.summary.zvs_current_direction_conditions.limits.d = 1.0
+  analytic-sps.outputs.summary.zvs_current_direction_conditions.limits.evidence = 'necessary current-direction condition of the lossless SPS model at the switching instant; not a charge-based ZVS verification (needs Coss, dead time and magnetising current)'
+  analytic-sps.outputs.summary.zvs_current_direction_conditions.limits.primary_min_abs_phi_rad = 0.0
+  analytic-sps.outputs.summary.zvs_current_direction_conditions.limits.secondary_min_abs_phi_rad = 0.0
+  analytic-sps.outputs.summary.zvs_current_direction_conditions.primary = True
+  analytic-sps.outputs.summary.zvs_current_direction_conditions.secondary = True
+  analytic-sps.outputs.zvs_current_direction.evidence = 'necessary current-direction condition of the lossless SPS model at the switching instant; not a charge-based ZVS verification (needs Coss, dead time and magnetising current)'
+  analytic-sps.outputs.zvs_current_direction.primary = True
+  analytic-sps.outputs.zvs_current_direction.secondary = True
+  analytic-sps.status = 'completed'
+  analytic-sps.verification.power_deviation_from_request_W = 0.0
+  analytic-sps.verification.power_equals_waveform_integral = True
+  analytic-sps.verification.series_inductance_split_consistent = True
+  cad-heatsink.model.validity_range = 'illustrative parametric geometry of the Stage A candidate with two TO-247 devices on isolation pads; no DFM or thermal claim'
+  cad-heatsink.outputs.analytic_vs_cad.analytic.mass_without_holes = 0.2782540764293634
+  cad-heatsink.outputs.check_status = 'review'
+  cad-heatsink.outputs.check_summary.status = 'review'
+  cad-heatsink.outputs.clearance[0].status = 'review'
+  cad-heatsink.outputs.mass_by_material_kg.alumina = 0.0007764978448083343
+  cad-heatsink.outputs.mass_by_material_kg.aluminium_6063 = 0.274753254115767
+  cad-heatsink.outputs.mass_by_material_kg.copper = 0.006772201577665653
+  cad-heatsink.outputs.mass_by_material_kg.epoxy_mold_compound = 0.0056879501881621965
+  cad-heatsink.outputs.mass_by_material_kg.nylon_pa66 = 0.00010764379445071989
+  cad-heatsink.outputs.mass_by_material_kg.steel = 0.0022104245030931556
+  cad-heatsink.outputs.mass_kg = 0.2903079720239472
+  cad-heatsink.outputs.sink_mass_analytical_kg = 0.2782540764293634
+  cad-heatsink.outputs.sink_mass_cad_kg = 0.274753254115767
+  cad-heatsink.outputs.sink_mass_cad_vs_analytical_relative = -0.012581387336782079
+  cad-heatsink.outputs.step_reimport.valid = True
+  cad-heatsink.status = 'completed'
+  cad-heatsink.verification.check_status = 'review'
+  cad-heatsink.verification.sink_mass_cad_vs_analytical_relative = -0.012581387336782079
+  cad-transformer.outputs.analytic_vs_cad.analytic_masses.bobbin = 0.021545119020180598
+  cad-transformer.outputs.analytic_vs_cad.analytic_masses.copper = 0.18396368745444475
+  cad-transformer.outputs.analytic_vs_cad.analytic_masses.core = 0.54978048
+  cad-transformer.outputs.analytic_vs_cad.analytic_masses.insulation = 0.0063866449207272535
+  cad-transformer.outputs.analytic_vs_cad.analytic_masses.mounting = 0.05144206684333007
+  cad-transformer.outputs.analytic_vs_cad.analytic_masses.terminals = 0.0007209955139988575
+  cad-transformer.outputs.analytic_vs_cad.analytic_masses.total = 0.8637367094466334
+  cad-transformer.outputs.analytic_vs_cad.analytic_masses.windings = 0.23386140314839649
+  cad-transformer.outputs.check_status = 'review'
+  cad-transformer.outputs.check_summary.status = 'review'
+  cad-transformer.outputs.clearance[0].status = 'review'
+  cad-transformer.outputs.clearance[1].status = 'pass'
+  cad-transformer.outputs.clearance[2].status = 'pass'
+  cad-transformer.outputs.magnetics_copper_mass_kg = 0.18213664666192864
+  cad-transformer.outputs.magnetics_mass_kg = 0.6961366466619286
+  cad-transformer.outputs.margin_m = 0.0
+  cad-transformer.outputs.mass_by_material_kg.aluminium_6063 = 0.015986066843329955
+  cad-transformer.outputs.mass_by_material_kg.bobbin_pet_gf = 0.02150455824297392
+  cad-transformer.outputs.mass_by_material_kg.brass = 0.0007209955139988577
+  cad-transformer.outputs.mass_by_material_kg.copper = 0.2338614031483964
+  cad-transformer.outputs.mass_by_material_kg.ferrite_n87 = 0.5497804799999999
+  cad-transformer.outputs.mass_by_material_kg.kapton = 0.006386644920727292
+  cad-transformer.outputs.mass_by_material_kg.stainless_steel = 0.035456000000000015
+  cad-transformer.outputs.mass_kg = 0.8636961486694265
+  cad-transformer.outputs.step_reimport.valid = True
+  cad-transformer.outputs.windings[0].turns = 10
+  cad-transformer.outputs.windings[1].turns = 10
+  cad-transformer.outputs.windings[2].turns = 10
+  cad-transformer.status = 'completed'
+  cad-transformer.verification.check_status = 'review'
+  circuit-sim-level1-convergence.outputs.comparison_vs_analytic.items.ports.port2.power_avg.value.actual = 9996.917092757778
+  circuit-sim-level1-convergence.outputs.comparison_vs_analytic.items.ports.port2.power_avg.value.expected = 10000.0
+  circuit-sim-level1-convergence.outputs.comparison_vs_analytic.items.ports.port2.power_avg.value.pass = True
+  circuit-sim-level1-convergence.outputs.comparison_vs_analytic.items.ports.port2.power_avg.value.relative_error = 0.0003082907242222063
+  circuit-sim-level1-convergence.outputs.efficiency = 0.9994829052371329
+  circuit-sim-level1-convergence.outputs.i_L_peak_A = 14.31536575268705
+  circuit-sim-level1-convergence.outputs.i_L_rms_A = 13.677098515780825
+  circuit-sim-level1-convergence.outputs.i_m_peak_A = 2.000970068527367
+  circuit-sim-level1-convergence.outputs.i_s_peak_A = 32.62913632392883
+  circuit-sim-level1-convergence.outputs.i_s_rms_A = 27.92724122778354
+  circuit-sim-level1-convergence.outputs.loss_W = 5.172027902022819
+  circuit-sim-level1-convergence.outputs.measured_phase_shift_deg = 22.499999723828395
+  circuit-sim-level1-convergence.outputs.switches.S1.i_peak_fwd_A = 14.30969607189763
+  circuit-sim-level1-convergence.outputs.switches.S1.i_peak_rev_A = -14.25788837298751
+  circuit-sim-level1-convergence.outputs.switches.S1.i_rms_A = 9.668581362981657
+  circuit-sim-level1-convergence.outputs.switches.S1.zvs_current_condition_all_events = True
+  circuit-sim-level1-convergence.outputs.switches.S2.i_peak_fwd_A = 14.31544575205649
+  circuit-sim-level1-convergence.outputs.switches.S2.i_peak_rev_A = -14.25213569621203
+  circuit-sim-level1-convergence.outputs.switches.S2.i_rms_A = 9.673859551655282
+  circuit-sim-level1-convergence.outputs.switches.S2.zvs_current_condition_all_events = True
+  circuit-sim-level1-convergence.outputs.switches.S3.i_peak_fwd_A = 14.31544573535211
+  circuit-sim-level1-convergence.outputs.switches.S3.i_peak_rev_A = -14.252135501476
+  circuit-sim-level1-convergence.outputs.switches.S3.i_rms_A = 9.67385955190717
+  circuit-sim-level1-convergence.outputs.switches.S3.zvs_current_condition_all_events = True
+  circuit-sim-level1-convergence.outputs.switches.S4.i_peak_fwd_A = 14.30969612421129
+  circuit-sim-level1-convergence.outputs.switches.S4.i_peak_rev_A = -14.25788952675401
+  circuit-sim-level1-convergence.outputs.switches.S4.i_rms_A = 9.668581363381026
+  circuit-sim-level1-convergence.outputs.switches.S4.zvs_current_condition_all_events = True
+  circuit-sim-level1-convergence.outputs.switches.S5.i_peak_fwd_A = 32.62052500492427
+  circuit-sim-level1-convergence.outputs.switches.S5.i_peak_rev_A = -32.61428888427326
+  circuit-sim-level1-convergence.outputs.switches.S5.i_rms_A = 19.741192217241384
+  circuit-sim-level1-convergence.outputs.switches.S5.zvs_current_condition_all_events = True
+  circuit-sim-level1-convergence.outputs.switches.S6.i_peak_fwd_A = 32.60571664813996
+  circuit-sim-level1-convergence.outputs.switches.S6.i_peak_rev_A = -32.62909632026758
+  circuit-sim-level1-convergence.outputs.switches.S6.i_rms_A = 19.753838451422883
+  circuit-sim-level1-convergence.outputs.switches.S6.zvs_current_condition_all_events = True
+  circuit-sim-level1-convergence.outputs.switches.S7.i_peak_fwd_A = 32.60571882128716
+  circuit-sim-level1-convergence.outputs.switches.S7.i_peak_rev_A = -32.62909618206322
+  circuit-sim-level1-convergence.outputs.switches.S7.i_rms_A = 19.753838449069146
+  circuit-sim-level1-convergence.outputs.switches.S7.zvs_current_condition_all_events = True
+  circuit-sim-level1-convergence.outputs.switches.S8.i_peak_fwd_A = 32.62052498757915
+  circuit-sim-level1-convergence.outputs.switches.S8.i_peak_rev_A = -32.61428885162133
+  circuit-sim-level1-convergence.outputs.switches.S8.i_rms_A = 19.74119219974566
+  circuit-sim-level1-convergence.outputs.switches.S8.zvs_current_condition_all_events = True
+  circuit-sim-level1-convergence.outputs.valid = True
+  circuit-sim-level1-convergence.outputs.zvs_overview.S1 = True
+  circuit-sim-level1-convergence.outputs.zvs_overview.S2 = True
+  circuit-sim-level1-convergence.outputs.zvs_overview.S3 = True
+  circuit-sim-level1-convergence.outputs.zvs_overview.S4 = True
+  circuit-sim-level1-convergence.outputs.zvs_overview.S5 = True
+  circuit-sim-level1-convergence.outputs.zvs_overview.S6 = True
+  circuit-sim-level1-convergence.outputs.zvs_overview.S7 = True
+  circuit-sim-level1-convergence.outputs.zvs_overview.S8 = True
+  circuit-sim-level1-convergence.status = 'completed'
+  circuit-sim-level1.outputs.comparison_vs_analytic.items.ports.port2.power_avg.value.actual = 9996.81343609198
+  circuit-sim-level1.outputs.comparison_vs_analytic.items.ports.port2.power_avg.value.expected = 10000.0
+  circuit-sim-level1.outputs.comparison_vs_analytic.items.ports.port2.power_avg.value.pass = True
+  circuit-sim-level1.outputs.comparison_vs_analytic.items.ports.port2.power_avg.value.relative_error = 0.00031865639080206167
+  circuit-sim-level1.outputs.efficiency = 0.9994824635057669
+  ...
+
+TOTAL differing leaves across report sections: 59

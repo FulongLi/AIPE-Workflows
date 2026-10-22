@@ -29,7 +29,7 @@ class SpsControlBaselineTask(TaskAdapter):
         try:
             import aipe_simulation.control  # noqa: F401
         except ImportError:
-            return ["aipe_simulation.control is not available (AIPE-Simulation-Skills >= 0.2 with the control subpackage)"]
+            return ["python package aipe_simulation.control (AIPE-Simulation-Skills >= 0.2) is not installed: pip install -e ../AIPE-Simulation-Skills"]
         return []
 
     def execute(self, ctx: TaskContext) -> ExecutionEnvelope:

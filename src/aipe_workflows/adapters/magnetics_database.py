@@ -43,7 +43,7 @@ class WaveformInformedTransformerTask(TaskAdapter):
         try:
             import h5py  # noqa: F401
         except ImportError:
-            problems.append("h5py is required to read the waveform dataset")
+            problems.append("python package h5py is not installed (needed to read the waveform dataset): pip install h5py")
         return problems
 
     def execute(self, ctx: TaskContext) -> ExecutionEnvelope:
